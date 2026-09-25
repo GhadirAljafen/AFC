@@ -1,0 +1,181 @@
+{
+  "split": "dev",
+  "claims": 200,
+  "paired_claims": 200,
+  "corpus_documents": 973,
+  "condition": "offline closed corpus (not comparable to live search)",
+  "summary": {
+    "1round_k5": {
+      "recall": 0.47483333333333333,
+      "precision": 0.166,
+      "any_hit": 0.61,
+      "n_retrieved": 5,
+      "fc_article_domain_hit": 0.1
+    },
+    "2round_k5": {
+      "recall": 0.5558333333333333,
+      "precision": 0.12944642857142857,
+      "any_hit": 0.685,
+      "n_retrieved": 8.22,
+      "fc_article_domain_hit": 0.12
+    },
+    "1round_k9": {
+      "recall": 0.576,
+      "precision": 0.12426785714285714,
+      "any_hit": 0.695,
+      "n_retrieved": 8.485,
+      "fc_article_domain_hit": 0.125
+    }
+  },
+  "paired_tests": {
+    "1round_k9_vs_2round_k5": [
+      {
+        "metric": "recall",
+        "delta": 0.020166666666666666,
+        "ci_low": -0.017333333333333333,
+        "ci_high": 0.058499999999999996,
+        "p": 0.4281412909676644,
+        "wins": 19,
+        "losses": 11,
+        "ties": 170
+      },
+      {
+        "metric": "any_hit",
+        "delta": 0.009999999999999898,
+        "ci_low": -0.035,
+        "ci_high": 0.055,
+        "p": 0.6547208460185769,
+        "wins": 11,
+        "losses": 9,
+        "ties": 180
+      },
+      {
+        "metric": "precision",
+        "delta": -0.005178571428571435,
+        "ci_low": -0.014583333333333342,
+        "ci_high": 0.0041587301587301525,
+        "p": 0.965349803569009,
+        "wins": 80,
+        "losses": 47,
+        "ties": 73
+      },
+      {
+        "metric": "fc_article_domain_hit",
+        "delta": 0.0050000000000000044,
+        "ci_low": -0.02,
+        "ci_high": 0.03,
+        "p": 0.7054569861112734,
+        "wins": 4,
+        "losses": 3,
+        "ties": 193
+      }
+    ],
+    "2round_k5_vs_1round_k5": [
+      {
+        "metric": "recall",
+        "delta": 0.08099999999999996,
+        "ci_low": 0.04666666666666667,
+        "ci_high": 0.11699999999999999,
+        "p": 2.28996049542155e-05,
+        "wins": 28,
+        "losses": 4,
+        "ties": 168
+      },
+      {
+        "metric": "any_hit",
+        "delta": 0.07500000000000007,
+        "ci_low": 0.03,
+        "ci_high": 0.12,
+        "p": 0.0010631149171586032,
+        "wins": 18,
+        "losses": 3,
+        "ties": 179
+      },
+      {
+        "metric": "precision",
+        "delta": -0.036553571428571435,
+        "ci_low": -0.048507936507936514,
+        "ci_high": -0.02498611111111112,
+        "p": 1.0450619116929288e-06,
+        "wins": 21,
+        "losses": 82,
+        "ties": 97
+      },
+      {
+        "metric": "fc_article_domain_hit",
+        "delta": 0.01999999999999999,
+        "ci_low": -0.005,
+        "ci_high": 0.05,
+        "p": 0.15729920705028502,
+        "wins": 6,
+        "losses": 2,
+        "ties": 192
+      }
+    ],
+    "1round_k9_vs_1round_k5": [
+      {
+        "metric": "recall",
+        "delta": 0.10116666666666663,
+        "ci_low": 0.066,
+        "ci_high": 0.13883333333333334,
+        "p": 1.0969377974349658e-06,
+        "wins": 33,
+        "losses": 1,
+        "ties": 166
+      },
+      {
+        "metric": "any_hit",
+        "delta": 0.08499999999999996,
+        "ci_low": 0.045,
+        "ci_high": 0.13,
+        "p": 9.616588268883476e-05,
+        "wins": 18,
+        "losses": 1,
+        "ties": 181
+      },
+      {
+        "metric": "precision",
+        "delta": -0.04173214285714287,
+        "ci_low": -0.053079365079365094,
+        "ci_high": -0.030597222222222234,
+        "p": 2.6954825340140823e-08,
+        "wins": 28,
+        "losses": 106,
+        "ties": 66
+      },
+      {
+        "metric": "fc_article_domain_hit",
+        "delta": 0.024999999999999994,
+        "ci_low": 0.0,
+        "ci_high": 0.05,
+        "p": 0.05878172135535886,
+        "wins": 6,
+        "losses": 1,
+        "ties": 193
+      }
+    ]
+  },
+  "round2_diagnostics": {
+    "claims_with_second_round": 148,
+    "h1_claim_overlap": {
+      "round1": 0.4479238845020887,
+      "round2": 0.32189065107643816
+    },
+    "h1_query_len": {
+      "round1": 7.466666666666667,
+      "round2": 9.10472972972973
+    },
+    "h2_gold_rate": {
+      "round1": 0.167,
+      "round2": 0.04009009009009009
+    },
+    "h2_mean_rank": {
+      "round1": 2.481,
+      "round2": 3.2585585585585584
+    },
+    "h3_fact_check": {
+      "round1": 0.135,
+      "round2": 0.08108108108108109
+    }
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "split": "dev",
+  "condition": "offline closed corpus (NOT comparable to live open-web search)",
+  "dataset_stats": {
+    "claims": 500,
+    "claims_with_scorable_answers": 391,
+    "answers_total": 1399,
+    "answers_scorable": 820,
+    "answers_scorable_pct": 58.6,
+    "labels": {
+      "Refuted": 305,
+      "Supported": 122,
+      "Not Enough Evidence": 35,
+      "Conflicting Evidence/Cherrypicking": 38
+    }
+  },
+  "corpus_documents": 973,
+  "claims_evaluated": 50,
+  "results_per_query": 5,
+  "llm": "configured default",
+  "conditions": [
+    {
+      "rounds": 1,
+      "evidence_k": null,
+      "claims_scored": 50,
+      "errors": 0,
+      "recall": 0.5886666666666667,
+      "precision": 0.192,
+      "any_hit_rate": 0.7,
+      "avg_retrieved": 5.0,
+      "avg_gold": 1.7,
+      "claims_using_a_second_round": 0,
+      "fact_check_article_domain_retrieved": 3
+    },
+    {
+      "rounds": 2,
+      "evidence_k": null,
+      "claims_scored": 50,
+      "errors": 0,
+      "recall": 0.6493333333333333,
+      "precision": 0.136,
+      "any_hit_rate": 0.76,
+      "avg_retrieved": 8.54,
+      "avg_gold": 1.7,
+      "claims_using_a_second_round": 40,
+      "fact_check_article_domain_retrieved": 7
+    },
+    {
+      "rounds": 1,
+      "evidence_k": 9,
+      "claims_scored": 50,
+      "errors": 0,
+      "recall": 0.716,
+      "precision": 0.14399206349206348,
+      "any_hit_rate": 0.82,
+      "avg_retrieved": 8.44,
+      "avg_gold": 1.7,
+      "claims_using_a_second_round": 0,
+      "fact_check_article_domain_retrieved": 5,
+      "label": "rounds=1 (k=9, volume control)"
+    }
+  ]
+}

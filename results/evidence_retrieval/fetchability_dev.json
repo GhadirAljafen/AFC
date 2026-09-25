@@ -1,0 +1,19 @@
+{
+  "split": "dev",
+  "urls_sampled": 150,
+  "success_rate": 0.7066666666666667,
+  "outcomes": {
+    "ok": 106,
+    "http_4xx": 30,
+    "connect_error": 11,
+    "extraction_failed": 1,
+    "http_5xx": 2
+  },
+  "extracted_chars_median": 2936.5,
+  "gold_chars_median": 172.5,
+  "extraction_methods": {
+    "trafilatura": 101,
+    "bs4_fallback": 5
+  },
+  "wayback_recoveries": 16
+}

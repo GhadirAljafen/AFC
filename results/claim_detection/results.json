@@ -1,0 +1,20 @@
+{
+  "experiment": "Claim Detection Evaluation",
+  "dataset": "NewsScope",
+  "date": "2025",
+  "metric": "ROUGE-L (threshold 0.40)",
+  "indomain": {
+    "n_articles": 80,
+    "prompt_a": {"precision": 0.304, "recall": 0.585, "f1": 0.386},
+    "prompt_b": {"precision": 0.407, "recall": 0.529, "f1": 0.453},
+    "prompt_c": {"precision": 0.365, "recall": 0.554, "f1": 0.434}
+  },
+  "out_of_domain": {
+    "n_articles": 60,
+    "prompt_a": {"precision": 0.196, "recall": 0.381, "f1": 0.254},
+    "prompt_b": {"precision": 0.256, "recall": 0.358, "f1": 0.296}
+  },
+  "best_model": "Prompt B",
+  "best_f1_indomain": 0.453,
+  "generalization_drop_prompt_b": "-34%"
+}

@@ -1,0 +1,26 @@
+dataset:
+  base_dir: "docs/dataset/NewsScope"
+  splits:
+    test_indomain: "test_indomain.jsonl"
+    test_oos: "test_oos.jsonl"
+    train: "train.jsonl"
+
+artifacts:
+  base_dir: "eval/data"
+  cache_dir: "eval/data/cache"
+  intermediate_dir: "eval/data/intermediate"
+  reports_dir: "eval/data/reports"
+
+fetch:
+  concurrency: 12
+  timeout_s: 25
+  user_agent: "AFC-NewsScopeEval/0.1 (+academic evaluation)"
+  max_html_bytes: 8000000
+  per_host_min_delay_s: 0.4
+  retries: 2
+  retry_backoff_s: 1.2
+
+matching:
+  min_similarity: 0.85
+  near_miss_min: 0.70
+

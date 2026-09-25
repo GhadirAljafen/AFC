@@ -1,0 +1,58 @@
+[tool.poetry]
+name = "factcheck-agent"
+version = "0.1.0"
+description = "An agentic automated fact-checking system"
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+packages = [{include = "factcheck_agent", from = "src"}]
+
+[tool.poetry.scripts]
+factcheck = "factcheck_agent.cli:main"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+python-dotenv = "^1.0.0"
+pydantic = "^2.7.0"
+httpx = "^0.28.0"
+trafilatura = "^2.0.0"
+beautifulsoup4 = "^4.13.0"
+PyYAML = "^6.0.0"
+openai = "^1.0.0"
+scipy = "^1.11.0"
+rouge-score = "^0.1.2"
+langchain = {version = "^0.1.0", optional = true}
+langchain-core = {version = "^0.1.0", optional = true}
+langchain-openai = {version = "^0.0.5", optional = true}
+langchain-anthropic = {version = "^0.1.0", optional = true}
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+pytest-cov = "^4.1.0"
+black = "^23.9.0"
+ruff = "^0.1.0"
+mypy = "^1.6.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+
+[tool.black]
+line-length = 100
+target-version = ['py39']
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+

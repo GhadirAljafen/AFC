@@ -1,0 +1,27 @@
+{
+  "split": "test_oos",
+  "n_articles": 60,
+  "results": {
+    "A": {
+      "precision": 0.19214285714285714,
+      "recall": 0.4,
+      "f1": 0.25543650793650796,
+      "scored_articles": 60,
+      "detection_failures": 0
+    },
+    "B": {
+      "precision": 0.25416666666666665,
+      "recall": 0.35833333333333334,
+      "f1": 0.29555555555555557,
+      "scored_articles": 60,
+      "detection_failures": 0
+    },
+    "C": {
+      "precision": 0.26805555555555555,
+      "recall": 0.4083333333333333,
+      "f1": 0.32222222222222224,
+      "scored_articles": 60,
+      "detection_failures": 0
+    }
+  }
+}

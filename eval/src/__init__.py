@@ -1,0 +1,2 @@
+"""NewsScope evaluation pipeline implementation."""
+

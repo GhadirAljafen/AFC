@@ -1,0 +1,27 @@
+{
+  "split": "test_indomain",
+  "n_articles": 80,
+  "results": {
+    "A": {
+      "precision": 0.27697403291153294,
+      "recall": 0.6020833333333333,
+      "f1": 0.3699016955266955,
+      "scored_articles": 80,
+      "detection_failures": 0
+    },
+    "B": {
+      "precision": 0.4083333333333333,
+      "recall": 0.525,
+      "f1": 0.4515476190476191,
+      "scored_articles": 80,
+      "detection_failures": 0
+    },
+    "C": {
+      "precision": 0.36687499999999995,
+      "recall": 0.5520833333333333,
+      "f1": 0.4347321428571429,
+      "scored_articles": 80,
+      "detection_failures": 0
+    }
+  }
+}

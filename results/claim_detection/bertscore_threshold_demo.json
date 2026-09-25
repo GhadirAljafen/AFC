@@ -1,0 +1,60 @@
+{
+  "model": "roberta-large",
+  "raw_threshold_under_test": 0.85,
+  "pairs": [
+    {
+      "candidate": "Saudi Arabia is the world's largest oil producer",
+      "reference": "The funeral was held on Tuesday morning",
+      "kind": "UNRELATED",
+      "raw_f1": 0.8349781036376953,
+      "rescaled_f1": 0.022232959046959877,
+      "passes_raw_085": false
+    },
+    {
+      "candidate": "Inflation hit 3.5 percent in January",
+      "reference": "Six Canadian MPs were denied entry to the West Bank",
+      "kind": "UNRELATED",
+      "raw_f1": 0.8383738398551941,
+      "rescaled_f1": 0.04235294833779335,
+      "passes_raw_085": false
+    },
+    {
+      "candidate": "Acme Corporation announced a major expansion",
+      "reference": "Miss Finland's photo sparked international debate",
+      "kind": "UNRELATED",
+      "raw_f1": 0.8400728702545166,
+      "rescaled_f1": 0.05241983011364937,
+      "passes_raw_085": false
+    },
+    {
+      "candidate": "Saudi Arabia is the world's largest oil producer",
+      "reference": "Saudi Arabia produces more oil than any other country",
+      "kind": "PARAPHRASE",
+      "raw_f1": 0.9201503396034241,
+      "rescaled_f1": 0.5268847942352295,
+      "passes_raw_085": true
+    },
+    {
+      "candidate": "Charges were dropped in March 2024",
+      "reference": "The case was dismissed in March 2024",
+      "kind": "PARAPHRASE",
+      "raw_f1": 0.936448872089386,
+      "rescaled_f1": 0.6234548091888428,
+      "passes_raw_085": true
+    }
+  ],
+  "summary": {
+    "raw": {
+      "unrelated_mean": 0.8378082712491354,
+      "paraphrase_mean": 0.928299605846405,
+      "separation": 0.09049133459726966,
+      "unrelated_max": 0.8400728702545166
+    },
+    "rescaled": {
+      "unrelated_mean": 0.03900191249946753,
+      "paraphrase_mean": 0.5751698017120361,
+      "separation": 0.5361678892125686
+    },
+    "separation_gain": 5.925074390810743
+  }
+}

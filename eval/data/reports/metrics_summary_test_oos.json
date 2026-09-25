@@ -1,0 +1,18 @@
+{
+  "split": "test_oos",
+  "matching": {
+    "min_rouge_filter": 0.0,
+    "min_bertscore_f1": 0.65,
+    "near_miss_min": 0.7
+  },
+  "micro": {
+    "tp": 0,
+    "fp": 0,
+    "fn": 0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0
+  },
+  "by_retrieval_source": {},
+  "note": "Scores use BERTScore F1 where installed; otherwise fall back to ROUGE-L."
+}
