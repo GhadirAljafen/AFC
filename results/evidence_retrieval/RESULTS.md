@@ -483,7 +483,79 @@ is the next experiment, not a conclusion from this one.
 
 ---
 
-## 10. Next steps
+## 10. Full-text enrichment — does better evidence produce better verdicts?
+
+The question §9.5 left open. 150 claims, **paired**: retrieval runs once per
+claim and all conditions score the *identical* evidence set — same URLs, same
+ranking — differing only in whether each document carries a snippet or fetched
+article passages. Running retrieval per condition would have let temperature-0.3
+query generation change *which* documents were found, confounding text quality
+with document choice.
+
+Significance by **McNemar's exact test**, the correct paired test for binary
+correct/incorrect outcomes.
+
+| condition | docs enriched | chars/doc | total chars | accuracy | macro-F1 | abstention |
+|---|---|---|---|---|---|---|
+| snippet (current) | 0.0 | 186 | 1,810 | 0.559 | 0.473 | 45.6% |
+| **fulltext@3** | 1.8 | 723 | 6,842 | **0.640** | **0.550** | 34.6% |
+| fulltext@8 | 4.4 | 1,499 | 14,223 | 0.647 | 0.550 | **31.6%** |
+
+### 10.1 It works, and significantly
+
+| comparison | snippet-only right | fulltext-only right | p | |
+|---|---|---|---|---|
+| fulltext@3 vs snippet | 7 | **18** | **0.043** | significant |
+| fulltext@8 vs snippet | 8 | **20** | **0.036** | significant |
+
+Accuracy **+0.081** (@3) and **+0.088** (@8); abstention falls **45.6% → 31.6%**.
+
+**This is the only intervention in the whole Stage 2 evaluation that improved
+verdict quality.** The `k` sweep was flat across 5→15 (§7.2); widening the
+candidate pool made verdicts *worse* (§8.1). Depth is the lever; breadth is not.
+
+Against the §8 oracle (0.750, perfect evidence), full text closes **42–46% of the
+gap** between snippets and ideal evidence — while still sitting 0.059 below the
+majority-class baseline (§7.3), so this improves the system without making the
+verdict stage good.
+
+### 10.2 The gain is concentrated in SUPPORTS
+
+| condition | SUPPORTS | REFUTES | NOT_ENOUGH_INFO |
+|---|---|---|---|
+| snippet | 0.344 | 0.615 | 0.75 |
+| fulltext@3 | 0.562 | 0.656 | 0.75 |
+| fulltext@8 | **0.594** | 0.667 | 0.625 |
+
+`SUPPORTS` recall rises **0.344 → 0.594 — +0.250 absolute, +73% relative**, while
+`REFUTES` barely moves (+0.05).
+
+§8.4 identified `SUPPORTS` as the weakest class in every condition and attributed
+it to a demotion rule converting low-confidence `SUPPORTS` into
+`NOT_ENOUGH_INFO`. This result is consistent with that: richer evidence raises
+the model's confidence past the demotion threshold, so claims that were being
+abstained on are now confirmed. It does not *prove* the mechanism — that still
+needs the Stage 3 test of disabling the rule — but it is the predicted signature.
+
+### 10.3 Enrichment saturates at ~3 documents
+
+`fulltext@8` buys **+0.007 accuracy over `fulltext@3` for 2.1× the text and 2.4×
+the page fetches**, with identical macro-F1 (0.550 both). Beyond the top few
+documents, extra full text adds latency and token cost but no measurable quality.
+
+**`FULL_TEXT_TOP_K=3` is therefore the right operating point** — which is already
+the configured default, now validated rather than assumed.
+
+### 10.4 Fetch reliability held up in practice
+
+1,159 pages extracted, 456 failed: **71.8% success**, closely matching the 70.7%
+measured independently in §9.1. 19 pages were recovered via the Wayback fallback.
+The ~28% that fail keep their snippets, so enrichment degrades to current
+behaviour rather than losing sources.
+
+---
+
+## 11. Next steps
 
 1. ~~Paired comparison~~, ~~round-2 diagnostics~~, ~~`k` sweep~~ — **done** (§5, §7).
 2. ~~Raise `max_results_per_query`~~ — **done and rejected** (§8.1): improves
@@ -502,5 +574,6 @@ is the next experiment, not a conclusion from this one.
 
 - `averitec.py` — loader, Wayback unwrapping, scorable-subset definition
 - `fetchability_audit.py` / `fetchability_dev.json` — §9 reachability audit
+- `fulltext_verdict.py` / `fulltext_verdict_dev.json` — §10 paired enrichment test
 - `evaluate_retrieval.py` — harness (conditions, volume control, metrics)
 - `metrics_retrieval_dev.json` — saved results for the runs above

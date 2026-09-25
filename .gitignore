@@ -56,8 +56,7 @@ Thumbs.db
 
 
 # Caches and build artifacts (regenerable)
-.cache/
-.cache_audit/
+.cache*/
 eval/data/cache/
 AFC.zip
 .ipynb_checkpoints/

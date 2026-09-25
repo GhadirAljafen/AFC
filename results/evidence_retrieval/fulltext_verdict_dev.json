@@ -1,0 +1,113 @@
+{
+  "split": "dev",
+  "claims_scored": 150,
+  "k": 12,
+  "design": "paired; retrieval once per claim, conditions differ only in evidence text",
+  "max_chars": 4000,
+  "fetcher": {
+    "extracted": 1159,
+    "failed": 456,
+    "wayback_recoveries": 19
+  },
+  "summaries": [
+    {
+      "condition": "snippet",
+      "n": 136,
+      "accuracy": 0.5588235294117647,
+      "macro_f1": 0.4727546714888487,
+      "abstention": 0.45588235294117646,
+      "mean_chars": 186.08493506493505,
+      "total_chars": 1809.9866666666667,
+      "enriched_docs": 0,
+      "pred_distribution": {
+        "NOT_ENOUGH_INFO": 62,
+        "REFUTES": 62,
+        "SUPPORTS": 12
+      },
+      "per_class_recall": {
+        "SUPPORTS": {
+          "n": 32,
+          "recall": 0.344
+        },
+        "REFUTES": {
+          "n": 96,
+          "recall": 0.615
+        },
+        "NOT_ENOUGH_INFO": {
+          "n": 8,
+          "recall": 0.75
+        }
+      }
+    },
+    {
+      "condition": "fulltext@3",
+      "n": 136,
+      "accuracy": 0.6397058823529411,
+      "macro_f1": 0.5501683501683502,
+      "abstention": 0.34558823529411764,
+      "mean_chars": 722.649126984127,
+      "total_chars": 6841.613333333334,
+      "enriched_docs": 1.8133333333333332,
+      "pred_distribution": {
+        "NOT_ENOUGH_INFO": 47,
+        "REFUTES": 66,
+        "SUPPORTS": 23
+      },
+      "per_class_recall": {
+        "SUPPORTS": {
+          "n": 32,
+          "recall": 0.562
+        },
+        "REFUTES": {
+          "n": 96,
+          "recall": 0.656
+        },
+        "NOT_ENOUGH_INFO": {
+          "n": 8,
+          "recall": 0.75
+        }
+      }
+    },
+    {
+      "condition": "fulltext@8",
+      "n": 136,
+      "accuracy": 0.6470588235294118,
+      "macro_f1": 0.5501358119005179,
+      "abstention": 0.3161764705882353,
+      "mean_chars": 1498.6485904280905,
+      "total_chars": 14223.186666666666,
+      "enriched_docs": 4.36,
+      "pred_distribution": {
+        "NOT_ENOUGH_INFO": 43,
+        "REFUTES": 69,
+        "SUPPORTS": 24
+      },
+      "per_class_recall": {
+        "SUPPORTS": {
+          "n": 32,
+          "recall": 0.594
+        },
+        "REFUTES": {
+          "n": 96,
+          "recall": 0.667
+        },
+        "NOT_ENOUGH_INFO": {
+          "n": 8,
+          "recall": 0.625
+        }
+      }
+    }
+  ],
+  "mcnemar_vs_snippet": {
+    "fulltext@3": {
+      "snippet_only_correct": 7,
+      "fulltext_only_correct": 18,
+      "p": 0.043285250663757324
+    },
+    "fulltext@8": {
+      "snippet_only_correct": 8,
+      "fulltext_only_correct": 20,
+      "p": 0.03569813817739487
+    }
+  }
+}
