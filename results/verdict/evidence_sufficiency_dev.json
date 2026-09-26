@@ -1,0 +1,3261 @@
+{
+  "split": "dev",
+  "claims_scored": 136,
+  "design": "paired; gold evidence under three framings, original prompt",
+  "warning": "plus_justification is LEAKY (contains the fact-checker's rationale) and is a ceiling diagnostic only, never system performance",
+  "majority_baseline": 0.7058823529411765,
+  "summaries": [
+    {
+      "condition": "answer_only",
+      "n": 136,
+      "accuracy": 0.7205882352941176,
+      "macro_f1": 0.6134892787524366,
+      "abstention": 0.3088235294117647,
+      "false_abstentions": 34,
+      "errors": 38,
+      "mean_chars": 521.2132352941177,
+      "mean_confidence": 0.9301470588235294,
+      "pred_distribution": {
+        "REFUTES": 75,
+        "NOT_ENOUGH_INFO": 42,
+        "SUPPORTS": 19
+      },
+      "per_class_recall": {
+        "SUPPORTS": {
+          "n": 32,
+          "recall": 0.531
+        },
+        "REFUTES": {
+          "n": 96,
+          "recall": 0.76
+        },
+        "NOT_ENOUGH_INFO": {
+          "n": 8,
+          "recall": 1.0
+        }
+      }
+    },
+    {
+      "condition": "question_answer",
+      "n": 136,
+      "accuracy": 0.7426470588235294,
+      "macro_f1": 0.6037037037037037,
+      "abstention": 0.25,
+      "false_abstentions": 27,
+      "errors": 35,
+      "mean_chars": 661.8602941176471,
+      "mean_confidence": 0.9393382352941176,
+      "pred_distribution": {
+        "REFUTES": 84,
+        "NOT_ENOUGH_INFO": 34,
+        "SUPPORTS": 18
+      },
+      "per_class_recall": {
+        "SUPPORTS": {
+          "n": 32,
+          "recall": 0.469
+        },
+        "REFUTES": {
+          "n": 96,
+          "recall": 0.823
+        },
+        "NOT_ENOUGH_INFO": {
+          "n": 8,
+          "recall": 0.875
+        }
+      }
+    },
+    {
+      "condition": "plus_justification",
+      "n": 136,
+      "accuracy": 0.9044117647058824,
+      "macro_f1": 0.8017447464815884,
+      "abstention": 0.1323529411764706,
+      "false_abstentions": 10,
+      "errors": 13,
+      "mean_chars": 788.5,
+      "mean_confidence": 0.9470588235294117,
+      "pred_distribution": {
+        "REFUTES": 94,
+        "SUPPORTS": 24,
+        "NOT_ENOUGH_INFO": 18
+      },
+      "per_class_recall": {
+        "SUPPORTS": {
+          "n": 32,
+          "recall": 0.719
+        },
+        "REFUTES": {
+          "n": 96,
+          "recall": 0.958
+        },
+        "NOT_ENOUGH_INFO": {
+          "n": 8,
+          "recall": 1.0
+        }
+      }
+    }
+  ],
+  "mcnemar": {
+    "question_answer_vs_answer_only": {
+      "baseline_only_right": 5,
+      "candidate_only_right": 8,
+      "p": 0.5810546875
+    },
+    "plus_justification_vs_question_answer": {
+      "baseline_only_right": 0,
+      "candidate_only_right": 22,
+      "p": 4.76837158203125e-07
+    }
+  },
+  "leakage_split": {
+    "leaky": {
+      "n": 68,
+      "qa_accuracy": 0.7058823529411765,
+      "plus_just_accuracy": 0.8970588235294118,
+      "delta": 0.19117647058823528,
+      "p": 0.000244140625,
+      "qa_only_right": 0,
+      "plus_just_only_right": 13
+    },
+    "clean": {
+      "n": 68,
+      "qa_accuracy": 0.7794117647058824,
+      "plus_just_accuracy": 0.9117647058823529,
+      "delta": 0.13235294117647056,
+      "p": 0.00390625,
+      "qa_only_right": 0,
+      "plus_just_only_right": 9
+    }
+  },
+  "per_claim": [
+    {
+      "claim_id": "av-00000",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 218,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 302,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 403,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00003",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 687,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 753,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 1048,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00001",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 113,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 201,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 295,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00006",
+      "gold": "SUPPORTS",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.8,
+        "chars": 503,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 572,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 647,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00002",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 822,
+        "n_evidence": 3
+      },
+      "question_answer": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 941,
+        "n_evidence": 3
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 1063,
+        "n_evidence": 4
+      }
+    },
+    {
+      "claim_id": "av-00004",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 752,
+        "n_evidence": 3
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 922,
+        "n_evidence": 3
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 985,
+        "n_evidence": 4
+      }
+    },
+    {
+      "claim_id": "av-00007",
+      "gold": "SUPPORTS",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 117,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 218,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 251,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00012",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 1152,
+        "n_evidence": 6
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 1552,
+        "n_evidence": 6
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 1616,
+        "n_evidence": 7
+      }
+    },
+    {
+      "claim_id": "av-00013",
+      "gold": "SUPPORTS",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 243,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.8,
+        "chars": 298,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 448,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00008",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "SUPPORTS",
+        "confidence": 0.8,
+        "chars": 167,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "SUPPORTS",
+        "confidence": 0.8,
+        "chars": 207,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 331,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00015",
+      "gold": "NOT_ENOUGH_INFO",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 1.0,
+        "chars": 1029,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 1.0,
+        "chars": 1136,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 1574,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00014",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 766,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 894,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 978,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00016",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 552,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 774,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.95,
+        "chars": 1043,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00019",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 171,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 254,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 312,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00017",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 297,
+        "n_evidence": 3
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 542,
+        "n_evidence": 3
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 669,
+        "n_evidence": 4
+      }
+    },
+    {
+      "claim_id": "av-00020",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 162,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 233,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 267,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00022",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 162,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 264,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 333,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00023",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 29,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 74,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 172,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00024",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 218,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 457,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 905,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00026",
+      "gold": "NOT_ENOUGH_INFO",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 372,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 459,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 576,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00027",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 367,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 485,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 560,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00028",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 337,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 711,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 737,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00030",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 331,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 374,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 390,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00029",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 124,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 271,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 406,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00032",
+      "gold": "SUPPORTS",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "SUPPORTS",
+        "confidence": 1.0,
+        "chars": 69,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "SUPPORTS",
+        "confidence": 1.0,
+        "chars": 137,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "SUPPORTS",
+        "confidence": 1.0,
+        "chars": 153,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00035",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 405,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 448,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 561,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00040",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 232,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 367,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 491,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00039",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 322,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 430,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 635,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00037",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 441,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 766,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 855,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00041",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 1010,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 1137,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 1530,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00042",
+      "gold": "SUPPORTS",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 93,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 153,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 192,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00044",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 513,
+        "n_evidence": 3
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.95,
+        "chars": 672,
+        "n_evidence": 3
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 794,
+        "n_evidence": 4
+      }
+    },
+    {
+      "claim_id": "av-00048",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 612,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 671,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 838,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00051",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 117,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 228,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 297,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00046",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 95,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 208,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 294,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00049",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 98,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 226,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 319,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00045",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 454,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 528,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 723,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00056",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 259,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 1.0,
+        "chars": 314,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 467,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00052",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 393,
+        "n_evidence": 3
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 534,
+        "n_evidence": 3
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 738,
+        "n_evidence": 4
+      }
+    },
+    {
+      "claim_id": "av-00054",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 110,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 168,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 308,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00065",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 70,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 138,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 282,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00062",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 1647,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 1718,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 1780,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00066",
+      "gold": "SUPPORTS",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 233,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 364,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 459,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00068",
+      "gold": "NOT_ENOUGH_INFO",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 1.0,
+        "chars": 628,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 1.0,
+        "chars": 660,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 1.0,
+        "chars": 720,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00067",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 458,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 510,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 696,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00069",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 169,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 1.0,
+        "chars": 240,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 379,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00071",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 800,
+        "n_evidence": 3
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 1121,
+        "n_evidence": 3
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 1160,
+        "n_evidence": 4
+      }
+    },
+    {
+      "claim_id": "av-00070",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 3036,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 3184,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 3216,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00072",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 551,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 691,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 847,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00074",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 1377,
+        "n_evidence": 4
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 1567,
+        "n_evidence": 4
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 1719,
+        "n_evidence": 5
+      }
+    },
+    {
+      "claim_id": "av-00075",
+      "gold": "SUPPORTS",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 1175,
+        "n_evidence": 5
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 1500,
+        "n_evidence": 5
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 1590,
+        "n_evidence": 6
+      }
+    },
+    {
+      "claim_id": "av-00076",
+      "gold": "NOT_ENOUGH_INFO",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 1.0,
+        "chars": 642,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 691,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 1.0,
+        "chars": 727,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00077",
+      "gold": "SUPPORTS",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 382,
+        "n_evidence": 5
+      },
+      "question_answer": {
+        "pred": "SUPPORTS",
+        "confidence": 1.0,
+        "chars": 722,
+        "n_evidence": 5
+      },
+      "plus_justification": {
+        "pred": "SUPPORTS",
+        "confidence": 1.0,
+        "chars": 827,
+        "n_evidence": 6
+      }
+    },
+    {
+      "claim_id": "av-00078",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 607,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 754,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 842,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00079",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 52,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 155,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 200,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00080",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 426,
+        "n_evidence": 3
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 683,
+        "n_evidence": 3
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 882,
+        "n_evidence": 4
+      }
+    },
+    {
+      "claim_id": "av-00084",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 318,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 377,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 464,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00087",
+      "gold": "SUPPORTS",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "SUPPORTS",
+        "confidence": 0.95,
+        "chars": 437,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "SUPPORTS",
+        "confidence": 1.0,
+        "chars": 658,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "SUPPORTS",
+        "confidence": 1.0,
+        "chars": 739,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00086",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 298,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 491,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 528,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00085",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 1424,
+        "n_evidence": 6
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 1676,
+        "n_evidence": 6
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 1846,
+        "n_evidence": 7
+      }
+    },
+    {
+      "claim_id": "av-00082",
+      "gold": "NOT_ENOUGH_INFO",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 4120,
+        "n_evidence": 4
+      },
+      "question_answer": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 4461,
+        "n_evidence": 4
+      },
+      "plus_justification": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 4601,
+        "n_evidence": 5
+      }
+    },
+    {
+      "claim_id": "av-00093",
+      "gold": "SUPPORTS",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "SUPPORTS",
+        "confidence": 0.95,
+        "chars": 83,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "SUPPORTS",
+        "confidence": 1.0,
+        "chars": 226,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "SUPPORTS",
+        "confidence": 1.0,
+        "chars": 294,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00094",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 28,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 80,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 262,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00092",
+      "gold": "SUPPORTS",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 1.0,
+        "chars": 55,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 1.0,
+        "chars": 115,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 208,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00090",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 46,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 1.0,
+        "chars": 76,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 220,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00089",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 338,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 559,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 665,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00091",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 779,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 981,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 1007,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00097",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 82,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 180,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 283,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00098",
+      "gold": "SUPPORTS",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 170,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 227,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "SUPPORTS",
+        "confidence": 0.95,
+        "chars": 454,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00102",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 83,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 139,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 192,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00099",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 457,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 602,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 676,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00095",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 1724,
+        "n_evidence": 4
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 1985,
+        "n_evidence": 4
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 2100,
+        "n_evidence": 5
+      }
+    },
+    {
+      "claim_id": "av-00103",
+      "gold": "SUPPORTS",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 1965,
+        "n_evidence": 3
+      },
+      "question_answer": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 2141,
+        "n_evidence": 3
+      },
+      "plus_justification": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 2154,
+        "n_evidence": 4
+      }
+    },
+    {
+      "claim_id": "av-00104",
+      "gold": "SUPPORTS",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 139,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 1.0,
+        "chars": 200,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 1.0,
+        "chars": 238,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00105",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 285,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 417,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 711,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00109",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.8,
+        "chars": 420,
+        "n_evidence": 3
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 561,
+        "n_evidence": 3
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 612,
+        "n_evidence": 4
+      }
+    },
+    {
+      "claim_id": "av-00111",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 60,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 140,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 306,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00106",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 1.0,
+        "chars": 205,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 387,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 419,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00110",
+      "gold": "SUPPORTS",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 1873,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 1950,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 1983,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00113",
+      "gold": "SUPPORTS",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 114,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 172,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "SUPPORTS",
+        "confidence": 0.95,
+        "chars": 182,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00112",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 341,
+        "n_evidence": 3
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 623,
+        "n_evidence": 3
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 1000,
+        "n_evidence": 4
+      }
+    },
+    {
+      "claim_id": "av-00118",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 208,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 283,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.95,
+        "chars": 444,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00117",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 792,
+        "n_evidence": 3
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 1079,
+        "n_evidence": 3
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 1189,
+        "n_evidence": 4
+      }
+    },
+    {
+      "claim_id": "av-00121",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 136,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 175,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 243,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00120",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 354,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 425,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 588,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00122",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 347,
+        "n_evidence": 4
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 583,
+        "n_evidence": 4
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 780,
+        "n_evidence": 5
+      }
+    },
+    {
+      "claim_id": "av-00125",
+      "gold": "SUPPORTS",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 153,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 243,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 308,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00128",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 173,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 237,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 311,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00126",
+      "gold": "SUPPORTS",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 77,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 120,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 158,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00127",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 497,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 645,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 744,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00129",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 1125,
+        "n_evidence": 4
+      },
+      "question_answer": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 1327,
+        "n_evidence": 4
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 1424,
+        "n_evidence": 5
+      }
+    },
+    {
+      "claim_id": "av-00130",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 648,
+        "n_evidence": 4
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 908,
+        "n_evidence": 4
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 1011,
+        "n_evidence": 5
+      }
+    },
+    {
+      "claim_id": "av-00131",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 72,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 128,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 227,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00132",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 347,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 417,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 664,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00133",
+      "gold": "SUPPORTS",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 1139,
+        "n_evidence": 3
+      },
+      "question_answer": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 1297,
+        "n_evidence": 3
+      },
+      "plus_justification": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 1318,
+        "n_evidence": 4
+      }
+    },
+    {
+      "claim_id": "av-00136",
+      "gold": "SUPPORTS",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 198,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 260,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 312,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00139",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.8,
+        "chars": 66,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.8,
+        "chars": 160,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 226,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00137",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 613,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 745,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.95,
+        "chars": 858,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00140",
+      "gold": "SUPPORTS",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 378,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 438,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.8,
+        "chars": 523,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00141",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 1986,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 2222,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 2354,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00142",
+      "gold": "NOT_ENOUGH_INFO",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 558,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 720,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 1136,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00144",
+      "gold": "SUPPORTS",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "SUPPORTS",
+        "confidence": 0.95,
+        "chars": 360,
+        "n_evidence": 3
+      },
+      "question_answer": {
+        "pred": "SUPPORTS",
+        "confidence": 1.0,
+        "chars": 640,
+        "n_evidence": 3
+      },
+      "plus_justification": {
+        "pred": "SUPPORTS",
+        "confidence": 1.0,
+        "chars": 671,
+        "n_evidence": 4
+      }
+    },
+    {
+      "claim_id": "av-00145",
+      "gold": "SUPPORTS",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 1858,
+        "n_evidence": 7
+      },
+      "question_answer": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 2373,
+        "n_evidence": 7
+      },
+      "plus_justification": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 2551,
+        "n_evidence": 8
+      }
+    },
+    {
+      "claim_id": "av-00146",
+      "gold": "SUPPORTS",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 98,
+        "n_evidence": 3
+      },
+      "question_answer": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 324,
+        "n_evidence": 3
+      },
+      "plus_justification": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 421,
+        "n_evidence": 4
+      }
+    },
+    {
+      "claim_id": "av-00147",
+      "gold": "SUPPORTS",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 166,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 237,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 256,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00149",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 879,
+        "n_evidence": 3
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 1023,
+        "n_evidence": 3
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 1310,
+        "n_evidence": 4
+      }
+    },
+    {
+      "claim_id": "av-00157",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 1047,
+        "n_evidence": 4
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 1319,
+        "n_evidence": 4
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 1362,
+        "n_evidence": 5
+      }
+    },
+    {
+      "claim_id": "av-00151",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 2704,
+        "n_evidence": 4
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 3036,
+        "n_evidence": 4
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 4079,
+        "n_evidence": 5
+      }
+    },
+    {
+      "claim_id": "av-00156",
+      "gold": "SUPPORTS",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 643,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 759,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 857,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00158",
+      "gold": "SUPPORTS",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 867,
+        "n_evidence": 4
+      },
+      "question_answer": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 1029,
+        "n_evidence": 4
+      },
+      "plus_justification": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 1118,
+        "n_evidence": 5
+      }
+    },
+    {
+      "claim_id": "av-00160",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 378,
+        "n_evidence": 3
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 581,
+        "n_evidence": 3
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.95,
+        "chars": 629,
+        "n_evidence": 4
+      }
+    },
+    {
+      "claim_id": "av-00161",
+      "gold": "SUPPORTS",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 1169,
+        "n_evidence": 4
+      },
+      "question_answer": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 1933,
+        "n_evidence": 4
+      },
+      "plus_justification": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 2034,
+        "n_evidence": 5
+      }
+    },
+    {
+      "claim_id": "av-00162",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 1.0,
+        "chars": 121,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 1.0,
+        "chars": 199,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 416,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00167",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 34,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 109,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 178,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00163",
+      "gold": "SUPPORTS",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 1.0,
+        "chars": 238,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 1.0,
+        "chars": 259,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 329,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00169",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 254,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 284,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 305,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00164",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 416,
+        "n_evidence": 3
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 545,
+        "n_evidence": 3
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 639,
+        "n_evidence": 4
+      }
+    },
+    {
+      "claim_id": "av-00170",
+      "gold": "SUPPORTS",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 326,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 523,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 677,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00171",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 62,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 251,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 328,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00173",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 111,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 238,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 383,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00174",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 152,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 203,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 306,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00176",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 137,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 176,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 378,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00172",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 2692,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 2827,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 2932,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00178",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 1.0,
+        "chars": 33,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 1.0,
+        "chars": 57,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 464,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00177",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 90,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 238,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 316,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00179",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 290,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 353,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 591,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00180",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 105,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 132,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 270,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00181",
+      "gold": "SUPPORTS",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 243,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 327,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "SUPPORTS",
+        "confidence": 0.9,
+        "chars": 491,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00183",
+      "gold": "NOT_ENOUGH_INFO",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 64,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 1.0,
+        "chars": 194,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 318,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00184",
+      "gold": "SUPPORTS",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "SUPPORTS",
+        "confidence": 0.95,
+        "chars": 599,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "SUPPORTS",
+        "confidence": 1.0,
+        "chars": 732,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "SUPPORTS",
+        "confidence": 1.0,
+        "chars": 774,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00185",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 80,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 160,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 310,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00186",
+      "gold": "NOT_ENOUGH_INFO",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 117,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 175,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "NOT_ENOUGH_INFO",
+        "confidence": 0.9,
+        "chars": 248,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00189",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 163,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 261,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 336,
+        "n_evidence": 2
+      }
+    },
+    {
+      "claim_id": "av-00188",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 388,
+        "n_evidence": 2
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 598,
+        "n_evidence": 2
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 656,
+        "n_evidence": 3
+      }
+    },
+    {
+      "claim_id": "av-00187",
+      "gold": "REFUTES",
+      "justification_leaks": true,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 832,
+        "n_evidence": 4
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 1156,
+        "n_evidence": 4
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 1.0,
+        "chars": 1355,
+        "n_evidence": 5
+      }
+    },
+    {
+      "claim_id": "av-00191",
+      "gold": "REFUTES",
+      "justification_leaks": false,
+      "answer_only": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 291,
+        "n_evidence": 1
+      },
+      "question_answer": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 347,
+        "n_evidence": 1
+      },
+      "plus_justification": {
+        "pred": "REFUTES",
+        "confidence": 0.9,
+        "chars": 456,
+        "n_evidence": 2
+      }
+    }
+  ]
+}

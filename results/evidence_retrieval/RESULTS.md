@@ -366,6 +366,20 @@ only +0.044.
 
 ### 8.4 Per-class recall locates the failure precisely
 
+> **⚠️ PARTLY WITHDRAWN.** The per-class measurements below stand. The *mechanism*
+> proposed in this section — the confidence-threshold demotion rule — was tested
+> directly in Stage 3 Phase A and **refuted**: the rule fires on **0 of 150**
+> decisions, because the model only ever emits confidences in
+> `{0.8, 0.9, 0.95, 1.0}` and the rule triggers below 0.5. It is unreachable dead
+> code and has never affected any verdict.
+>
+> All 14 missed gold-`SUPPORTS` claims are the model itself declining to say
+> `SUPPORTS`, with no rule involved. The cause is the **prompt asymmetry** quoted
+> below, not the post-processing. See `results/verdict/FINDINGS.md` §1–§2.
+>
+> The hypothesis was correctly labelled here as "not yet a demonstrated cause";
+> it has now been tested and did not survive.
+
 | condition | SUPPORTS (n=32) | REFUTES (n=96) | NOT_ENOUGH_INFO (n=8) |
 |---|---|---|---|
 | A baseline | 0.41 | 0.58 | 0.62 |
@@ -376,7 +390,7 @@ only +0.044.
 even with perfect evidence (0.56). The system is systematically poor at
 *confirming* true claims, defaulting to abstention instead.
 
-This points at a specific, asymmetric rule in
+The original (now refuted) hypothesis pointed at an asymmetric rule in
 `reasoning_and_verdict.py:85-96`:
 
 ```python

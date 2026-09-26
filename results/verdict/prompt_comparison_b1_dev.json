@@ -1,0 +1,79 @@
+{
+  "split": "dev",
+  "claims_scored": 136,
+  "run": "Phase B1 \u2014 FIRST run, two arms (original vs symmetric)",
+  "note": "Recovered from the run log. The later three-arm run (direct/symmetric/synthesis) overwrote prompt_comparison_dev.json, so this file preserves the figures cited in FINDINGS.md section B1.",
+  "design": "paired; same evidence per claim, only the prompt varies",
+  "modes": {
+    "oracle": {
+      "summaries": [
+        {
+          "variant": "original",
+          "accuracy": 0.7353,
+          "macro_f1": 0.6287,
+          "abstention": 0.294,
+          "false_abstentions": 32,
+          "mean_confidence": 0.929,
+          "per_class_recall": {
+            "SUPPORTS": 0.562,
+            "REFUTES": 0.771,
+            "NOT_ENOUGH_INFO": 1.0
+          }
+        },
+        {
+          "variant": "symmetric",
+          "accuracy": 0.7279,
+          "macro_f1": 0.6406,
+          "abstention": 0.272,
+          "false_abstentions": 29,
+          "mean_confidence": 0.895,
+          "per_class_recall": {
+            "SUPPORTS": 0.719,
+            "REFUTES": 0.708,
+            "NOT_ENOUGH_INFO": 1.0
+          }
+        }
+      ],
+      "mcnemar": {
+        "original_only_right": 9,
+        "symmetric_only_right": 8,
+        "p": 1.0
+      }
+    },
+    "retrieved": {
+      "summaries": [
+        {
+          "variant": "original",
+          "accuracy": 0.5441,
+          "macro_f1": 0.4569,
+          "abstention": 0.47100000000000003,
+          "false_abstentions": 58,
+          "mean_confidence": 0.908,
+          "per_class_recall": {
+            "SUPPORTS": 0.312,
+            "REFUTES": 0.604,
+            "NOT_ENOUGH_INFO": 0.75
+          }
+        },
+        {
+          "variant": "symmetric",
+          "accuracy": 0.5147,
+          "macro_f1": 0.4784,
+          "abstention": 0.485,
+          "false_abstentions": 60,
+          "mean_confidence": 0.878,
+          "per_class_recall": {
+            "SUPPORTS": 0.5,
+            "REFUTES": 0.5,
+            "NOT_ENOUGH_INFO": 0.75
+          }
+        }
+      ],
+      "mcnemar": {
+        "original_only_right": 10,
+        "symmetric_only_right": 6,
+        "p": 0.4545
+      }
+    }
+  }
+}
