@@ -86,7 +86,16 @@ class FactCheckVerdict(BaseModel):
     )
     confidence: float = Field(..., ge=0.0, le=1.0, description="Model confidence in verdict")
     used_evidence_ids: List[str] = Field(
-        ..., description="IDs of evidence snippets referenced in the verdict"
+        ...,
+        description=(
+            "IDs of the evidence snippets PRESENTED to the model for this verdict. "
+            "NOT a citation list: the model is not shown these IDs and does not "
+            "report which snippets it relied on, so this cannot be read as "
+            "attribution. Real citation grounding requires putting IDs in the "
+            "prompt and asking for them back, which changes verdict behaviour and "
+            "so needs its own measured comparison. Tracked as a Stage 4 "
+            "prerequisite - see results/verdict/FINDINGS.md."
+        ),
     )
     reasoning: Optional[str] = Field(None, description="Rationale for the verdict")
 

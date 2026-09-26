@@ -53,8 +53,16 @@ from error_propagation import gold_evidence  # noqa: E402  (the oracle pattern)
 from sweep_k import CLASSES, LABEL_MAP, macro_f1  # noqa: E402
 
 from factcheck_agent.agents.reasoning_and_verdict import (  # noqa: E402
-    REFUTES_LOW_CONFIDENCE, SUPPORTS_MIN_CONFIDENCE, ReasoningAndVerdictAgent,
+    LOW_CONFIDENCE_WARN, ReasoningAndVerdictAgent,
 )
+
+# The thresholds this script was written to investigate have since been REMOVED
+# from the agent, on the strength of the finding below: they fired on 0 of 150
+# decisions because the model's confidence floor is 0.8. The historical values are
+# kept here so the "could they ever have fired?" analysis still runs and remains
+# reproducible.
+HISTORICAL_SUPPORTS_MIN = 0.5
+HISTORICAL_REFUTES_MIN = 0.4
 from factcheck_agent.llm_client import get_default_llm_client  # noqa: E402
 from factcheck_agent.models import Claim  # noqa: E402
 
@@ -136,21 +144,21 @@ def main_report(agent, rows) -> Dict:
 
     # ---------------- the decisive number ----------------
     st = agent.stats()
-    print(f"\n{'=' * 86}\nDOES THE DEMOTION RULE ACTUALLY FIRE?  (§8.4's hypothesis)\n{'=' * 86}")
+    print(f"\n{'=' * 86}\nCOULD THE (NOW-REMOVED) DEMOTION RULE EVER FIRE?\n{'=' * 86}")
+    print("  NOTE: the rules were removed after this analysis found 0/150 firings.")
+    print("  This section re-derives that from the raw confidences the model emits.")
     print(f"  decisions                      {st['decisions']}")
-    print(f"  SUPPORTS demoted (conf < {SUPPORTS_MIN_CONFIDENCE})   {st['supports_demoted']}"
-          f"   ({st['supports_demoted_rate']:.1%} of decisions)")
-    print(f"  REFUTES low-conf noted (< {REFUTES_LOW_CONFIDENCE})  {st['refutes_low_confidence']}")
+    print(f"  confidences below {LOW_CONFIDENCE_WARN} (logged)  {st['low_confidence_seen']}"
+          f"   ({st['low_confidence_rate']:.1%} of decisions)")
     print(f"  parse failures                 {st['parse_failures']}  ({st['parse_failure_rate']:.1%})")
     print(f"  LLM errors                     {st['llm_errors']}")
     print(f"  label coerced (off-menu)       {st['label_coerced']}")
     print(f"  confidence field missing       {st['missing_confidence']}")
-    if st["supports_demoted"] == 0:
-        print("\n  --> The rule NEVER fired. §8.4's hypothesis is refuted: the demotion")
-        print("      cannot explain the SUPPORTS deficit. Look to the prompt instead.")
-    elif st["supports_demoted_rate"] < 0.05:
-        print(f"\n  --> The rule fired on only {st['supports_demoted_rate']:.1%} of decisions —")
-        print("      too rare to explain the SUPPORTS deficit. §8.4 needs revising.")
+    would_have = sum(1 for r in rows if (r.get("raw_confidence") or 1.0) < HISTORICAL_SUPPORTS_MIN)
+    print(f"  would have been demoted under the old rule: {would_have}")
+    if would_have == 0:
+        print("\n  --> The rule could never have fired. §8.4's hypothesis is refuted:")
+        print("      the demotion cannot explain the SUPPORTS deficit.")
 
     # ---------------- calibration ----------------
     conf = [r["confidence"] for r in scored]
@@ -160,10 +168,10 @@ def main_report(agent, rows) -> Dict:
           f"   -> overconfidence gap {statistics.mean(conf) - acc:+.4f}")
     print(f"  median {statistics.median(conf):.3f}  min {min(conf):.3f}  max {max(conf):.3f}")
     print(f"  ECE {ece(scored):.4f}   Brier {brier(scored):.4f}")
-    print(f"\n  raw (pre-rule) confidence below the thresholds:")
-    print(f"    < {SUPPORTS_MIN_CONFIDENCE} : {sum(1 for c in raw if c < SUPPORTS_MIN_CONFIDENCE)}"
+    print(f"\n  raw confidence below the historical thresholds:")
+    print(f"    < {HISTORICAL_SUPPORTS_MIN} : {sum(1 for c in raw if c < HISTORICAL_SUPPORTS_MIN)}"
           f" / {len(raw)}")
-    print(f"    < {REFUTES_LOW_CONFIDENCE} : {sum(1 for c in raw if c < REFUTES_LOW_CONFIDENCE)}"
+    print(f"    < {HISTORICAL_REFUTES_MIN} : {sum(1 for c in raw if c < HISTORICAL_REFUTES_MIN)}"
           f" / {len(raw)}")
     print(f"\n  reliability:")
     print(f"    {'bucket':>12} {'n':>5} {'mean conf':>10} {'accuracy':>9}")
@@ -185,7 +193,7 @@ def main_report(agent, rows) -> Dict:
         print(f"  what the MODEL raw-said:     {dict(Counter(r['raw_label'] for r in missed))}")
         rules = Counter(r["rule_fired"] for r in missed)
         print(f"  rule rewrote the answer:     {dict(rules)}")
-        blamed_rule = sum(1 for r in missed if r["rule_fired"] == "supports_demoted")
+        blamed_rule = sum(1 for r in missed if r["rule_fired"] is not None)
         blamed_model = sum(1 for r in missed if r["raw_label"] != "SUPPORTS")
         print(f"\n  attribution of the {len(missed)} misses:")
         print(f"    model never said SUPPORTS (prompt/model) : {blamed_model}")
@@ -209,8 +217,8 @@ def main_report(agent, rows) -> Dict:
             "min": min(conf), "max": max(conf),
             "overconfidence_gap": statistics.mean(conf) - acc,
             "ece": ece(scored), "brier": brier(scored),
-            "raw_below_supports_threshold": sum(1 for c in raw if c < SUPPORTS_MIN_CONFIDENCE),
-            "raw_below_refutes_threshold": sum(1 for c in raw if c < REFUTES_LOW_CONFIDENCE),
+            "raw_below_supports_threshold": sum(1 for c in raw if c < HISTORICAL_SUPPORTS_MIN),
+            "raw_below_refutes_threshold": sum(1 for c in raw if c < HISTORICAL_REFUTES_MIN),
             "raw_n": len(raw),
         },
         "supports_analysis": {
@@ -218,7 +226,7 @@ def main_report(agent, rows) -> Dict:
             "missed": len(missed),
             "predicted_as": dict(Counter(r["pred"] for r in missed)),
             "model_raw_said": dict(Counter(r["raw_label"] for r in missed)),
-            "rule_rewrote": sum(1 for r in missed if r["rule_fired"] == "supports_demoted"),
+            "rule_rewrote": sum(1 for r in missed if r["rule_fired"] is not None),
             "model_never_said_supports": sum(1 for r in missed if r["raw_label"] != "SUPPORTS"),
         },
         "per_class_recall": per_class,

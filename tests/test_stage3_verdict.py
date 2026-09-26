@@ -57,8 +57,8 @@ async def test_normal_path_unchanged():
     check("normal path preserves reasoning", v.reasoning == "because X")
     check("used_evidence_ids is still the first 10 shown",
           v.used_evidence_ids == [e.id for e in EVIDENCE], f"{v.used_evidence_ids}")
-    check("no rule fired, nothing miscounted",
-          agent.supports_demoted == 0 and agent.parse_failures == 0 and agent.llm_errors == 0)
+    check("nothing miscounted",
+          agent.low_confidence_seen == 0 and agent.parse_failures == 0 and agent.llm_errors == 0)
 
 
 async def test_empty_evidence_unchanged():
@@ -108,39 +108,47 @@ async def test_known_regex_defect_preserved():
 
 
 # ------------------------------------------------------------------- counters
-async def test_supports_demotion_counted():
+async def test_low_confidence_supports_is_no_longer_demoted():
+    """The demotion rule was removed after measuring 0/150 firings.
+
+    A low-confidence SUPPORTS must now survive as the model gave it, rather than
+    being rewritten to NOT_ENOUGH_INFO with a magic 0.4 confidence.
+    """
     llm = Reply('{"label": "SUPPORTS", "confidence": 0.31, "reasoning": "weak"}')
     agent = ReasoningAndVerdictAgent(llm=llm, record_decisions=True)
     v = await agent.decide(CLAIM, EVIDENCE)
-    check("low-confidence SUPPORTS is still demoted to NOT_ENOUGH_INFO",
-          v.label == "NOT_ENOUGH_INFO")
-    check("demoted confidence is still overwritten with 0.4", v.confidence == 0.4)
-    check("demotion is counted", agent.supports_demoted == 1)
+    check("low-confidence SUPPORTS is PRESERVED, not demoted", v.label == "SUPPORTS")
+    check("its confidence is not overwritten", v.confidence == 0.31)
+    check("reasoning is untouched", v.reasoning == "weak")
+    check("the unusual confidence is logged as observed", agent.low_confidence_seen == 1)
     entry = agent.decision_log[0]
-    check("decision log preserves the model's RAW label and confidence",
-          entry["raw_label"] == "SUPPORTS" and entry["raw_confidence"] == 0.31,
-          f"{entry}")
-    check("decision log names the rule that fired",
-          entry["rule_fired"] == "supports_demoted")
+    check("no rule rewrote the answer", entry["rule_fired"] is None, f"{entry}")
+    check("decision log still records raw label/confidence",
+          entry["raw_label"] == "SUPPORTS" and entry["raw_confidence"] == 0.31)
 
 
 async def test_high_confidence_supports_survives():
     llm = Reply('{"label": "SUPPORTS", "confidence": 0.91, "reasoning": "strong"}')
     agent = ReasoningAndVerdictAgent(llm=llm)
     v = await agent.decide(CLAIM, EVIDENCE)
-    check("SUPPORTS above 0.5 is untouched",
+    check("SUPPORTS is passed through unchanged",
           v.label == "SUPPORTS" and v.confidence == 0.91)
-    check("no demotion counted", agent.supports_demoted == 0)
+    check("nothing flagged at normal confidence", agent.low_confidence_seen == 0)
 
 
-async def test_refutes_low_confidence_noted_not_demoted():
+async def test_low_confidence_refutes_no_longer_annotated():
+    """The REFUTES side of the asymmetry is gone too.
+
+    It used to prepend "Low confidence refutation:" to the reasoning, which then
+    flowed into the explanation prompt. Both sides are now symmetric: neither
+    label is rewritten or annotated.
+    """
     llm = Reply('{"label": "REFUTES", "confidence": 0.22, "reasoning": "hmm"}')
     agent = ReasoningAndVerdictAgent(llm=llm)
     v = await agent.decide(CLAIM, EVIDENCE)
-    check("low-confidence REFUTES is KEPT (the asymmetry)", v.label == "REFUTES")
-    check("low-confidence REFUTES gets a reasoning prefix",
-          v.reasoning.startswith("Low confidence refutation:"), v.reasoning)
-    check("it is counted", agent.refutes_low_confidence == 1)
+    check("low-confidence REFUTES is preserved", v.label == "REFUTES")
+    check("reasoning is no longer prefixed", v.reasoning == "hmm", v.reasoning)
+    check("the unusual confidence is logged", agent.low_confidence_seen == 1)
 
 
 async def test_label_coercion_counted():
@@ -174,10 +182,10 @@ async def main():
     await test_parse_failure_counted_separately()
     await test_known_regex_defect_preserved()
 
-    print("\n--- counters fire on the right paths ---")
-    await test_supports_demotion_counted()
+    print("\n--- thresholds removed; observability retained ---")
+    await test_low_confidence_supports_is_no_longer_demoted()
     await test_high_confidence_supports_survives()
-    await test_refutes_low_confidence_noted_not_demoted()
+    await test_low_confidence_refutes_no_longer_annotated()
     await test_label_coercion_counted()
     await test_missing_confidence_counted()
     await test_decision_log_off_by_default()

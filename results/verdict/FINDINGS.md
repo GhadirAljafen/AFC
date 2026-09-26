@@ -452,6 +452,95 @@ merely surfaces.
 Defaults are unchanged: `prompt_variant="original"`, `reasoning_mode="direct"`.
 Both alternatives remain implemented, tested and available.
 
+---
+
+# Stage 3 close-out
+
+**Date:** 2026-09-26. The four items left open by `docs/stage3_verdict_plan.md`.
+
+## C.1 B2 — dead threshold rules removed
+
+`SUPPORTS_MIN_CONFIDENCE`/`DEMOTED_CONFIDENCE`/`REFUTES_LOW_CONFIDENCE` and the
+branches using them are gone. They fired on **0 of 150** decisions (§1) because the
+model's confidence floor is 0.8, so both thresholds were unreachable.
+
+**This is a clarity change and must not be reported as an improvement.** No verdict
+behaviour changes for the current model. What replaces them is observability: a
+confidence below `LOW_CONFIDENCE_WARN = 0.5` is now logged as a warning rather than
+silently rewritten, so if a future model does emit low confidence it surfaces
+instead of being masked.
+
+Consequence for the docs: `IMPROVEMENT_PLAN` Priority 2.2 and
+`ACADEMIC_DOCUMENTATION.md` §4.1.5/§6.2 describe these rules as an implemented
+safeguard. They were never reachable. Those sections are now wrong twice over —
+once for the prediction in §6.3, once for describing removed dead code.
+
+`results/verdict/diagnose.py` still runs: the historical threshold values are kept
+inside it as constants so the "could the rule ever have fired?" analysis remains
+reproducible against the saved run.
+
+## C.2 B3 — `used_evidence_ids` documented honestly, not fixed
+
+The field is set to `[e.id for e in evidence[:10]]` — the snippets **shown** to the
+model. The prompt contains no evidence IDs, so the model cannot cite and never
+reports which snippets it relied on. Calling it "used" overstates what is known,
+and `models.py` previously described it as *"IDs of evidence snippets referenced in
+the verdict"*, which was simply false.
+
+Both the field description and the assignment site now state what it actually is.
+
+**Deliberately not converted into a real citation list.** Doing that means putting
+IDs into the prompt and asking for them back, which changes verdict behaviour and
+therefore needs its own paired measurement — not a quiet edit during close-out.
+It is a **prerequisite for Stage 4**: grounding explanations in evidence IDs is
+meaningless while the IDs are fabricated.
+
+## C.3 B4 — calibration closed as not actionable
+
+§4 measured ECE 0.202, a +0.202 overconfidence gap, and confidence taking only four
+values `{0.8, 0.9, 0.95, 1.0}` with 132 of 136 predictions in one reliability
+bucket. Confidence is effectively a constant and carries almost no information.
+
+Closed without action, for a specific reason: **nothing downstream reads it.** With
+the threshold rules removed (C.1), `confidence` now feeds only display and the
+explanation prompt. Calibrating a number that no decision depends on would be
+effort without effect.
+
+It becomes worth revisiting the moment something *does* depend on it — a deferral
+gate, evidence ranking, or surfacing uncertainty to a user. Recorded rather than
+silently dropped.
+
+## C.4 Verification item 4 — the fake-green smoke test
+
+`tests/test_agents_smoke.py` **exited 0 while executing nothing**: it had no
+`__main__` block, so running it asserted nothing at all. Invoking its functions
+directly showed **5 of 6 failing** against a pre-LLM API — `RetrievalAgent(corpus=…)`,
+sync calls to `async` methods, agents constructed without their required `llm`, and
+an assertion expecting the lowercasing that was deliberately removed.
+
+A test that passes without running is worse than no test, because the suite looks
+green. Rewritten against the current APIs, now actually executing, asserting
+contracts rather than long-replaced stub return values, and covering the two
+regressions this project cares about: that normalization preserves case, and that
+retrieval populates a relevance score.
+
+## Test suite after close-out
+
+| file | checks | scope |
+|---|---|---|
+| `test_stage2_behaviour.py` | 43 | retrieval loop, scoring, enrichment, leakage, orchestration |
+| `test_stage3_verdict.py` | 30 | verdict instrumentation, threshold removal, parse failures |
+| `test_agents_smoke.py` | 16 | every agent constructs, is awaited correctly, honours its contract |
+
+All offline, no network, no API keys.
+
+## Stage 3: complete
+
+Plan items A1-A3, B1-B4, C and all four verification points are closed. The
+substantive conclusion is unchanged: the verdict stage is not the tractable
+bottleneck, over-abstention is largely a reasonable response to inferentially
+incomplete evidence, and the remaining levers are retrieval-side.
+
 ## Files
 
 - `diagnose.py` / `diagnosis_dev.json` — Phase A harness and results

@@ -52,10 +52,11 @@ PROMPT_VARIANTS = ("original", "symmetric")
 #: to derive that link from the evidence alone, with no gold data at inference.
 REASONING_MODES = ("direct", "synthesis")
 
-# Thresholds from IMPROVEMENT_PLAN Priority 2.2, preserved verbatim.
-SUPPORTS_MIN_CONFIDENCE = 0.5
-REFUTES_LOW_CONFIDENCE = 0.4
-DEMOTED_CONFIDENCE = 0.4
+# Confidence below which a verdict is logged as unusually uncertain. Purely
+# observational — nothing is rewritten. Measured floor for the current model is
+# 0.8, so this should effectively never fire; if it starts firing, the model's
+# behaviour has changed and the calibration analysis needs redoing.
+LOW_CONFIDENCE_WARN = 0.5
 
 
 class ReasoningAndVerdictAgent:
@@ -103,8 +104,7 @@ class ReasoningAndVerdictAgent:
         self.parse_failures = 0
         self.label_coerced = 0
         self.missing_confidence = 0
-        self.supports_demoted = 0
-        self.refutes_low_confidence = 0
+        self.low_confidence_seen = 0
         self.decision_log: List[Dict[str, Any]] = []
 
     def stats(self) -> Dict[str, Any]:
@@ -117,9 +117,8 @@ class ReasoningAndVerdictAgent:
             "parse_failures": self.parse_failures,
             "label_coerced": self.label_coerced,
             "missing_confidence": self.missing_confidence,
-            "supports_demoted": self.supports_demoted,
-            "refutes_low_confidence": self.refutes_low_confidence,
-            "supports_demoted_rate": self.supports_demoted / total,
+            "low_confidence_seen": self.low_confidence_seen,
+            "low_confidence_rate": self.low_confidence_seen / total,
             "parse_failure_rate": self.parse_failures / total,
             "synthesis_calls": self.synthesis_calls,
             "synthesis_failures": self.synthesis_failures,
@@ -142,6 +141,13 @@ class ReasoningAndVerdictAgent:
         evidence_texts = "\n".join(
             [f"[{e.source}] {e.text}" for e in evidence[:10]]  # Limit to top 10
         )
+        # These are the snippets SHOWN to the model, not the ones it cited. The
+        # prompt contains no evidence IDs, so the model cannot cite and does not
+        # report attribution; naming this "used" overstates what is known. Left
+        # as-is deliberately: making it a true citation list means adding IDs to
+        # the prompt and requesting them back, which alters verdict behaviour and
+        # therefore needs a measured comparison rather than a quiet fix. It is a
+        # prerequisite for any Stage 4 citation grounding.
         used_ids = [e.id for e in evidence[:10]]
 
         # --- optional stage 0: derive what the evidence establishes -----------
@@ -184,23 +190,25 @@ class ReasoningAndVerdictAgent:
 
         confidence = max(0.0, min(1.0, raw_confidence))
 
+        # The asymmetric confidence-threshold rules that used to live here
+        # (IMPROVEMENT_PLAN Priority 2.2) have been REMOVED. They demoted a
+        # SUPPORTS below 0.5 to NOT_ENOUGH_INFO while keeping a REFUTES below 0.4,
+        # and were measured firing on **0 of 150** decisions: the model only ever
+        # emits confidences in {0.8, 0.9, 0.95, 1.0}, so both thresholds were
+        # unreachable. They never affected a verdict.
+        #
+        # Removal is a clarity change, not an improvement, and must not be
+        # reported as one. What replaces them is observability: if a model ever
+        # does emit a low confidence, that now surfaces as a warning instead of
+        # being silently rewritten. See results/verdict/FINDINGS.md section 1.
         rule_fired: Optional[str] = None
-        if label == "SUPPORTS":
-            if confidence < SUPPORTS_MIN_CONFIDENCE:
-                self.supports_demoted += 1
-                rule_fired = "supports_demoted"
-                logger.info(
-                    "verdict_supports_demoted: confidence %.3f < %.2f -> NOT_ENOUGH_INFO",
-                    confidence, SUPPORTS_MIN_CONFIDENCE,
-                )
-                label = "NOT_ENOUGH_INFO"
-                confidence = DEMOTED_CONFIDENCE
-        elif label == "REFUTES":
-            if confidence < REFUTES_LOW_CONFIDENCE:
-                self.refutes_low_confidence += 1
-                rule_fired = "refutes_low_confidence"
-                reasoning = f"Low confidence refutation: {reasoning}"
-        # NOT_ENOUGH_INFO is fine as-is
+        if confidence < LOW_CONFIDENCE_WARN:
+            self.low_confidence_seen += 1
+            logger.warning(
+                "verdict_low_confidence: %s at %.3f (below %.2f). The old demotion "
+                "rules are gone, so this verdict stands as the model gave it.",
+                label, confidence, LOW_CONFIDENCE_WARN,
+            )
 
         if self.record_decisions:
             self.decision_log.append({
