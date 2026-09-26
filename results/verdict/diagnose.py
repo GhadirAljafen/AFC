@@ -242,7 +242,15 @@ async def main_async(args) -> int:
     summary = main_report(agent, rows)
 
     os.makedirs(_HERE, exist_ok=True)
-    out = os.path.join(_HERE, f"diagnosis_{args.split}.json")
+    # Guard: a small smoke run must not clobber the authoritative results file.
+    # This happened once — `--limit 4` overwrote the n=136 run and the figures
+    # cited in FINDINGS.md and ACADEMIC_DOCUMENTATION.md became untraceable until
+    # they were recovered from a log.
+    suffix = "" if args.limit >= 100 else f"_n{len(rows)}"
+    if suffix:
+        print(f"\n  NOTE: limit={args.limit} (<100), writing a scratch file rather than\n"
+              f"        overwriting diagnosis_{args.split}.json")
+    out = os.path.join(_HERE, f"diagnosis_{args.split}{suffix}.json")
     with open(out, "w") as f:
         json.dump({
             "split": args.split,

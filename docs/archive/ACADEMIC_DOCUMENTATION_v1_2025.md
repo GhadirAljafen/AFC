@@ -1,17 +1,10 @@
-> **Version 2 — 2026-09-26.** Supersedes
-> `docs/archive/ACADEMIC_DOCUMENTATION_v1_2025.md`, retained unchanged as a
-> historical record.
+> **ARCHIVED — superseded 2026-09-26.**
 >
-> **What changed and why.** Version 1 documented an evaluation section (§6) whose
-> figures were *predictions*, not measurements — §6.3 was titled "Expected
-> Outcomes". Those predictions have since been tested against the AVeriTeC
-> benchmark and were **contradicted**. Section 6 is rewritten below from measured
-> results, and §8.1 now lists the limitations that measurement actually revealed.
-> Sections describing the confidence-threshold rules have been corrected: those
-> rules were unreachable and have been removed.
->
-> Supporting evidence: `results/claim_detection/RESULTS.md`,
-> `results/evidence_retrieval/RESULTS.md`, `results/verdict/FINDINGS.md`.
+> This is the original ACADEMIC_DOCUMENTATION.md, kept unchanged as a historical record. Several
+> of its claims were later **contradicted by measurement**; see
+> `ACADEMIC_DOCUMENTATION.md` for the current version and
+> `results/verdict/FINDINGS.md` / `results/evidence_retrieval/RESULTS.md` for the
+> evidence. Do not cite figures from this file.
 
 # An Agentic Automated Fact-Checking System: Architecture, Development, and Implementation
 
@@ -464,168 +457,82 @@ Configuration is managed through:
 
 ### 5.4 Testing Strategy
 
-Three offline suites, **89 checks total**, requiring no network access and no API
-keys. Every check runs against scripted LLM and search doubles.
+The system includes comprehensive tests:
 
-| suite | checks | scope |
-|---|---|---|
-| `tests/test_stage2_behaviour.py` | 43 | retrieval loop iteration, RRF scoring, full-text enrichment and fallback, leakage measurement, article orchestration, query budgets |
-| `tests/test_stage3_verdict.py` | 30 | verdict instrumentation, threshold removal, parse-failure counting, decision logging |
-| `tests/test_agents_smoke.py` | 16 | every agent constructs, is awaited correctly, and honours its contract |
+- **Unit Tests**: Individual agent methods
+- **Integration Tests**: Agent interactions
+- **End-to-End Tests**: Full pipeline execution
+- **Smoke Tests**: Basic importability and functionality
+- **Mock Tests**: Testing without API dependencies
 
-Two testing practices were adopted after specific failures in this project:
+**Test Coverage:**
+- Models validation
+- Agent instantiation and method calls
+- Pipeline execution (with and without real APIs)
+- CLI functionality
+- Claim detection and normalization
 
-* **Tests must be able to fail.** `test_agents_smoke.py` previously had no
-  `__main__` block, so running it executed nothing and exited 0 while five of its
-  six functions were broken against a long-changed API. A suite that reports green
-  without running is worse than no suite.
-* **Assertions must exercise the path they claim to.** Two checks were found
-  passing trivially — one because an injected exception was swallowed by an
-  agent's own `try/except` before reaching the code under test, another because a
-  stubbed method meant the recording list stayed empty. Both were rewritten to
-  depend on the behaviour being tested.
+---
 
-Known defects are pinned by test where they are deliberately retained — for
-example, the verdict JSON parser cannot handle nested objects, and a test asserts
-that it still cannot, so the defect cannot be silently "fixed" outside a measured
-change.
+## 6. Evaluation and Improvements
 
-## 6. Evaluation
+### 6.1 Initial Performance Analysis
 
-All figures below are measured. Where a number is an estimate, a bound, or a
-condition that does not correspond to a deployable configuration, it is labelled
-as such. Raw results are in `results/`.
+Initial system evaluation revealed:
 
-### 6.1 Method
+- **Verdict Distribution**:
+  - NOT_ENOUGH_INFO: ~70%
+  - SUPPORTS: ~25%
+  - REFUTES: ~5%
 
-Two benchmarks, chosen because no single dataset spans the pipeline: claim
-detection requires source articles, while verification datasets begin from a
-claim and work forward to evidence.
+- **Issues Identified**:
+  1. Conservative LLM behavior defaulting to uncertainty
+  2. Insufficient refutation detection
+  3. Evidence retrieval not optimized for contradictory evidence
+  4. Prompt design not emphasizing refutation
 
-* **Stage 1 (claim detection)** — NewsScope, 80 in-domain and 60 out-of-domain
-  articles. ROUGE-L and a calibrated BERTScore.
-* **Stages 2–3 (retrieval, verdict)** — AVeriTeC dev, 136 of 150 claims scored.
-  The fourth AVeriTeC label, `Conflicting Evidence/Cherrypicking`, has no
-  equivalent in this system's three-label output and is **excluded from accuracy**
-  and reported separately; scoring it would measure a representational gap rather
-  than verdict quality.
+### 6.2 Improvement Implementation
 
-Two practices are applied throughout, both a response to errors made earlier in
-this project:
+**Phase 1 Improvements (High Priority):**
 
-* **Paired comparison.** Conditions run over the same claims with the same
-  evidence, varying one factor. Several apparent gains disappeared once retrieval
-  volume was held constant.
-* **A majority-class baseline is reported with every accuracy figure.** 71% of
-  AVeriTeC dev claims are `Refuted`, so a constant predictor scores **0.706**.
-  Macro-F1 is the primary metric under this imbalance.
+1. **Enhanced Verdict Prompt**:
+   - Added explicit refutation detection instructions
+   - Emphasized decisiveness when evidence contradicts
+   - Clearer decision criteria
 
-### 6.2 Stage 1 — claim detection
+2. **Refutation Query Generation**:
+   - Modified query generation to explicitly seek refutations
+   - Added automatic refutation query inclusion
+   - Examples: "claim false", "claim debunked"
 
-Three prompt designs, single-variable ablation, ROUGE-L F1 at threshold 0.40:
+**Phase 2 Improvements (Medium Priority):**
 
-| prompt | in-domain F1 | out-of-domain F1 | cross-domain drop |
-|---|---|---|---|
-| A (atomic, ≤20 claims) | 0.370 | 0.255 | −31% |
-| **B (strict, 2–4 claims)** | **0.452** | 0.296 | −34% |
-| C (journalist-style, 3–5) | 0.435 | **0.322** | **−26%** |
+1. **Evidence Selection Prioritization**:
+   - Rewrote selection algorithm to boost contradictory evidence
+   - Keyword-based detection of refutation signals
+   - Scoring system favoring contradictory snippets
 
-B is strongest in-domain; C degrades least and is best out-of-domain. A
-over-generates: highest recall, lowest precision.
+2. **Confidence Thresholds**:
+   - SUPPORTS requires higher confidence (≥0.5)
+   - REFUTES allows moderate confidence (≥0.4)
+   - Prevents over-confident verdicts on weak evidence
 
-**A benchmark artifact worth stating.** Gold sets average 2.45 claims per
-article, so precision is capped at `n_gold / n_predicted`. A prompt emitting ~6
-claims cannot exceed ~0.41 precision however correct it is. Precision must not be
-compared across prompts that differ in output volume.
+### 6.3 Expected Outcomes
 
-**A measurement error found and corrected.** An initial BERTScore evaluation
-reported F1 up to 0.838. It used raw (un-rescaled) BERTScore with a 0.85
-threshold; measured, unrelated sentences score ~0.838 under that metric, so the
-threshold sat inside the noise floor and the metric degenerated into a claim-count
-ratio — recall was pinned near 1.0 regardless of content. Re-run with baseline
-rescaling and an empirically calibrated threshold, BERTScore gives 0.531 for
-prompt B, confirming ROUGE-L understates by roughly 0.05–0.08 F1 rather than the
-0.3 originally implied. Full analysis: `results/claim_detection/BERTSCORE_ANALYSIS.md`.
+After improvements:
 
-### 6.3 Stage 2 — evidence retrieval
+- **Verdict Distribution (Expected)**:
+  - NOT_ENOUGH_INFO: ~30-40%
+  - SUPPORTS: ~20-30%
+  - REFUTES: ~30-40%
 
-Measured on a closed AVeriTeC corpus (973 documents). **Closed-corpus results are
-easier than live open-web search and are not comparable to it.**
+- **Quality Improvements**:
+  - Better detection of false claims
+  - More balanced verdict distribution
+  - Higher confidence in REFUTES verdicts
+  - Improved evidence quality in verdicts
 
-* **Evidence depth beats breadth.** Replacing ~186-character search snippets with
-  fetched article passages raised verdict accuracy **0.559 → 0.640**
-  (McNemar p=0.043) and cut abstention 45.6% → 34.6%. Widening the candidate pool
-  instead produced the *best retrieval recall of any condition* while making
-  verdicts **worse**. This is the only intervention that improved verdict quality.
-* **Enrichment saturates at ~3 documents**; `FULL_TEXT_TOP_K=3` is validated
-  rather than assumed.
-* **Reachability.** 70.7% of real evidence URLs are fetchable, yielding ~17×
-  more text than a snippet. Archived copies are *more* reliable than live URLs
-  (80.7% vs 64.5%), so a Wayback fallback is used. The ~29% that fail retain their
-  snippet, so enrichment can only add.
-* **The retrieval loop was a no-op.** It passed an identical claim every round;
-  URL dedup guaranteed round 2 added nothing, after spending a full round of
-  searches. Repaired — but at matched retrieval volume it is statistically
-  indistinguishable from a larger single pass (p=0.43), so it is **not** shown to
-  earn its cost on this benchmark.
-
-### 6.4 Stage 3 — reasoning and verdict
-
-Measured under an oracle condition (gold evidence fed directly), which isolates
-the verdict stage from retrieval quality.
-
-| | accuracy | macro-F1 | abstention |
-|---|---|---|---|
-| always predict `REFUTES` (baseline) | **0.706** | 0.276 | — |
-| this system, gold evidence | 0.728 | **0.624** | 27.9% |
-| this system, retrieved evidence | 0.544 | 0.470 | 45.6% |
-
-With perfect evidence the stage clears the majority baseline by **+0.022**. On
-retrieved evidence it falls **below** it. It does beat the baseline decisively on
-macro-F1, because it distributes across classes rather than collapsing to one.
-
-**Over-abstention is the dominant failure: 33 of 37 errors (89%)** are
-unwarranted `NOT_ENOUGH_INFO` on gold evidence, against a gold rate of ~6%.
-
-**Three interventions were tested and all rejected:**
-
-1. *Prompt symmetry* — equalising the `SUPPORTS`/`REFUTES` bars raised `SUPPORTS`
-   recall (0.562 → 0.719) but cost more `REFUTES` than it gained; abstention
-   unchanged (p=1.0).
-2. *Reasoning synthesis* — deriving an evidence-to-verdict bridge before judging
-   made every metric worse at twice the cost, converting 13 decisions into
-   abstentions.
-3. *Confidence thresholds* — the pre-existing rules fired **0 of 150** times and
-   were removed. Removal is a clarity change, not an improvement.
-
-**Why abstention resists prompting.** Supplying the fact-checker's own
-justification raises accuracy to 0.904; controlling for the 50% of justifications
-that state the verdict outright, the gain on non-leaking cases is **+0.132
-(p=0.0039)**. But the model cannot *generate* that bridge from the same evidence —
-attempting it scored −0.059. Together these indicate the justification helps
-because it carries information **absent from the evidence**, not because it
-reorganises what is present.
-
-Consequently over-abstention is substantially a *reasonable* response to
-inferentially incomplete evidence. The remaining levers are retrieval-side.
-
-**Confidence is uninformative.** ECE 0.202, and the model emits only four values
-`{0.8, 0.9, 0.95, 1.0}` with 132 of 136 predictions in a single reliability
-bucket. Nothing downstream reads it.
-
-### 6.5 Threats to validity
-
-* Closed-corpus retrieval results are a lower bound and not comparable to live
-  search.
-* The oracle condition supplies ~2.0 short question-answer pairs per claim; this
-  is an upper bound on evidence quality for this benchmark, not a simulation of
-  ideal live retrieval.
-* n=136 for Stages 2–3. Effects below roughly 0.05 accuracy are not reliably
-  detectable.
-* Verdict figures use `gpt-4.1-mini`; an earlier record cites GPT-4o-mini, so
-  cross-version comparisons are not model-controlled.
-* `Conflicting Evidence/Cherrypicking` (9.3% of claims) is outside the system's
-  label space and excluded.
+---
 
 ## 7. Use Cases and Applications
 
@@ -669,56 +576,11 @@ Long Text → Claim Detection → Multiple Claims → Batch Fact-Checking → Su
 
 ### 8.1 Current Limitations
 
-Measured limitations first, since these are the ones evidence supports.
-
-**Verdict quality is below a constant baseline on retrieved evidence.** 0.544
-accuracy against 0.706 for a predictor that always answers `REFUTES` (§6.4). The
-system beats that baseline on macro-F1 and with gold evidence, but not on the
-configuration a user actually gets.
-
-**Over-abstention dominates the error profile.** 89% of errors on gold evidence
-are unwarranted `NOT_ENOUGH_INFO`. Three prompt-level interventions failed to
-reduce it, and the evidence indicates it is substantially a reasonable response to
-inferentially incomplete evidence rather than a defect that prompting can fix
-(§6.4).
-
-**The pipeline has no question-decomposition step.** AVeriTeC's task design runs
-`claim → questions → answers → verdict`; this system runs
-`claim → search → snippets → verdict`. The measured evidence gap points at this
-omission. Untested, and the largest unexplored change.
-
-**Explanations are ungrounded.** `used_evidence_ids` records the snippets *shown*
-to the model, not those it used — the prompt contains no evidence IDs, so the
-model cannot cite. The explanation stage has no faithfulness check and no
-verification that it agrees with the verdict label. It has never been evaluated.
-
-**Confidence carries almost no information.** ECE 0.202, four distinct values,
-132 of 136 predictions in one reliability bucket (§6.4).
-
-**The search backend has a hard deadline.** Google's Custom Search JSON API is
-closed to new customers and sunsets 2027-01-01. A provider-agnostic `SearchClient`
-interface exists; no replacement implementation has been written.
-
-**Retrieval cost scales multiplicatively.** Cost is
-(claims per article) × (queries per claim) × (retrieval rounds). On the free
-search tier this bounds throughput to a few articles per day, which constrains
-end-to-end evaluation more than it constrains the system.
-
-**Fact-check leakage is a standing validity risk.** Retrieval deliberately issues
-`"{claim} debunked"`-style queries, which are close to optimal for surfacing
-fact-checking articles. This is now measured and filterable, but a system that
-retrieves a fact-checker's conclusion is looking up the answer rather than
-verifying the claim.
-
-Longer-standing limitations, unmeasured:
-
-1. **Evidence source diversity** — web search only; no academic, government or
-   fact-checking databases.
-2. **Temporal reasoning** — limited handling of time-sensitive claims.
-3. **Multilingual support** — English-focused.
-4. **Source credibility** — no weighting by reliability.
-5. **Label space** — three labels; real fact-checking (and AVeriTeC) also uses a
-   conflicting/cherrypicking category, which this system cannot express.
+1. **Evidence Source Diversity**: Currently limited to web search; could integrate academic databases, fact-checking databases
+2. **Temporal Reasoning**: Limited handling of time-sensitive claims
+3. **Multilingual Support**: Primarily English-focused
+4. **Bias Detection**: Doesn't explicitly detect source bias
+5. **Cost Efficiency**: Multiple LLM calls per claim can be expensive
 
 ### 8.2 Future Enhancements
 
