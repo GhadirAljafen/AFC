@@ -1,0 +1,41 @@
+{
+  "claim_ids": [
+    "av-00000",
+    "av-00001",
+    "av-00002",
+    "av-00003",
+    "av-00004",
+    "av-00006",
+    "av-00007",
+    "av-00008",
+    "av-00012",
+    "av-00013",
+    "av-00014",
+    "av-00015",
+    "av-00016"
+  ],
+  "n": 13,
+  "majority": 0.6923076923076923,
+  "same_claim_baselines": {
+    "oracle_gold": {
+      "accuracy": 0.7692307692307693,
+      "macro_f1": 0.6805555555555557
+    },
+    "closed_corpus": {
+      "accuracy": 0.46153846153846156,
+      "macro_f1": 0.4458689458689458
+    },
+    "paired_tests": {
+      "live_fulltext_vs_closed_corpus": {
+        "base_only_right": 0,
+        "live_only_right": 6,
+        "p": 0.03125
+      },
+      "live_fulltext_vs_oracle_gold": {
+        "base_only_right": 0,
+        "live_only_right": 2,
+        "p": 0.5
+      }
+    }
+  }
+}

@@ -541,6 +541,93 @@ substantive conclusion is unchanged: the verdict stage is not the tractable
 bottleneck, over-abstention is largely a reasonable response to inferentially
 incomplete evidence, and the remaining levers are retrieval-side.
 
+---
+
+# Stage 3 revisited — verdict quality on LIVE web evidence
+
+**Date:** 2026-09-28 · 13 claims · replayed from cached queries, **0 search quota**
+· paired McNemar on identical claims
+
+Every Stage 3 measurement until now used one of two artificial evidence sources:
+an AVeriTeC-derived closed corpus, or gold answers handed over directly. Neither
+is what the system actually retrieves. This scores the verdict stage on **real web
+evidence**.
+
+## L.1 The result, on identical claims
+
+| condition | evidence chars | accuracy | macro-F1 | abstention |
+|---|---|---|---|---|
+| closed corpus | — | **0.462** | 0.488 | — |
+| oracle (gold answers) | ~246 | 0.769 | 0.681 | — |
+| live web, snippets | 158 | 0.769 | 0.681 | 23.1% |
+| **live web + full text** | **1,377** | **0.923** | **0.822** | **15.4%** |
+| majority-class baseline | — | 0.692 | — | — |
+
+Paired McNemar, same claims:
+
+| comparison | base-only right | live-only right | p | |
+|---|---|---|---|---|
+| live+fulltext vs **closed corpus** | 0 | **6** | **0.031** | significant |
+| live+fulltext vs oracle gold | 0 | 2 | 0.50 | n.s. |
+
+## L.2 The closed corpus was badly understating real performance
+
+**This is the important finding.** On identical claims, the closed corpus scores
+**0.462** while live web evidence with full text scores **0.923** — and the
+difference is significant even at n=13 (p=0.031, 6 claims right only with live
+evidence, 0 the other way).
+
+The sample is not unusually easy: closed-corpus accuracy on these 13 claims
+(0.462–0.538 across two runs) brackets the 0.544 measured on n=136, so the
+baseline behaves normally here.
+
+**Consequence for §7.3 and §8.3.** Stage 3's headline conclusion — that the verdict
+stage scores *below* the majority-class baseline — was measured entirely on the
+closed corpus. On live evidence the stage scores **0.923 against a 0.692
+baseline**. That conclusion does not survive contact with real retrieval, and
+should be read as a property of the proxy rather than of the system.
+
+Live snippets alone (0.769) already **match the oracle** (0.769), which means
+AVeriTeC's gold annotated answers are no better as verdict input than what live
+search returns.
+
+## L.3 The leakage control
+
+Live retrieval surfaces fact-checking pages, which often state the verdict, so
+part of this could be the system reading the answer rather than judging evidence.
+Splitting on whether a fact-check page was retrieved:
+
+| subset | n | snippets | full text |
+|---|---|---|---|
+| fact-check page retrieved | 6 | 0.833 | **1.000** |
+| **no fact-check page** | **7** | 0.714 | **0.857** |
+
+Leakage is worth roughly **+0.12 to +0.14 accuracy** — real and substantial. But
+the finding survives it: on claims where **no** fact-check page was retrieved,
+full text still scores **0.857**, above both the oracle (0.769) and the majority
+baseline (0.692).
+
+## L.4 What this does and does not establish
+
+**Establishes:** the closed corpus is a poor proxy for live retrieval and
+understates verdict quality by a wide margin; full-text enrichment matters more on
+live evidence (1,377 chars vs 158) than the closed-corpus experiments could show;
+and §10's enrichment result generalises to real web pages.
+
+**Does not establish:** reliable absolute numbers. **n=13**, with 7 in the clean
+subset. The 0.923 figure should not be quoted as system accuracy — the direction
+is well supported, the magnitude is not.
+
+**Caveats:**
+* Two of the 15 live claims are `Conflicting/Cherrypicking` and excluded.
+* Fact-check leakage contributes materially and is only partly controlled; the
+  detector is domain-based and will miss fact-checking content on other sites.
+* Replayed from cached queries, so results reflect the web as of 2026-09-26.
+
+**Next:** a larger live run is now clearly worth its quota. At ~4 searches per
+claim, 100/day buys ~25 claims — roughly 4 days to reach n=100, at which point
+these numbers could carry real weight instead of being indicative.
+
 ## Files
 
 - `diagnose.py` / `diagnosis_dev.json` — Phase A harness and results
@@ -548,3 +635,5 @@ incomplete evidence, and the remaining levers are retrieval-side.
 - `prompt_comparison_b1_dev.json` — Phase B1 first run (original vs symmetric)
 - `prompt_comparison_dev.json` — later three-arm run (direct / symmetric / synthesis)
 - `evidence_sufficiency.py` / `evidence_sufficiency_dev.json` — the S.1-S.3 experiment
+- `live_evidence_verdict.py` / `live_evidence_verdict_dev.json` — §L live-evidence verdicts
+- `same_claim_baselines_dev.json` — baselines re-measured on the same 13 claims
