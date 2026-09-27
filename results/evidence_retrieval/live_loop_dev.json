@@ -1,0 +1,569 @@
+{
+  "split": "dev",
+  "condition": "LIVE open-web search via Google CSE",
+  "design": "one run per claim at rounds=2; both conditions derived from the same run, so round-1 queries are identical by construction",
+  "not_measured": "verdict accuracy \u2014 the quota-limited sample is far too small to support that claim",
+  "summary": {
+    "claims": 15,
+    "live_searches": 55,
+    "cache_hits": 0,
+    "ran_second_round": 5,
+    "new_domain_rate": 0.8,
+    "mean_new_domains": 3.6,
+    "gold_domain_recall_r1": 0.03333333333333333,
+    "gold_domain_recall_r1r2": 0.06666666666666667,
+    "fact_check_round1": 8,
+    "fact_check_round2": 0
+  },
+  "per_claim": [
+    {
+      "claim_id": "av-00000",
+      "claim": "In a letter to Steve Jobs, Sean Connery refused to appear in an apple commercial.",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "scoopertino.com"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "aclanthology.org",
+          "cnet.com",
+          "fever.ai",
+          "snopes.com"
+        ],
+        "queries": [
+          "Sean Connery letter refusing Apple commercial Steve Jobs",
+          "Sean Connery Apple commercial refusal letter",
+          "Sean Connery Steve Jobs Apple ad claim debunked"
+        ],
+        "fact_check": 1
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 1
+    },
+    {
+      "claim_id": "av-00001",
+      "claim": "Trump Administration claimed songwriter Billie Eilish Is Destroying Our Country In Leaked Documents",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "nypost.com"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "aclanthology.org",
+          "complex.com",
+          "medium.com",
+          "reddit.com"
+        ],
+        "queries": [
+          "Trump Administration claims Billie Eilish destroying country leaked documents",
+          "Billie Eilish destroying country Trump Administration claim debunked",
+          "Billie Eilish Trump Administration leaked documents 2024"
+        ],
+        "fact_check": 0
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 1
+    },
+    {
+      "claim_id": "av-00002",
+      "claim": "Due to Imran Khan's criticism of Macron's comments on Islam, French authorities cancelled the visas of 183 Pakistani cit",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "aljazeera.com",
+        "twitter.com"
+      ],
+      "searches_spent": 5,
+      "ran_second_round": true,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "arxiv.org",
+          "en.wikipedia.org",
+          "geo.tv",
+          "indiatoday.in"
+        ],
+        "queries": [
+          "Imran Khan criticism of Macron Islam visa cancellation Pakistanis France",
+          "France cancels visas 183 Pakistani citizens Imran Khan Macron controversy",
+          "French authorities deport 118 Pakistani citizens Imran Khan Macron comments"
+        ],
+        "fact_check": 0
+      },
+      "round2": {
+        "n_urls": 5,
+        "domains": [
+          "pk.usembassy.gov",
+          "reuters.com",
+          "state.gov",
+          "travel.gc.ca",
+          "travel.state.gov"
+        ],
+        "new_domains": [
+          "pk.usembassy.gov",
+          "reuters.com",
+          "state.gov",
+          "travel.gc.ca",
+          "travel.state.gov"
+        ],
+        "queries": [
+          "official statement French government on visa cancellations of Pakistani citizens 2023",
+          "French Ministry of Interior press release on deportations of Pakistani nationals 2023"
+        ],
+        "fact_check": 0
+      },
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00003",
+      "claim": "UNESCO declared Nadar community as the most ancient race in the world.",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "familytreedna.com",
+        "independent.co.uk"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "aclanthology.org",
+          "dl.acm.org",
+          "en.wikipedia.org",
+          "unesdoc.unesco.org",
+          "vishvasnews.com"
+        ],
+        "queries": [
+          "UNESCO declaration Nadar community most ancient race",
+          "Nadar community recognized by UNESCO as oldest race",
+          "UNESCO Nadar community ancient race claim debunked"
+        ],
+        "fact_check": 0
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00004",
+      "claim": "Republican Matt Gaetz was part of a company that had to pay 75 million in hospice fraud. They stole from dying people.",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "celebritynetworth.com",
+        "erau.edu",
+        "ir.chemed.com"
+      ],
+      "searches_spent": 5,
+      "ran_second_round": true,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "aclanthology.org",
+          "arxiv.org",
+          "en.wikipedia.org",
+          "factcheck.org",
+          "uio.no"
+        ],
+        "queries": [
+          "Matt Gaetz company hospice fraud 75 million",
+          "Matt Gaetz hospice fraud allegations",
+          "Matt Gaetz company fined 75 million hospice fraud"
+        ],
+        "fact_check": 1
+      },
+      "round2": {
+        "n_urls": 5,
+        "domains": [
+          "barrassousdin.com",
+          "justice.gov",
+          "politico.com",
+          "wusa9.com"
+        ],
+        "new_domains": [
+          "barrassousdin.com",
+          "justice.gov",
+          "politico.com",
+          "wusa9.com"
+        ],
+        "queries": [
+          "Matt Gaetz involvement in hospice company legal case 2023",
+          "Official court documents hospice fraud $75 million settlement Florida"
+        ],
+        "fact_check": 0
+      },
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 3
+    },
+    {
+      "claim_id": "av-00006",
+      "claim": "More than 225,000 people dead, 225,000. The estimates are, if we\u2019d have acted responsibly, there\u2019d be 160,000 fewer dead",
+      "gold_label": "Supported",
+      "gold_domains": [
+        "calculator.net",
+        "injuryfacts.nsc.org",
+        "statnews.com"
+      ],
+      "searches_spent": 5,
+      "ran_second_round": true,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "abcnews.com",
+          "cdc.gov",
+          "debeaumont.org",
+          "reuters.com",
+          "vox.com"
+        ],
+        "queries": [
+          "covid-19 death toll more than 225000",
+          "covid-19 deaths could have been reduced by 160000 if acted responsibly",
+          "covid-19 death estimates 225000 people"
+        ],
+        "fact_check": 0
+      },
+      "round2": {
+        "n_urls": 5,
+        "domains": [
+          "aamc.org",
+          "jec.senate.gov",
+          "pmc.ncbi.nlm.nih.gov",
+          "visionofhumanity.org"
+        ],
+        "new_domains": [
+          "aamc.org",
+          "jec.senate.gov",
+          "pmc.ncbi.nlm.nih.gov",
+          "visionofhumanity.org"
+        ],
+        "queries": [
+          "study estimating preventable COVID-19 deaths 160000 fewer due to responsible action",
+          "credible source quantifying 160000 preventable COVID-19 deaths in the US"
+        ],
+        "fact_check": 0
+      },
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 3
+    },
+    {
+      "claim_id": "av-00007",
+      "claim": "Why should you pay more taxes than Donald Trump pays? And that\u2019s a fact. $750. Remember what he said when that was raise",
+      "gold_label": "Supported",
+      "gold_domains": [
+        "cnbc.com",
+        "nytimes.com"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "ag.ny.gov",
+          "bbc.com",
+          "npr.org",
+          "warren.senate.gov",
+          "waysandmeans.house.gov"
+        ],
+        "queries": [
+          "Donald Trump $750 tax payment details",
+          "Donald Trump tax payment claim debunked",
+          "Donald Trump 2016 tax return $750"
+        ],
+        "fact_check": 0
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00008",
+      "claim": "You\u2019re watching the cheaters and all those people that send in the phony ballots. \u2026 They want to have the count weeks af",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "calmatters.org",
+        "sos.ca.gov"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "brennancenter.org",
+          "elections.maricopa.gov",
+          "misinforeview.hks.harvard.edu",
+          "pbs.org",
+          "reuters.com"
+        ],
+        "queries": [
+          "cheaters sending phony ballots November 3 election",
+          "claims of phony ballots and delayed vote counting November 3",
+          "refutation of claims about phony ballots and late vote counts November 3"
+        ],
+        "fact_check": 1
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00010",
+      "claim": "Donald Trump, when he thinks of climate change, he says hoax. Well, guess what? Speaking of hoaxes, remember what he sai",
+      "gold_label": "Conflicting Evidence/Cherrypicking",
+      "gold_domains": [
+        "axios.com",
+        "nbcnews.com"
+      ],
+      "searches_spent": 5,
+      "ran_second_round": true,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "bbc.com",
+          "news.un.org",
+          "time.com"
+        ],
+        "queries": [
+          "Donald Trump climate change hoax statement",
+          "Donald Trump suggestion nuclear bomb Atlantic hurricane",
+          "Donald Trump quote about Revolutionary War airports"
+        ],
+        "fact_check": 0
+      },
+      "round2": {
+        "n_urls": 5,
+        "domains": [
+          "axios.com",
+          "en.wikipedia.org",
+          "newsweek.com",
+          "reuters.com",
+          "theguardian.com"
+        ],
+        "new_domains": [
+          "axios.com",
+          "en.wikipedia.org",
+          "newsweek.com",
+          "reuters.com",
+          "theguardian.com"
+        ],
+        "queries": [
+          "Donald Trump nuclear bomb Atlantic hurricane quote source",
+          "Donald Trump statement about detonating nuclear bomb to stop hurricanes date"
+        ],
+        "fact_check": 0
+      },
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 1,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00011",
+      "claim": "The U.S. surgeon general and the Centers for Disease Control both previously said that \u2018masks are not effective in preve",
+      "gold_label": "Conflicting Evidence/Cherrypicking",
+      "gold_domains": [
+        "dx.doi.org"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "cnbc.com",
+          "en.wikipedia.org",
+          "factcheck.org",
+          "nytimes.com",
+          "time.com"
+        ],
+        "queries": [
+          "U.S. surgeon general masks not effective coronavirus prevention",
+          "CDC statement masks effectiveness general public COVID-19",
+          "Claim U.S. surgeon general and CDC masks not effective coronavirus debunked"
+        ],
+        "fact_check": 1
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 1
+    },
+    {
+      "claim_id": "av-00012",
+      "claim": "New Zealand\u2019s new Food Bill bans gardening",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "archive.ph",
+        "beehive.govt.nz",
+        "nzlii.org",
+        "parliament.nz"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "aap.com.au",
+          "buzzfeed.com",
+          "en.wikipedia.org",
+          "reddit.com",
+          "thespinoff.co.nz"
+        ],
+        "queries": [
+          "New Zealand Food Bill gardening ban",
+          "New Zealand Food Bill gardening ban false",
+          "New Zealand Food Bill 2024 gardening restrictions"
+        ],
+        "fact_check": 0
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 4
+    },
+    {
+      "claim_id": "av-00013",
+      "claim": "Wearing face masks will stop the spread of covid 19",
+      "gold_label": "Supported",
+      "gold_domains": [
+        "ox.ac.uk"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "bbc.com",
+          "factcheck.org",
+          "mayoclinic.org",
+          "reuters.com"
+        ],
+        "queries": [
+          "Wearing face masks stop spread of COVID-19",
+          "Face masks effectiveness COVID-19 transmission",
+          "Face masks COVID-19 spread claim debunked"
+        ],
+        "fact_check": 1
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 1
+    },
+    {
+      "claim_id": "av-00014",
+      "claim": "Jammu and Kashmir (J&K) in Pakistan/India was removed from the United Nations (UN) list of \u201cunresolved disputes\u201d.",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "crisisgroup.org",
+        "undocs.org"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "altnews.in",
+          "boomlive.in",
+          "en.wikipedia.org",
+          "factly.in"
+        ],
+        "queries": [
+          "Jammu and Kashmir removed from United Nations unresolved disputes list",
+          "Jammu and Kashmir UN unresolved dispute status 2024",
+          "Jammu and Kashmir dispute removed from UN agenda false"
+        ],
+        "fact_check": 2
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00015",
+      "claim": "Illegal drug, border crossings, and human smuggling activities have decreased in areas where barriers are deployed in th",
+      "gold_label": "Not Enough Evidence",
+      "gold_domains": [
+        "bbc.com",
+        "cbp.gov",
+        "nfid.org",
+        "wsj.com"
+      ],
+      "searches_spent": 5,
+      "ran_second_round": true,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "bbc.com",
+          "cbp.gov",
+          "congress.gov",
+          "forumtogether.org",
+          "justice.gov"
+        ],
+        "queries": [
+          "Impact of border barriers on illegal drug trafficking in the United States",
+          "Effect of border walls on human smuggling activities in US border areas",
+          "Data on illegal border crossings decrease after barrier deployment in the US"
+        ],
+        "fact_check": 0
+      },
+      "round2": {
+        "n_urls": 0,
+        "domains": [],
+        "new_domains": [],
+        "queries": [
+          "\"U.S. Customs and Border Protection statistics on illegal crossings before and after barrier deployment 2010-2023\"",
+          "\"Impact of border wall construction on drug trafficking volumes in Arizona 2015-2022 study\""
+        ],
+        "fact_check": 0
+      },
+      "gold_hit_r1": 2,
+      "gold_hit_r1r2": 2,
+      "n_gold_domains": 4
+    },
+    {
+      "claim_id": "av-00016",
+      "claim": "The plentiful evidence we have indicates that masks would not meaningfully help with aerosol transmission of COVID 19.",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "nature.com",
+        "ucsf.edu"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "factcheck.org",
+          "phc.ox.ac.uk",
+          "pmc.ncbi.nlm.nih.gov",
+          "pnas.org",
+          "reuters.com"
+        ],
+        "queries": [
+          "masks effectiveness aerosol transmission COVID-19",
+          "masks do not help aerosol transmission COVID-19 claim debunked",
+          "evidence masks reduce COVID-19 aerosol spread"
+        ],
+        "fact_check": 1
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 2
+    }
+  ]
+}

@@ -569,7 +569,119 @@ behaviour rather than losing sources.
 
 ---
 
-## 11. Next steps
+## 11. The retrieval loop on the LIVE open web
+
+**This is the condition §5 and §6 said they could not test.** The closed corpus
+found the loop statistically indistinguishable from a larger single pass, and
+diagnosed why: round 2 drew from a picked-over pool (4% gold vs 16.7% in round 1)
+because round 1's URLs were excluded from a single 973-document index. A
+reformulated query had nowhere new to go. On the open web it does.
+
+**Design.** One live run per claim at `rounds=2`, recording which URLs each round
+contributed; both conditions derived from the same run, so the round-1 queries are
+identical by construction rather than merely matched. 15 claims, 55 live searches
+(Google CSE free tier is 100/day). Domain-level matching, per §11.3.
+
+### 11.1 Round 2 does reach sources round 1 could not
+
+| | value |
+|---|---|
+| claims that triggered a second round | 5 / 15 |
+| second rounds that added a **new domain** | **4 / 5 (80%)** |
+| new domains per second round | **mean 3.60**, max 5 |
+| round-1 domains per claim | 4.40 |
+
+So a gap-driven second round adds roughly as many distinct domains again as the
+first round found. **This directly contradicts the closed-corpus result**, and the
+contradiction is explained by the setting rather than by either measurement being
+wrong: reformulation needs somewhere new to reach.
+
+### 11.2 The new sources are qualitatively better, and the gap queries are sensible
+
+The second-round queries are doing what they were designed to do:
+
+| claim | round-2 queries | new domains reached |
+|---|---|---|
+| French visa cancellations | *"official statement French government on visa cancellations"*, *"French Ministry of Interior press release"* | `state.gov`, `travel.state.gov`, `pk.usembassy.gov`, `reuters.com` |
+| Matt Gaetz hospice fraud | *"Official court documents hospice fraud $75 million settlement"* | `justice.gov`, `politico.com`, `wusa9.com` |
+| COVID preventable deaths | *"study estimating preventable COVID-19 deaths"* | `pmc.ncbi.nlm.nih.gov`, `jec.senate.gov`, `aamc.org` |
+
+Round 2 systematically reaches **government, primary and wire sources**. And it
+retrieved **0 fact-checking results**, against 8 in round 1.
+
+### 11.3 A round-1 query-quality problem this exposed
+
+Round-1 domains across the 15 claims:
+
+| n | domain |
+|---|---|
+| 6 | `en.wikipedia.org` |
+| 4 | `aclanthology.org` |
+| 4 | `factcheck.org` |
+| 4 | `reuters.com` |
+| 4 | `bbc.com` |
+| 2 | `arxiv.org` |
+| 1 | `fever.ai` |
+| 1 | `snopes.com` |
+
+Two distinct problems, both traceable to the refutation-style queries:
+
+1. **Fact-check leakage** — `factcheck.org` ×4, `snopes.com` ×1. The known risk
+   from §8.1 of `IMPROVEMENT_PLAN`, now observed live.
+2. **Benchmark-methodology leakage — new finding.** `aclanthology.org` ×4,
+   `arxiv.org` ×2, `fever.ai` ×1 — **10% of round-1 results** are NLP research
+   papers, including the venue and shared-task site of the benchmark these claims
+   came from. Queries like *"{claim} debunked"* surface academic work *about
+   fact-checking* rather than evidence about the claim.
+
+   This is a different failure from citing a fact-checker's verdict: the system is
+   retrieving papers about the task. For claims concerning Matt Gaetz, Macron's
+   visa policy and COVID death tolls, `arxiv.org` should not appear at all.
+
+Round 2 exhibits neither problem. The mechanism is consistent: round 1's
+refutation-biased queries pull in meta-content about fact-checking; round 2's
+gap-driven queries ask for specific missing facts and reach primary evidence.
+
+### 11.4 Gold-domain recall is at the floor and uninformative here
+
+| | round 1 | rounds 1+2 |
+|---|---|---|
+| gold-domain recall | 0.033 | 0.067 |
+| claims finding ≥1 gold domain | 1 / 15 | 2 / 15 |
+
+It doubled, but from 3% to 7% — at this level the metric carries no signal. Live
+search returns equally-good alternative sources, and AVeriTeC's gold URLs suffer
+link rot (§9 measured 29% unreachable). **Benchmark-gold matching is not a usable
+metric for live retrieval at this sample size**, which is why §11.1 is the primary
+result and this is reported only for completeness.
+
+### 11.5 What this does and does not change
+
+**Changes:** the closed-corpus verdict against the loop (§5.1) was an artifact of
+that setting. On the open web, gap-driven reformulation demonstrably reaches new
+and better-quality sources. The loop's rationale is sound.
+
+**Does not change:** whether it improves *verdicts*. That is **not measured here**
+— 5 second rounds cannot support such a claim, and asserting it would repeat the
+errors of §4 (unpaired comparison) and the BERTScore count-ratio artifact.
+
+**Caveats:**
+* n=15 claims, 5 second rounds. Descriptive, not powered.
+* Only **1 in 3 claims triggers a second round** at all — the evidence evaluator
+  judges round 1 sufficient two-thirds of the time, so the loop's reach is limited
+  by that gate regardless of how well it performs when it does fire.
+* Quota-bound: 55 searches for 15 claims makes a larger live study expensive on
+  the free tier, and the API sunsets 2027-01-01.
+
+**Recommendation:** keep the loop enabled. Its measured benefit is better source
+quality on the open web, which the closed corpus could not see. The round-1
+query-quality problem in §11.3 is now the more promising target — 10% of first-round
+results being research papers about fact-checking is a straightforward retrieval
+defect, and unlike the loop question it needs no new benchmark to fix.
+
+---
+
+## 12. Next steps
 
 1. ~~Paired comparison~~, ~~round-2 diagnostics~~, ~~`k` sweep~~ — **done** (§5, §7).
 2. ~~Raise `max_results_per_query`~~ — **done and rejected** (§8.1): improves
@@ -589,5 +701,6 @@ behaviour rather than losing sources.
 - `averitec.py` — loader, Wayback unwrapping, scorable-subset definition
 - `fetchability_audit.py` / `fetchability_dev.json` — §9 reachability audit
 - `fulltext_verdict.py` / `fulltext_verdict_dev.json` — §10 paired enrichment test
+- `live_loop.py` / `live_loop_dev.json` — §11 live open-web loop evaluation
 - `evaluate_retrieval.py` — harness (conditions, volume control, metrics)
 - `metrics_retrieval_dev.json` — saved results for the runs above

@@ -1,0 +1,2813 @@
+{
+  "exported": "2026-09-28",
+  "purpose": "Auditable record of every live search query and its results. Exported because .cache/search/ is gitignored and the live run cannot be reproduced without re-spending Google CSE quota, on a web whose results change over time.",
+  "provider_note": "Google Custom Search JSON API \u2014 closed to new customers, sunsets 2027-01-01.",
+  "n_queries": 60,
+  "n_results": 290,
+  "result_classification": {
+    "fact_check": 14,
+    "other": 248,
+    "research_venue": 28
+  },
+  "classification_note": "'research_venue' means the result is a paper or shared-task site about fact-checking rather than evidence about the claim \u2014 see RESULTS.md 11.3.",
+  "queries": [
+    {
+      "query": "\"Impact of border wall construction on drug trafficking volumes in Arizona 2015-2022 study\"",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 0,
+      "results": []
+    },
+    {
+      "query": "\"U.S. Customs and Border Protection statistics on illegal crossings before and after barrier deployment 2010-2023\"",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 0,
+      "results": []
+    },
+    {
+      "query": "Billie Eilish Trump Administration leaked documents 2024",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://medium.com/everythings-interesting/no-the-trump-administration-didnt-accuse-billie-eilish-of-destroying-our-country-3771ad9361b6",
+          "domain": "medium.com",
+          "title": "No, the Trump administration didn't accuse Billie Eilish of \u201cdestroying ...",
+          "snippet": "Oct 29, 2020 ... Leaked internal documents obtained by the Post show an exhaustive list of celebrities who were approached to participate in the ad campaign, and\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://www.thefader.com/2020/10/29/report-trump-admin-document-says-billie-eilish-is-destroying-our-country-and-everything-we-care-about",
+          "domain": "thefader.com",
+          "title": "Report: Trump admin reached out to Billie Eilish for COVID ad ...",
+          "snippet": "Oct 29, 2020 ... The Trump administration thinks Billie Eilish is an existential threat to the United States, according to leaked documents.",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://aclanthology.org/2025.fever-1.18.pdf",
+          "domain": "aclanthology.org",
+          "title": "OldJoe at AVeriTeC: In-context learning for fact-checking",
+          "snippet": "Jul 31, 2025 ... , 2024). We also looked into using a ChromaDB ... Post, the leaked documents from the Trump administration did not state that Billie Eilish.",
+          "classification": "research_venue"
+        },
+        {
+          "rank": 4,
+          "url": "https://www.reddit.com/r/popheads/comments/jkdyi8/trump_admin_says_billie_eilish_is_destroying_our/",
+          "domain": "reddit.com",
+          "title": "Trump admin says Billie Eilish is \"destroying our country and ...",
+          "snippet": "Oct 29, 2020 ... 2.3K votes, 339 comments. A leaked document has revealed that Billie Eilish was among celebrities blocked by the Trump administration from\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://en.wikipedia.org/wiki/Killing_of_Ren%C3%A9e_Good",
+          "domain": "en.wikipedia.org",
+          "title": "Killing of Ren\u00e9e Good - Wikipedia",
+          "snippet": "Part of Operation Metro Surge and shootings by US immigration agents in the second Trump administration. Good shortly before she was shot, as seen in the DHS\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "Billie Eilish destroying country Trump Administration claim debunked",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://medium.com/everythings-interesting/no-the-trump-administration-didnt-accuse-billie-eilish-of-destroying-our-country-3771ad9361b6",
+          "domain": "medium.com",
+          "title": "No, the Trump administration didn't accuse Billie Eilish of \u201cdestroying ...",
+          "snippet": "Oct 29, 2020 ... ... claim comes via The Washington Post.\u201d TMZ's headline says, Billie Eilish Ripped in Leaked Trump Administration Doc, 'Destroying Our Country.",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://aclanthology.org/2025.fever-1.18.pdf",
+          "domain": "aclanthology.org",
+          "title": "OldJoe at AVeriTeC: In-context learning for fact-checking",
+          "snippet": "Jul 31, 2025 ... Claim: Trump Administration claimed songwriter Billie Eilish Is Destroying Our. Country In Leaked Documents. Question: Are there any official\u00a0...",
+          "classification": "research_venue"
+        },
+        {
+          "rank": 3,
+          "url": "https://www.reddit.com/r/popheads/comments/jkdyi8/trump_admin_says_billie_eilish_is_destroying_our/",
+          "domain": "reddit.com",
+          "title": "Trump admin says Billie Eilish is \"destroying our country and ...",
+          "snippet": "Oct 29, 2020 ... 2.3K votes, 339 comments. A leaked document has revealed that Billie Eilish was among celebrities blocked by the Trump administration from\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://aclanthology.org/2026.lrec-1.418.pdf",
+          "domain": "aclanthology.org",
+          "title": "Fact-checking with an Evidence-based Open Resource in Spanish",
+          "snippet": "May 16, 2026 ... Claim 2: Trump Administration claimed Billie Eilish is destroying the country. ... Refuted. Reasoning 2: The claim is explicitly debunked by\u00a0...",
+          "classification": "research_venue"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.reddit.com/r/popculturechat/comments/1qv3m29/native_american_tribe_has_message_for_billie/",
+          "domain": "reddit.com",
+          "title": "Native American tribe has message for Billie Eilish after Grammy's ...",
+          "snippet": "Feb 3, 2026 ... ... claim the land (which happens) or if the land is ... r/popheads - Trump admin says Billie Eilish is \"destroying our country and everything.",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "CDC statement masks effectiveness general public COVID-19",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.cdc.gov/mmwr/volumes/71/wr/mm7106e1.htm",
+          "domain": "cdc.gov",
+          "title": "Effectiveness of Face Mask or Respirator Use in Indoor Public ... - CDC",
+          "snippet": "Feb 11, 2022 ... This report describes face mask or respirator effectiveness in helping protect against COVID-19 infection ... general public in indoor community\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://wwwnc.cdc.gov/eid/article/26/10/20-0948_article",
+          "domain": "wwwnc.cdc.gov",
+          "title": "Effectiveness of Cloth Masks for Protection Against Severe ... - CDC",
+          "snippet": "Jul 8, 2020 ... The use of cloth masks during the coronavirus disease (COVID-19) pandemic is under debate. ... The general public should be educated about mask\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://www.cdc.gov/respiratory-viruses/prevention/masks.html",
+          "domain": "cdc.gov",
+          "title": "Masks and Respiratory Viruses Prevention - CDC",
+          "snippet": "Aug 18, 2025 ... Notice. CDC offers separate, specific guidance for healthcare settings (COVID-19, flu, and general infection prevention and control). Federal\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10298096/",
+          "domain": "pmc.ncbi.nlm.nih.gov",
+          "title": "COVID-19 and Masking Disparities: Qualitative Analysis of Trust on ...",
+          "snippet": "Jun 6, 2023 ... ... statement about trust in the CDC related to conflicting advisories. ... \u201cCDC was irresponsible in telling the general public not to wear masks\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.cdc.gov/mmwr/volumes/71/wr/mm7133e1.htm",
+          "domain": "cdc.gov",
+          "title": "Summary of Guidance for Minimizing the Impact of COVID-19... - CDC",
+          "snippet": "Aug 19, 2022 ... ... effective public health tools. ... All persons should wear well-fitting masks or respirators indoors in public at high COVID-19 Community Levels.",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "Claim U.S. surgeon general and CDC masks not effective coronavirus debunked",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9114791/",
+          "domain": "pmc.ncbi.nlm.nih.gov",
+          "title": "The impact of misinformation on the COVID-19 pandemic - PMC",
+          "snippet": "... false, partially false, and true claims. ... Confronting Health Misinformation: The U.S. Surgeon General's Advisory on Building a Healthy Information Environment.",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://www.cnbc.com/2020/04/02/coronavirus-us-surgeon-general-asks-cdc-to-see-if-face-masks-are-effective.html",
+          "domain": "cnbc.com",
+          "title": "Coronavirus: US surgeon general asks CDC to see if face masks are ...",
+          "snippet": "Apr 2, 2020 ... U.S. Surgeon General Jerome Adams had initially advised against the general public wearing face masks, saying they were \"not effective\" in\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://en.wikipedia.org/wiki/COVID-19_misinformation_by_the_United_States",
+          "domain": "en.wikipedia.org",
+          "title": "COVID-19 misinformation by the United States - Wikipedia",
+          "snippet": "(@Surgeon_General ). tweeted: Seriously people- STOP BUYING MASKS! They are NOT effective in preventing general public from catching #Coronavirus, but if\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://www.factcheck.org/covid-misconceptions/",
+          "domain": "factcheck.org",
+          "title": "COVID-19 Misconceptions - FactCheck.org",
+          "snippet": "+ Video Airs False, Misleading Claims About Face Masks; + Headlines Distort the Facts on CDC Mask Order; + Video Wrong About Fauci, COVID-19. The Existence and\u00a0...",
+          "classification": "fact_check"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.bbc.com/news/articles/c62ngkpxk9lo",
+          "domain": "bbc.com",
+          "title": "Why the world is watching RFK's fight with US health agency - BBC",
+          "snippet": "Sep 6, 2025 ... His appearance came days after he suddenly fired the new CDC director, Susan Monarez, provoking a group of senior staff to resign in protest. At\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "Data on illegal border crossings decrease after barrier deployment in the US",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.cbp.gov/border-security/along-us-borders/smart-wall-map",
+          "domain": "cbp.gov",
+          "title": "Smart Wall | U.S. Customs and Border Protection",
+          "snippet": "5 days ago ... ... illicit activity along U.S. borders. The construction of these barriers, along with agents deployed to the Southwest border's most dangerous\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://www.bbc.com/news/articles/cp8wd8938e8o",
+          "domain": "bbc.com",
+          "title": "Illegal US-Mexico border crossings hit lowest level in over 50 years",
+          "snippet": "Oct 7, 2025 ... The numbers are the lowest since 1970, as Trump continues his crackdown on immigration to the US.",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://www.gao.gov/assets/700/693888.pdf",
+          "domain": "gao.gov",
+          "title": "CBP Is Evaluating Designs and Locations for Border Barriers but Is Pr",
+          "snippet": "Jul 30, 2018 ... What GAO Found. In March 2017, U.S. Customs and Border Protection (CBP), within the. Department of Homeland Security (DHS),\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://www.bbc.com/news/world-us-canada-67024002",
+          "domain": "bbc.com",
+          "title": "President Biden expands Mexican border wall - but can it stop ... - BBC",
+          "snippet": "Oct 6, 2023 ... But the US border with Mexico is never far off. On peaceful days ... Illegal US-Mexico border crossings hit lowest level in over 50 years\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.americanprogress.org/article/a-new-immigration-system-to-safeguard-americas-security-expand-economic-growth-and-make-us-stronger/",
+          "domain": "americanprogress.org",
+          "title": "A New Immigration System To Safeguard America's Security ...",
+          "snippet": "Jul 6, 2025 ... A secure border should deter and prevent illegal border crossings ... unlawful migration to reduce pressures on the U.S. border. Fix the\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "Donald Trump $750 tax payment details",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.bbc.com/news/technology-54319948",
+          "domain": "bbc.com",
+          "title": "Donald Trump 'paid $750 in federal income taxes in 2016 and 2017'",
+          "snippet": "Sep 28, 2020 ... Donald Trump 'paid $750 in federal income taxes in 2016 and 2017' - NY Times ... Donald Trump paid just $750 (\u00a3580) in federal income tax both in\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://waysandmeans.house.gov/2020/10/02/faqs-on-claims-regarding-president-trumps-tax-returns/",
+          "domain": "waysandmeans.house.gov",
+          "title": "FAQs on Claims Regarding President Trump's Tax Returns",
+          "snippet": "Oct 2, 2020 ... ... of a purported leak of the President's tax return information. ... If it is true that President Trump only paid $750 in income tax in\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://www.bbc.com/news/articles/c23ryyrx40yo",
+          "domain": "bbc.com",
+          "title": "Donald Trump sues IRS and US Treasury over leaked tax documents",
+          "snippet": "Jan 30, 2026 ... The lawsuit seeks $10bn (\u00a37.25bn) in damages after tax information from Trump and his family was leaked to the media.",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://en.wikipedia.org/wiki/Tax_returns_of_Donald_Trump",
+          "domain": "en.wikipedia.org",
+          "title": "Tax returns of Donald Trump - Wikipedia",
+          "snippet": "In 2016, Trump paid only $750 in federal income tax, and in 2017, he paid another $750 in federal income tax. This was much less than other recent\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.npr.org/2022/12/20/1144472882/a-house-panel-voted-to-publicly-release-a-report-on-trumps-tax-returns",
+          "domain": "npr.org",
+          "title": "The IRS did not audit Trump during his presidency's first 2 years - NPR",
+          "snippet": "Dec 20, 2022 ... Donald Trump paid just $750 in income tax in 2017 and 2020 while president ... and publicly disclose related returns and return information\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "Donald Trump 2016 tax return $750",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.bbc.com/news/technology-54319948",
+          "domain": "bbc.com",
+          "title": "Donald Trump 'paid $750 in federal income taxes in 2016 and 2017'",
+          "snippet": "Sep 28, 2020 ... Donald Trump paid just $750 (\u00a3580) in federal income tax both in 2016, the year he ran for the US presidency, and in his first year in the White\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://waysandmeans.house.gov/2020/10/02/faqs-on-claims-regarding-president-trumps-tax-returns/",
+          "domain": "waysandmeans.house.gov",
+          "title": "FAQs on Claims Regarding President Trump's Tax Returns",
+          "snippet": "Oct 2, 2020 ... The Biden campaign has pointed out that President Trump paid only $750 per year in federal income tax in 2016 and 2017 compared to the thousands\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://www.npr.org/2022/12/20/1144472882/a-house-panel-voted-to-publicly-release-a-report-on-trumps-tax-returns",
+          "domain": "npr.org",
+          "title": "The IRS did not audit Trump during his presidency's first 2 years - NPR",
+          "snippet": "Dec 20, 2022 ... In 2016 and 2017, he paid just $750 in net tax on his income. In 2020, he paid $0 in net tax on his income. He reported millions in losses\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://www.nytimes.com/2020/09/29/us/trump-750-taxes.html",
+          "domain": "nytimes.com",
+          "title": "Trump Paid $750 in Federal Income Taxes in 2017. Here's the Math.",
+          "snippet": "Aug 4, 2021 ... Figures drawn from President Trump's tax-return data show how that number was calculated. Share full article.",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.pbs.org/newshour/politics/ny-times-trump-paid-750-in-us-income-taxes-in-2016-2017",
+          "domain": "pbs.org",
+          "title": "5 key findings from NY Times report on Trump's tax returns - PBS",
+          "snippet": "Sep 28, 2020 ... TRUMP PAID JUST $750 IN TAXES IN BOTH 2016 and 2017. The newspaper said Trump initially paid $95 million in taxes over the 18 years it studied.",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "Donald Trump climate change hoax statement",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.bbc.com/news/world-us-canada-51213003",
+          "domain": "bbc.com",
+          "title": "What does Trump actually believe on climate change? - BBC",
+          "snippet": "Jan 23, 2020 ... In 2012, he famously said climate change was \"created by and for the Chinese in order to make US manufacturing non-competitive\" - something he\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://www.pbs.org/newshour/politics/trump-called-climate-change-a-con-job-at-the-united-nations-here-are-the-facts-and-context",
+          "domain": "pbs.org",
+          "title": "Trump called climate change a 'con job' at the United Nations ... - PBS",
+          "snippet": "Sep 25, 2025 ... \"This 'climate change,' it's the greatest con job ever perpetrated on the world, in my opinion,\" Trump said. \"All of these predictions made by\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://news.un.org/en/story/2025/09/1165924",
+          "domain": "news.un.org",
+          "title": "US President Trump criticizes UN, NATO and climate 'hoax' - UN News",
+          "snippet": "Sep 23, 2025 ... United States President Donald Trump told world leaders gathered at the UN on Tuesday that during a seven-month period he had ended \u201cseven\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://www.eenews.net/articles/con-scam-hoax-trumps-un-speech-on-climate/",
+          "domain": "eenews.net",
+          "title": "'Con,' 'scam,' 'hoax': Trump's UN speech on climate - E&E News",
+          "snippet": "Sep 23, 2025 ... President Donald Trump rebuked world leaders for being overly concerned about climate change during a speech to the United Nations in which\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.bbc.com/news/world-us-canada-46351940",
+          "domain": "bbc.com",
+          "title": "Trump on climate change report: 'I don't believe it' - BBC",
+          "snippet": "Nov 26, 2018 ... During his election campaign in 2016 Mr Trump said climate change was \"a hoax\". However he has since rowed back on that statement saying in a\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "Donald Trump nuclear bomb Atlantic hurricane quote source",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.bbc.com/news/world-us-canada-49471093",
+          "domain": "bbc.com",
+          "title": "Nuclear weapons and hurricanes don't mix, NOAA advises - BBC",
+          "snippet": "Aug 26, 2019 ... President Donald Trump reportedly suggested bombing hurricanes before they made landfall ... The Atlantic Hurricane season runs from 1\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://www.axios.com/2019/08/25/trump-nuclear-bombs-hurricanes",
+          "domain": "axios.com",
+          "title": "Scoop: Trump suggested nuking hurricanes to stop them from hitting ...",
+          "snippet": "Aug 25, 2019 ... \"They start forming off the coast of Africa, as they're moving across the Atlantic, we drop a bomb inside the eye of the hurricane and it\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://www.theguardian.com/us-news/2019/aug/26/donald-trump-suggests-nuking-hurricanes-to-stop-them-hitting-america-report",
+          "domain": "theguardian.com",
+          "title": "Trump suggests 'nuking hurricanes' to stop them hitting America",
+          "snippet": "Aug 25, 2019 ... Quoting unnamed sources who were present at the ... hurricanes with nuclear weapons prior to reaching shore is ridiculous,\u201d he tweeted.",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://www.reuters.com/world/middle-east/one-week-into-iran-war-dangers-us-trump-multiply-2026-03-07/",
+          "domain": "reuters.com",
+          "title": "One week into Iran war, the dangers for the US and Trump multiply",
+          "snippet": "Mar 9, 2026 ... ... and prevent them from ever obtaining a nuclear weapon.\u201d However, if ... at the Atlantic Council think tank in Washington. One former\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.newsweek.com/fact-check-did-donald-trump-suggest-nuking-hurricanes-1535171",
+          "domain": "newsweek.com",
+          "title": "Fact-Check: Did Donald Trump Suggest Nuking Hurricanes?",
+          "snippet": "Sep 29, 2020 ... \"You could hear a gnat fart in that meeting,\" the source told Axios. ... Just more FAKE NEWS!\" Donald Trump nuke hurricane nuclear bomb debate.",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "Donald Trump quote about Revolutionary War airports",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://time.com/5620936/donald-trump-revolutionary-war-airports/",
+          "domain": "time.com",
+          "title": "Trump Says Revolutionary War Troops 'Took Over the Airports' - TIME",
+          "snippet": "Jul 4, 2019 ... \u201cOur army manned the air, it rammed the ramparts, it took over the airports, it did everything it had to do, and at Fort McHenry, under the\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://www.nbcnews.com/politics/donald-trump/trump-blames-teleprompter-revolutionary-war-airports-flub-n1026931",
+          "domain": "nbcnews.com",
+          "title": "Trump blames teleprompter for Revolutionary War 'airports' flub",
+          "snippet": "Jul 5, 2019 ... Trump blames teleprompter for Revolutionary War 'airports' flub ... The president made the gaffe during his speech at the Lincoln Memorial as part\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://www.bbc.com/news/blogs-trending-48880867",
+          "domain": "bbc.com",
+          "title": "Donald Trump's 'airport' revolution sees people rewrite history - BBC",
+          "snippet": "Jul 5, 2019 ... User SlumdogSkillionaire commented: \"By the end of the war there was not a single airport on the continent that was under British control. The\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://www.reddit.com/r/badhistory/comments/c9ddi3/there_were_no_airports_or_airplanes_during_the/",
+          "domain": "reddit.com",
+          "title": "There were no airports or airplanes during the revolutionary war.",
+          "snippet": "Jul 5, 2019 ... \u201cManned the air, rammed the ramparts, took over the airports\u201d - he's just making up stuff at that point. He had never seen those words before he\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.bbc.com/news/48885319",
+          "domain": "bbc.com",
+          "title": "Trump blames 'airports' gaffe on teleprompter - BBC",
+          "snippet": "Jul 5, 2019 ... He told crowds on 4 July the Continental Army \"took over the airports\" during the American Revolutionary War in the 1770s. Observers quickly\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "Donald Trump statement about detonating nuclear bomb to stop hurricanes date",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.axios.com/2019/08/25/trump-nuclear-bombs-hurricanes",
+          "domain": "axios.com",
+          "title": "Scoop: Trump suggested nuking hurricanes to stop them from hitting ...",
+          "snippet": "Aug 25, 2019 ... ... a bomb inside the eye of the hurricane and it disrupts it. Why can't we do that?\" the source added, paraphrasing the president's remarks. An\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://en.wikipedia.org/wiki/Nuclear_strikes_on_hurricanes",
+          "domain": "en.wikipedia.org",
+          "title": "Nuclear strikes on hurricanes - Wikipedia",
+          "snippet": "... a hurricane, and that a nuclear detonation ... In 2019, Axios reported that U.S. president Donald Trump had suggested using nuclear bombs to stop hurricanes on\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://www.washingtonpost.com/weather/2020/06/08/new-bill-would-prohibit-president-nuking-hurricane/",
+          "domain": "washingtonpost.com",
+          "title": "New bill would prohibit the president from nuking a hurricane",
+          "snippet": "Jun 8, 2020 ... The measure is a direct response to President Trump's reported suggestion of using nuclear bombs to defuse Atlantic tropical cyclones.",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://www.facebook.com/TheWeatherChannel/posts/the-energy-a-hurricane-puts-out-during-its-life-cycle-is-equivalent-to-10000-nuc/684429276879837/",
+          "domain": "facebook.com",
+          "title": "The energy a hurricane puts out during its life cycle is equivalent to ...",
+          "snippet": "Sep 8, 2023 ... Recent posts \u00b7 Can nuclear weapons stop hurricanes?",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.washingtonpost.com/politics/2020/11/02/fact-checking-final-arguments-biden-trump/",
+          "domain": "washingtonpost.com",
+          "title": "Fact-checking the 'final arguments' of Biden and Trump",
+          "snippet": "Nov 2, 2020 ... ... and national security officials that they explore using nuclear bombs to stop hurricanes from hitting the United States.\u201d The report said he\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "Donald Trump suggestion nuclear bomb Atlantic hurricane",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.bbc.com/news/world-us-canada-49471093",
+          "domain": "bbc.com",
+          "title": "Nuclear weapons and hurricanes don't mix, NOAA advises - BBC",
+          "snippet": "Aug 26, 2019 ... Following reports of Mr Trump's suggestion, the hashtag #ThatsHowTheApocalyseStarted has been trending on Twitter. ... The Atlantic Hurricane\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://www.axios.com/2019/08/25/trump-nuclear-bombs-hurricanes",
+          "domain": "axios.com",
+          "title": "Scoop: Trump suggested nuking hurricanes to stop them from hitting ...",
+          "snippet": "Aug 25, 2019 ... ... the Atlantic, we drop a bomb inside the eye of the hurricane and it disrupts it. Why can't we do that?\" the source added, paraphrasing the\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://www.abc.net.au/news/2019-08-26/president-donald-trump-nuke-the-hurricane-suggestion/11448664",
+          "domain": "abc.net.au",
+          "title": "Donald Trump asked officials if the US could 'nuke' hurricanes ...",
+          "snippet": "Aug 25, 2019 ... ... of hurricanes as they cross the Atlantic, according to an ... US President Donald Trump suggested dropping nuclear bombs into hurricanes\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://www.bbc.co.uk/news/world-us-canada-49471093",
+          "domain": "bbc.co.uk",
+          "title": "Nuclear weapons and hurricanes don't mix, NOAA advises - BBC",
+          "snippet": "Aug 26, 2019 ... Following reports of Mr Trump's suggestion, the hashtag #ThatsHowTheApocalyseStarted has been trending on Twitter. ... The Atlantic Hurricane\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.theguardian.com/us-news/2019/aug/26/donald-trump-suggests-nuking-hurricanes-to-stop-them-hitting-america-report",
+          "domain": "theguardian.com",
+          "title": "Trump suggests 'nuking hurricanes' to stop them hitting America",
+          "snippet": "Aug 25, 2019 ... Donald Trump has reportedly suggested on more than one occasion that the US military should bomb hurricanes in order to disrupt them before\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "Donald Trump tax payment claim debunked",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.gov.ca.gov/2026/03/05/trumpcriminals3/",
+          "domain": "gov.ca.gov",
+          "title": "Trump pardons wipe nearly $2 billion in victim repayment and ...",
+          "snippet": "Mar 5, 2026 ... ... for Medicare and tax fraud, and more. What ... Over 3,700 former Trump University students made claims of fraud against President Trump and\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://apnews.com/article/social-security-payments-deceased-false-claims-doge-ed2885f5769f368853ac3615b4852cf7",
+          "domain": "apnews.com",
+          "title": "Tens of millions of dead people aren't getting Social Security checks ...",
+          "snippet": "Feb 19, 2025 ... WASHINGTON (AP) \u2014 The Trump administration is falsely claiming that tens of millions of dead people over 100 years old are receiving Social\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "http://democrats-judiciary.house.gov/media-center/press-releases/the-top-10-reasons-donald-trump-s-1776-billion-weaponization-slush-fund-and-super-pardon-for-his-family-and-businesses-are-unconstitutional-illegal-and-a-fraud-on-the-court",
+          "domain": "democrats-judiciary.house.gov",
+          "title": "The Top 10 Reasons Donald Trump's $1.776 Billion \u201cWeaponization ...",
+          "snippet": "May 27, 2026 ... It purports to draw from the Judgment Fund, but $1.776 billion in tax dollars will go into a slush fund to pay out third parties with no\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://ag.ny.gov/press-release/2024/attorney-general-james-wins-landmark-victory-case-against-donald-trump",
+          "domain": "ag.ny.gov",
+          "title": "Attorney General James Wins Landmark Victory in Case Against ...",
+          "snippet": "Feb 16, 2024 ... Donald Trump and the other defendants are ordered to pay more than ... Trump and the defendants committed fraud by falsely inflating the value of\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.warren.senate.gov/news/press-releases/fact-check-social-security-war-room-debunks-trump-admins-latest-social-security-lies-and-misleading-statements/",
+          "domain": "warren.senate.gov",
+          "title": "FACT CHECK: Social Security War Room Debunks Trump Admin's ...",
+          "snippet": "Sep 5, 2025 ... The agency has addressed billions of dollars in improper payments.\u201d FACT: President Trump's and administration officials' false claims about\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "Effect of border walls on human smuggling activities in US border areas",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://homeland.house.gov/2023/12/14/now-nobody-crosses-without-paying-senior-border-patrol-agents-describe-unprecedented-cartel-control-at-southwest-border/",
+          "domain": "homeland.house.gov",
+          "title": "\u201cNow Nobody Crosses Without Paying:\u201d Senior Border Patrol Agents ...",
+          "snippet": "Dec 14, 2023 ... ... human smuggling, as well as human trafficking. As noted in the ... people at one time coming over the border walls, overwhelming agents.",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://www.aclu.org/publications/death-damage-and-failure",
+          "domain": "aclu.org",
+          "title": "Death, Damage, and Failure | American Civil Liberties Union",
+          "snippet": "Sep 12, 2018 ... ... walls do not make the U.S. safer or significantly reduce smuggling ... wall will affect the 15 million people who call the southern border home.",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://www.migrationpolicy.org/journal/feature/evaluating-enhanced-us-border-enforcement",
+          "domain": "migrationpolicy.org",
+          "title": "Evaluating Enhanced U.S. Border Enforcement",
+          "snippet": "Tripling U.S. border enforcement spending since 1993 did not deter significant unauthorized migration, but did have several unintended consequences.",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://www.cbp.gov/frontline/wall-construction-continues-part-holistic-approach-stop-illegal-immigration",
+          "domain": "cbp.gov",
+          "title": "Wall Construction Continues as Part of a Holistic Approach to Stop ...",
+          "snippet": "As of Oct. 29, U.S. Customs and Border Protection and its partners at U.S. Army Corps of Engineers have constructed 76 miles of new border wall system since\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.congress.gov/crs-product/R42138",
+          "domain": "congress.gov",
+          "title": "Border Security: Immigration Enforcement Between Ports of Entry",
+          "snippet": "How Secure is the U.S. Border? Unintended and Secondary Consequences of Border Enforcement; Border-Area Crime and Migrant Deaths; Migration Flows: \"Caging\"\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "Face masks COVID-19 spread claim debunked",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.bbc.com/news/53108405",
+          "domain": "bbc.com",
+          "title": "Coronavirus: 'Deadly masks' claims debunked - BBC",
+          "snippet": "Jul 24, 2020 ... The BBC's anti-disinformation team has been investigating misleading health claims about wearing face coverings.",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://www.reuters.com/article/world/fact-check-studies-do-show-face-masks-and-lockdowns-slow-the-spread-of-covid-19-idUSKCN2AT3JJ/",
+          "domain": "reuters.com",
+          "title": "Fact check: Studies do show face masks and lockdowns slow the ...",
+          "snippet": "Mar 1, 2021 ... ... online that claim there is no evidence that face masks or lockdowns slow the spread of COVID-19. This claim is false.",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://www.factcheck.org/2021/02/scicheck-video-airs-false-misleading-claims-about-face-masks/",
+          "domain": "factcheck.org",
+          "title": "Video Airs False, Misleading Claims About Face Masks",
+          "snippet": "Feb 17, 2021 ... \u201cWhat, wait a minute, I thought I was wearing a mask to stop the spread of COVID-19?\u201d he says. \u201cJust like when they told me that I'm getting a\u00a0...",
+          "classification": "fact_check"
+        },
+        {
+          "rank": 4,
+          "url": "https://www.reuters.com/article/world/false-claim-overuse-of-hand-sanitizers-and-soaps-leads-to-bacterial-infections-idUSKBN22R2LF/",
+          "domain": "reuters.com",
+          "title": "False claim: Overuse of hand sanitizers and soaps leads to bacterial ...",
+          "snippet": "May 15, 2020 ... ... spread of COVID-19. Reuters recently debunked a misleading claim that face masks cause hypercapnia, an excessive build-up of carbon dioxide\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.mass.gov/news/salem-company-to-pay-35-million-for-false-claims-about-its-ability-to-refund-the-state-for-masks-not-delivered-during-covid-19-pandemic",
+          "domain": "mass.gov",
+          "title": "Salem Company to Pay $3.5 Million for False Claims About Its Ability ...",
+          "snippet": "Jun 16, 2021 ... \u201cThe state relied on this order to provide life-saving masks during the COVID-19 pandemic. ... spread of COVID-19. In January, the AG's False\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "Face masks effectiveness COVID-19 transmission",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10760436/",
+          "domain": "pmc.ncbi.nlm.nih.gov",
+          "title": "Effectiveness of wearing masks during the COVID-19 outbreak in ...",
+          "snippet": "To evaluate the efficacy of wearing a mask to prevent COVID-19 infection. This was a systematic review and meta-analysis of cohort and case-control studies,\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://www.mayoclinic.org/diseases-conditions/coronavirus/in-depth/coronavirus-mask/art-20485449",
+          "domain": "mayoclinic.org",
+          "title": "How well do face masks protect against COVID-19? - Mayo Clinic",
+          "snippet": "Face masks can help slow the spread of coronavirus disease 2019 (COVID-19). Learn about mask types, which masks to use and how to use them.",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10446908/",
+          "domain": "pmc.ncbi.nlm.nih.gov",
+          "title": "Effectiveness of face masks for reducing transmission of SARS-CoV-2",
+          "snippet": "Aug 24, 2023 ... In summary, the great majority of studies found that masks (n = 39/47; 83%) reduced transmission, although the magnitude of measured effects was\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://www.pnas.org/doi/10.1073/pnas.2014564118",
+          "domain": "pnas.org",
+          "title": "An evidence review of face masks against COVID-19 | PNAS",
+          "snippet": "Jan 11, 2021 ... Wu reported on experiments that showed a cotton mask was effective at stopping airborne transmission, as well as on observational evidence of\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://pubmed.ncbi.nlm.nih.gov/34041970/",
+          "domain": "pubmed.ncbi.nlm.nih.gov",
+          "title": "Effectiveness of Face Masks in Reducing the Spread of COVID-19",
+          "snippet": "May 27, 2021 ... During a resurgence, with lowered transmission rates due to social distancing measures, masks with medium effectiveness at 80% coverage can\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "France cancels visas 183 Pakistani citizens Imran Khan Macron controversy",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://arxiv.org/pdf/2508.04390",
+          "domain": "arxiv.org",
+          "title": "AIC CTU@FEVER 8: On-premise fact checking through long ... - arXiv",
+          "snippet": "Aug 5, 2025 ... The user is claiming that due to Imran Khan 's criticism of Macron 's comments on Islam, French authorities cancelled the visas of 183 Pakistani\u00a0...",
+          "classification": "research_venue"
+        },
+        {
+          "rank": 2,
+          "url": "https://www.indiatoday.in/fact-check/story/fact-check-fake-tweet-france-deporting-pakistanis-go-viral-imran-slams-macron-1737276-2020-11-02",
+          "domain": "indiatoday.in",
+          "title": "Fact Check: Fake tweet on France deporting Pakistanis go viral after ...",
+          "snippet": "Nov 2, 2020 ... ... French authorities cancelled visas of 183 Pakistani citizens and deported 118 from the country. ... France after Imran Khan criticised Macron's\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://en.wikipedia.org/wiki/Imran_Khan",
+          "domain": "en.wikipedia.org",
+          "title": "Imran Khan - Wikipedia",
+          "snippet": "Imran Ahmed Khan Niazi (born 5 October 1952) is a Pakistani former cricketer, philanthropist, and politician who served as the 19th prime minister of\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://www.state.gov/report/custom/d58b931556",
+          "domain": "state.gov",
+          "title": "International Religious Freedom Reports: Custom Report Excerpts",
+          "snippet": "On October 26, President Macron, accompanied by Chief Rabbi of France ... Prime Minister Imran Khan said the attack was \u201chorrific\u201d and ordered a high\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://en.wikipedia.org/wiki/Premiership_of_Imran_Khan",
+          "domain": "en.wikipedia.org",
+          "title": "Premiership of Imran Khan - Wikipedia",
+          "snippet": "The premiership of Imran Khan began on 18 August 2018, after his Pakistan Tehreek-e-Insaf (PTI) party secured a victory in the 2018 Pakistani general\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "French Ministry of Interior press release on deportations of Pakistani nationals 2023",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.reuters.com/world/asia-pacific/pakistan-starts-deporting-registered-afghan-refugees-says-unhcr-2025-08-06/",
+          "domain": "reuters.com",
+          "title": "Pakistan starts deporting registered Afghan refugees, says UNHCR",
+          "snippet": "Aug 6, 2025 ... ... Pakistan's interior ministry order seen by Reuters. It said the ... French far-right leaders said their party, the National Rally, and\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://www.state.gov/reports/2023-country-reports-on-human-rights-practices/france",
+          "domain": "state.gov",
+          "title": "France - United States Department of State",
+          "snippet": "... French citizens in a holding center and deported seven of them to the Comoros. ... Ministry of Interior statistics released May 23. Insults constituted 57\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://www.reuters.com/world/asia-pacific/pakistan-official-104000-undocumented-afghans-returned-afghanistan-through-2023-11-01/",
+          "domain": "reuters.com",
+          "title": "Pakistan starts rounding up undocumented foreigners, mostly ...",
+          "snippet": "Nov 1, 2023 ... \"A process to arrest the foreigners... for deportation has started as of Nov.1,\" the interior ministry said in a statement, while adding that\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://dtm.iom.int/taxonomy/term/4?page=20",
+          "domain": "dtm.iom.int",
+          "title": "Flow Monitoring | Displacement Tracking Matrix - IOM",
+          "snippet": "In response to the Ministry of Interior's (MoI) decision of 26 September 2023 ... deportations of Afghan nationals, particularly in April 2025. As of May\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.ecoi.net/en/file/local/2102282/2023_12_EUAA_COI_Query_Response_Q71_Pakistan_Afghans_IFRP.pdf",
+          "domain": "ecoi.net",
+          "title": "EUAA COI Query Response - Pakistan - 'Illegal Foreigners ... - Ecoi.net",
+          "snippet": "Dec 14, 2023 ... On 26 September 2023, the Ministry of Interior (MoI) of Pakistan announced its internal plan to enact an Illegal Foreigners' Repatriation Plan (\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "French authorities deport 118 Pakistani citizens Imran Khan Macron comments",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.geo.tv/latest/316317-fact-check-france-cancellation-of-pakistani-nationals-visa-pm-imran-khans-remarks-fake",
+          "domain": "geo.tv",
+          "title": "France did not deport Pakistanis after PM Imran Khan's remarks on ...",
+          "snippet": "Nov 1, 2020 ... \"183 visitor visas provided to our citizens[have] been found to be rejected by French authorities following the criticism by PM Imran Khan. 118\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://arxiv.org/pdf/2411.02400",
+          "domain": "arxiv.org",
+          "title": "arXiv:2411.02400v2 [cs.IR] 15 Feb 2025",
+          "snippet": "Feb 15, 2025 ... - French authorities deported 118 Pakistani citizens ... - Due to Imran Khan's criticism of Macron's comments on Islam, French authorities.",
+          "classification": "research_venue"
+        },
+        {
+          "rank": 3,
+          "url": "https://www.indiatoday.in/fact-check/story/fact-check-fake-tweet-france-deporting-pakistanis-go-viral-imran-slams-macron-1737276-2020-11-02",
+          "domain": "indiatoday.in",
+          "title": "Fact Check: Fake tweet on France deporting Pakistanis go viral after ...",
+          "snippet": "Nov 2, 2020 ... Tourist visas of 183 Pak citizens were rejected by France after Imran Khan criticised Macron's comments on Islam. Some 118 Pak citizens with\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://arxiv.org/pdf/2508.04390",
+          "domain": "arxiv.org",
+          "title": "AIC CTU@FEVER 8: On-premise fact checking through long ... - arXiv",
+          "snippet": "Aug 5, 2025 ... {\"question\": \"Did French authorities cancel visas or deport Pakistani citizens in response to Imran Khan 's criticism of Macron 's comments on.",
+          "classification": "research_venue"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.altnews.in/indian-media-outlets-fall-for-impostor-account-claiming-france-revoked-183-pakistani-visas/",
+          "domain": "altnews.in",
+          "title": "Indian media outlets fall for impostor account claiming France ...",
+          "snippet": "Nov 3, 2020 ... ... Macron government is directly linked to the anti-French rhetoric of Imran Khan. ... deported 118 Pakistani citizens based on an imposter\u00a0...",
+          "classification": "fact_check"
+        }
+      ]
+    },
+    {
+      "query": "Impact of border barriers on illegal drug trafficking in the United States",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.congress.gov/crs-product/R46218",
+          "domain": "congress.gov",
+          "title": "Illicit Drug Smuggling Between Ports of Entry and Border Barriers",
+          "snippet": "Feb 7, 2020 ... ... border security often involve questions about how illicit drugs flow into the United States. ... border barriers may affect illicit drug smuggling\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://forumtogether.org/article/illicit-fentanyl-and-drug-smuggling-at-the-u-s-mexico-border-an-overview/",
+          "domain": "forumtogether.org",
+          "title": "Illicit Fentanyl and Drug Smuggling at the U.S.-Mexico Border",
+          "snippet": "Oct 25, 2023 ... Illicit fentanyl has devastating impacts across all corners of the United States, causing public health issues in thousands of American\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://www.brookings.edu/articles/border-security-and-comprehensive-immigration-reform/",
+          "domain": "brookings.edu",
+          "title": "Border security and comprehensive immigration reform | Brookings",
+          "snippet": "Feb 11, 2019 ... I would be remiss, however, not to address also the impact of a border barrier on U.S. native communities and U.S. biodiversity. Trafficking,\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://www.dhs.gov/topics/border-security",
+          "domain": "dhs.gov",
+          "title": "Border Security",
+          "snippet": "Other component agencies like U.S. Immigration and Customs Enforcement and the U.S. Coast Guard protect our borders from the illicit movement of weapons, drugs,\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.justice.gov/doj/strategic-plan-fys-2026-2030/objective-1-4",
+          "domain": "justice.gov",
+          "title": "Objective 1.4: Secure the Border, Combat Illegal Immigration, and ...",
+          "snippet": "DOJ immigration objectives span border security, immigration enforcement, and efforts to disrupt human smuggling and human trafficking.",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "Imran Khan criticism of Macron Islam visa cancellation Pakistanis France",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://arxiv.org/pdf/2508.04390",
+          "domain": "arxiv.org",
+          "title": "AIC CTU@FEVER 8: On-premise fact checking through long ... - arXiv",
+          "snippet": "Aug 5, 2025 ... criticism of Macron 's comments on Islam, French authorities cancelled the visas ... visa cancellations or deportations related to Imran Khan\u00a0...",
+          "classification": "research_venue"
+        },
+        {
+          "rank": 2,
+          "url": "https://www.geo.tv/latest/316317-fact-check-france-cancellation-of-pakistani-nationals-visa-pm-imran-khans-remarks-fake",
+          "domain": "geo.tv",
+          "title": "France did not deport Pakistanis after PM Imran Khan's remarks on ...",
+          "snippet": "Nov 1, 2020 ... ... Imran Khan's slamming French President Emmanuel Macron's remarks against Islam. \"The Embassy of Pakistan in Paris, France has only one\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://en.wikipedia.org/wiki/Imran_Khan",
+          "domain": "en.wikipedia.org",
+          "title": "Imran Khan - Wikipedia",
+          "snippet": "Imran Ahmed Khan Niazi (born 5 October 1952) is a Pakistani former cricketer, philanthropist, and politician who served as the 19th prime minister of\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://www.indiatoday.in/fact-check/story/fact-check-fake-tweet-france-deporting-pakistanis-go-viral-imran-slams-macron-1737276-2020-11-02",
+          "domain": "indiatoday.in",
+          "title": "Fact Check: Fake tweet on France deporting Pakistanis go viral after ...",
+          "snippet": "Nov 2, 2020 ... Tourist visas of 183 Pak citizens were rejected by France after Imran Khan criticised Macron's comments on Islam. Some 118 Pak citizens with\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.facebook.com/WIONews/posts/imran-khan-government-has-promised-to-enact-legislation-which-will-ultimately-le/1600901006787195/",
+          "domain": "facebook.com",
+          "title": "Imran Khan government has promised to enact legislation which will ...",
+          "snippet": "Nov 17, 2020 ... ... France after Prime Minister Imran Khan accused French President Emmanuel Macron of \"attacking Islam\". There is only one problem: Pakistan\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "Is Saudi Arabia the top oil producer globally?",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.eia.gov/tools/faqs/faq.php?id=709&t=6",
+          "domain": "eia.gov",
+          "title": "What countries are the top producers and consumers of oil? - EIA",
+          "snippet": "Apr 11, 2024 ... China, 15.15, 15% ; India, 5.05, 5% ; Russia, 3.68, 4% ; Saudi Arabia, 3.65, 4%.",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://en.wikipedia.org/wiki/List_of_countries_by_oil_extraction",
+          "domain": "en.wikipedia.org",
+          "title": "List of countries by oil extraction - Wikipedia",
+          "snippet": "... global oil production in January 2026 averaged 84.5 million barrels per day. Approximately 73% of this total was produced by the ten largest producing\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://www.worldometers.info/oil/oil-production-by-country/",
+          "domain": "worldometers.info",
+          "title": "Oil Production by Country - Worldometer",
+          "snippet": "Oil Production by Country ; 2. Saudi Arabia. 11,213,958 ; 3. Russia. 10,534,548 ; 4. Canada. 6,256,639 ; 5. China. 5,446,189\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://en.wikipedia.org/wiki/Saudi_Aramco",
+          "domain": "en.wikipedia.org",
+          "title": "Saudi Aramco - Wikipedia",
+          "snippet": "Saudi Aramco officially the Saudi Arabian Oil Company, is a majority state-owned petroleum and natural gas company, and the national oil company of Saudi\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.reuters.com/business/energy/once-an-arab-oil-embargo-victim-us-becomes-worlds-top-oil-exporter-2026-06-11/",
+          "domain": "reuters.com",
+          "title": "Once an Arab oil embargo victim, US becomes world's top oil exporter",
+          "snippet": "Jun 11, 2026 ... US oil exports surge as Saudi, Russian exports disrupted by conflict and sanctions; EU officials warn of risks in growing dependence on US\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "Is the claim that Saudi Arabia is the largest oil producer false",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.theguardian.com/environment/2022/nov/19/false-solutions-scepticism-over-saudi-carbon-capture-plan",
+          "domain": "theguardian.com",
+          "title": "'False solutions': scepticism over Saudi carbon capture plan",
+          "snippet": "Nov 19, 2022 ... ... claim Saudi officials said was \u201cnot based on facts\u201d. The decision to cut oil production marks a contrast with years of Saudi Arabian tactics\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://factcheck.afp.com/doc.afp.com.9QJ4HU",
+          "domain": "factcheck.afp.com",
+          "title": "Posts falsely claim US has massive untapped oil field | Fact Check",
+          "snippet": "Oct 29, 2021 ... Social media posts claim untapped oil reserves in an area of the US and Canada exceed those in Saudi Arabia and other major oil-producing\u00a0...",
+          "classification": "fact_check"
+        },
+        {
+          "rank": 3,
+          "url": "https://apnews.com/article/trump-iran-fact-focus-gas-prices-inflation-821374c3c249ad0abf471843ce8e9557",
+          "domain": "apnews.com",
+          "title": "FACT FOCUS: False claims from Trump in address to the nation",
+          "snippet": "Apr 1, 2026 ... Men perform the traditional Saudi sword dance known as the ardah during celebrations marking Saudi Arabia's ... producer of oil and relies\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://www.middleeastmonitor.com/20260303-iran-blames-israel-for-saudi-aramco-drone-attack-calls-it-false-flag/",
+          "domain": "middleeastmonitor.com",
+          "title": "Iran blames Israel for Saudi Aramco drone attack, calls it 'false flag'",
+          "snippet": "Mar 3, 2026 ... Earlier on Monday, one of Aramco's oil facilities in eastern Saudi Arabia was hit by a drone. Sources told Reuters that Saudi Aramco had shut\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.bbc.com/news/live/ce35wke27ynt",
+          "domain": "bbc.com",
+          "title": "Trump says Iran has 'one more chance at peace' as Tehran ... - BBC",
+          "snippet": "Mar 21, 2026 ... ... fake news\" has been used to \"manipulate\" the oil markets; Today, even ... Saudi Arabia says it shot down four drones in its eastern province\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "Jammu and Kashmir UN unresolved dispute status 2024",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://en.wikipedia.org/wiki/Kashmir_conflict",
+          "domain": "en.wikipedia.org",
+          "title": "Kashmir conflict - Wikipedia",
+          "snippet": "India claims the entire erstwhile British Indian princely state of Jammu and Kashmir based on an instrument of accession signed in 1947. Pakistan claims most of\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://revistas.rcaap.pt/juridica/article/view/35475",
+          "domain": "revistas.rcaap.pt",
+          "title": "Kashmir, the longest unresolved dispute on Security Council's agenda",
+          "snippet": "Jun 12, 2024 ... Cambridge: Cambridge University Press. Behera, N. C. (2000). State, Identity and Violence: Jammu, Kashmir and Ladakh. New Delhi: Manohar\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://en.wikipedia.org/wiki/Sino-Indian_border_dispute",
+          "domain": "en.wikipedia.org",
+          "title": "Sino-Indian border dispute - Wikipedia",
+          "snippet": "In the western sector, the dispute involves Aksai Chin, a region historically linked to the princely state of Jammu and Kashmir but effectively controlled by\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://www.unesco.org/en/safety-journalists/observatory",
+          "domain": "unesco.org",
+          "title": "Observatory of Killed Journalists | UNESCO",
+          "snippet": "... status of ongoing and unresolved cases. You may browse the full list ... The final status of Jammu and Kashmir has not yet been agreed upon by the parties.",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://bttn.org.pk/bttn-in-house-seminar-kashmir-day-2024/",
+          "domain": "bttn.org.pk",
+          "title": "Kashmir Day 2024 - Balochistan Think Tank Network",
+          "snippet": "Feb 4, 2025 ... ... the United Nations in the unresolved status of Jammu and Kashmir. Mr. Shah Meer analyzed \u201cIndia's Unilateral Changes to Kashmir's Status\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "Jammu and Kashmir dispute removed from UN agenda false",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.facebook.com/mint.live/posts/the-strong-retort-by-india-came-after-pakistans-permanent-representative-to-the-/1465223038980745/",
+          "domain": "facebook.com",
+          "title": "The strong retort by India came after Pakistan's Permanent ...",
+          "snippet": "Jun 18, 2026 ... India calls for removing Kashmir issue from UN Security Council agenda ... Jammu and Kashmir on the UN agenda. \u201cFrankly, the attempt by\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://en.wikipedia.org/wiki/Kashmir_conflict",
+          "domain": "en.wikipedia.org",
+          "title": "Kashmir conflict - Wikipedia",
+          "snippet": "UN mediation. Main article: UN mediation of the Kashmir dispute ... The lead in this act of ethnic cleansing was initially taken by the Jammu & Kashmir Liberation\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://www.facebook.com/ImranKhanOfficial/posts/prime-ministers-message-on-kashmir-black-day27-october-2021pakistan-and-millions/7260888470620177/",
+          "domain": "facebook.com",
+          "title": "Prime Minister's Message on Kashmir Black Day (27 October 2021 ...",
+          "snippet": "Oct 27, 2021 ... The long outstanding Jammu and Kashmir dispute has been on the agenda of the UN Security Council since January 1948. It is an\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://en.wikipedia.org/wiki/UN_mediation_of_the_Kashmir_dispute",
+          "domain": "en.wikipedia.org",
+          "title": "UN mediation of the Kashmir dispute - Wikipedia",
+          "snippet": "The United Nations has played an advisory role in maintaining peace and order in the Kashmir region soon after the independence and partition of British\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.bbc.com/news/world-asia-india-49234708",
+          "domain": "bbc.com",
+          "title": "Article 370: What happened with Kashmir and why it matters - BBC",
+          "snippet": "Aug 5, 2019 ... India's BJP-led government is hailing its decision to strip the state of Jammu and Kashmir of autonomy after seven decades,\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "Jammu and Kashmir removed from United Nations unresolved disputes list",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.boomlive.in/fake-news/has-the-un-removed-kashmir-from-unresolved-disputes-list-a-factcheck-10522",
+          "domain": "boomlive.in",
+          "title": "Has The UN Removed Kashmir From Unresolved Disputes List? A ...",
+          "snippet": "Nov 5, 2020 ... FactCheck. The issue erupted in November 2010 when Mark Lyall Grant of the United Kingdom (UK) did not mention the Jammu and Kashmir dispute\u00a0...",
+          "classification": "fact_check"
+        },
+        {
+          "rank": 2,
+          "url": "https://en.wikipedia.org/wiki/List_of_territorial_disputes",
+          "domain": "en.wikipedia.org",
+          "title": "List of territorial disputes - Wikipedia",
+          "snippet": "Jammu and Kashmir and Ladakh \u00b7 India \u00b7 Pakistan, Part of the Kashmir conflict. Both ... The United Nations keeps the Western Sahara in its list of non-self\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://www.altnews.in/old-unfounded-reports-of-removal-of-jk-from-un-list-of-disputes-viral-again/",
+          "domain": "altnews.in",
+          "title": "Old unfounded reports of removal of JK from UN 'list of disputes' viral ...",
+          "snippet": "Nov 16, 2020 ... As per the article, Jammu and Kashmir (J&K) was removed from the United Nations (UN) list of \u201cunresolved disputes\u201d. Further, it attributed a\u00a0...",
+          "classification": "fact_check"
+        },
+        {
+          "rank": 4,
+          "url": "https://en.wikipedia.org/wiki/Kashmir_conflict",
+          "domain": "en.wikipedia.org",
+          "title": "Kashmir conflict - Wikipedia",
+          "snippet": "India controls approximately 55% of the land area of the region that includes Jammu, the Kashmir Valley, most of Ladakh, the Siachen Glacier, and 70% of its\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://factly.in/old-news-of-jk-removal-from-uns-alleged-disputed-list-shared-as-modis-achievement/",
+          "domain": "factly.in",
+          "title": "Old news of removal of J&K from UN's alleged 'disputed list' shared ...",
+          "snippet": "Jan 20, 2023 ... Claim: During PM Modi's rule, Jammu & Kashmir has been removed from the United Nations list of unresolved disputes. Fact: No such list of\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "Matt Gaetz company fined 75 million hospice fraud",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://aclanthology.org/2025.fever-1.12.pdf",
+          "domain": "aclanthology.org",
+          "title": "(Fact) Check Your Bias - ACL Anthology",
+          "snippet": "Jul 31, 2025 ... predictions for the Matt Gaetz hospice fraud claim. Claim: \"Republican Matt Gaetz was part of a company that had to pay 75 million in hospice\u00a0...",
+          "classification": "research_venue"
+        },
+        {
+          "rank": 2,
+          "url": "https://arxiv.org/pdf/2506.21745",
+          "domain": "arxiv.org",
+          "title": "(Fact) Check Your Bias - arXiv",
+          "snippet": "Jun 26, 2025 ... ... company that had to pay 75 million in hospice fraud. They ... \"Matt Gaetz's Involvement in a Company Accused of Hospice Fraud. Rep. Matt.",
+          "classification": "research_venue"
+        },
+        {
+          "rank": 3,
+          "url": "https://www.uio.no/studier/emner/matnat/ifi/IN5550/v25/final-exam/wnnlp2025_proceedings.pdf",
+          "domain": "uio.no",
+          "title": "Proceedings of the Seventh IN5550 Workshop on Neural ... - UiO",
+          "snippet": "Jun 2, 2025 ... predictions for the Matt Gaetz hospice fraud claim. Claim: \"Republican Matt Gaetz was part of a company that had to pay 75 million in hospice\u00a0...",
+          "classification": "research_venue"
+        },
+        {
+          "rank": 4,
+          "url": "https://www.reddit.com/r/news/comments/1tjqtjk/woman_at_center_of_sprawling_minnesota_fraud_case/",
+          "domain": "reddit.com",
+          "title": "Woman at center of sprawling Minnesota fraud case gets nearly 42 ...",
+          "snippet": "May 22, 2026 ... Don Gaetz is Matt's father. Don Gaetz co ... VITAS and another company associated with VITAS were fined 75 million for filing fraudulent\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.hhs.gov/sites/default/files/fy-2023-foia-log.xlsx",
+          "domain": "hhs.gov",
+          "title": "Review Copy FY 2023 FOIA Log - HHS.gov",
+          "snippet": "please provide the previous RFP documents details for the below contract number 75P00119D00008. Previous Incumbent Company Name: SPECTRUM HEALTHCARE RESOURCES,\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "Matt Gaetz company hospice fraud 75 million",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://aclanthology.org/2025.fever-1.12.pdf",
+          "domain": "aclanthology.org",
+          "title": "(Fact) Check Your Bias - ACL Anthology",
+          "snippet": "Jul 31, 2025 ... predictions for the Matt Gaetz hospice fraud claim. Claim: \"Republican Matt Gaetz was part of a company that had to pay 75 million in hospice\u00a0...",
+          "classification": "research_venue"
+        },
+        {
+          "rank": 2,
+          "url": "https://www.factcheck.org/2019/10/misleading-posts-target-gop-rep-matt-gaetz/",
+          "domain": "factcheck.org",
+          "title": "Misleading Posts Target GOP Rep. Matt Gaetz - FactCheck.org",
+          "snippet": "Oct 31, 2019 ... ... Gaetz. \u201cHe was part of a company that had to pay 75 million in hospice fraud. They stole from dying people. He is the swamp.\u201d Like many\u00a0...",
+          "classification": "fact_check"
+        },
+        {
+          "rank": 3,
+          "url": "https://arxiv.org/pdf/2506.21745",
+          "domain": "arxiv.org",
+          "title": "(Fact) Check Your Bias - arXiv",
+          "snippet": "Jun 26, 2025 ... ... company that had to pay 75 million in hospice fraud. They ... \"Matt Gaetz's Involvement in a Company Accused of Hospice Fraud. Rep. Matt.",
+          "classification": "research_venue"
+        },
+        {
+          "rank": 4,
+          "url": "https://en.wikipedia.org/wiki/Don_Gaetz",
+          "domain": "en.wikipedia.org",
+          "title": "Don Gaetz - Wikipedia",
+          "snippet": "Donald Jay Gaetz is an American businessman and Republican politician who has been a member of the Florida State Senate since 2024, representing parts of\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.facebook.com/pnjnews/posts/former-us-rep-matt-gaetz-posted-on-x-his-father-don-gaetz-was-released-from-the-/1031206172380967/",
+          "domain": "facebook.com",
+          "title": "Former U.S. Rep. Matt Gaetz posted on X his father, Don ... - Facebook",
+          "snippet": "Feb 1, 2025 ... \"Gaetz, who is 75, was elected in November to the Florida Senate. ... Alleged Gaetz Extortion Plot Co-conspirator Served 10 Years in Prison for\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "Matt Gaetz hospice fraud allegations",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://aclanthology.org/2025.fever-1.12.pdf",
+          "domain": "aclanthology.org",
+          "title": "(Fact) Check Your Bias - ACL Anthology",
+          "snippet": "Jul 31, 2025 ... \"Matt Gaetz and the Allegations of Hospice Fraud. In 2019, allegations emerged that U.S. Representative Matt Gaetz (R-FL) was associated\u00a0...",
+          "classification": "research_venue"
+        },
+        {
+          "rank": 2,
+          "url": "https://www.factcheck.org/2019/10/misleading-posts-target-gop-rep-matt-gaetz/",
+          "domain": "factcheck.org",
+          "title": "Misleading Posts Target GOP Rep. Matt Gaetz - FactCheck.org",
+          "snippet": "Oct 31, 2019 ... \u201cHe was part of a company that had to pay 75 million in hospice fraud. They stole from dying people. He is the swamp.\u201d Like many claims that\u00a0...",
+          "classification": "fact_check"
+        },
+        {
+          "rank": 3,
+          "url": "https://arxiv.org/pdf/2506.21745",
+          "domain": "arxiv.org",
+          "title": "(Fact) Check Your Bias - arXiv",
+          "snippet": "Jun 26, 2025 ... Recent claims have circulated online stating that Representative Matt Gaetz (R-FL) was part of a company involved in a $75 million hospice fraud\u00a0...",
+          "classification": "research_venue"
+        },
+        {
+          "rank": 4,
+          "url": "https://en.wikipedia.org/wiki/Don_Gaetz",
+          "domain": "en.wikipedia.org",
+          "title": "Don Gaetz - Wikipedia",
+          "snippet": "... Gaetz's son, Matt, who came under investigation regarding allegations of sex trafficking. ... fraud since 2002, when Gaetz still worked at the company.",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://time.com/6319898/matt-gaetz-kevin-mccarthy-speaker/",
+          "domain": "time.com",
+          "title": "Everyone Hates Matt Gaetz, Which Pleases Him to No End - TIME",
+          "snippet": "Oct 3, 2023 ... As Matt Gaetz wages a campaign to bring down Speaker Kevin McCarthy, he is becoming an outcast in Congress, where many can't stand the guy.",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "Matt Gaetz involvement in hospice company legal case 2023",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://aclanthology.org/2025.fever-1.12.pdf",
+          "domain": "aclanthology.org",
+          "title": "(Fact) Check Your Bias - ACL Anthology",
+          "snippet": "Jul 31, 2025 ... ... company was sold in 2004 and the law suit was filed in 2013\" ... Did Matt Gaetz's father's company, which was involved in a hospice fraud case,\u00a0...",
+          "classification": "research_venue"
+        },
+        {
+          "rank": 2,
+          "url": "https://www.politico.com/states/florida/story/2021/03/31/gaetzs-father-backs-up-son-matts-claims-of-extortion-over-doj-probe-of-involvement-with-teen-1370695",
+          "domain": "politico.com",
+          "title": "Matt Gaetz's dad says he wore a wire for FBI probe into ... - Politico",
+          "snippet": "Mar 31, 2021 ... ... Gaetz formed Hospice Care Inc., a nonprofit hospice facility. He then became a leading force behind passage of Florida's hospice licensing law\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://arxiv.org/pdf/2506.21745",
+          "domain": "arxiv.org",
+          "title": "(Fact) Check Your Bias - arXiv",
+          "snippet": "Jun 26, 2025 ... ... company was sold in 2004 and the law suit was filed in 2013\" ... Q3: Did Matt Gaetz's father's company, which was involved in a hospice fraud case\u00a0...",
+          "classification": "research_venue"
+        },
+        {
+          "rank": 4,
+          "url": "https://en.wikipedia.org/wiki/Don_Gaetz",
+          "domain": "en.wikipedia.org",
+          "title": "Don Gaetz - Wikipedia",
+          "snippet": "Donald Jay Gaetz is an American businessman and Republican politician who has been a member of the Florida State Senate since 2024, representing parts of\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.wusa9.com/article/news/year-in-review/major-events-of-2023/507-5293248b-ae87-45db-bdf5-f497f7945dc6",
+          "domain": "wusa9.com",
+          "title": "2023 in review: Major events that shaped this year | wusa9.com",
+          "snippet": "Dec 29, 2023 ... In the ... hospice care instead of additional medical intervention.\u201d Rosalynn\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "Nadar community recognized by UNESCO as oldest race",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.vishvasnews.com/english/viral/fact-check-unesco-did-not-declare-nadar-community-as-ancient-race-in-the-world-viral-claim-is-fake/",
+          "domain": "vishvasnews.com",
+          "title": "Fact Check: UNESCO did not declare Nadar community as ancient ...",
+          "snippet": "Nov 6, 2020 ... The viral post is fake. UNESCO has not declared Nadar Community as the most ancient race in the world. ... New Delhi (Vishvas News). A viral\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://en.wikipedia.org/wiki/Sikhism",
+          "domain": "en.wikipedia.org",
+          "title": "Sikhism - Wikipedia",
+          "snippet": "Gurdwaras are open to all, regardless of religion, background, caste, or race. ... recognition of Sikhs as a third community. When partition was\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9753030/",
+          "domain": "pmc.ncbi.nlm.nih.gov",
+          "title": "Effects of neighborhood features on healthy aging in place - PMC",
+          "snippet": "Dec 15, 2022 ... ... community-dwelling older adults in Singapore. The study was approved by the university research ethics committee. Located in the\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://en.wikipedia.org/wiki/Dubrovnik",
+          "domain": "en.wikipedia.org",
+          "title": "Dubrovnik - Wikipedia",
+          "snippet": "In 2021, its total population was 41,562. Recognizing its outstanding medieval architecture and fortifications, UNESCO inscribed the Old City of Dubrovnik as a\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.linkedin.com/in/lesley333",
+          "domain": "linkedin.com",
+          "title": "Lesley Kingston - Indian-American Surrealist | Private Art Dealer",
+          "snippet": "... race. The answer is obvious - we have to come together. The alternative is ... community building is the way to make it happen. \u00b7 Experience: Atma\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "New Zealand Food Bill 2024 gardening restrictions",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://en.wikipedia.org/wiki/Gardening_in_New_Zealand",
+          "domain": "en.wikipedia.org",
+          "title": "Gardening in New Zealand - Wikipedia",
+          "snippet": "Parnell Rose Gardens during the 2006 Rose Festival. New Zealand has restrictions on trading during the Easter holiday break, and in recent years garden supply\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://www.sciencedirect.com/science/article/pii/S2666558126000138",
+          "domain": "sciencedirect.com",
+          "title": "Pandemic impacts on experiences of food gardening in New Zealand",
+          "snippet": "... restrictions, including community gardens, marae gardens and retirement villages. ... food budget. And provides healthy veges that I couldn't afford to buy\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://www.mpi.govt.nz/food-business/food-safety-rules",
+          "domain": "mpi.govt.nz",
+          "title": "A tool to find out the food safety rules that apply to your business | MPI",
+          "snippet": "Sep 1, 2026 ... New Zealand Food Safety Standard Logo orange black text. Food business ... My Food Rules covers the Food Act 2014, Wine Act 2003, and Animal\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://thespinoff.co.nz/media/18-06-2016/new-zealands-absurd-gardening-ban-once-again-makes-us-the-laughing-stock-of-the-internet-2",
+          "domain": "thespinoff.co.nz",
+          "title": "New Zealand's absurd gardening ban once again makes us the ...",
+          "snippet": "Jun 18, 2016 ... ... gardening restrictions were as bad as sharia law. Would you, John ... Bill vote in November 2024. Chris Bishop gets a less\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.mpi.govt.nz/consultations/annual-review-2024-proposed-changes-to-mpis-cost-recovery-settings",
+          "domain": "mpi.govt.nz",
+          "title": "Annual review 2024: Proposed changes to MPI's cost recovery settings",
+          "snippet": "Mar 8, 2024 ... About New Zealand Food Safety \u00b7 Food recalls and complaints \u00b7 Food and ... Food Amendment Regulations \u2013 NZ Legislation. Cabinet paper and\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "New Zealand Food Bill gardening ban",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.reddit.com/r/OutOfTheLoop/comments/4ovxb1/is_the_new_zealand_antigardening_law_real_or_not/",
+          "domain": "reddit.com",
+          "title": "Is the New Zealand anti-gardening law real or not? Seriously I'm sick ...",
+          "snippet": "Jun 20, 2016 ... I just want to congratulate r/NewZealand on an impressive feat of misinformation. As of right now, if you Google 'new zealand garden ban,' all\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://thespinoff.co.nz/media/18-06-2016/new-zealands-absurd-gardening-ban-once-again-makes-us-the-laughing-stock-of-the-internet-2",
+          "domain": "thespinoff.co.nz",
+          "title": "New Zealand's absurd gardening ban once again makes us the ...",
+          "snippet": "Jun 18, 2016 ... Maybe we're just used to it after a long history of risking jail for the simple act of planting a few plants, but I think it's high time we\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://en.wikipedia.org/wiki/Gardening_in_New_Zealand",
+          "domain": "en.wikipedia.org",
+          "title": "Gardening in New Zealand - Wikipedia",
+          "snippet": "New Zealand has restrictions on trading during the Easter holiday break, and in recent years garden supply centres have flouted the law and remained open.",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://alannairving.medium.com/3-facts-about-new-zealand-i-didnt-know-until-i-moved-here-28208ef8b700",
+          "domain": "alannairving.medium.com",
+          "title": "3 Facts About New Zealand I Didn't Know Until I Moved Here - Medium",
+          "snippet": "Jul 1, 2018 ... Gardens are banned to ensure the economic stability of the agricultural sector. The law is not draconian \u2014 if grass happens to grow in your yard\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.buzzfeed.com/bradesposito/nz-garden-ban",
+          "domain": "buzzfeed.com",
+          "title": "A Bunch Of People Have Been Tricked Into Thinking Gardening Is ...",
+          "snippet": "Jun 20, 2016 ... \"There are no laws against people having gardens, or sharing food that they've grown at home. New food safety law (the Food Act 2014) only\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "New Zealand Food Bill gardening ban false",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.buzzfeed.com/bradesposito/nz-garden-ban",
+          "domain": "buzzfeed.com",
+          "title": "A Bunch Of People Have Been Tricked Into Thinking Gardening Is ...",
+          "snippet": "Jun 20, 2016 ... ... New Zealand saying it was actually about the \"absurd gardening ban\". ... New food safety law (the Food Act 2014) only applies to food for\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://www.reddit.com/r/OutOfTheLoop/comments/4ovxb1/is_the_new_zealand_antigardening_law_real_or_not/",
+          "domain": "reddit.com",
+          "title": "Is the New Zealand anti-gardening law real or not? Seriously I'm sick ...",
+          "snippet": "Jun 20, 2016 ... Speaking as an actual New Zealander, if you bring in ANY fruit, vegetables or seeds and don't declare you've got them on you then you'll be\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://www.aap.com.au/factcheck/new-zealands-new-food-bill-doesnt-ban-gardening/",
+          "domain": "aap.com.au",
+          "title": "New Zealand's 'new' Food Bill doesn't ban gardening - AAP",
+          "snippet": "Nov 16, 2020 ... NZ's Ministry of Primary Industries told AAP FactCheck the claims about the Food Bill are false. False \u2013 Content that has no basis in fact. *\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://www.epa.gov/newsreleases/fact-check-epa-debunks-false-claims-agency-recently-approved-forever-chemical",
+          "domain": "epa.gov",
+          "title": "FACT CHECK: EPA Debunks False Claims that Agency Recently ...",
+          "snippet": "Nov 26, 2025 ... European Union (known for stringent environmental standards). United Kingdom. Canada. Australia. Brazil, Argentina, New Zealand, and South Korea.",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://en.wikipedia.org/wiki/False_advertising",
+          "domain": "en.wikipedia.org",
+          "title": "False advertising - Wikipedia",
+          "snippet": "False advertising is the act of publishing, transmitting, distributing or otherwise publicly circulating an advertisement containing a false claim or\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "Official court documents hospice fraud $75 million settlement Florida",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.justice.gov/archives/opa/pr/chemed-corp-and-vitas-hospice-services-agree-pay-75-million-resolve-false-claims-act",
+          "domain": "justice.gov",
+          "title": "Chemed Corp. and Vitas Hospice Services Agree to Pay $75 Million ...",
+          "snippet": "Oct 30, 2017 ... The settlement resolves allegations that between 2002 and 2013 Vitas knowingly submitted or caused to be submitted false claims to Medicare for\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://www.barrassousdin.com/press-393.html",
+          "domain": "barrassousdin.com",
+          "title": "Barrasso Strengthens False Claims Act Practice Through Strategic ...",
+          "snippet": "Oct 28, 2022 ... ... $75 million settlement against Vitas, the largest hospice fraud settlement in FCA history. ... Florida, Georgia and North Carolina and\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://www.justice.gov/criminal/criminal-fraud/health-care-fraud-unit/2026-national-hcf-case-summaries",
+          "domain": "justice.gov",
+          "title": "Criminal Division | Case Summaries - Department of Justice",
+          "snippet": "Jun 24, 2026 ... ... fraud, health care fraud, and aggravated identity theft in connection with a $27 million hospice fraud and kickback scheme. Shachar was also\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://aclanthology.org/2025.fever-1.12.pdf",
+          "domain": "aclanthology.org",
+          "title": "(Fact) Check Your Bias - ACL Anthology",
+          "snippet": "Jul 31, 2025 ... ... FL) was part of a com- pany that engaged in hospice fraud, resulting in a $75 million settlement. The claim suggests that Gaetz's\u00a0...",
+          "classification": "research_venue"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.justice.gov/opa/pr/national-health-care-fraud-takedown-results-455-defendants-charged-connection-over-65",
+          "domain": "justice.gov",
+          "title": "National Health Care Fraud Takedown Results in 455 Defendants ...",
+          "snippet": "Jun 23, 2026 ... ... fraud schemes, as well as civil settlements with 31 defendants totaling $23 million. 928 administrative cases by the Drug Enforcement\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "Saudi Arabia largest oil producer in the world 2024",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.eia.gov/tools/faqs/faq.php?id=709&t=6",
+          "domain": "eia.gov",
+          "title": "What countries are the top producers and consumers of oil? - EIA",
+          "snippet": "Apr 11, 2024 ... Country, Million barrels per day, Share of world total. United States, 21.91, 22%. Saudi Arabia, 11.13, 11%. Russia, 10.75, 11%.",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://en.wikipedia.org/wiki/Saudi_Aramco",
+          "domain": "en.wikipedia.org",
+          "title": "Saudi Aramco - Wikipedia",
+          "snippet": "Saudi Aramco operates the world's largest single hydrocarbon network, the Master Gas System. In 2024, its oil production total was 12.7 million barrels of oil\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://www.reuters.com/business/energy/china-defies-sanctions-make-russia-its-biggest-oil-supplier-2023-2024-01-20/",
+          "domain": "reuters.com",
+          "title": "China defies sanctions to make Russia its biggest oil supplier in 2023",
+          "snippet": "Jan 21, 2024 ... Russia leapfrogged Saudi Arabia to become China's top crude oil supplier in 2023, data showed on Saturday, as the world's biggest crude\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://en.wikipedia.org/wiki/List_of_countries_by_oil_exports",
+          "domain": "en.wikipedia.org",
+          "title": "List of countries by oil exports - Wikipedia",
+          "snippet": "In 2024, Saudi Arabia was the largest exporter of petroleum, followed by Russia and Iraq. Other major exporters of petroleum in that year included the United\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.reuters.com/markets/commodities/chinas-crude-oil-imports-top-supplier-russia-reach-new-high-2024-2025-01-20/",
+          "domain": "reuters.com",
+          "title": "China's crude oil imports from top supplier Russia reach new high in ...",
+          "snippet": "Jan 20, 2025 ... Saudi Arabia, the largest producer of the Organization of Petroleum ... For most of 2024, China's Saudi crude imports were capped by rising\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "Saudi Arabia oil production statistics 2024",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.eia.gov/tools/faqs/faq.php?id=709&t=6",
+          "domain": "eia.gov",
+          "title": "What countries are the top producers and consumers of oil? - EIA",
+          "snippet": "Apr 11, 2024 ... ... oil (petroleum and other liquids) production, as of April 11, 2024 ... Saudi Arabia, 3.65, 4%. Japan, 3.38, 3%. Brazil, 3.03, 3%. South Korea\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://en.wikipedia.org/wiki/Economy_of_Saudi_Arabia",
+          "domain": "en.wikipedia.org",
+          "title": "Economy of Saudi Arabia - Wikipedia",
+          "snippet": "... Saudi Arabia is the world's leading oil exporter and second-largest oil producer. Proven reserves, according to figures provided by the Saudi government\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://www.eia.gov/international/overview/country/sau",
+          "domain": "eia.gov",
+          "title": "Saudi Arabia - EIA",
+          "snippet": "Analysis - Energy Sector Highlights. Last updated: October 4, 2024. Saudi Arabia was the world's third-highest crude oil and condensate producer,\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://www.opec.org/assets/assetdb/asb-2025.pdf",
+          "domain": "opec.org",
+          "title": "OPEC Annual Statistical Bulletin",
+          "snippet": "Total world crude oil production declined in 2024 by 0.77 million barrels ... and by Saudi Arabia as to their allocated production level. Rollover\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.energyinst.org/statistical-review",
+          "domain": "energyinst.org",
+          "title": "Home | Statistical Review of World Energy",
+          "snippet": "Production, consumption, prices, refining, trade movements for a dozen commodities, including coal, oil and oil products, natural gas (including LNG imports and\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "Sean Connery Apple commercial refusal letter",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.snopes.com/fact-check/false-sean-connery-letter-to-apple/",
+          "domain": "snopes.com",
+          "title": "Did Sean Connery Send a Letter to Apple Rejecting a Pitchman Offer?",
+          "snippet": "Jun 21, 2011 ... A purported letter from Sean Connery caustically rejects an offer for him to become a pitchman for Apple Computers.",
+          "classification": "fact_check"
+        },
+        {
+          "rank": 2,
+          "url": "https://aclanthology.org/2025.fever-1.20.pdf",
+          "domain": "aclanthology.org",
+          "title": "Fathom: A Fast and Modular RAG Pipeline for Fact-Checking",
+          "snippet": "Jul 31, 2025 ... : In a letter to Steve Jobs, Sean Connery refused to appear in an Apple commercial. Q1: Did Sean Connery refuse to appear in an Apple com-.",
+          "classification": "research_venue"
+        },
+        {
+          "rank": 3,
+          "url": "https://www.cnet.com/culture/fake-sean-connery-letter-to-steve-jobs-goes-viral/",
+          "domain": "cnet.com",
+          "title": "Fake Sean Connery letter to Steve Jobs goes viral - CNET",
+          "snippet": "Jun 21, 2011 ... First, the bad news. Sean Connery never actually sent a typewritten letter to Steve Jobs in 1998 refusing to be in an Apple ad. But the awesome\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://aclanthology.org/2025.fever-1.16.pdf",
+          "domain": "aclanthology.org",
+          "title": "Team HUMANE at AVeriTeC 2025: HerO 2 for Efficient Fact ...",
+          "snippet": "Jul 31, 2025 ... Claim: In a letter to Steve Jobs, Sean Connery refused to appear in an apple commercial. Question: Was the letter from Sean Connery to Steve.",
+          "classification": "research_venue"
+        },
+        {
+          "rank": 5,
+          "url": "https://fever.ai/dataset_viewer/averitec/0.html",
+          "domain": "fever.ai",
+          "title": "Fact Extraction and VERification - Fever.ai",
+          "snippet": "In a letter to Steve Jobs, Sean Connery refused to appear in an apple commercial. Details. ID: 0; Claim Date: 31-10-2020; Speaker: None; Original Claim URL: N/A\u00a0...",
+          "classification": "research_venue"
+        }
+      ]
+    },
+    {
+      "query": "Sean Connery Steve Jobs Apple ad claim debunked",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.reuters.com/article/world/fact-check-hoax-sean-connery-letter-to-steve-jobs-resurfaces-following-his-deat-idUSKBN27I276/",
+          "domain": "reuters.com",
+          "title": "Hoax Sean Connery letter to Steve Jobs resurfaces following his death",
+          "snippet": "Nov 2, 2020 ... Following the publication of the article, several outlets including the Washington Post and Snopes debunked the claim that the letter was\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://newschecker.in/fact-check/sean-connerys-fake-letter-to-steve-jobs-resurfaces-after-actors-death",
+          "domain": "newschecker.in",
+          "title": "Fake Letter By Sean Connery To Steve Jobs Resurfaces After ...",
+          "snippet": "Nov 4, 2020 ... ... Apple News.\u201d More recently, this claim has been debunked by other fact checkers as well. This claim resurfaced in the past week after the\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://www.snopes.com/fact-check/false-sean-connery-letter-to-apple/",
+          "domain": "snopes.com",
+          "title": "Did Sean Connery Send a Letter to Apple Rejecting a Pitchman Offer?",
+          "snippet": "Jun 21, 2011 ... ... Connery to lend his name and visage to a 1998 Apple Christmas ad campaign: ... Article Tags. Apple Actors Letters Steve Jobs. Snopes.com. Company.",
+          "classification": "fact_check"
+        },
+        {
+          "rank": 4,
+          "url": "https://aclanthology.org/2025.fever-1.20.pdf",
+          "domain": "aclanthology.org",
+          "title": "Fathom: A Fast and Modular RAG Pipeline for Fact-Checking",
+          "snippet": "Jul 31, 2025 ... Reasoning: To evaluate the claim that \"In a letter to. Steve Jobs, Sean Connery refused to appear in an Apple commercial,\" we need to examine\u00a0...",
+          "classification": "research_venue"
+        },
+        {
+          "rank": 5,
+          "url": "https://fever.ai/dataset_viewer/averitec/0.html",
+          "domain": "fever.ai",
+          "title": "Fact Extraction and VERification - Fever.ai",
+          "snippet": "In a letter to Steve Jobs, Sean Connery refused to appear in an apple commercial. ... claim was published in a fake news site so the claim is refuted.",
+          "classification": "research_venue"
+        }
+      ]
+    },
+    {
+      "query": "Sean Connery letter refusing Apple commercial Steve Jobs",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.snopes.com/fact-check/false-sean-connery-letter-to-apple/",
+          "domain": "snopes.com",
+          "title": "Did Sean Connery Send a Letter to Apple Rejecting a Pitchman Offer?",
+          "snippet": "Jun 21, 2011 ... An image of a purported 1998 letter from actor Sean Connery (famous for his portrayal of agent James Bond) to Apple CEO Steve Jobs, caustically\u00a0...",
+          "classification": "fact_check"
+        },
+        {
+          "rank": 2,
+          "url": "https://aclanthology.org/2025.fever-1.20.pdf",
+          "domain": "aclanthology.org",
+          "title": "Fathom: A Fast and Modular RAG Pipeline for Fact-Checking",
+          "snippet": "Jul 31, 2025 ... : In a letter to Steve Jobs, Sean Connery refused to appear in an Apple commercial. Q1: Did Sean Connery refuse to appear in an Apple com-.",
+          "classification": "research_venue"
+        },
+        {
+          "rank": 3,
+          "url": "https://www.cnet.com/culture/fake-sean-connery-letter-to-steve-jobs-goes-viral/",
+          "domain": "cnet.com",
+          "title": "Fake Sean Connery letter to Steve Jobs goes viral - CNET",
+          "snippet": "Jun 21, 2011 ... First, the bad news. Sean Connery never actually sent a typewritten letter to Steve Jobs in 1998 refusing to be in an Apple ad. But the awesome\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://aclanthology.org/2025.fever-1.16.pdf",
+          "domain": "aclanthology.org",
+          "title": "Team HUMANE at AVeriTeC 2025: HerO 2 for Efficient Fact ...",
+          "snippet": "Jul 31, 2025 ... Claim: In a letter to Steve Jobs, Sean Connery refused to appear in an apple commercial. Question: Was the letter from Sean Connery to Steve.",
+          "classification": "research_venue"
+        },
+        {
+          "rank": 5,
+          "url": "https://fever.ai/dataset_viewer/averitec/0.html",
+          "domain": "fever.ai",
+          "title": "Fact Extraction and VERification - Fever.ai",
+          "snippet": "In a letter to Steve Jobs, Sean Connery refused to appear in an apple commercial. Details. ID: 0; Claim Date: 31-10-2020; Speaker: None; Original Claim URL: N/A\u00a0...",
+          "classification": "research_venue"
+        }
+      ]
+    },
+    {
+      "query": "Top oil producing countries in the world 2024",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://en.wikipedia.org/wiki/List_of_countries_by_oil_extraction",
+          "domain": "en.wikipedia.org",
+          "title": "List of countries by oil extraction - Wikipedia",
+          "snippet": "Top Countries by Oil Production Trends Trends of the top five crude oil producing countries, 1973\u20132025 World oil production, daily average 2011-2021. The\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://www.eia.gov/tools/faqs/faq.php?id=709&t=6",
+          "domain": "eia.gov",
+          "title": "What countries are the top producers and consumers of oil? - EIA",
+          "snippet": "Apr 11, 2024 ... ... oil (petroleum and other liquids) production, as of April 11, 2024. The top 10 oil1 consumers and share of total world oil consumption in 20222\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://en.wikipedia.org/wiki/List_of_countries_by_oil_exports",
+          "domain": "en.wikipedia.org",
+          "title": "List of countries by oil exports - Wikipedia",
+          "snippet": "In 2024, Saudi Arabia was the largest exporter of petroleum, followed by Russia and Iraq. Other major exporters of petroleum in that year included the United\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://www.worldometers.info/oil/oil-production-by-country/",
+          "domain": "worldometers.info",
+          "title": "Oil Production by Country - Worldometer",
+          "snippet": "Oil Production by Country ; 4. Canada. 6,256,639 ; 5. China. 5,446,189 ; 6. Iran. 4,768,756 ; 7. Brazil. 4,655,066\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.eia.gov/todayinenergy/detail.php?id=67844",
+          "domain": "eia.gov",
+          "title": "The United States produced more crude oil than any other country in ...",
+          "snippet": "Jul 9, 2026 ... In 2024, the most recent year data are available, the United States was the world's largest natural gas producer. We will release 2025 natural\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "Trump Administration claims Billie Eilish destroying country leaked documents",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://medium.com/everythings-interesting/no-the-trump-administration-didnt-accuse-billie-eilish-of-destroying-our-country-3771ad9361b6",
+          "domain": "medium.com",
+          "title": "No, the Trump administration didn't accuse Billie Eilish of \u201cdestroying ...",
+          "snippet": "Oct 29, 2020 ... Leaked Trump Admin Document Describes Billie Eilish as 'Destroying Our Country and Everything We Care About,' writes Complex. The article itself\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://www.gq.com.au/culture/entertainment/billie-eilish-is-destroying-our-country-claims-leaked-trump-administration-document/news-story/7debcb8921413b915d1033629e962721",
+          "domain": "gq.com.au",
+          "title": "Billie Eilish Is \u201cDestroying Our Country\u201d Claims Leaked Trump ...",
+          "snippet": "Oct 30, 2020 ... A document has been leaked from Trump's administration team, detailing problems with an assortment of \u201cat least\u201d 274 artists and celebrities\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://aclanthology.org/2025.fever-1.18.pdf",
+          "domain": "aclanthology.org",
+          "title": "OldJoe at AVeriTeC: In-context learning for fact-checking",
+          "snippet": "Jul 31, 2025 ... Claim: Trump Administration claimed songwriter Billie Eilish Is Destroying Our. Country In Leaked Documents ... itly state Billie Eilish is\u00a0...",
+          "classification": "research_venue"
+        },
+        {
+          "rank": 4,
+          "url": "https://nypost.com/2020/10/30/washington-post-wrongly-claims-trump-officials-criticized-billie-eilish/",
+          "domain": "nypost.com",
+          "title": "Washington Post wrongly claims Trump officials criticized Billie Eilish",
+          "snippet": "Oct 30, 2020 ... ... claimed the Trump administration accused Billie Eilish of \"destroying our country ... A screenshot of the leaked papers showed that Trump\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.complex.com/music/a/tracewilliamcowen/leaked-trump-admin-document-billie-eilish-destroying-our-country",
+          "domain": "complex.com",
+          "title": "Trump Administration Wrongly Quoted as Saying Billie Eilish Is ...",
+          "snippet": "Oct 29, 2020 ... Trump Administration Wrongly Quoted as Saying Billie Eilish Is 'Destroying Our Country' (UPDATE) ... A document detailing the administration's\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "U.S. surgeon general masks not effective coronavirus prevention",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.cnbc.com/2020/04/02/coronavirus-us-surgeon-general-asks-cdc-to-see-if-face-masks-are-effective.html",
+          "domain": "cnbc.com",
+          "title": "Coronavirus: US surgeon general asks CDC to see if face masks are ...",
+          "snippet": "Apr 2, 2020 ... U.S. Surgeon General Jerome Adams had initially advised against the general public wearing face masks, saying they were \"not effective\" in\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://www.nytimes.com/2020/02/29/health/coronavirus-n95-face-masks.html",
+          "domain": "nytimes.com",
+          "title": "Surgeon General Urges the Public to Stop Buying Face Masks",
+          "snippet": "Sep 12, 2021 ... The surgeon general on Saturday warned that masks were not effective in preventing the general public from contracting the coronavirus.",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7118603/",
+          "domain": "pmc.ncbi.nlm.nih.gov",
+          "title": "Rational use of face masks in the COVID-19 pandemic - PMC - NIH",
+          "snippet": "1, 2, 3, 4, 5, 6, 7, 8 For example, the US Surgeon General advised against buying masks for use by healthy people. ... masks provide no effective protection\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://time.com/5794729/coronavirus-face-masks/",
+          "domain": "time.com",
+          "title": "Why People Aren't Listening to Experts About Face Masks - TIME",
+          "snippet": "Mar 3, 2020 ... Jerome Adams, the U.S. Surgeon General, on Feb. 29. \u201cThey are NOT effective in preventing general public from catching #Coronavirus, but if\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://abc7.com/post/surgeon-general-weighs-in-on-general-public-wearing-face-masks/6067977/",
+          "domain": "abc7.com",
+          "title": "US Surgeon General: Face masks shouldn't be worn at 'expense of ...",
+          "snippet": "... not mask-wearing would prevent transmission of the disease. \"But here's the ... Adams said. RELATED: How is coronavirus spread? Symptoms, prevention, and how to\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "UNESCO Nadar community ancient race claim debunked",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.vishvasnews.com/english/viral/fact-check-unesco-did-not-declare-nadar-community-as-ancient-race-in-the-world-viral-claim-is-fake/",
+          "domain": "vishvasnews.com",
+          "title": "Fact Check: UNESCO did not declare Nadar community as ancient ...",
+          "snippet": "Nov 6, 2020 ... Claim Review : UNESCO declared Nadar community as the most ancient race in the world; Claimed By : FB User Kumar Shankar; Fact Check : False.",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://aclanthology.org/2025.fever-1.11.pdf",
+          "domain": "aclanthology.org",
+          "title": "GQC: LLM-Based Grouped QA Consolidation for Open-Domain Fact ...",
+          "snippet": "Jul 31, 2025 ... Example Claim: 156. Page 7. \u201cUNESCO declared Nadar community as the most ancient race in the world.\u201d QA pair filtered out by CAF: \u2022 What is the\u00a0...",
+          "classification": "research_venue"
+        },
+        {
+          "rank": 3,
+          "url": "https://en.wikipedia.org/wiki/Periyar",
+          "domain": "en.wikipedia.org",
+          "title": "Periyar - Wikipedia",
+          "snippet": "Erode Venkatappa Ramasamy (17 September 1879 \u2013 24 December 1973), commonly known as Periyar, was an Indian social activist and politician.",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://dl.acm.org/doi/pdf/10.1145/3774904.3792993",
+          "domain": "dl.acm.org",
+          "title": "Debate-driven Claim Verification with Multiple Large Language ...",
+          "snippet": "UNESCO declared Nadar community as the most ancient race in the world. (ID ... (ID: 3; Refuted). The Nadar community has a rich historical presence and cultural\u00a0...",
+          "classification": "research_venue"
+        },
+        {
+          "rank": 5,
+          "url": "https://en.wikipedia.org/wiki/Sikhism",
+          "domain": "en.wikipedia.org",
+          "title": "Sikhism - Wikipedia",
+          "snippet": "Following this standard, Sikhism rejects claims that any particular religious tradition has a monopoly on absolute truth. As a consequence, Sikhs do not\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "UNESCO declaration Nadar community most ancient race",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.vishvasnews.com/english/viral/fact-check-unesco-did-not-declare-nadar-community-as-ancient-race-in-the-world-viral-claim-is-fake/",
+          "domain": "vishvasnews.com",
+          "title": "Fact Check: UNESCO did not declare Nadar community as ancient ...",
+          "snippet": "Nov 6, 2020 ... The viral post is fake. UNESCO has not declared Nadar Community as the most ancient race in the world. ... New Delhi (Vishvas News). A viral\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://en.wikipedia.org/wiki/Sikhism",
+          "domain": "en.wikipedia.org",
+          "title": "Sikhism - Wikipedia",
+          "snippet": "Gurdwaras are open to all, regardless of religion, background, caste, or race. ... While these communities are over 125 years old, most Sikhs in the West\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://unesdoc.unesco.org/ark:/48223/pf0000391456_eng",
+          "domain": "unesdoc.unesco.org",
+          "title": "Museums change their story - UNESCO Digital Library",
+          "snippet": "... ancient object was found? These are experiences that are now becoming ... The most vulnerable communities \u2013 such as girls and women of a minoritized race\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://en.wikipedia.org/wiki/Periyar",
+          "domain": "en.wikipedia.org",
+          "title": "Periyar - Wikipedia",
+          "snippet": "Erode Venkatappa Ramasamy (17 September 1879 \u2013 24 December 1973), commonly known as Periyar, was an Indian social activist and politician.",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://unesdoc.unesco.org/ark:/48223/pf0000153614_eng",
+          "domain": "unesdoc.unesco.org",
+          "title": "Ecological education in the living environment",
+          "snippet": "The most critical role of educators and non-profit community development ... very much in vogue despite its ancient origins. A leisure centre called\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "Wearing face masks stop spread of COVID-19",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.mayoclinic.org/diseases-conditions/coronavirus/in-depth/coronavirus-mask/art-20485449",
+          "domain": "mayoclinic.org",
+          "title": "How well do face masks protect against COVID-19? - Mayo Clinic",
+          "snippet": "Face masks can help slow the spread of coronavirus disease 2019 (COVID-19). Learn about mask types, which masks to use and how to use them.",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7883189/",
+          "domain": "pmc.ncbi.nlm.nih.gov",
+          "title": "How effective is a mask in preventing COVID\u201019 infection? - PMC",
+          "snippet": "Some observational results confirmed that frequently using masks in a community can prevent spread of infection from sick and infectious people (Jensen et al.,\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://www.cdc.gov/respiratory-viruses/prevention/masks.html",
+          "domain": "cdc.gov",
+          "title": "Masks and Respiratory Viruses Prevention - CDC",
+          "snippet": "Aug 18, 2025 ... Older male wearing a face mask. An additional ... When worn by a person with an infection, masks reduce the spread of the virus to others.",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7323223/",
+          "domain": "pmc.ncbi.nlm.nih.gov",
+          "title": "Do facemasks protect against COVID\u201019? - PMC - NIH",
+          "snippet": "The public might wear masks to avoid infection or to protect others. During the 2009 pandemic of H1N1 influenza (swine flu), encouraging the public to wash\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.bbc.com/future/article/20200504-coronavirus-what-is-the-best-kind-of-face-mask",
+          "domain": "bbc.com",
+          "title": "Why we should all be wearing face masks - BBC",
+          "snippet": "Jul 2, 2020 ... ... face mask wearing in order to control the spread of Covid-19 (Credit: Getty Images). With some countries already emerging from lockdown, can\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "cheaters sending phony ballots November 3 election",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.pbs.org/newshour/show/exhaustive-fact-check-finds-little-evidence-of-voter-fraud-but-2020s-big-lie-lives-on",
+          "domain": "pbs.org",
+          "title": "Exhaustive fact check finds little evidence of voter fraud, but 2020's ...",
+          "snippet": "Dec 17, 2021 ... ... fraud had occurred in the November 3 election. And so we embarked on ... voting or on Election Day. Judy Woodruff: And we know that\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://www.brookings.edu/articles/mail-voting-in-the-us-data-points-to-very-low-fraud-and-significant-benefits-to-voters/",
+          "domain": "brookings.edu",
+          "title": "Mail voting fraud: Data points to low risk and high benefits for voters",
+          "snippet": "Nov 6, 2025 ... In states with universal vote-by-mail, every registered voter is automatically sent a mail ballot they can use as an alternative to in-person\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://misinforeview.hks.harvard.edu/wp-content/uploads/2022/12/bailard_appendix_b_20221205.pdf",
+          "domain": "misinforeview.hks.harvard.edu",
+          "title": "Appendix B: URLs, screenshots, and text of PolitiFact corrections1",
+          "snippet": "Dec 5, 2022 ... \u201cOnly active registered voters will be mailed a ballot ahead of the November 3, 2020 General Election. The President's tweet is completely false\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://www.brennancenter.org/our-work/research-reports/fact-check-trumps-georgia-call-raffensperger",
+          "domain": "brennancenter.org",
+          "title": "Fact Check: Trump's Georgia Call to Raffensperger",
+          "snippet": "Jul 27, 2023 ... Numerous analyses have shown that voter fraud related to ballots sent ... Claims that ballot counting by election workers Ruby Freeman and\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.livingstoncountyny.gov/123/Board-of-Elections",
+          "domain": "livingstoncountyny.gov",
+          "title": "Elections | Livingston County, NY - Official Website",
+          "snippet": "November 3, 2026 General Election Sample Ballots. Avon \u00b7 Caledonia \u00b7 Conesus ... Completed applications are sent to the appropriate County Board of Elections for\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "claims of phony ballots and delayed vote counting November 3",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.factcheck.org/2022/11/counting-mail-in-ballots-delays-results-but-doesnt-denote-fraud/",
+          "domain": "factcheck.org",
+          "title": "Counting Mail-In Ballots Delays Results, But Doesn't Denote Fraud",
+          "snippet": "Nov 7, 2022 ... Former President Donald Trump made the claim multiple times prior to the 2020 election, alleging that mail-in ballots tabulated after Election\u00a0...",
+          "classification": "fact_check"
+        },
+        {
+          "rank": 2,
+          "url": "https://en.wikipedia.org/wiki/2020_United_States_presidential_election",
+          "domain": "en.wikipedia.org",
+          "title": "2020 United States presidential election - Wikipedia",
+          "snippet": "By November 7, several prominent Republicans had publicly denounced Trump's claims of electoral fraud ... \"Trump blames Democrats for late-counted mail ballots.",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://calmatters.org/politics/2020/10/counting-votes-election-2020/",
+          "domain": "calmatters.org",
+          "title": "Counting votes: \u201cWe'd rather get it right than get it fast\u201d - CalMatters",
+          "snippet": "Oct 30, 2020 ... ... late mail-in ballots on November 7, 2018, in San Jose. In 9 ... Despite voter fraud claims from the White House, \u201cthis is normal\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://www.bbc.com/news/articles/c93629rzpgxo",
+          "domain": "bbc.com",
+          "title": "Supreme Court allows late-arriving mail-in ballots in defeat for Trump",
+          "snippet": "Jun 29, 2026 ... ... November's midterm elections. The court's majority opinion was ... Despite President Trump's claims of rampant fraud in mail-in ballots\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.reuters.com/fact-check/late-night-wisconsin-election-update-senator-is-not-proof-fraud-2024-11-15/",
+          "domain": "reuters.com",
+          "title": "Fact Check: Late-night Wisconsin election update for senator is not ...",
+          "snippet": "Nov 15, 2024 ... ... vote and 99% of expected votes counted in Wisconsin as of Nov. 14 ... In 2020, Trump falsely claimed fraud after a similar late-night\u00a0...",
+          "classification": "fact_check"
+        }
+      ]
+    },
+    {
+      "query": "covid-19 death estimates 225000 people",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.reuters.com/article/business/healthcare-pharmaceuticals/russias-covid-19-death-toll-as-of-february-crosses-225000-stats-service-idUSKBN2BP17H/",
+          "domain": "reuters.com",
+          "title": "Russia's COVID-19 death toll as of February crosses ... - Reuters",
+          "snippet": "Apr 2, 2021 ... Russia has recorded over 225000 deaths related to COVID-19 since the start of the pandemic in April, the Rosstat statistics service said on\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://www.cdc.gov/nchs/nvss/vsrr/covid19/index.htm",
+          "domain": "cdc.gov",
+          "title": "Provisional COVID-19 Mortality Surveillance - CDC",
+          "snippet": "Quarterly Provisional EstimatesMortality. BACK. Vital Statistics Rapid Release ... deaths need to be manually coded, or coded by a person. Death\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://abcnews.com/Health/225000-americans-died-covid-19-start-2022-viral/story?id=90339579",
+          "domain": "abcnews.com",
+          "title": "Nearly 225,000 Americans have died of COVID-19 since the start of ...",
+          "snippet": "... COVID-19 every day, and 225,000 people in the U.S. have been lost to the virus since the start of 2022. On average, more than 350 American deaths related to\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://www.vox.com/future-perfect/2021/1/11/22220827/covid-19-pandemic-coronavirus-usa-europe-canada-trump",
+          "domain": "vox.com",
+          "title": "The US's Covid-19 death toll is still among the worst in the world | Vox",
+          "snippet": "Jan 11, 2021 ... If the US had Canada's Covid-19 death rate, 225000 more Americans would likely be alive today ... Covid-19 deaths per million people. But\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://freopp.org/whitepapers/estimating-the-risk-of-death-from-covid-19-vs-influenza-or-pneumonia-by-age/",
+          "domain": "freopp.org",
+          "title": "Estimating the Risk of Death from COVID-19 vs. Influenza ... - FREOPP",
+          "snippet": "... People Back to Work During COVID-19,\u201d by ... For the purposes of this exercise, we assumed that the U.S. COVID-19 death toll ultimately reaches 225,000.",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "covid-19 death toll more than 225000",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.reuters.com/article/business/healthcare-pharmaceuticals/russias-covid-19-death-toll-as-of-february-crosses-225000-stats-service-idUSKBN2BP17H/",
+          "domain": "reuters.com",
+          "title": "Russia's COVID-19 death toll as of February crosses ... - Reuters",
+          "snippet": "Apr 2, 2021 ... Russia has recorded over 225000 deaths related to COVID-19 since the start of the pandemic in April, the Rosstat statistics service said on\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://www.cdc.gov/nchs/nvss/vsrr/covid19/index.htm",
+          "domain": "cdc.gov",
+          "title": "Provisional COVID-19 Mortality Surveillance - CDC",
+          "snippet": "This delay can range from 1 week to 8 weeks or more, depending on the jurisdiction and cause of death. Data for New York excludes New York City. Data from 2015-\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://debeaumont.org/news/2020/a-public-health-call-to-arms/",
+          "domain": "debeaumont.org",
+          "title": "A Public Health Call to Arms - de Beaumont Foundation",
+          "snippet": "Nov 2, 2020 ... ... COVID-19's brutal human toll. Yet voters on both ... We owe this to the more than 225,000 Americans who have lost their lives to COVID-19.",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://www.vox.com/future-perfect/2021/1/11/22220827/covid-19-pandemic-coronavirus-usa-europe-canada-trump",
+          "domain": "vox.com",
+          "title": "The US's Covid-19 death toll is still among the worst in the world | Vox",
+          "snippet": "Jan 11, 2021 ... If the US had Canada's Covid-19 death rate, 225000 more Americans would likely be alive today.",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://abcnews.com/Health/225000-americans-died-covid-19-start-2022-viral/story?id=90339579",
+          "domain": "abcnews.com",
+          "title": "Nearly 225,000 Americans have died of COVID-19 since the start of ...",
+          "snippet": "On average, more than 350 American deaths related to COVID-19 are still reported each day, and over the last seven days, the U.S. has reported nearly 2,500\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "covid-19 deaths could have been reduced by 160000 if acted responsibly",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "http://doggett.house.gov/media/blog-post/timeline-trumps-coronavirus-responses",
+          "domain": "doggett.house.gov",
+          "title": "Timeline of Trump's Coronavirus Responses",
+          "snippet": "Mar 2, 2022 ... May 2018. The Trump Administration disbands the White House pandemic response team. July 2019. The Centers for Disease Control (CDC)\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://www.federalregister.gov/documents/2023/06/05/2023-11449/medicare-and-medicaid-programs-policy-and-regulatory-changes-to-the-omnibus-covid-19-health-care",
+          "domain": "federalregister.gov",
+          "title": "Medicare and Medicaid Programs; Policy and Regulatory Changes ...",
+          "snippet": "Jun 5, 2023 ... ... of COVID-19 deaths has been about 3,000 on average for over 6 months. Assuming no change, the number of COVID-19 deaths will be about 160,000\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://unsdg.un.org/download/2027/26614",
+          "domain": "unsdg.un.org",
+          "title": "SHARED RESPONSIBILITY, GLOBAL SOLIDARITY:",
+          "snippet": "Mar 19, 2020 ... As of 26 March, 416,686 confirmed COVID-19 cases have been reported to. WHO, and 18,589 deaths, and this is just the tip of the iceberg. The\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10946219/",
+          "domain": "pmc.ncbi.nlm.nih.gov",
+          "title": "A Review of the Resurgence of Measles, a Vaccine-Preventable ...",
+          "snippet": "Vaccine hesitancy due to misinformation about possible vaccine side effects, reduced vaccine uptake during and after the COVID-19 pandemic, and lack of\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.nejm.org/doi/full/10.1056/NEJMsb2005114",
+          "domain": "nejm.org",
+          "title": "Fair Allocation of Scarce Medical Resources in the Time of Covid-19",
+          "snippet": "Mar 23, 2020 ... The Covid-19 pandemic has already stressed health care systems throughout the world, requiring rationing of medical equipment and care.",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "credible source quantifying 160000 preventable COVID-19 deaths in the US",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.visionofhumanity.org/wp-content/uploads/2020/11/GTI-2020-web-1.pdf",
+          "domain": "visionofhumanity.org",
+          "title": "Global Terrorism Index 2020 - Vision of Humanity",
+          "snippet": "Overall, since 2002 there have been 133 deaths in the US which. IEP ... Coronavirus: IS could exploit COVID-19 pandemic to carry out terror attacks\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8331176/",
+          "domain": "pmc.ncbi.nlm.nih.gov",
+          "title": "Tracking excess mortality across countries during the COVID-19 ...",
+          "snippet": "It has also been used to compare COVID-19 impact to the impact of major influenza pandemics (Faust et al., 2020; Petersen et al., 2020). Measuring and\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://www.fda.gov/media/172557/download",
+          "domain": "fda.gov",
+          "title": "Laboratory Developed Tests Proposed Rule | FDA",
+          "snippet": "Sep 28, 2023 ... We are able to partially quantify benefits related to COVID-19 and coronary artery disease from case studies. a. Cancer Extrapolations. We\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://www.aamc.org/media/75236/download",
+          "domain": "aamc.org",
+          "title": "The Complexities of Physician Supply and Demand: Projections ...",
+          "snippet": "Nov 17, 2021 ... There is little information to quantify how COVID-19 delays ... and health disparities: COVID-19 exposures and mortality among African American\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7094512/",
+          "domain": "pmc.ncbi.nlm.nih.gov",
+          "title": "Nosocomial or Hospital-acquired Infections: An Overview - PMC",
+          "snippet": "Hospital-acquired Infection Rates\u2014USA. Nosocomial or hospital-acquired infections (HAI) are a leading cause of morbidity and mortality in the USA.1, 2, 3,\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "evidence masks reduce COVID-19 aerosol spread",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7883189/",
+          "domain": "pmc.ncbi.nlm.nih.gov",
+          "title": "How effective is a mask in preventing COVID\u201019 infection? - PMC",
+          "snippet": "For example, Hong Kong recommended mask wearing for all in order to prevent respiratory viruses, while Germany claimed no evidences that the masks could\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://www.pnas.org/doi/10.1073/pnas.2014564118",
+          "domain": "pnas.org",
+          "title": "An evidence review of face masks against COVID-19 | PNAS",
+          "snippet": "Jan 11, 2021 ... ... masks in reducing COVID-19 transmission in the ... masks worn by sick people can reduce virus transmission by mitigating aerosol dispersal.",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://www.phc.ox.ac.uk/news/comprehensive-review-confirms-masks-reduce-covid-19-transmission",
+          "domain": "phc.ox.ac.uk",
+          "title": "Comprehensive review confirms mask effectiveness against ...",
+          "snippet": "May 22, 2024 ... ... evidence that masks and respirators effectively reduce the transmission ... reducing the transmission of respiratory infections like COVID-19.",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7413047/",
+          "domain": "pmc.ncbi.nlm.nih.gov",
+          "title": "Aerosol transmission of SARS-CoV-2? Evidence, prevention and ...",
+          "snippet": "... COVID-19, Airborne transmission, Hospital, Precaution, Mask ... 2019 Novel coronavirus (COVID-19) pandemic: built environment considerations to reduce\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://pubmed.ncbi.nlm.nih.gov/34315427/",
+          "domain": "pubmed.ncbi.nlm.nih.gov",
+          "title": "COVID-19 false dichotomies and a comprehensive review ... - PubMed",
+          "snippet": "Jul 27, 2021 ... asymptomatic severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2) infection, 4) Droplet vs. aerosol transmission of SARS-CoV-2, 5) Masks\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "masks do not help aerosol transmission COVID-19 claim debunked",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.reuters.com/article/world/fact-check-studies-do-show-face-masks-and-lockdowns-slow-the-spread-of-covid-19-idUSKCN2AT3JJ/",
+          "domain": "reuters.com",
+          "title": "Fact check: Studies do show face masks and lockdowns slow the ...",
+          "snippet": "Mar 1, 2021 ... ... claim there is no evidence that face masks or lockdowns slow the spread of COVID-19. This claim is false ... helped reduce exposure to aerosol\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8314268/",
+          "domain": "pmc.ncbi.nlm.nih.gov",
+          "title": "COVID-19 false dichotomies and a comprehensive review of the ...",
+          "snippet": "asymptomatic severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2) infection, 4) Droplet vs. aerosol transmission of SARS-CoV-2, 5) Masks for all vs. no\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://www.factcheck.org/2020/03/posts-distort-facts-on-coronavirus-air-transmission-masks/",
+          "domain": "factcheck.org",
+          "title": "Posts Distort Facts on Coronavirus Air Transmission, Masks",
+          "snippet": "Mar 24, 2020 ... The posts falsely claim that \u201ceveryone is required to wear mask everywhere,\u201d because \u201cCOVID-19\u201d \u2014 the disease caused by the virus \u2014 \u201cis\u00a0...",
+          "classification": "fact_check"
+        },
+        {
+          "rank": 4,
+          "url": "https://www.washingtonpost.com/politics/2021/12/02/rand-pauls-false-claim-that-masks-dont-work/",
+          "domain": "washingtonpost.com",
+          "title": "Rand Paul's false claim that masks don't work - The Washington Post",
+          "snippet": "Dec 2, 2021 ... When you look at all of Sweden \u2014 1.8 million children have not been wearing masks for the last two years, they've had zero covid deaths. And you\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.nature.com/articles/d41586-022-00925-7",
+          "domain": "nature.com",
+          "title": "Why the WHO took two years to say COVID is airborne - Nature",
+          "snippet": "Apr 6, 2022 ... Early in the pandemic, the World Health Organization stated that SARS-CoV-2 was not transmitted through the air ... Workers in masks and overalls\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "masks effectiveness aerosol transmission COVID-19",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7883189/",
+          "domain": "pmc.ncbi.nlm.nih.gov",
+          "title": "How effective is a mask in preventing COVID\u201019 infection? - PMC",
+          "snippet": "This review provides the most up\u2010to\u2010date information on the transmission modes of COVID\u201019 virus in terms of droplets and aerosols. The roles of masks in\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://www.bbc.com/future/article/20200806-are-face-shields-effective-against-covid-19",
+          "domain": "bbc.com",
+          "title": "How diseases spread when we talk and sing - BBC",
+          "snippet": "Aug 7, 2020 ... ... effective against fine aerosols than the mask. ... Of course, it is still unclear just how many copies of the Covid-19 virus can be carried in\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10008175/",
+          "domain": "pmc.ncbi.nlm.nih.gov",
+          "title": "How do three-layer surgical masks prevent SARS-CoV-2 aerosol ...",
+          "snippet": "Keywords: COVID-19, Surgical mask, Transmission, Filtration efficiency, Respiratory resistance.",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://pubmed.ncbi.nlm.nih.gov/33087517/",
+          "domain": "pubmed.ncbi.nlm.nih.gov",
+          "title": "Effectiveness of Face Masks in Preventing Airborne Transmission of ...",
+          "snippet": "Oct 21, 2020 ... Keywords: COVID-19; N95 masks; SARS-CoV-2; aerosols; droplets; face masks. Copyright \u00a9 2020 Ueki et al. Publication types. Research Support,\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.pnas.org/doi/10.1073/pnas.2014564118",
+          "domain": "pnas.org",
+          "title": "An evidence review of face masks against COVID-19 | PNAS",
+          "snippet": "Jan 11, 2021 ... ... masks were highly effective at reducing transmission. ... masks worn by sick people can reduce virus transmission by mitigating aerosol dispersal.",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "official statement French government on visa cancellations of Pakistani citizens 2023",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://fr.usembassy.gov/services/consular-report-of-birth-abroad-crba/",
+          "domain": "fr.usembassy.gov",
+          "title": "Consular Report of Birth Abroad (CRBA) and apply for your child's ...",
+          "snippet": "After completing your application, you must travel to the U.S. Embassy Paris, France, U.S. Consulate Marseille, or U.S. Consulate Strasbourg for the in-person\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/lost-stolen-visas.html",
+          "domain": "travel.state.gov",
+          "title": "Lost and Stolen Passports, Visas, and Arrival/Departure Records ...",
+          "snippet": "Passports, Visas, and Arrival/Departure Records (admission stamp or paper Form I-94) are official travel documents that foreign citizens coming to the United\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://www.uscis.gov/policy-manual/updates",
+          "domain": "uscis.gov",
+          "title": "Updates | USCIS",
+          "snippet": "U.S. Citizenship and Immigration Services (USCIS) is issuing policy guidance in the USCIS Policy Manual to clarify when an immigrant visa becomes available for\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://pk.usembassy.gov/expansion-of-interview-waiver-eligibility-for-u-s-visa-holders-from-pakistan-3/",
+          "domain": "pk.usembassy.gov",
+          "title": "Expansion of Interview Waiver Eligibility for U.S. Visa Holders from ...",
+          "snippet": "Jan 12, 2023 ... A .gov website belongs to an official government organization in the United States. ... visas for qualified and eligible Pakistani citizens. As\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://travel.gc.ca/destinations/india",
+          "domain": "travel.gc.ca",
+          "title": "Travel advice and advisories for India - Travel.gc",
+          "snippet": "If you are denied entry by immigration officials, you will be returned to your point of departure. Canadian-Pakistani citizens are subject to different visa\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "refutation of claims about phony ballots and late vote counts November 3",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://www.brennancenter.org/our-work/research-reports/refuting-myth-voter-fraud-yet-again",
+          "domain": "brennancenter.org",
+          "title": "Refuting the Myth of Voter Fraud Yet Again",
+          "snippet": "Jan 6, 2021 ... They have filed more than 60 lawsuits challenging the results of the November election ... election with false claims about mass voting by\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://elections.maricopa.gov/asset/jcr:a9e03750-0a8f-4162-859f-1d46ac54b485/Correcting%20The%20Record%20-%20January%202022%20Report.pdf",
+          "domain": "elections.maricopa.gov",
+          "title": "Correcting the record - Maricopa County Elections",
+          "snippet": "Sep 24, 2021 ... \u201cLate Registered Voters with Counted Votes\u201d ... ballots that were successfully counted for the November 2020. General Election and not 10,408.",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://www.justice.gov/storage/US_v_Trump_23_cr_257.pdf",
+          "domain": "justice.gov",
+          "title": "United States v. Donald J. Trump - Department of Justice",
+          "snippet": "Aug 1, 2023 ... election. c. Co-Conspirator 3, an attorney whose unfounded claims of election fraud the. Defendant privately acknowledged to others sounded\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://www.sos.ca.gov/elections/upcoming-elections/general-election-november-3-2026/key-dates-deadlines",
+          "domain": "sos.ca.gov",
+          "title": "Key Dates and Deadlines - California Secretary of State - CA.gov",
+          "snippet": "General Election - November 3, 2026 ; November 3, 2026. Vote\u2010By\u2010Mail Ballots returned by mail, in order to be counted, must be postmarked on or before\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.slocounty.ca.gov/departments/clerk-recorder/all-services/elections-and-voting/elections-conducted-by-county-of-san-luis-obispo/november-3,-2026,-general-election",
+          "domain": "slocounty.ca.gov",
+          "title": "November 3, 2026, General Election - County of San Luis Obispo",
+          "snippet": "October 5 - Ballots sent out and early voting begins at SLO Elections Office; October 6 - Drop boxes open; October 19 - Last day to register online to vote;\u00a0...",
+          "classification": "other"
+        }
+      ]
+    },
+    {
+      "query": "study estimating preventable COVID-19 deaths 160000 fewer due to responsible action",
+      "provider": "google_cse",
+      "k": 5,
+      "n_results": 5,
+      "results": [
+        {
+          "rank": 1,
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10946219/",
+          "domain": "pmc.ncbi.nlm.nih.gov",
+          "title": "A Review of the Resurgence of Measles, a Vaccine-Preventable ...",
+          "snippet": "Vaccine hesitancy due to misinformation about possible vaccine side effects, reduced vaccine uptake during and after the COVID-19 pandemic, and lack of\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 2,
+          "url": "https://www.who.int/news-room/fact-sheets/detail/cervical-cancer",
+          "domain": "who.int",
+          "title": "Cervical cancer - World Health Organization (WHO)",
+          "snippet": "Jul 3, 2026 ... Cervical cancer is largely preventable through HPV vaccination and regular screening, as recommended by national guidelines, and it can be\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 3,
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11763180/",
+          "domain": "pmc.ncbi.nlm.nih.gov",
+          "title": "The persistent threat of tuberculosis \u2212 Why ending TB remains ...",
+          "snippet": "Jan 6, 2025 ... The WHO's Global Tuberculosis Report 2024 highlights that while TB-related deaths ... First, the COVID-19 pandemic disrupted essential TB services\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 4,
+          "url": "https://www.jec.senate.gov/public/_cache/files/b3a51344-6e2b-4a5e-b05d-119794671a0e/key-points-about-the-economy---2020.pdf",
+          "domain": "jec.senate.gov",
+          "title": "The Economic Impact of America's Failure to Contain the Coronavirus",
+          "snippet": "Oct 15, 2020 ... The result by the end of April was more than 60,000 American deaths and 22 million jobs lost. To rescue his record on the economy, the President\u00a0...",
+          "classification": "other"
+        },
+        {
+          "rank": 5,
+          "url": "https://www.aamc.org/media/75236/download",
+          "domain": "aamc.org",
+          "title": "The Complexities of Physician Supply and Demand: Projections ...",
+          "snippet": "Nov 17, 2021 ... While some of the data used in this study were collected pre-COVID-19 (most notably health care utilization data from the 2015-2019 Medical\u00a0...",
+          "classification": "other"
+        }
+      ]
+    }
+  ]
+}
