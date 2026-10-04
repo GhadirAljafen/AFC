@@ -120,10 +120,42 @@ measurement.
 faithfulness check, and no verification that it agrees with the verdict label.
 Never evaluated.
 
-### P5 — Test the retrieval loop live
-The closed corpus cannot expose sources a reformulated query would newly reach,
-which is the loop's entire rationale. Until then, whether it earns its cost is
-genuinely unknown.
+### ~~P5 — Test the retrieval loop live~~ — **done, and it reframed the priorities**
+The closed corpus could not expose sources a reformulated query would newly reach,
+which is the loop's entire rationale. Measured live on 41 claims
+(`results/evidence_retrieval/RESULTS.md` §11): the loop **does** reach new domains —
+92% of second rounds add at least one, replicated across two batches — and it never
+retrieves fact-checking pages, unlike round 1. **Keep it enabled.**
+
+Two consequences, both of which outrank the items above:
+
+### P5a — Raise the second-round trigger rate *(new top retrieval priority)*
+The loop fires on only **32% of claims** (stable across batches). When it fires it
+reaches better sources 92% of the time. So the binding constraint is not the loop
+but the **evidence evaluator's sufficiency gate**, which decides whether round 1 was
+enough — and nothing has ever measured that gate. This is the cheapest remaining
+retrieval lever and needs no new benchmark.
+
+### P5b — Stage 3 does not beat always-REFUTES on *any* evidence source
+`results/verdict/FINDINGS.md` §L at n=35: live evidence 0.800, oracle gold evidence
+0.800, majority baseline **0.800**. On the 22 claims where no fact-check page was
+retrieved, 0.727 against a 0.773 baseline — below it.
+
+This supersedes the earlier n=13 reading, which had claimed live evidence lifted the
+stage well clear of the baseline. **Two priorities change as a result:**
+
+* **Full-text enrichment is no longer a recommended lever.** It was the only
+  intervention that improved verdicts on the closed corpus (§10), but on live
+  evidence the same paired test gives **p=1.000** despite 9.1× more text (§L.4).
+  Its measured benefit is specific to a proxy whose baseline text was artificially
+  thin.
+* **Better evidence is not the bottleneck.** The oracle ties the baseline too, which
+  is the strongest form of the §8.3 finding. What remains is the verdict stage's
+  decision behaviour under a 4:1 imbalanced label distribution — a calibration and
+  decision-rule problem, not a retrieval one.
+
+**Open, and now the central question:** can Stage 3 beat the majority class on any
+evidence source at all? The live sample is being extended toward n=100 to answer it.
 
 ---
 
@@ -139,8 +171,15 @@ Recorded because v1's failure mode was methodological, not technical:
   so a constant predictor scores 0.706 — above this system's verdict accuracy on
   retrieved evidence.
 - **Prefer macro-F1 under class imbalance**, and report both.
-- **Withdraw findings in place.** Three claims have been retracted with their
-  reasoning left visible rather than edited away.
+- **Withdraw findings in place.** Five claims have been retracted with their
+  reasoning left visible rather than edited away — most recently the n=13
+  live-evidence result (`FINDINGS.md` §L), which tripling the sample dissolved.
+- **Treat a small-sample result as a hypothesis, and go back and test it.** §L
+  reported p=0.031 at n=13 and recommended a larger run; the larger run returned
+  p=0.180. The practice that caught it was re-measuring the baselines on the *same*
+  claims rather than comparing across samples — and the check that was supposed to
+  catch it at n=13 (confirming the sample wasn't unusually easy) gave the wrong
+  answer, because 13 claims cannot establish representativeness either.
 - **Label untested changes as untested**, and never report the removal of dead
   code as an improvement.
 

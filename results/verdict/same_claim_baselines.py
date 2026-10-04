@@ -2,12 +2,15 @@
 Re-measure the oracle and closed-corpus baselines on the SAME claims as the
 live-evidence run, then compare them paired.
 
-Why this is separate from live_evidence_verdict.py. That script scored the verdict
-stage on live web evidence for 13 claims and compared the result against baselines
-measured earlier on n=136. Those are different samples, so the comparison would
-only hold if the 13 claims were of average difficulty — which is an assumption,
-not a measurement. This re-runs both baselines on exactly the same claim IDs and
-applies McNemar on identical claims.
+Why this is separate from live_evidence_verdict.py. That script scores the verdict
+stage on live web evidence for whichever claims have been collected live so far,
+and compares the result against baselines measured earlier on n=136. Those are
+different samples, so the comparison would only hold if the live claims were of
+average difficulty — which is an assumption, not a measurement. This re-runs both
+baselines on exactly the same claim IDs and applies McNemar on identical claims.
+
+The live sample grows across days as quota allows, so re-run this after every
+batch: a sample that was representative at n=13 is not guaranteed to stay so.
 
 The check mattered: it confirmed the sample is not unusually easy (closed-corpus
 accuracy here brackets the n=136 figure), which is what makes the live-evidence

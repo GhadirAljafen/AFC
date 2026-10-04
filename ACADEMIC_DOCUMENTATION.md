@@ -10,6 +10,14 @@
 > Sections describing the confidence-threshold rules have been corrected: those
 > rules were unreachable and have been removed.
 >
+> **Revision 2026-10-04.** §6.5 added: the first evaluation on live open-web
+> retrieval rather than a closed-corpus proxy (41 claims). It reverses two
+> closed-corpus conclusions — the retrieval loop works, and full-text enrichment does
+> not help — and withdraws an earlier 13-claim live result that had reported the
+> verdict stage comfortably beating its baseline. §6.3 bullets and §6.6 threats are
+> amended accordingly. Earlier figures are left in place with their scope stated
+> rather than deleted.
+>
 > Supporting evidence: `results/claim_detection/RESULTS.md`,
 > `results/evidence_retrieval/RESULTS.md`, `results/verdict/FINDINGS.md`.
 
@@ -552,22 +560,28 @@ prompt B, confirming ROUGE-L understates by roughly 0.05–0.08 F1 rather than t
 Measured on a closed AVeriTeC corpus (973 documents). **Closed-corpus results are
 easier than live open-web search and are not comparable to it.**
 
-* **Evidence depth beats breadth.** Replacing ~186-character search snippets with
-  fetched article passages raised verdict accuracy **0.559 → 0.640**
-  (McNemar p=0.043) and cut abstention 45.6% → 34.6%. Widening the candidate pool
-  instead produced the *best retrieval recall of any condition* while making
-  verdicts **worse**. This is the only intervention that improved verdict quality.
+* **Evidence depth beats breadth — on this corpus only.** Replacing ~186-character
+  search snippets with fetched article passages raised verdict accuracy
+  **0.559 → 0.640** (McNemar p=0.043) and cut abstention 45.6% → 34.6%. Widening the
+  candidate pool instead produced the *best retrieval recall of any condition* while
+  making verdicts **worse**. This was the only intervention that improved verdict
+  quality here — but it **does not replicate on live evidence** (§6.5: p=1.000 at
+  n=35, despite 9.1× more text), so it should be read as an artifact of a proxy whose
+  snippet condition was artificially thin.
 * **Enrichment saturates at ~3 documents**; `FULL_TEXT_TOP_K=3` is validated
   rather than assumed.
 * **Reachability.** 70.7% of real evidence URLs are fetchable, yielding ~17×
   more text than a snippet. Archived copies are *more* reliable than live URLs
   (80.7% vs 64.5%), so a Wayback fallback is used. The ~29% that fail retain their
   snippet, so enrichment can only add.
-* **The retrieval loop was a no-op.** It passed an identical claim every round;
-  URL dedup guaranteed round 2 added nothing, after spending a full round of
-  searches. Repaired — but at matched retrieval volume it is statistically
-  indistinguishable from a larger single pass (p=0.43), so it is **not** shown to
-  earn its cost on this benchmark.
+* **The retrieval loop was a no-op, then was repaired, then was vindicated live.**
+  It originally passed an identical claim every round; URL dedup guaranteed round 2
+  added nothing, after spending a full round of searches. Repaired — but at matched
+  retrieval volume on the closed corpus it is statistically indistinguishable from a
+  larger single pass (p=0.43). **That null result is an artifact of the setting**: a
+  single 973-document index with round 1's URLs excluded leaves a reformulated query
+  nowhere new to reach. Measured live (§6.5) the loop clearly works. The closed-corpus
+  verdict against it should not be cited.
 
 ### 6.4 Stage 3 — reasoning and verdict
 
@@ -613,10 +627,65 @@ inferentially incomplete evidence. The remaining levers are retrieval-side.
 `{0.8, 0.9, 0.95, 1.0}` with 132 of 136 predictions in a single reliability
 bucket. Nothing downstream reads it.
 
-### 6.5 Threats to validity
+### 6.5 Live open-web evaluation — the only non-proxy measurement
+
+All figures above use one of two proxies: an AVeriTeC-derived closed corpus, or gold
+answers supplied directly. Neither is what the deployed system retrieves. A live
+evaluation was run against Google CSE, accumulated in daily batches within a
+100-queries/day free tier: **41 claims, 148 searches, 35 scorable**
+(`results/evidence_retrieval/RESULTS.md` §11; `results/verdict/FINDINGS.md` §L).
+Queries and results are exported to `query_trail.json` because the run cannot be
+reproduced without re-spending quota on a web whose contents change.
+
+**Retrieval (Stage 2).** The iterative loop, which the closed corpus found
+indistinguishable from a larger single pass, is vindicated live: **92% of second
+rounds reach a domain the first round did not** (mean 3.08 new domains), and round 2
+retrieves **zero** fact-checking pages against 18 in round 1, reaching government,
+primary and wire sources instead. Both figures replicated across two independent
+batches. The binding constraint is not the loop but the sufficiency gate that
+triggers it: only **32% of claims** get a second round at all.
+
+**Verdict (Stage 3).** On live evidence the stage reaches **0.800 accuracy against a
+0.800 majority-class baseline** — it does not beat always-REFUTES. Nor does the
+oracle condition with perfect evidence (0.800). Controlling for fact-check leakage,
+which affects 39% of claims, the **22 claims where no fact-checker was retrieved
+score 0.727 against their 0.773 baseline — below it.**
+
+Two earlier conclusions are withdrawn by this measurement, both documented in place:
+
+1. **Full-text enrichment does not generalise.** §6.3's result that depth improves
+   verdicts (+0.081 accuracy, p=0.043) holds only on the closed corpus. Repeated live
+   with the same paired test: **p=1.000**, despite 9.1× more evidence text. The
+   closed corpus exaggerated it because its "snippet" condition was a short AVeriTeC
+   answer, so enrichment supplied text the baseline genuinely lacked; live snippets
+   already summarise the page.
+2. **An n=13 version of this evaluation claimed the opposite and was wrong.** It
+   reported live evidence at 0.923 against a 0.692 baseline, p=0.031. Tripling the
+   sample gave 0.800 against 0.800, p=0.180. The 13-claim sample had both a
+   favourable label mix and an anomalously weak closed-corpus score, and the check
+   intended to detect that concluded the sample was representative when it was not.
+
+**The resulting research question** is narrower and harder than the one this project
+started with: not *how do we retrieve better evidence*, but **can the verdict stage
+beat a constant predictor on any evidence source at all**, given a 4:1 imbalanced
+label distribution. Neither live retrieval nor gold evidence does so at n=35.
+
+### 6.6 Threats to validity
 
 * Closed-corpus retrieval results are a lower bound and not comparable to live
-  search.
+  search. Live comparison (§6.5) leans the same way — 7 claims right only with live
+  evidence vs 2 the other way — but not significantly (p=0.180).
+* The live sample (n=41) is **easier than the benchmark average**: the closed corpus
+  scores 0.657 on it against 0.544 on n=136. Cross-sample comparisons with the
+  n=136 figures are indicative only.
+* The fact-check leakage detector is domain-based and misses fact-checking content
+  hosted elsewhere, so the leakage-free subset is a lower bound on contamination.
+* Live results are quota-bound and time-bound: Google CSE's free tier is 100
+  queries/day and **the API sunsets 2027-01-01**, so this evaluation is not
+  indefinitely reproducible as run. A provider abstraction (`search.py`) exists to
+  allow substitution.
+* Macro-F1 on the live sample is unstable: 5 `Supported` and 2 `Not Enough
+  Evidence` claims mean one flipped claim moves it several points.
 * The oracle condition supplies ~2.0 short question-answer pairs per claim; this
   is an upper bound on evidence quality for this benchmark, not a simulation of
   ideal live retrieval.

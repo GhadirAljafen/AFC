@@ -12,29 +12,51 @@
     "av-00013",
     "av-00014",
     "av-00015",
-    "av-00016"
+    "av-00016",
+    "av-00017",
+    "av-00019",
+    "av-00020",
+    "av-00022",
+    "av-00023",
+    "av-00024",
+    "av-00026",
+    "av-00027",
+    "av-00028",
+    "av-00029",
+    "av-00030",
+    "av-00032",
+    "av-00035",
+    "av-00037",
+    "av-00039",
+    "av-00040",
+    "av-00041",
+    "av-00042",
+    "av-00044",
+    "av-00045",
+    "av-00046",
+    "av-00048"
   ],
-  "n": 13,
-  "majority": 0.6923076923076923,
+  "n": 35,
+  "majority": 0.8,
   "same_claim_baselines": {
     "oracle_gold": {
-      "accuracy": 0.7692307692307693,
-      "macro_f1": 0.6805555555555557
+      "accuracy": 0.8,
+      "macro_f1": 0.6562091503267974
     },
     "closed_corpus": {
-      "accuracy": 0.46153846153846156,
-      "macro_f1": 0.4458689458689458
+      "accuracy": 0.6571428571428571,
+      "macro_f1": 0.5942028985507246
     },
     "paired_tests": {
       "live_fulltext_vs_closed_corpus": {
-        "base_only_right": 0,
-        "live_only_right": 6,
-        "p": 0.03125
+        "base_only_right": 2,
+        "live_only_right": 7,
+        "p": 0.1796875
       },
       "live_fulltext_vs_oracle_gold": {
-        "base_only_right": 0,
-        "live_only_right": 2,
-        "p": 0.5
+        "base_only_right": 5,
+        "live_only_right": 5,
+        "p": 1.0
       }
     }
   }

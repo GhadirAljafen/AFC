@@ -1,79 +1,79 @@
 {
   "split": "dev",
-  "claims_scored": 13,
+  "claims_scored": 35,
   "condition": "LIVE web evidence, replayed from cache using the exact queries recorded in live_loop_dev.json (0 search quota)",
-  "caveat": "n=13. Descriptive only; cannot support significance claims.",
+  "caveat": "n=35. paired tests possible; only large effects detectable.",
   "reference_baselines": {
     "closed_corpus_retrieved": 0.544,
     "oracle_gold": 0.728
   },
-  "majority_baseline": 0.6923076923076923,
+  "majority_baseline": 0.8,
   "summaries": [
     {
       "condition": "snippet",
-      "n": 13,
-      "accuracy": 0.7692307692307693,
-      "macro_f1": 0.6805555555555557,
-      "abstention": 0.23076923076923078,
-      "mean_chars": 158.4923076923077,
+      "n": 35,
+      "accuracy": 0.7714285714285715,
+      "macro_f1": 0.6360665478312537,
+      "abstention": 0.17142857142857143,
+      "mean_chars": 158.41142857142856,
       "pred_distribution": {
-        "REFUTES": 7,
-        "SUPPORTS": 3,
-        "NOT_ENOUGH_INFO": 3
+        "REFUTES": 23,
+        "SUPPORTS": 6,
+        "NOT_ENOUGH_INFO": 6
       },
       "per_class_recall": {
         "SUPPORTS": {
-          "n": 3,
-          "recall": 0.667
+          "n": 5,
+          "recall": 0.6
         },
         "REFUTES": {
-          "n": 9,
-          "recall": 0.778
+          "n": 28,
+          "recall": 0.786
         },
         "NOT_ENOUGH_INFO": {
-          "n": 1,
+          "n": 2,
           "recall": 1.0
         }
       }
     },
     {
       "condition": "fulltext",
-      "n": 13,
-      "accuracy": 0.9230769230769231,
-      "macro_f1": 0.8222222222222223,
-      "abstention": 0.15384615384615385,
-      "mean_chars": 1377.0,
+      "n": 35,
+      "accuracy": 0.8,
+      "macro_f1": 0.5971248876909253,
+      "abstention": 0.14285714285714285,
+      "mean_chars": 1438.5885714285714,
       "pred_distribution": {
-        "REFUTES": 9,
-        "NOT_ENOUGH_INFO": 2,
-        "SUPPORTS": 2
+        "REFUTES": 25,
+        "NOT_ENOUGH_INFO": 5,
+        "SUPPORTS": 5
       },
       "per_class_recall": {
         "SUPPORTS": {
-          "n": 3,
-          "recall": 0.667
+          "n": 5,
+          "recall": 0.6
         },
         "REFUTES": {
-          "n": 9,
-          "recall": 1.0
+          "n": 28,
+          "recall": 0.857
         },
         "NOT_ENOUGH_INFO": {
-          "n": 1,
-          "recall": 1.0
+          "n": 2,
+          "recall": 0.5
         }
       }
     }
   ],
   "fact_check_split": {
     "fact-check retrieved": {
-      "n": 6,
-      "snippet_accuracy": 0.8333333333333334,
-      "fulltext_accuracy": 1.0
+      "n": 13,
+      "snippet_accuracy": 0.8461538461538461,
+      "fulltext_accuracy": 0.9230769230769231
     },
     "no fact-check": {
-      "n": 7,
-      "snippet_accuracy": 0.7142857142857143,
-      "fulltext_accuracy": 0.8571428571428571
+      "n": 22,
+      "snippet_accuracy": 0.7272727272727273,
+      "fulltext_accuracy": 0.7272727272727273
     }
   },
   "per_claim": [
@@ -270,6 +270,336 @@
         "pred": "REFUTES",
         "chars": 929,
         "enriched": 1
+      }
+    },
+    {
+      "claim_id": "av-00017",
+      "gold": "REFUTES",
+      "n_evidence": 5,
+      "retrieved_fact_check": false,
+      "snippet": {
+        "pred": "REFUTES",
+        "chars": 160.4
+      },
+      "fulltext": {
+        "pred": "REFUTES",
+        "chars": 1665.4,
+        "enriched": 2
+      }
+    },
+    {
+      "claim_id": "av-00019",
+      "gold": "REFUTES",
+      "n_evidence": 5,
+      "retrieved_fact_check": false,
+      "snippet": {
+        "pred": "NOT_ENOUGH_INFO",
+        "chars": 149.6
+      },
+      "fulltext": {
+        "pred": "NOT_ENOUGH_INFO",
+        "chars": 149.6,
+        "enriched": 0
+      }
+    },
+    {
+      "claim_id": "av-00020",
+      "gold": "REFUTES",
+      "n_evidence": 5,
+      "retrieved_fact_check": true,
+      "snippet": {
+        "pred": "REFUTES",
+        "chars": 160.8
+      },
+      "fulltext": {
+        "pred": "REFUTES",
+        "chars": 1611.6,
+        "enriched": 2
+      }
+    },
+    {
+      "claim_id": "av-00022",
+      "gold": "REFUTES",
+      "n_evidence": 5,
+      "retrieved_fact_check": true,
+      "snippet": {
+        "pred": "REFUTES",
+        "chars": 152.6
+      },
+      "fulltext": {
+        "pred": "REFUTES",
+        "chars": 1666.4,
+        "enriched": 2
+      }
+    },
+    {
+      "claim_id": "av-00023",
+      "gold": "REFUTES",
+      "n_evidence": 5,
+      "retrieved_fact_check": false,
+      "snippet": {
+        "pred": "REFUTES",
+        "chars": 158.2
+      },
+      "fulltext": {
+        "pred": "REFUTES",
+        "chars": 1217.4,
+        "enriched": 3
+      }
+    },
+    {
+      "claim_id": "av-00024",
+      "gold": "REFUTES",
+      "n_evidence": 5,
+      "retrieved_fact_check": false,
+      "snippet": {
+        "pred": "REFUTES",
+        "chars": 160
+      },
+      "fulltext": {
+        "pred": "NOT_ENOUGH_INFO",
+        "chars": 615.8,
+        "enriched": 2
+      }
+    },
+    {
+      "claim_id": "av-00026",
+      "gold": "NOT_ENOUGH_INFO",
+      "n_evidence": 5,
+      "retrieved_fact_check": false,
+      "snippet": {
+        "pred": "NOT_ENOUGH_INFO",
+        "chars": 160.8
+      },
+      "fulltext": {
+        "pred": "SUPPORTS",
+        "chars": 1689.2,
+        "enriched": 2
+      }
+    },
+    {
+      "claim_id": "av-00027",
+      "gold": "REFUTES",
+      "n_evidence": 5,
+      "retrieved_fact_check": false,
+      "snippet": {
+        "pred": "REFUTES",
+        "chars": 157.8
+      },
+      "fulltext": {
+        "pred": "REFUTES",
+        "chars": 2005.6,
+        "enriched": 3
+      }
+    },
+    {
+      "claim_id": "av-00028",
+      "gold": "REFUTES",
+      "n_evidence": 5,
+      "retrieved_fact_check": true,
+      "snippet": {
+        "pred": "REFUTES",
+        "chars": 159.6
+      },
+      "fulltext": {
+        "pred": "REFUTES",
+        "chars": 1408.2,
+        "enriched": 2
+      }
+    },
+    {
+      "claim_id": "av-00029",
+      "gold": "REFUTES",
+      "n_evidence": 5,
+      "retrieved_fact_check": true,
+      "snippet": {
+        "pred": "REFUTES",
+        "chars": 156.6
+      },
+      "fulltext": {
+        "pred": "REFUTES",
+        "chars": 2429,
+        "enriched": 3
+      }
+    },
+    {
+      "claim_id": "av-00030",
+      "gold": "REFUTES",
+      "n_evidence": 5,
+      "retrieved_fact_check": true,
+      "snippet": {
+        "pred": "REFUTES",
+        "chars": 158.4
+      },
+      "fulltext": {
+        "pred": "REFUTES",
+        "chars": 1034,
+        "enriched": 3
+      }
+    },
+    {
+      "claim_id": "av-00032",
+      "gold": "SUPPORTS",
+      "n_evidence": 5,
+      "retrieved_fact_check": false,
+      "snippet": {
+        "pred": "SUPPORTS",
+        "chars": 161.2
+      },
+      "fulltext": {
+        "pred": "SUPPORTS",
+        "chars": 2373,
+        "enriched": 3
+      }
+    },
+    {
+      "claim_id": "av-00035",
+      "gold": "REFUTES",
+      "n_evidence": 5,
+      "retrieved_fact_check": false,
+      "snippet": {
+        "pred": "REFUTES",
+        "chars": 156
+      },
+      "fulltext": {
+        "pred": "REFUTES",
+        "chars": 2417.4,
+        "enriched": 3
+      }
+    },
+    {
+      "claim_id": "av-00037",
+      "gold": "REFUTES",
+      "n_evidence": 5,
+      "retrieved_fact_check": false,
+      "snippet": {
+        "pred": "REFUTES",
+        "chars": 160.4
+      },
+      "fulltext": {
+        "pred": "REFUTES",
+        "chars": 927.4,
+        "enriched": 3
+      }
+    },
+    {
+      "claim_id": "av-00039",
+      "gold": "REFUTES",
+      "n_evidence": 5,
+      "retrieved_fact_check": false,
+      "snippet": {
+        "pred": "REFUTES",
+        "chars": 161.6
+      },
+      "fulltext": {
+        "pred": "REFUTES",
+        "chars": 1346.8,
+        "enriched": 3
+      }
+    },
+    {
+      "claim_id": "av-00040",
+      "gold": "REFUTES",
+      "n_evidence": 5,
+      "retrieved_fact_check": false,
+      "snippet": {
+        "pred": "SUPPORTS",
+        "chars": 162
+      },
+      "fulltext": {
+        "pred": "SUPPORTS",
+        "chars": 1032.8,
+        "enriched": 2
+      }
+    },
+    {
+      "claim_id": "av-00041",
+      "gold": "REFUTES",
+      "n_evidence": 5,
+      "retrieved_fact_check": true,
+      "snippet": {
+        "pred": "REFUTES",
+        "chars": 158.8
+      },
+      "fulltext": {
+        "pred": "REFUTES",
+        "chars": 2399.2,
+        "enriched": 3
+      }
+    },
+    {
+      "claim_id": "av-00042",
+      "gold": "SUPPORTS",
+      "n_evidence": 5,
+      "retrieved_fact_check": true,
+      "snippet": {
+        "pred": "REFUTES",
+        "chars": 158.8
+      },
+      "fulltext": {
+        "pred": "REFUTES",
+        "chars": 158.8,
+        "enriched": 0
+      }
+    },
+    {
+      "claim_id": "av-00044",
+      "gold": "REFUTES",
+      "n_evidence": 5,
+      "retrieved_fact_check": false,
+      "snippet": {
+        "pred": "NOT_ENOUGH_INFO",
+        "chars": 156.4
+      },
+      "fulltext": {
+        "pred": "REFUTES",
+        "chars": 1692.2,
+        "enriched": 2
+      }
+    },
+    {
+      "claim_id": "av-00045",
+      "gold": "REFUTES",
+      "n_evidence": 5,
+      "retrieved_fact_check": false,
+      "snippet": {
+        "pred": "REFUTES",
+        "chars": 159.8
+      },
+      "fulltext": {
+        "pred": "REFUTES",
+        "chars": 2009,
+        "enriched": 3
+      }
+    },
+    {
+      "claim_id": "av-00046",
+      "gold": "REFUTES",
+      "n_evidence": 5,
+      "retrieved_fact_check": false,
+      "snippet": {
+        "pred": "REFUTES",
+        "chars": 160
+      },
+      "fulltext": {
+        "pred": "REFUTES",
+        "chars": 919.8,
+        "enriched": 1
+      }
+    },
+    {
+      "claim_id": "av-00048",
+      "gold": "REFUTES",
+      "n_evidence": 5,
+      "retrieved_fact_check": false,
+      "snippet": {
+        "pred": "SUPPORTS",
+        "chars": 154.2
+      },
+      "fulltext": {
+        "pred": "NOT_ENOUGH_INFO",
+        "chars": 1681,
+        "enriched": 2
       }
     }
   ]

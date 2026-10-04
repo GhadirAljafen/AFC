@@ -31,9 +31,12 @@ queries, same results, same ranking and fusion as production, nothing spent.
 
 Sample size
 -----------
-13 scorable claims (2 of 15 are Conflicting/Cherrypicking, excluded). **This is
-descriptive only.** It cannot support a significance claim, and is reported as a
-probe that indicates whether a larger, quota-funded run is worth doing.
+Whatever `live_loop_dev.json` currently holds, minus Conflicting/Cherrypicking
+claims, which are excluded from scoring (see sweep_k.py). That file is collected
+incrementally against a 100 queries/day free tier, so this script is re-run after
+each batch and its sample grows. The first batch scored 13 claims and was
+explicitly descriptive-only; the caveat emitted below is derived from the actual
+n rather than asserted, so it stops claiming "too small" once it isn't.
 
 Usage:
     python results/verdict/live_evidence_verdict.py
@@ -197,7 +200,16 @@ async def main_async(args) -> int:
     gold_counts = Counter(r["gold"] for r in rows)
     majority = max(gold_counts.values()) / len(rows)
 
-    print(f"\n{'=' * 90}\nRESULTS — n={len(rows)} (DESCRIPTIVE ONLY, far too small for significance)\n{'=' * 90}")
+    # The honesty of this line matters more than its wording: a 30-claim sample
+    # supports a paired test that a 13-claim one does not, and the label should
+    # follow the data rather than be frozen at whatever the first batch allowed.
+    if len(rows) < 25:
+        power = "DESCRIPTIVE ONLY, far too small for significance"
+    elif len(rows) < 60:
+        power = "paired tests possible; only large effects detectable"
+    else:
+        power = "adequately powered for moderate paired effects"
+    print(f"\n{'=' * 90}\nRESULTS — n={len(rows)} ({power})\n{'=' * 90}")
     print(f"{'condition':>22} {'chars':>7} {'accuracy':>9} {'macroF1':>8} {'abstain':>8} | per-class recall")
     for s in summaries:
         pc = "  ".join(f"{c[:4]}={s['per_class_recall'][c]['recall']}" for c in CLASSES)
@@ -231,7 +243,7 @@ async def main_async(args) -> int:
             "split": args.split, "claims_scored": len(rows),
             "condition": "LIVE web evidence, replayed from cache using the exact "
                          "queries recorded in live_loop_dev.json (0 search quota)",
-            "caveat": "n=13. Descriptive only; cannot support significance claims.",
+            "caveat": f"n={len(rows)}. {power}.",
             "reference_baselines": {"closed_corpus_retrieved": 0.544, "oracle_gold": 0.728},
             "majority_baseline": majority,
             "summaries": summaries, "fact_check_split": split, "per_claim": rows,

@@ -541,92 +541,192 @@ substantive conclusion is unchanged: the verdict stage is not the tractable
 bottleneck, over-abstention is largely a reasonable response to inferentially
 incomplete evidence, and the remaining levers are retrieval-side.
 
+> **Amended 2026-10-04 by §L at n=35.** The last clause — *"the remaining levers are
+> retrieval-side"* — no longer follows. Live retrieval and oracle gold evidence both
+> score **0.800 against a 0.800 majority baseline**, so improving the evidence does
+> not move the verdict. Better retrieval was the natural inference from closed-corpus
+> data; live measurement does not support it. The open question is whether this stage
+> can beat a constant predictor under a 4:1 label imbalance at all — a decision-rule
+> question, not an evidence question. The rest of the paragraph stands.
+
 ---
 
 # Stage 3 revisited — verdict quality on LIVE web evidence
 
-**Date:** 2026-09-28 · 13 claims · replayed from cached queries, **0 search quota**
-· paired McNemar on identical claims
+**Date:** 2026-10-04 (supersedes 2026-09-28) · **35 scorable claims of 41 collected**
+· replayed from cached queries, **0 search quota** · paired McNemar on identical
+claims
 
 Every Stage 3 measurement until now used one of two artificial evidence sources:
 an AVeriTeC-derived closed corpus, or gold answers handed over directly. Neither
 is what the system actually retrieves. This scores the verdict stage on **real web
 evidence**.
 
-## L.1 The result, on identical claims
+> ### ⚠ This section has been substantially revised. The n=13 version was wrong.
+>
+> The first version of §L was written on 13 claims and concluded that *"the closed
+> corpus was badly understating real performance"* — live+fulltext 0.923 against a
+> 0.692 majority baseline, significant at p=0.031. It recommended a larger run to
+> firm the magnitude up. The larger run was done, and it **did not firm the finding
+> up; it dissolved most of it.**
+>
+> | | n=13 (withdrawn) | **n=35 (current)** |
+> |---|---|---|
+> | live + full text, accuracy | 0.923 | **0.800** |
+> | majority-class baseline | 0.692 | **0.800** |
+> | margin over baseline | +0.231 | **0.000** |
+> | live+fulltext vs closed corpus | **p=0.031** significant | **p=0.180 n.s.** |
+> | clean subset (no fact-check page) | 0.857, *above* baseline | **0.727, below its 0.773 baseline** |
+>
+> **What went wrong at n=13**, concretely: the 13-claim sample had an unusually
+> favourable label mix (0.692 majority baseline vs 0.800 here) and, by chance, a
+> closed-corpus score far below that proxy's own average (0.462 vs 0.544 on n=136).
+> Both errors pushed in the same direction — they inflated the live-vs-closed gap
+> and lowered the bar the live score had to clear. I explicitly checked for the
+> second one and reported that the sample was *"not unusually easy"* because 0.462
+> bracketed 0.544. **That reassurance was wrong**: on 35 claims the closed corpus
+> scores **0.657**, well above its 0.544 benchmark average, so the live sample is
+> somewhat *easier* than average, not representative.
+>
+> The n=13 figures are kept above rather than deleted, as with the withdrawn claims
+> in `../evidence_retrieval/RESULTS.md` §5.
+
+## L.1 The result at n=35, on identical claims
 
 | condition | evidence chars | accuracy | macro-F1 | abstention |
 |---|---|---|---|---|
-| closed corpus | — | **0.462** | 0.488 | — |
-| oracle (gold answers) | ~246 | 0.769 | 0.681 | — |
-| live web, snippets | 158 | 0.769 | 0.681 | 23.1% |
-| **live web + full text** | **1,377** | **0.923** | **0.822** | **15.4%** |
-| majority-class baseline | — | 0.692 | — | — |
+| closed corpus | — | 0.657 | 0.594 | — |
+| oracle (gold answers) | ~246 | **0.800** | 0.656 | — |
+| live web, snippets | 158 | 0.771 | **0.636** | 17.1% |
+| live web + full text | 1,439 | **0.800** | 0.597 | 14.3% |
+| **majority-class baseline** | — | **0.800** | — | — |
 
-Paired McNemar, same claims:
+Paired McNemar, identical claims:
 
 | comparison | base-only right | live-only right | p | |
 |---|---|---|---|---|
-| live+fulltext vs **closed corpus** | 0 | **6** | **0.031** | significant |
-| live+fulltext vs oracle gold | 0 | 2 | 0.50 | n.s. |
+| live+fulltext vs closed corpus | 2 | 7 | 0.180 | n.s. |
+| live+fulltext vs oracle gold | 5 | 5 | 1.000 | n.s. |
+| live+fulltext vs live snippets | 2 | 3 | 1.000 | n.s. |
 
-## L.2 The closed corpus was badly understating real performance
+**Nothing in this table beats the majority-class baseline.** Not live evidence, not
+full-text enrichment, and not perfect gold evidence — the oracle *ties* 0.800. On a
+sample that is 28/35 `Refuted`, always answering REFUTES is as accurate as anything
+measured here.
 
-**This is the important finding.** On identical claims, the closed corpus scores
-**0.462** while live web evidence with full text scores **0.923** — and the
-difference is significant even at n=13 (p=0.031, 6 claims right only with live
-evidence, 0 the other way).
+Macro-F1 is the metric that still separates the conditions, and it favours **live
+snippets (0.636)** over live full text (0.597) and over the oracle (0.656 — close).
+Read macro-F1 cautiously at this n: the sample holds only 5 `Supported` and 2 `Not
+Enough Evidence` claims, so one claim flipping moves it several points.
 
-The sample is not unusually easy: closed-corpus accuracy on these 13 claims
-(0.462–0.538 across two runs) brackets the 0.544 measured on n=136, so the
-baseline behaves normally here.
+## L.2 The closed-corpus claim is downgraded, not reversed
 
-**Consequence for §7.3 and §8.3.** Stage 3's headline conclusion — that the verdict
-stage scores *below* the majority-class baseline — was measured entirely on the
-closed corpus. On live evidence the stage scores **0.923 against a 0.692
-baseline**. That conclusion does not survive contact with real retrieval, and
-should be read as a property of the proxy rather than of the system.
+The *direction* survived: 7 claims are right only with live evidence, 2 only with
+the closed corpus. But **p=0.180 — not significant**, where n=13 gave p=0.031.
 
-Live snippets alone (0.769) already **match the oracle** (0.769), which means
-AVeriTeC's gold annotated answers are no better as verdict input than what live
-search returns.
+More data made the effect weaker, which is the signature of a small-sample
+overestimate rather than of noise. The discordant counts barely moved (6:0 → 7:2);
+what changed is that the closed corpus performed far better on the fuller sample
+(0.462 → 0.657).
 
-## L.3 The leakage control
+**So:** the closed corpus is *probably* a pessimistic proxy — 7:2 is a real lean,
+and §7.4 argued the same on independent grounds. It is **no longer established**
+that it understates verdict quality "by a wide margin."
 
-Live retrieval surfaces fact-checking pages, which often state the verdict, so
-part of this could be the system reading the answer rather than judging evidence.
-Splitting on whether a fact-check page was retrieved:
+**Consequence for §7.3, restored.** The n=13 version of this section declared that
+Stage 3's below-baseline conclusion *"does not survive contact with real
+retrieval."* **That retraction is itself retracted.** At n=35 the stage reaches
+exactly the majority baseline on live evidence and falls below it on the
+uncontaminated subset, so §7.3's conclusion stands: *the verdict stage does not beat
+the majority class.* It beats it on macro-F1, as §7.3 also said.
 
-| subset | n | snippets | full text |
-|---|---|---|---|
-| fact-check page retrieved | 6 | 0.833 | **1.000** |
-| **no fact-check page** | **7** | 0.714 | **0.857** |
+## L.3 The leakage control — and this time it does not survive
 
-Leakage is worth roughly **+0.12 to +0.14 accuracy** — real and substantial. But
-the finding survives it: on claims where **no** fact-check page was retrieved,
-full text still scores **0.857**, above both the oracle (0.769) and the majority
-baseline (0.692).
+| subset | n | snippets | full text | majority baseline |
+|---|---|---|---|---|
+| fact-check page retrieved | 13 | 0.846 | **0.923** | — |
+| **no fact-check page** | **22** | **0.727** | **0.727** | **0.773** |
 
-## L.4 What this does and does not establish
+Leakage is worth **+0.119 (snippets) to +0.196 (full text)** accuracy — larger than
+the +0.12–0.14 estimated at n=13.
 
-**Establishes:** the closed corpus is a poor proxy for live retrieval and
-understates verdict quality by a wide margin; full-text enrichment matters more on
-live evidence (1,377 chars vs 158) than the closed-corpus experiments could show;
-and §10's enrichment result generalises to real web pages.
+**On the 22 claims where no fact-check page was retrieved, both conditions score
+0.727 against a 0.773 majority baseline — below it.** At n=13 the clean subset
+(n=7) scored 0.857 and was the reason the finding was said to "survive" the control.
+It does not survive at n=22.
 
-**Does not establish:** reliable absolute numbers. **n=13**, with 7 in the clean
-subset. The 0.923 figure should not be quoted as system accuracy — the direction
-is well supported, the magnitude is not.
+The honest reading: **the apparent competence of Stage 3 on live evidence is
+substantially the system finding a fact-checker who already answered the question.**
+39% of claims retrieve such a page (§11.3), and on those it scores 0.923; on the
+rest it does not beat always-REFUTES.
+
+## L.4 Full-text enrichment does not replicate on live evidence
+
+This is a separate, cleaner reversal. §10 found enrichment significantly better on
+the closed corpus, and the n=13 §L reported that it "generalises to real web pages."
+
+Paired on identical claims and identical retrieved evidence, varying only whether
+the top-3 documents were fetched in full:
+
+| | value |
+|---|---|
+| evidence volume | 158 → 1,439 chars (**9.1×**) |
+| documents enriched | mean 2.11 of 3; 2/35 claims got none |
+| accuracy | 0.771 → 0.800 |
+| macro-F1 | 0.636 → **0.597** (worse) |
+| **paired McNemar** | 3 fulltext-only right, 2 snippet-only right, **p=1.000** |
+
+**A 9.1× increase in evidence volume produced no detectable change in verdict
+quality.** Accuracy moves by one claim; macro-F1 moves the wrong way. §10's
+enrichment result should be read as **specific to the closed corpus**, where the
+indexed text was short AVeriTeC answers, rather than as a property of enrichment.
+
+Depth and correctness are not monotonically related either: the 5 claims with
+exactly 1 enriched document scored 1.000, the 28 with 2–3 scored 0.821. With these
+sample sizes that is not a finding, but it is not the pattern a dose-response
+relationship would produce.
+
+Fetch reliability at this scale: **88 pages fetched, 17 failed (16%)**, consistent
+with the 29%-unreachable figure in `../evidence_retrieval/RESULTS.md` §9 given that
+enrichment retries and falls back to snippets.
+
+## L.5 What this does and does not establish
+
+**Establishes:**
+* Stage 3 on live web evidence **does not beat the majority-class baseline**
+  (0.800 vs 0.800), and **falls below it** once fact-check leakage is controlled
+  (0.727 vs 0.773).
+* **Fact-check leakage is the dominant driver** of its apparent accuracy: +0.20 on
+  full text, affecting 39% of claims.
+* **Full-text enrichment confers no measurable verdict benefit on live evidence**
+  (p=1.000) despite a 9.1× volume increase, contradicting the generalisation claimed
+  at n=13.
+* **Even perfect evidence does not help**: the oracle also ties the baseline at
+  0.800. This is the strongest version of §8.3's point — over-abstention and error
+  are not primarily an evidence-quality problem.
+
+**Does not establish:**
+* That the closed corpus is an accurate proxy. It still leans pessimistic (7:2),
+  just not significantly.
+* Reliable absolute numbers. n=35, with 5 `Supported` and 2 `Not Enough Evidence`
+  claims; macro-F1 especially is unstable.
+* Anything about Stage 4 (explanation), still unmeasured.
 
 **Caveats:**
-* Two of the 15 live claims are `Conflicting/Cherrypicking` and excluded.
-* Fact-check leakage contributes materially and is only partly controlled; the
-  detector is domain-based and will miss fact-checking content on other sites.
-* Replayed from cached queries, so results reflect the web as of 2026-09-26.
+* 6 of the 41 live claims are `Conflicting/Cherrypicking` and excluded from scoring.
+* The 41-claim live sample is **easier than the benchmark average** on the closed
+  corpus (0.657 vs 0.544) — the opposite of what the n=13 check concluded. Treat
+  cross-sample comparisons with the n=136 figures as indicative only.
+* The fact-check detector is domain-based and will miss fact-checking content on
+  other sites, so the "no fact-check page" subset is a lower bound on leakage.
+* Replayed from cached queries: the web as of 2026-09-26 and 2026-10-04.
 
-**Next:** a larger live run is now clearly worth its quota. At ~4 searches per
-claim, 100/day buys ~25 claims — roughly 4 days to reach n=100, at which point
-these numbers could carry real weight instead of being indicative.
+**Next:** continue to n=100 (41 collected, ~2 more daily batches). The open question
+is no longer whether live evidence helps — it is **whether Stage 3 can beat
+always-REFUTES on any evidence source at all**, since neither live retrieval nor
+gold evidence does so here. If n=100 confirms the oracle ties the baseline, the
+constraint is the verdict stage's decision behaviour on an imbalanced label
+distribution, not the evidence it is given.
 
 ## Files
 
@@ -636,4 +736,8 @@ these numbers could carry real weight instead of being indicative.
 - `prompt_comparison_dev.json` — later three-arm run (direct / symmetric / synthesis)
 - `evidence_sufficiency.py` / `evidence_sufficiency_dev.json` — the S.1-S.3 experiment
 - `live_evidence_verdict.py` / `live_evidence_verdict_dev.json` — §L live-evidence verdicts
+- `same_claim_baselines.py` / `same_claim_baselines_dev.json` — §L.1-L.2 oracle and
+  closed-corpus baselines re-measured on the *same* claims, with paired McNemar.
+  Re-run this after every live batch: the live sample grows, and §L shows a sample
+  that looked representative at n=13 was not.
 - `same_claim_baselines_dev.json` — baselines re-measured on the same 13 claims
