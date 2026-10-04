@@ -2,17 +2,78 @@
   "split": "dev",
   "condition": "LIVE open-web search via Google CSE",
   "design": "one run per claim at rounds=2; both conditions derived from the same run, so round-1 queries are identical by construction",
-  "not_measured": "verdict accuracy \u2014 the quota-limited sample is far too small to support that claim",
+  "accumulation": "Collected incrementally over 2 run(s) against a 100 queries/day free tier. Claims are never re-run: query generation is stochastic, so replaying a finished claim would miss the cache and spend quota for no new data. Summary statistics cover all claims listed here.",
+  "target": 100,
+  "not_measured": "verdict accuracy \u2014 measured separately in results/verdict/live_evidence_verdict.py, which replays these recorded queries from cache at zero quota",
+  "runs": [
+    {
+      "date": "unrecorded (pre-dates run provenance)",
+      "claims_added": 15,
+      "live_searches": 55,
+      "claim_ids": [
+        "av-00000",
+        "av-00001",
+        "av-00002",
+        "av-00003",
+        "av-00004",
+        "av-00006",
+        "av-00007",
+        "av-00008",
+        "av-00010",
+        "av-00011",
+        "av-00012",
+        "av-00013",
+        "av-00014",
+        "av-00015",
+        "av-00016"
+      ]
+    },
+    {
+      "date": "2026-10-04",
+      "claims_added": 26,
+      "live_searches": 95,
+      "cache_hits": 1,
+      "budget": 95,
+      "failed": [],
+      "claim_ids": [
+        "av-00017",
+        "av-00018",
+        "av-00019",
+        "av-00020",
+        "av-00022",
+        "av-00023",
+        "av-00024",
+        "av-00026",
+        "av-00027",
+        "av-00028",
+        "av-00029",
+        "av-00030",
+        "av-00032",
+        "av-00033",
+        "av-00035",
+        "av-00037",
+        "av-00039",
+        "av-00040",
+        "av-00041",
+        "av-00042",
+        "av-00043",
+        "av-00044",
+        "av-00045",
+        "av-00046",
+        "av-00047",
+        "av-00048"
+      ]
+    }
+  ],
   "summary": {
-    "claims": 15,
-    "live_searches": 55,
-    "cache_hits": 0,
-    "ran_second_round": 5,
-    "new_domain_rate": 0.8,
-    "mean_new_domains": 3.6,
-    "gold_domain_recall_r1": 0.03333333333333333,
-    "gold_domain_recall_r1r2": 0.06666666666666667,
-    "fact_check_round1": 8,
+    "claims": 41,
+    "live_searches": 148,
+    "ran_second_round": 13,
+    "new_domain_rate": 0.9230769230769231,
+    "mean_new_domains": 3.076923076923077,
+    "gold_domain_recall_r1": 0.06910569105691057,
+    "gold_domain_recall_r1r2": 0.08943089430894309,
+    "fact_check_round1": 18,
     "fact_check_round2": 0
   },
   "per_claim": [
@@ -564,6 +625,931 @@
       "gold_hit_r1": 0,
       "gold_hit_r1r2": 0,
       "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00017",
+      "claim": "All USA Ballots Arriving After Election Day Will Be Thrown Out",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "elections.maryland.gov",
+        "oag.dc.gov",
+        "projects.fivethirtyeight.com"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "arxiv.org",
+          "bbc.com",
+          "ncsl.org",
+          "scotusblog.com"
+        ],
+        "queries": [
+          "USA ballots arriving after Election Day policy",
+          "Are ballots arriving after Election Day thrown out in the USA?",
+          "Claim \"All USA ballots arriving after Election Day will be thrown out\" false"
+        ],
+        "fact_check": 0
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 3
+    },
+    {
+      "claim_id": "av-00018",
+      "claim": "Even if your mail-in ballot is postmarked prior to the Election day but arrives after the Election day it will be thrown",
+      "gold_label": "Conflicting Evidence/Cherrypicking",
+      "gold_domains": [
+        "buzzfeednews.com",
+        "cbsnews.com",
+        "facebook.com"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "bbc.com",
+          "campaignlegal.org",
+          "pa.gov",
+          "sos.ca.gov",
+          "votebeat.org"
+        ],
+        "queries": [
+          "mail-in ballot postmarked before Election Day but arrives late counted or rejected",
+          "mail-in ballot postmarked before Election Day arrives after Election Day rules",
+          "mail-in ballot late arrival after Election Day discarded policy"
+        ],
+        "fact_check": 0
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 3
+    },
+    {
+      "claim_id": "av-00019",
+      "claim": "Video shows attack of French embassy in Sudan",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "tagesspiegel.de"
+      ],
+      "searches_spent": 5,
+      "ran_second_round": true,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "apnews.com",
+          "bbc.com",
+          "reuters.com"
+        ],
+        "queries": [
+          "French embassy attack Sudan video",
+          "French embassy attack Sudan 2024",
+          "French embassy attack Sudan video debunked"
+        ],
+        "fact_check": 0
+      },
+      "round2": {
+        "n_urls": 5,
+        "domains": [
+          "bbc.com",
+          "csis.org",
+          "hrw.org",
+          "reuters.com"
+        ],
+        "new_domains": [
+          "csis.org",
+          "hrw.org"
+        ],
+        "queries": [
+          "French embassy Sudan attack video verification April 2024",
+          "Eyewitness reports French embassy Sudan attack April 2024"
+        ],
+        "fact_check": 0
+      },
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 1
+    },
+    {
+      "claim_id": "av-00020",
+      "claim": "Viral video purportedly shows Pakistani opposition MPs chanted \u2018Modi, Modi\u2019 (India's PM)  inside the Pakistani Parliamen",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "dawn.com"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "aclanthology.org",
+          "altnews.in",
+          "bbc.co.uk",
+          "bbc.com",
+          "thequint.com"
+        ],
+        "queries": [
+          "Pakistani opposition MPs chant Modi inside Pakistani Parliament video",
+          "Pakistani Parliament viral video Modi chant fact check",
+          "Pakistani MPs Modi chant inside Parliament claim debunked"
+        ],
+        "fact_check": 1
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 1
+    },
+    {
+      "claim_id": "av-00022",
+      "claim": "Trash Can Plastered With 'Ballot Box' Sign In Philadelphia Was Intended To Get People To Toss Their Ballots In The Trash",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "instagram.com"
+      ],
+      "searches_spent": 5,
+      "ran_second_round": true,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "factcheck.org",
+          "inquirer.com",
+          "phila.gov",
+          "phillyda.org",
+          "reuters.com"
+        ],
+        "queries": [
+          "Philadelphia trash can ballot box sign incident",
+          "Philadelphia trash can ballot box sign claim false",
+          "Philadelphia ballot disposal trash can controversy"
+        ],
+        "fact_check": 1
+      },
+      "round2": {
+        "n_urls": 5,
+        "domains": [
+          "phila.gov",
+          "vote.phila.gov"
+        ],
+        "new_domains": [
+          "vote.phila.gov"
+        ],
+        "queries": [
+          "Philadelphia officials statement on ballot box signs on trash cans 2024",
+          "Philadelphia election board response to ballot box signs on trash cans April 2024"
+        ],
+        "fact_check": 0
+      },
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 1
+    },
+    {
+      "claim_id": "av-00023",
+      "claim": "Joe Biden wants to ban fracking",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "rev.com"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "bbc.com",
+          "eenews.net",
+          "forbes.com",
+          "insideclimatenews.org",
+          "washingtonpost.com"
+        ],
+        "queries": [
+          "Joe Biden fracking ban policy",
+          "Joe Biden fracking ban false claim",
+          "Joe Biden stance on fracking 2024"
+        ],
+        "fact_check": 0
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 1
+    },
+    {
+      "claim_id": "av-00024",
+      "claim": "Germany\u2019s Foreign Minister Heiko Maas said that Thailand\u2019s King Maha Vajiralongkorn didn\u2019t do anything illegal while at ",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "dw.com",
+        "smh.com.au"
+      ],
+      "searches_spent": 5,
+      "ran_second_round": true,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "dw.com",
+          "politics.stackexchange.com",
+          "publicinternationallawandpolicygroup.org",
+          "reuters.com",
+          "scmp.com"
+        ],
+        "queries": [
+          "Heiko Maas statement on King Maha Vajiralongkorn Germany residence",
+          "Heiko Maas Thailand King illegal activity Germany refuted",
+          "King Maha Vajiralongkorn legal status Germany residence 2023"
+        ],
+        "fact_check": 0
+      },
+      "round2": {
+        "n_urls": 5,
+        "domains": [
+          "dw.com",
+          "quora.com",
+          "reuters.com",
+          "state.gov"
+        ],
+        "new_domains": [
+          "quora.com",
+          "state.gov"
+        ],
+        "queries": [
+          "Heiko Maas statement on King Maha Vajiralongkorn legality in Germany",
+          "Heiko Maas official quote about King Vajiralongkorn's activities in Germany"
+        ],
+        "fact_check": 0
+      },
+      "gold_hit_r1": 1,
+      "gold_hit_r1r2": 1,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00026",
+      "claim": "Ivermectin is a treatment for coronavirus.",
+      "gold_label": "Not Enough Evidence",
+      "gold_domains": [
+        "ncbi.nlm.nih.gov",
+        "thelancet.com"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "nejm.org",
+          "pmc.ncbi.nlm.nih.gov",
+          "pubmed.ncbi.nlm.nih.gov"
+        ],
+        "queries": [
+          "Ivermectin treatment for coronavirus COVID-19",
+          "Ivermectin effectiveness against COVID-19",
+          "Ivermectin COVID-19 treatment debunked"
+        ],
+        "fact_check": 0
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00027",
+      "claim": "Sleeping under a mosquito bed net treated (or not treated) with insecticide is ineffective and harmful to human health.",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "vikaspedia.in"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "afro.who.int",
+          "cdc.gov",
+          "pmc.ncbi.nlm.nih.gov"
+        ],
+        "queries": [
+          "effectiveness of insecticide-treated mosquito bed nets for malaria prevention",
+          "health risks of sleeping under insecticide-treated mosquito nets",
+          "studies refuting claim that mosquito bed nets are harmful to human health"
+        ],
+        "fact_check": 0
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 1
+    },
+    {
+      "claim_id": "av-00028",
+      "claim": "Pogba Has Quit The French National Team Over Macron's Remarks on Islam.",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "dailymail.co.uk",
+        "mirror.co.uk"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "bbc.com",
+          "facebook.com",
+          "factcheck.afp.com",
+          "thequint.com"
+        ],
+        "queries": [
+          "Pogba quits French national team over Macron remarks on Islam",
+          "Pogba French national team departure Macron Islam controversy",
+          "Paul Pogba response to Macron comments on Islam"
+        ],
+        "fact_check": 1
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00029",
+      "claim": "The Wire called Durga puja racist and the goddess Durga a sex worker",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "thewire.in"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "altnews.in",
+          "boomlive.in",
+          "en.wikipedia.org",
+          "m.thewire.in",
+          "voanews.com"
+        ],
+        "queries": [
+          "The Wire Durga Puja racist claim",
+          "The Wire goddess Durga sex worker statement",
+          "The Wire Durga Puja controversy 2024"
+        ],
+        "fact_check": 2
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 1
+    },
+    {
+      "claim_id": "av-00030",
+      "claim": "Paul Pogba, who plays for Manchester United and the French national team, retired from international football in respons",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "punchng.com"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "altnews.in",
+          "bbc.com",
+          "facebook.com",
+          "the-independent.com",
+          "thedailystar.net"
+        ],
+        "queries": [
+          "Paul Pogba retirement from French national team Macron Islamist terrorism",
+          "Paul Pogba international retirement linked to Macron comments on terrorism",
+          "Paul Pogba France national team retirement 2023"
+        ],
+        "fact_check": 1
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 1
+    },
+    {
+      "claim_id": "av-00032",
+      "claim": "The New York post Endorsed Donald trumps bid for re-election.",
+      "gold_label": "Supported",
+      "gold_domains": [
+        "nypost.com"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "bbc.com",
+          "en.wikipedia.org",
+          "nypost.com",
+          "reuters.com"
+        ],
+        "queries": [
+          "New York Post endorsement Donald Trump 2024",
+          "New York Post supports Donald Trump re-election",
+          "New York Post Donald Trump 2024 endorsement false"
+        ],
+        "fact_check": 0
+      },
+      "round2": null,
+      "gold_hit_r1": 1,
+      "gold_hit_r1r2": 1,
+      "n_gold_domains": 1
+    },
+    {
+      "claim_id": "av-00033",
+      "claim": "America went from 75,000 flu deaths last year in 2019 to almost 0 in 2020",
+      "gold_label": "Conflicting Evidence/Cherrypicking",
+      "gold_domains": [
+        "archive.ph",
+        "cdc.gov",
+        "healthfeedback.org"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "archive.cdc.gov",
+          "cdc.gov",
+          "factcheck.afp.com",
+          "familiesfightingflu.org",
+          "statista.com"
+        ],
+        "queries": [
+          "America flu deaths 2019 vs 2020 statistics",
+          "US flu mortality 2019 75000 deaths data",
+          "Claim America flu deaths 2020 almost zero debunked"
+        ],
+        "fact_check": 1
+      },
+      "round2": null,
+      "gold_hit_r1": 1,
+      "gold_hit_r1r2": 1,
+      "n_gold_domains": 3
+    },
+    {
+      "claim_id": "av-00035",
+      "claim": "COVID-19 pandemic pre-planned with the help from Bill Gates.",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "emergency.cdc.gov"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "bbc.com",
+          "centerforhealthsecurity.org",
+          "pmc.ncbi.nlm.nih.gov",
+          "reuters.com"
+        ],
+        "queries": [
+          "COVID-19 pandemic pre-planned Bill Gates involvement",
+          "Bill Gates COVID-19 pandemic conspiracy debunked",
+          "Was COVID-19 pandemic planned with Bill Gates 2020"
+        ],
+        "fact_check": 0
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 1
+    },
+    {
+      "claim_id": "av-00037",
+      "claim": "Breitbart News reports that the daughter of Delaware Democratic Senator Chris Coons and seven other underage girls were ",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "google.com",
+        "twitter.com"
+      ],
+      "searches_spent": 5,
+      "ran_second_round": true,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "congress.gov",
+          "docs.house.gov",
+          "en.wikipedia.org",
+          "oversight.house.gov"
+        ],
+        "queries": [
+          "Breitbart News Hunter Biden laptop daughter Chris Coons",
+          "Hunter Biden laptop underage girls Breitbart News report",
+          "Chris Coons daughter Hunter Biden laptop claim debunked"
+        ],
+        "fact_check": 0
+      },
+      "round2": {
+        "n_urls": 5,
+        "domains": [
+          "abcnews.com",
+          "apnews.com",
+          "congress.gov",
+          "facebook.com",
+          "wowt.com"
+        ],
+        "new_domains": [
+          "abcnews.com",
+          "apnews.com",
+          "facebook.com",
+          "wowt.com"
+        ],
+        "queries": [
+          "Breitbart News article Hunter Biden laptop Chris Coons daughter underage girls",
+          "Official statement Chris Coons daughter Hunter Biden laptop allegations"
+        ],
+        "fact_check": 0
+      },
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00039",
+      "claim": "5G causes COVID-19.",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "pcmag.com",
+        "reuters.com",
+        "ucc.org"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "bbc.com",
+          "bu.edu",
+          "en.wikipedia.org",
+          "pmc.ncbi.nlm.nih.gov",
+          "sciencedirect.com"
+        ],
+        "queries": [
+          "5G causes COVID-19",
+          "5G COVID-19 claim debunked",
+          "Does 5G technology spread coronavirus"
+        ],
+        "fact_check": 0
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 3
+    },
+    {
+      "claim_id": "av-00040",
+      "claim": "Rock musician Jon Bon Jovi performed for 12 people and 7 pumpkins at a campaign event for Democratic presidential nomine",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "nbcphiladelphia.com",
+        "pennlive.com"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "2822news.com",
+          "cnn.com",
+          "en.wikipedia.org",
+          "quora.com",
+          "reuters.com"
+        ],
+        "queries": [
+          "Jon Bon Jovi performance 12 people 7 pumpkins Joe Biden campaign Pennsylvania",
+          "Jon Bon Jovi campaign event Pennsylvania 12 attendees 7 pumpkins Biden",
+          "Jon Bon Jovi performance claim false 12 people 7 pumpkins Biden campaign"
+        ],
+        "fact_check": 0
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00041",
+      "claim": "Wearing face masks can cause infections from bacteria such as staphylococcus.",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "auctoresonline.org",
+        "healthline.com"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "aap.com.au",
+          "auctoresonline.org",
+          "nature.com",
+          "pmc.ncbi.nlm.nih.gov",
+          "usatoday.com"
+        ],
+        "queries": [
+          "Wearing face masks bacterial infections staphylococcus risk",
+          "Face masks cause staphylococcus infection false claim",
+          "Health risks of wearing face masks bacteria staphylococcus"
+        ],
+        "fact_check": 1
+      },
+      "round2": null,
+      "gold_hit_r1": 1,
+      "gold_hit_r1r2": 1,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00042",
+      "claim": "An 'anti-Black Lives Matter' flag replaced the American flag behind President Trump during a Waukesha campaign rally.",
+      "gold_label": "Supported",
+      "gold_domains": [
+        "gannett-cdn.com",
+        "reformer.com"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "facebook.com",
+          "milwaukeeindependent.com",
+          "reuters.com",
+          "towcenter.medium.com",
+          "usatoday.com"
+        ],
+        "queries": [
+          "anti-Black Lives Matter flag behind President Trump Waukesha rally",
+          "Trump Waukesha rally flag controversy 2020",
+          "anti-Black Lives Matter flag replaced American flag Trump rally"
+        ],
+        "fact_check": 1
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00043",
+      "claim": "Donald Trump said that $15 an hour is too much for essential workers",
+      "gold_label": "Conflicting Evidence/Cherrypicking",
+      "gold_domains": [
+        "forbes.com"
+      ],
+      "searches_spent": 5,
+      "ran_second_round": true,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "bbc.com",
+          "brookings.edu",
+          "war.gov"
+        ],
+        "queries": [
+          "Donald Trump $15 an hour too much for essential workers statement",
+          "Donald Trump $15 minimum wage essential workers comments",
+          "Donald Trump $15 an hour wage claim debunked"
+        ],
+        "fact_check": 0
+      },
+      "round2": {
+        "n_urls": 5,
+        "domains": [
+          "apple.news",
+          "brookings.edu",
+          "cal.news",
+          "reckon.news"
+        ],
+        "new_domains": [
+          "apple.news",
+          "cal.news",
+          "reckon.news"
+        ],
+        "queries": [
+          "Donald Trump statement \"$15 an hour\" essential workers site:news 2020",
+          "Donald Trump quote on $15 minimum wage for essential workers April 2020"
+        ],
+        "fact_check": 0
+      },
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 1
+    },
+    {
+      "claim_id": "av-00044",
+      "claim": "Deliberately infecting children to COVID-19 at \u201cpox parties\u201d could be a good way to help create herd immunity against CO",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "cdc.gov",
+        "health.harvard.edu",
+        "secure.jbs.elsevierhealth.com"
+      ],
+      "searches_spent": 5,
+      "ran_second_round": true,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "bbc.com",
+          "jamanetwork.com",
+          "kansashealthsystem.com",
+          "pmc.ncbi.nlm.nih.gov"
+        ],
+        "queries": [
+          "deliberately infecting children COVID-19 pox parties herd immunity",
+          "COVID-19 pox parties children herd immunity without vaccine",
+          "COVID-19 pox parties debunked false claim herd immunity"
+        ],
+        "fact_check": 0
+      },
+      "round2": {
+        "n_urls": 5,
+        "domains": [
+          "cdc.gov",
+          "hra.nhs.uk",
+          "jamanetwork.com",
+          "pmc.ncbi.nlm.nih.gov",
+          "science.org"
+        ],
+        "new_domains": [
+          "cdc.gov",
+          "hra.nhs.uk",
+          "science.org"
+        ],
+        "queries": [
+          "scientific studies on deliberate COVID-19 infection for herd immunity",
+          "CDC official statements on COVID-19 intentional infection and herd immunity"
+        ],
+        "fact_check": 0
+      },
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 1,
+      "n_gold_domains": 3
+    },
+    {
+      "claim_id": "av-00045",
+      "claim": "Cutting the umbilical cord straight away deliberately denies the baby natural immunity so that medical professionals hav",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "pubmed.ncbi.nlm.nih.gov"
+      ],
+      "searches_spent": 5,
+      "ran_second_round": true,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "bmj.com",
+          "medlineplus.gov",
+          "pmc.ncbi.nlm.nih.gov",
+          "tommys.org",
+          "who.int"
+        ],
+        "queries": [
+          "effects of immediate umbilical cord cutting on newborn immunity",
+          "does cutting umbilical cord immediately reduce baby's natural immunity",
+          "immediate umbilical cord clamping and vaccination necessity debunked"
+        ],
+        "fact_check": 0
+      },
+      "round2": {
+        "n_urls": 5,
+        "domains": [
+          "aap.org",
+          "acog.org",
+          "ahajournals.org",
+          "cps.ca",
+          "publications.aap.org"
+        ],
+        "new_domains": [
+          "aap.org",
+          "acog.org",
+          "ahajournals.org",
+          "cps.ca",
+          "publications.aap.org"
+        ],
+        "queries": [
+          "statements from WHO on intent behind immediate umbilical cord clamping",
+          "American Academy of Pediatrics position on timing of umbilical cord clamping and vaccination"
+        ],
+        "fact_check": 0
+      },
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 1
+    },
+    {
+      "claim_id": "av-00046",
+      "claim": "The umbilical cord should not be cut until 1 hour after birth or they baby will not have enough blood right after birth.",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "who.int"
+      ],
+      "searches_spent": 5,
+      "ran_second_round": true,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "acog.org",
+          "en.wikipedia.org",
+          "pmc.ncbi.nlm.nih.gov",
+          "tommys.org"
+        ],
+        "queries": [
+          "umbilical cord cutting timing after birth effects on newborn blood volume",
+          "umbilical cord should not be cut until 1 hour after birth claim debunked",
+          "optimal timing for umbilical cord clamping newborn health"
+        ],
+        "fact_check": 0
+      },
+      "round2": {
+        "n_urls": 5,
+        "domains": [
+          "pmc.ncbi.nlm.nih.gov",
+          "publications.aap.org",
+          "sciencedirect.com"
+        ],
+        "new_domains": [
+          "publications.aap.org",
+          "sciencedirect.com"
+        ],
+        "queries": [
+          "clinical guidelines delayed umbilical cord clamping 1 hour after birth blood volume newborn",
+          "studies on umbilical cord clamping timing 60 minutes impact on neonatal blood volume"
+        ],
+        "fact_check": 0
+      },
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 1
+    },
+    {
+      "claim_id": "av-00047",
+      "claim": "Joe Biden said he wants to ban fracking in the US.",
+      "gold_label": "Conflicting Evidence/Cherrypicking",
+      "gold_domains": [
+        "c-span.org",
+        "pittsburgh.cbslocal.com",
+        "transcripts.cnn.com"
+      ],
+      "searches_spent": 2,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "bbc.com",
+          "factcheck.org",
+          "forbes.com",
+          "insideclimatenews.org",
+          "reuters.com"
+        ],
+        "queries": [
+          "Joe Biden fracking ban statement",
+          "Joe Biden fracking policy 2024",
+          "Joe Biden fracking ban false claim"
+        ],
+        "fact_check": 1
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 3
+    },
+    {
+      "claim_id": "av-00048",
+      "claim": "99% of people recover from COVID-19.",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "coronavirus.jhu.edu"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "bls.gov",
+          "bu.edu",
+          "jamanetwork.com",
+          "pmc.ncbi.nlm.nih.gov"
+        ],
+        "queries": [
+          "COVID-19 recovery rate statistics",
+          "Is the claim that 99% of people recover from COVID-19 false",
+          "COVID-19 mortality and recovery rates worldwide"
+        ],
+        "fact_check": 0
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 1
     }
   ]
 }

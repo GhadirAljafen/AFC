@@ -579,22 +579,39 @@ reformulated query had nowhere new to go. On the open web it does.
 
 **Design.** One live run per claim at `rounds=2`, recording which URLs each round
 contributed; both conditions derived from the same run, so the round-1 queries are
-identical by construction rather than merely matched. 15 claims, 55 live searches
-(Google CSE free tier is 100/day). Domain-level matching, per §11.3.
+identical by construction rather than merely matched. Domain-level matching, per
+§11.3.
 
-### 11.1 Round 2 does reach sources round 1 could not
+**Sample, collected incrementally.** The Google CSE free tier is 100 queries/day,
+so the sample is accumulated in daily batches by `live_loop.py`, which skips
+claims already done and merges new ones into `live_loop_dev.json` (a `runs` list in
+that file records each batch). **41 claims, 148 live searches, 2 batches** as of
+2026-10-04; target 100.
 
-| | value |
-|---|---|
-| claims that triggered a second round | 5 / 15 |
-| second rounds that added a **new domain** | **4 / 5 (80%)** |
-| new domains per second round | **mean 3.60**, max 5 |
-| round-1 domains per claim | 4.40 |
+Claims are never re-run: query generation is stochastic (temperature 0.3), so
+replaying a finished claim would emit different queries, miss the cache and spend
+quota for no new data.
 
-So a gap-driven second round adds roughly as many distinct domains again as the
-first round found. **This directly contradicts the closed-corpus result**, and the
-contradiction is explained by the setting rather than by either measurement being
-wrong: reformulation needs somewhere new to reach.
+### 11.1 Round 2 does reach sources round 1 could not — and this replicated
+
+Batch 2 is an independent 26-claim replication of batch 1, not a pooled re-estimate:
+
+| | batch 1 (n=15) | batch 2 (n=26) | **all (n=41)** |
+|---|---|---|---|
+| claims that triggered a second round | 5 (33%) | 8 (31%) | **13 (32%)** |
+| second rounds that added a **new domain** | 4 / 5 (80%) | 8 / 8 (100%) | **12 / 13 (92%)** |
+| new domains per second round | mean 3.60 | mean 2.75 | **mean 3.08**, max 5 |
+| round-1 domains per claim | 4.53 | 4.38 | **4.44** |
+| fact-check results retrieved in round 2 | 0 | 0 | **0** |
+
+So a gap-driven second round adds roughly two-thirds as many distinct domains again
+as the first round found. **This directly contradicts the closed-corpus result**,
+and the contradiction is explained by the setting rather than by either measurement
+being wrong: reformulation needs somewhere new to reach.
+
+The two quantities that matter both held on fresh claims — the trigger rate to
+within 2 points, and the new-domain rate at or above the first estimate. The
+batch-1 numbers were not a lucky draw.
 
 ### 11.2 The new sources are qualitatively better, and the gap queries are sensible
 
@@ -606,37 +623,52 @@ The second-round queries are doing what they were designed to do:
 | Matt Gaetz hospice fraud | *"Official court documents hospice fraud $75 million settlement"* | `justice.gov`, `politico.com`, `wusa9.com` |
 | COVID preventable deaths | *"study estimating preventable COVID-19 deaths"* | `pmc.ncbi.nlm.nih.gov`, `jec.senate.gov`, `aamc.org` |
 
-Round 2 systematically reaches **government, primary and wire sources**. And it
-retrieved **0 fact-checking results**, against 8 in round 1.
+Round 2 systematically reaches **government, primary and wire sources**. And across
+all 13 second rounds it retrieved **0 fact-checking results**, against 18 in round 1
+— a clean zero on both batches independently, so this is the loop's most reliable
+property, not a small-sample accident.
 
 ### 11.3 A round-1 query-quality problem this exposed
 
-Round-1 domains across the 15 claims:
+Round-1 domains across the 41 claims (104 distinct domains; top 10):
 
-| n | domain |
-|---|---|
-| 6 | `en.wikipedia.org` |
-| 4 | `aclanthology.org` |
-| 4 | `factcheck.org` |
-| 4 | `reuters.com` |
-| 4 | `bbc.com` |
-| 2 | `arxiv.org` |
-| 1 | `fever.ai` |
-| 1 | `snopes.com` |
+| n | domain | |
+|---|---|---|
+| 17 | `bbc.com` | |
+| 12 | `en.wikipedia.org` | |
+| 12 | `reuters.com` | |
+| 10 | `pmc.ncbi.nlm.nih.gov` | |
+| 6 | `factcheck.org` | ← fact-checker |
+| 5 | `aclanthology.org` | ← research venue |
+| 4 | `altnews.in` | |
+| 3 | `arxiv.org` | ← research venue |
+| 3 | `cdc.gov` | |
+| 3 | `facebook.com` | |
 
 Two distinct problems, both traceable to the refutation-style queries:
 
-1. **Fact-check leakage** — `factcheck.org` ×4, `snopes.com` ×1. The known risk
-   from §8.1 of `IMPROVEMENT_PLAN`, now observed live.
-2. **Benchmark-methodology leakage — new finding.** `aclanthology.org` ×4,
-   `arxiv.org` ×2, `fever.ai` ×1 — **10% of round-1 results** are NLP research
-   papers, including the venue and shared-task site of the benchmark these claims
-   came from. Queries like *"{claim} debunked"* surface academic work *about
-   fact-checking* rather than evidence about the claim.
+1. **Fact-check leakage** — 4.3% of all retrieved results; **16 of 41 claims (39%)**
+   retrieve at least one. The known risk from §8.1 of `IMPROVEMENT_PLAN`, now
+   observed live, and the reason the Stage 3 results in `FINDINGS.md` §L are split
+   on this variable.
+2. **Benchmark-methodology leakage.** `aclanthology.org` ×5, `arxiv.org` ×3 —
+   queries like *"{claim} debunked"* surface academic work *about fact-checking*
+   rather than evidence about the claim. This is a different failure from citing a
+   fact-checker's verdict: the system retrieves papers about the task. For claims
+   concerning Matt Gaetz, Macron's visa policy and COVID death tolls, `arxiv.org`
+   should not appear at all.
 
-   This is a different failure from citing a fact-checker's verdict: the system is
-   retrieving papers about the task. For claims concerning Matt Gaetz, Macron's
-   visa policy and COVID death tolls, `arxiv.org` should not appear at all.
+> **Correction (2026-10-04), from n=15 to n=41.** This section previously reported
+> **10% of round-1 results** as research venues. On the full query trail — 155
+> queries, 762 results — the figure is **4.2%**, and the phenomenon is concentrated
+> in **7 of 41 claims (17%)** rather than spread evenly. The original 9.7% estimate
+> came from 60 queries and was inflated by small sample; `fever.ai`, cited then as
+> evidence that the benchmark's own shared-task site was being retrieved, does not
+> recur in the enlarged sample.
+>
+> **The defect is real but roughly half the size reported, and it is a tail problem
+> rather than a pervasive one.** That weakens the §11.5 recommendation that called it
+> "the more promising target" — see the revision there.
 
 Round 2 exhibits neither problem. The mechanism is consistent: round 1's
 refutation-biased queries pull in meta-content about fact-checking; round 2's
@@ -646,14 +678,17 @@ gap-driven queries ask for specific missing facts and reach primary evidence.
 
 | | round 1 | rounds 1+2 |
 |---|---|---|
-| gold-domain recall | 0.033 | 0.067 |
-| claims finding ≥1 gold domain | 1 / 15 | 2 / 15 |
+| gold-domain recall (n=41) | 0.069 | 0.089 |
+| claims finding ≥1 gold domain | 5 / 41 | 7 / 41 |
+| *batch 1 (n=15)* | *0.033* | *0.067* |
+| *batch 2 (n=26)* | *0.090* | *0.103* |
 
-It doubled, but from 3% to 7% — at this level the metric carries no signal. Live
-search returns equally-good alternative sources, and AVeriTeC's gold URLs suffer
-link rot (§9 measured 29% unreachable). **Benchmark-gold matching is not a usable
-metric for live retrieval at this sample size**, which is why §11.1 is the primary
-result and this is reported only for completeness.
+Tripling the sample moved recall from 7% to 9%. At this level the metric carries no
+signal: live search returns equally-good alternative sources, and AVeriTeC's gold
+URLs suffer link rot (§9 measured 29% unreachable). **Benchmark-gold matching is not
+a usable metric for live retrieval**, which is why §11.1 is the primary result and
+this is reported only for completeness. Note this is now a conclusion about the
+metric rather than about the sample size — enlarging n did not rescue it.
 
 ### 11.5 What this does and does not change
 
@@ -661,23 +696,41 @@ result and this is reported only for completeness.
 that setting. On the open web, gap-driven reformulation demonstrably reaches new
 and better-quality sources. The loop's rationale is sound.
 
-**Does not change:** whether it improves *verdicts*. That is **not measured here**
-— 5 second rounds cannot support such a claim, and asserting it would repeat the
-errors of §4 (unpaired comparison) and the BERTScore count-ratio artifact.
+**Does not change:** whether it improves *verdicts*. That is **not measured here** —
+13 second rounds still cannot support such a claim, and asserting it would repeat
+the errors of §4 (unpaired comparison) and the BERTScore count-ratio artifact. The
+separate question of whether *live* evidence beats closed-corpus evidence **is**
+measured, in `../verdict/FINDINGS.md` §L, which replays these recorded queries from
+cache at zero quota.
 
 **Caveats:**
-* n=15 claims, 5 second rounds. Descriptive, not powered.
-* Only **1 in 3 claims triggers a second round** at all — the evidence evaluator
-  judges round 1 sufficient two-thirds of the time, so the loop's reach is limited
-  by that gate regardless of how well it performs when it does fire.
-* Quota-bound: 55 searches for 15 claims makes a larger live study expensive on
-  the free tier, and the API sunsets 2027-01-01.
+* n=41 claims, 13 second rounds. The §11.1 quantities have replicated across two
+  independent batches; the §11.4 recall figures remain uninformative.
+* Only **1 in 3 claims triggers a second round** at all (32%, stable across
+  batches) — the evidence evaluator judges round 1 sufficient two-thirds of the
+  time, so the loop's reach is limited by that gate regardless of how well it
+  performs when it does fire. **This gate, not the loop's effectiveness, is the
+  binding constraint**, and it is the one quantity here that nothing has yet tried
+  to improve.
+* The accumulated sample's label mix is **28 Refuted / 5 Supported / 2 Not Enough
+  Evidence** (plus 6 Conflicting, excluded from scoring). The majority-class
+  baseline on the 35 scorable claims is therefore **0.800** — markedly harsher than
+  the 0.692 that applied to the first batch's 13 scorable claims. Any Stage 3
+  accuracy on this sample must be read against 0.800.
+* Quota-bound: 148 searches for 41 claims (~3.6/claim), and the API sunsets
+  2027-01-01 — ~89 days' notice as of this writing.
 
 **Recommendation:** keep the loop enabled. Its measured benefit is better source
-quality on the open web, which the closed corpus could not see. The round-1
-query-quality problem in §11.3 is now the more promising target — 10% of first-round
-results being research papers about fact-checking is a straightforward retrieval
-defect, and unlike the loop question it needs no new benchmark to fix.
+quality on the open web, which the closed corpus could not see.
+
+~~The round-1 query-quality problem in §11.3 is now the more promising target.~~
+**Revised at n=41:** research-venue contamination is 4.2%, not the 10% this section
+originally cited, and it affects 17% of claims rather than most of them — too small
+a tail to be the highest-value next target. **The 68% of claims that never trigger a
+second round is the larger lever**, since §11.1 shows the loop reaches materially
+better sources whenever it does fire. Fact-check leakage at 39% of claims remains
+worth fixing for *validity* reasons rather than accuracy ones: it contaminates
+measurement, which is why §L splits on it.
 
 ---
 
@@ -692,15 +745,27 @@ defect, and unlike the loop question it needs no new benchmark to fix.
 4. **Test the SUPPORTS-demotion hypothesis** (§8.4): disable the
    `SUPPORTS -> NOT_ENOUGH_INFO` rule and re-run the oracle condition. One-line
    change, decisive result. Requires unfreezing the verdict logic.
-5. **Test the loop live.** The closed corpus cannot expose sources a reformulated
-   query would newly reach.
+5. ~~**Test the loop live.**~~ — **done** (§11), and it reversed the closed-corpus
+   conclusion.
 6. **Try a dense retriever** before concluding reformulation adds nothing.
+7. **Raise the second-round trigger rate.** §11.5 identifies this as the binding
+   constraint: the loop reaches better sources 92% of the time it fires, but it
+   fires on only 32% of claims. Nothing has yet measured the evidence evaluator's
+   sufficiency gate, which makes that decision.
+8. **Continue the live sample toward n=100** — 41 collected, ~2 more daily batches.
+   Re-run `live_loop.py --target 100`, then `export_query_trail.py`,
+   `../verdict/live_evidence_verdict.py` and `../verdict/same_claim_baselines.py`
+   after each batch.
 
 ## Files
 
 - `averitec.py` — loader, Wayback unwrapping, scorable-subset definition
 - `fetchability_audit.py` / `fetchability_dev.json` — §9 reachability audit
 - `fulltext_verdict.py` / `fulltext_verdict_dev.json` — §10 paired enrichment test
-- `live_loop.py` / `live_loop_dev.json` — §11 live open-web loop evaluation
+- `live_loop.py` / `live_loop_dev.json` — §11 live open-web loop evaluation,
+  accumulated across daily batches (the file's `runs` list is the batch provenance)
+- `query_trail.json` — every live query and its results, exported because
+  `.cache/search/` is gitignored and the run cannot be reproduced without
+  re-spending quota on a web whose results change
 - `evaluate_retrieval.py` — harness (conditions, volume control, metrics)
 - `metrics_retrieval_dev.json` — saved results for the runs above

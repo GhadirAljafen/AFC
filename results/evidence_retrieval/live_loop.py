@@ -41,15 +41,36 @@ already made twice.
 
 Quota
 -----
-Google CSE free tier is 100 queries/day and the API sunsets 2027-01-01. Cost is
-~6 searches per claim (up to 4 in round 1 including the auto-appended refutation
-query, up to 2 gap queries in round 2). `--budget` is a HARD cap: the run stops
-cleanly when it is reached and reports how far it got. Results are cached on disk,
-so re-running the same claims costs nothing.
+Google CSE free tier is 100 queries/day and the API sunsets 2027-01-01. Observed
+cost is ~3.7 live searches per claim (up to 4 in round 1 including the
+auto-appended refutation query, up to 2 gap queries in round 2; some are cache
+hits). `--budget` is a HARD cap: the run stops cleanly when it is reached and
+reports how far it got.
+
+Incremental runs — why this script resumes rather than restarts
+---------------------------------------------------------------
+A sample large enough to carry weight needs more claims than one day's quota
+buys, so the run accumulates across days. Two hazards make a plain re-run wrong,
+not merely wasteful:
+
+1. **Re-running finished claims is NOT free.** Cached searches cost nothing, but
+   query generation runs at temperature 0.3, so replaying a finished claim emits
+   *different* queries, misses the cache and spends quota on work already done.
+   So claims already present in the output file are skipped outright — never
+   re-generated and re-searched.
+2. **A plain re-run would destroy the earlier days' data**, since the output file
+   is rewritten. This project has lost result files to exactly that four times.
+   New claims are therefore MERGED into the existing file, a per-run provenance
+   record is appended, and a write that would reduce the claim count is refused
+   unless `--fresh` is passed explicitly.
+
+Summary statistics are recomputed over the full accumulated sample, so the file
+always describes every claim collected, not just the latest batch.
 
 Usage:
-    python results/evidence_retrieval/live_loop.py --limit 12 --budget 60
+    python results/evidence_retrieval/live_loop.py --target 100 --budget 95
     python results/evidence_retrieval/live_loop.py --dry-run     # no quota spent
+    python results/evidence_retrieval/live_loop.py --fresh ...   # discard & restart
 """
 
 from __future__ import annotations
@@ -61,7 +82,8 @@ import os
 import statistics
 import sys
 from collections import Counter
-from typing import Dict, List, Set
+from datetime import date
+from typing import Dict, List, Optional, Set
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
 _ROOT = os.path.abspath(os.path.join(_HERE, "..", ".."))
@@ -160,11 +182,34 @@ async def run_claim(claim: AveritecClaim, llm, search) -> Dict:
     }
 
 
-def report(rows: List[Dict], search) -> Dict:
+def load_prior(path: str) -> Dict:
+    """Read an earlier run's output so this run can extend it.
+
+    Returns empty structures when the file does not exist yet, so the first run
+    and a resumed run take the same code path.
+    """
+    if not os.path.exists(path):
+        return {"per_claim": [], "runs": []}
+    with open(path) as f:
+        prior = json.load(f)
+    # Older files predate the `runs` provenance list; synthesise one entry for
+    # them so the history is complete rather than silently missing its first day.
+    if "runs" not in prior:
+        rows = prior.get("per_claim", [])
+        prior["runs"] = [{
+            "date": "unrecorded (pre-dates run provenance)",
+            "claims_added": len(rows),
+            "live_searches": prior.get("summary", {}).get("live_searches"),
+            "claim_ids": [r["claim_id"] for r in rows],
+        }]
+    return prior
+
+
+def report(rows: List[Dict], total_searches: int) -> Dict:
     ran2 = [r for r in rows if r["ran_second_round"]]
-    print(f"\n{'=' * 88}\nLIVE OPEN-WEB RETRIEVAL LOOP — n={len(rows)} claims\n{'=' * 88}")
-    print(f"live searches spent: {search.live_queries}   "
-          f"cache hits: {search.hits}   (mean {statistics.mean([r['searches_spent'] for r in rows]):.1f} live/claim)")
+    print(f"\n{'=' * 88}\nLIVE OPEN-WEB RETRIEVAL LOOP — n={len(rows)} claims (cumulative)\n{'=' * 88}")
+    print(f"live searches spent across all runs: {total_searches}   "
+          f"(mean {statistics.mean([r['searches_spent'] for r in rows]):.1f} live/claim)")
     print(f"claims that ran a second round: {len(ran2)}/{len(rows)}")
 
     print(f"\n{'=' * 88}\nPRIMARY: does round 2 reach sources round 1 could not?\n{'=' * 88}")
@@ -201,8 +246,7 @@ def report(rows: List[Dict], search) -> Dict:
     print("  (the live web carries far more fact-checking content than a closed corpus)")
 
     return {
-        "claims": len(rows), "live_searches": search.live_queries,
-        "cache_hits": search.hits,
+        "claims": len(rows), "live_searches": total_searches,
         "ran_second_round": len(ran2),
         "new_domain_rate": (sum(1 for r in ran2 if r["round2"]["new_domains"]) / len(ran2)) if ran2 else 0,
         "mean_new_domains": statistics.mean([len(r["round2"]["new_domains"]) for r in ran2]) if ran2 else 0,
@@ -213,17 +257,31 @@ def report(rows: List[Dict], search) -> Dict:
 
 
 async def main_async(args) -> int:
-    claims = evaluable(load_split(os.path.join(args.data_dir, f"{args.split}.json")))[: args.limit]
     cfg = get_config()
+    out = os.path.join(_HERE, f"live_loop_{args.split}.json")
+    prior = {"per_claim": [], "runs": []} if args.fresh else load_prior(out)
+    prior_rows: List[Dict] = prior["per_claim"]
+    done_ids = {r["claim_id"] for r in prior_rows}
+
+    all_claims = evaluable(load_split(os.path.join(args.data_dir, f"{args.split}.json")))
+    remaining = [c for c in all_claims if c.claim_id not in done_ids]
+    need = max(0, args.target - len(prior_rows))
+    queue = remaining[: need if args.limit is None else min(need, args.limit)]
 
     print(f"{'=' * 88}\nLIVE RETRIEVAL-LOOP EVALUATION (spends real search quota)\n{'=' * 88}")
-    print(f"claims requested: {len(claims)}   hard budget: {args.budget} live searches")
-    print(f"estimated cost: ~{cfg.MAX_QUERIES_PER_CLAIM + 1 + cfg.MAX_GAP_QUERIES} searches/claim "
-          f"-> ~{args.budget // (cfg.MAX_QUERIES_PER_CLAIM + 1 + cfg.MAX_GAP_QUERIES)} claims within budget")
+    print(f"already collected: {len(prior_rows)} claims over {len(prior['runs'])} run(s)"
+          f"{'  [--fresh: IGNORING and restarting]' if args.fresh else '  (will be skipped, not re-run)'}")
+    print(f"target: {args.target} claims  ->  {need} still needed, "
+          f"{len(remaining)} unused claims available in the split")
+    print(f"this run will attempt: {len(queue)} claims   hard budget: {args.budget} live searches")
+    print(f"observed cost ~3.7 live searches/claim -> ~{int(args.budget / 3.7)} claims within budget")
     print("Google CSE free tier is 100 queries/day. Cached queries are free.")
 
     if args.dry_run:
         print("\n--dry-run: no searches issued, nothing spent.")
+        return 0
+    if not queue:
+        print(f"\nTarget of {args.target} already met ({len(prior_rows)} claims). Nothing to do.")
         return 0
 
     inner = GoogleCSEClient()
@@ -234,34 +292,72 @@ async def main_async(args) -> int:
     search = BudgetedSearch(inner, cache_dir=cfg.SEARCH_CACHE_DIR, budget=args.budget)
     llm = get_default_llm_client(use_dummy_if_missing_key=False)
 
-    rows: List[Dict] = []
-    for i, claim in enumerate(claims, 1):
+    new_rows: List[Dict] = []
+    failed: List[Dict] = []
+    for i, claim in enumerate(queue, 1):
         try:
-            rows.append(await run_claim(claim, llm, search))
-            print(f"  [{i}/{len(claims)}] spent={search.live_queries:>3}  {claim.claim[:60]}...")
+            new_rows.append(await run_claim(claim, llm, search))
+            print(f"  [{i}/{len(queue)}] spent={search.live_queries:>3}  "
+                  f"total={len(prior_rows) + len(new_rows):>3}  {claim.claim[:52]}...")
         except BudgetExceeded as e:
-            print(f"\n  BUDGET REACHED after {len(rows)} claims: {e}")
+            print(f"\n  BUDGET REACHED after {len(new_rows)} new claims: {e}")
             break
         except Exception as e:
             print(f"  [{i}] !! {type(e).__name__}: {e}")
+            failed.append({"claim_id": claim.claim_id, "error": f"{type(e).__name__}: {e}"})
 
-    if not rows:
-        print("No claims completed.", file=sys.stderr)
+    if not new_rows:
+        print("No new claims completed; leaving the existing file untouched.", file=sys.stderr)
         return 1
 
-    summary = report(rows, search)
-    out = os.path.join(_HERE, f"live_loop_{args.split}.json")
+    rows = prior_rows + new_rows
+    # Guard the overwrite hazard that has cost this project four result files: a
+    # write must never shrink the accumulated sample unless explicitly requested.
+    if not args.fresh and len(rows) < len(prior_rows):
+        print("REFUSING to write: merged result has fewer claims than the existing "
+              "file. Pass --fresh if discarding it is intended.", file=sys.stderr)
+        return 1
+
+    total_searches = sum(r["searches_spent"] for r in rows)
+    summary = report(rows, total_searches)
+    runs = list(prior["runs"]) + [{
+        "date": str(date.today()),
+        "claims_added": len(new_rows),
+        "live_searches": search.live_queries,
+        "cache_hits": search.hits,
+        "budget": args.budget,
+        "failed": failed,
+        "claim_ids": [r["claim_id"] for r in new_rows],
+    }]
+
     with open(out, "w") as f:
         json.dump({
             "split": args.split,
             "condition": "LIVE open-web search via Google CSE",
             "design": "one run per claim at rounds=2; both conditions derived from the "
                       "same run, so round-1 queries are identical by construction",
-            "not_measured": "verdict accuracy — the quota-limited sample is far too "
-                            "small to support that claim",
+            "accumulation": f"Collected incrementally over {len(runs)} run(s) against a "
+                            "100 queries/day free tier. Claims are never re-run: query "
+                            "generation is stochastic, so replaying a finished claim "
+                            "would miss the cache and spend quota for no new data. "
+                            "Summary statistics cover all claims listed here.",
+            "target": args.target,
+            "not_measured": "verdict accuracy — measured separately in "
+                            "results/verdict/live_evidence_verdict.py, which replays "
+                            "these recorded queries from cache at zero quota",
+            "runs": runs,
             "summary": summary, "per_claim": rows,
         }, f, indent=2)
-    print(f"\nSaved to {out}")
+
+    print(f"\nthis run: +{len(new_rows)} claims for {search.live_queries} live searches"
+          f"{f', {len(failed)} failed' if failed else ''}")
+    if len(rows) < args.target:
+        togo = args.target - len(rows)
+        print(f"cumulative: {len(rows)}/{args.target} claims  ({togo} to go, "
+              f"~{togo * 3.7 / 100:.1f} more days at the 100/day free tier)")
+    else:
+        print(f"cumulative: {len(rows)} claims — TARGET OF {args.target} REACHED")
+    print(f"Saved to {out}")
     return 0
 
 
@@ -269,8 +365,14 @@ if __name__ == "__main__":
     p = argparse.ArgumentParser()
     p.add_argument("--split", default="dev")
     p.add_argument("--data-dir", default=default_data_dir())
-    p.add_argument("--limit", type=int, default=12)
-    p.add_argument("--budget", type=int, default=60,
+    p.add_argument("--target", type=int, default=100,
+                   help="cumulative claim count to work toward across runs")
+    p.add_argument("--limit", type=int, default=None,
+                   help="optional cap on NEW claims attempted this run (default: "
+                        "as many as the target and budget allow)")
+    p.add_argument("--budget", type=int, default=95,
                    help="HARD cap on live searches; run stops cleanly when reached")
+    p.add_argument("--fresh", action="store_true",
+                   help="discard the accumulated file and start over (destructive)")
     p.add_argument("--dry-run", action="store_true", help="plan only, spend nothing")
     sys.exit(asyncio.run(main_async(p.parse_args())))
