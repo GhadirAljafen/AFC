@@ -136,26 +136,50 @@ but the **evidence evaluator's sufficiency gate**, which decides whether round 1
 enough — and nothing has ever measured that gate. This is the cheapest remaining
 retrieval lever and needs no new benchmark.
 
-### P5b — Stage 3 does not beat always-REFUTES on *any* evidence source
-`results/verdict/FINDINGS.md` §L at n=35: live evidence 0.800, oracle gold evidence
-0.800, majority baseline **0.800**. On the 22 claims where no fact-check page was
-retrieved, 0.727 against a 0.773 baseline — below it.
+### P5b — Full-text enrichment on live evidence is the biggest measured win
+`results/verdict/FINDINGS.md` §L at n=55, majority-vote over 3 scoring runs:
 
-This supersedes the earlier n=13 reading, which had claimed live evidence lifted the
-stage well clear of the baseline. **Two priorities change as a result:**
+| condition | accuracy | macro-F1 | abstention |
+|---|---|---|---|
+| live snippets | 0.673 | 0.515 | 21.8% |
+| closed corpus | 0.673 | 0.605 | — |
+| oracle gold evidence | 0.764 / 0.782 | 0.633 / 0.645 | — |
+| majority-class baseline | **0.782** | — | — |
+| **live + full text** | **0.836** | **0.644** | **7.3%** |
 
-* **Full-text enrichment is no longer a recommended lever.** It was the only
-  intervention that improved verdicts on the closed corpus (§10), but on live
-  evidence the same paired test gives **p=1.000** despite 9.1× more text (§L.4).
-  Its measured benefit is specific to a proxy whose baseline text was artificially
-  thin.
-* **Better evidence is not the bottleneck.** The oracle ties the baseline too, which
-  is the strongest form of the §8.3 finding. What remains is the verdict stage's
-  decision behaviour under a 4:1 imbalanced label distribution — a calibration and
-  decision-rule problem, not a retrieval one.
+Enrichment is worth **+0.163 accuracy, +0.129 macro-F1**, paired p=0.012, and it
+survives removing the 37% of claims that retrieve a fact-checker (0.824 vs a 0.794
+baseline). **`FULL_TEXT_TOP_K=3` should stay on.**
 
-**Open, and now the central question:** can Stage 3 beat the majority class on any
-evidence source at all? The live sample is being extended toward n=100 to answer it.
+Two notes on how this priority has moved, because it has moved twice:
+
+* An n=35 reading of §L concluded the opposite — that enrichment "does not replicate
+  live" (p=1.000) and that Stage 3 beat no baseline at all. **Both were wrong**: 3:2
+  discordant pairs at n=35 was no power, not no effect.
+* **Gold evidence is not the ceiling.** The oracle sits *at* the baseline (0.764 and
+  0.782 on two single runs) and below live full text, though not separably so
+  (p=0.65). §8.3's "not primarily an evidence problem" reading needs qualifying:
+  evidence *volume and form* matter a great deal, but AVeriTeC's terse annotated
+  answers do not supply it.
+
+### P5c — Stage 3 measurement is not reproducible *(new, methodological)*
+The verdict call runs at **temperature 0.2 and is not cached**, so re-scoring
+identical claims on identical evidence changes 2–4% of labels — enough to move a
+paired p-value across 0.05 (observed: 0.012, 0.006, 0.065 on the same data). **Every
+Stage 3 figure recorded before 2026-10-08 is a single run** and carries an
+unquantified ±0.02–0.04 band.
+
+`live_evidence_verdict.py --repeat N` now reports per-run accuracy, the spread and a
+majority-vote label. **Remaining work:** apply the same treatment to the oracle and
+closed-corpus baselines (still single-run, and both sit within noise of the 0.782
+baseline), and re-check any earlier finding whose discordant counts were near-balanced.
+One-sided results such as §S.3 (0/9, 0/13) are robust to this; near-balanced ones are
+not measurements.
+
+**Open:** does the +0.054 margin over baseline survive to n=100? And why does live
+full text (1,547 chars) lead gold answers (~246 chars) by 0.054–0.072 — is the
+mechanism simply volume? Truncating full text to gold length would separate "more
+text" from "better text".
 
 ---
 

@@ -29,6 +29,20 @@ miss the cache and spend quota. Instead this forces the **exact queries recorded
 in live_loop_dev.json, so retrieval replays deterministically from disk: same
 queries, same results, same ranking and fusion as production, nothing spent.
 
+Run-to-run variance — why `--repeat` exists
+-------------------------------------------
+Retrieval replays deterministically from cache, but the verdict call itself runs at
+**temperature 0.2 and is not cached**, so scoring the same claims twice does not
+give the same answer. Measured: **2-4% of claims change label between runs**, which
+at n=55 moves accuracy by up to 0.036 and can move a paired McNemar p-value across
+0.05 (observed: 0.012, 0.006, 0.065 on three runs of identical data).
+
+A single run is therefore not a measurement. `--repeat N` scores every claim N times
+and reports per-run figures, the spread, and a **majority-vote** label per claim,
+which is the number to quote. This was added after a paired enrichment result
+reported as p=1.000 at n=35 turned out to be p=0.012 at n=55 — see FINDINGS.md
+section L.4.
+
 Sample size
 -----------
 Whatever `live_loop_dev.json` currently holds, minus Conflicting/Cherrypicking
@@ -180,18 +194,58 @@ async def main_async(args) -> int:
 
     print(f"{'=' * 90}\nVERDICT QUALITY ON LIVE WEB EVIDENCE (replayed from cache, 0 quota)\n{'=' * 90}")
 
-    rows = []
-    for rec in live["per_claim"]:
-        claim = by_id.get(rec["claim_id"])
-        if not claim or not LABEL_MAP.get(rec["gold_label"]):
-            continue
-        r = await score_claim(rec, claim, llm, search, fetcher)
-        if r:
-            rows.append(r)
+    all_runs: List[List[Dict]] = []
+    for attempt in range(args.repeat):
+        rows = []
+        for rec in live["per_claim"]:
+            claim = by_id.get(rec["claim_id"])
+            if not claim or not LABEL_MAP.get(rec["gold_label"]):
+                continue
+            r = await score_claim(rec, claim, llm, search, fetcher)
+            if r:
+                rows.append(r)
+        all_runs.append(rows)
+        if args.repeat > 1:
+            accs = {c: sum(1 for r in rows if r["gold"] == r[c]["pred"]) / len(rows)
+                    for c in ("snippet", "fulltext")}
+            print(f"  scoring run {attempt + 1}/{args.repeat}: "
+                  f"snippet {accs['snippet']:.3f}  fulltext {accs['fulltext']:.3f}")
 
+    rows = all_runs[0]
     if not rows:
         print("no claims scorable", file=sys.stderr)
         return 1
+
+    # With repeats, the quotable label is the majority vote across runs: it strips
+    # the temperature-0.2 sampling noise that makes any single run unreproducible.
+    variance = None
+    if args.repeat > 1:
+        variance = {"runs": args.repeat, "per_run_accuracy": {}, "spread": {},
+                    "majority_vote_accuracy": {}, "unstable_claims": {}}
+        by_claim = [{r["claim_id"]: r for r in run} for run in all_runs]
+        ids = sorted(set.intersection(*[set(d) for d in by_claim]))
+        for cond in ("snippet", "fulltext"):
+            per_run = [sum(1 for i in ids if d[i]["gold"] == d[i][cond]["pred"]) / len(ids)
+                       for d in by_claim]
+            variance["per_run_accuracy"][cond] = [round(a, 4) for a in per_run]
+            variance["spread"][cond] = round(max(per_run) - min(per_run), 4)
+            unstable = [i for i in ids if len({d[i][cond]["pred"] for d in by_claim}) > 1]
+            variance["unstable_claims"][cond] = len(unstable)
+            votes = 0
+            for i in ids:
+                top = Counter(d[i][cond]["pred"] for d in by_claim).most_common(1)[0][0]
+                votes += (top == by_claim[0][i]["gold"])
+                # overwrite run 1's label with the vote so summaries use it
+                next(r for r in rows if r["claim_id"] == i)[cond]["pred"] = top
+            variance["majority_vote_accuracy"][cond] = round(votes / len(ids), 4)
+        print(f"\nrun-to-run variance over {args.repeat} runs "
+              f"(temperature 0.2, verdict calls not cached):")
+        for cond in ("snippet", "fulltext"):
+            print(f"  {cond:>9}: per-run {variance['per_run_accuracy'][cond]}  "
+                  f"spread {variance['spread'][cond]:.3f}  "
+                  f"unstable {variance['unstable_claims'][cond]}/{len(ids)}  "
+                  f"majority-vote {variance['majority_vote_accuracy'][cond]:.3f}")
+        print("  -> figures below use the MAJORITY-VOTE label per claim.")
 
     print(f"scored {len(rows)} claims  |  cache misses blocked (would have cost quota): "
           f"{search.misses_blocked}  |  pages fetched: {fetcher.fetched}, failed: {fetcher.failed}")
@@ -246,6 +300,7 @@ async def main_async(args) -> int:
             "caveat": f"n={len(rows)}. {power}.",
             "reference_baselines": {"closed_corpus_retrieved": 0.544, "oracle_gold": 0.728},
             "majority_baseline": majority,
+            "run_to_run_variance": variance,
             "summaries": summaries, "fact_check_split": split, "per_claim": rows,
         }, f, indent=2)
     print(f"\nSaved to {out}")
@@ -256,4 +311,8 @@ if __name__ == "__main__":
     p = argparse.ArgumentParser()
     p.add_argument("--split", default="dev")
     p.add_argument("--data-dir", default=default_data_dir())
+    p.add_argument("--repeat", type=int, default=1,
+                   help="score every claim this many times and report the spread "
+                        "plus a majority-vote label; 1 run is not a measurement "
+                        "(verdict calls run at temperature 0.2 and are not cached)")
     sys.exit(asyncio.run(main_async(p.parse_args())))

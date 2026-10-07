@@ -528,16 +528,19 @@ Accuracy **+0.081** (@3) and **+0.088** (@8); abstention falls **45.6% → 31.6%
 verdict quality.** The `k` sweep was flat across 5→15 (§7.2); widening the
 candidate pool made verdicts *worse* (§8.1). Depth is the lever; breadth is not.
 
-> **Scope limit added 2026-10-04 — this result is closed-corpus-specific.** Repeated
-> on live web evidence (n=35, `../verdict/FINDINGS.md` §L.4), the same paired test
-> gives **p=1.000**: 3 claims right only with full text, 2 only with snippets, despite
-> a 9.1× increase in evidence volume. Macro-F1 moved the wrong way (0.636 → 0.597).
+> **~~Scope limit added 2026-10-04 — this result is closed-corpus-specific.~~
+> Withdrawn 2026-10-08.** That note said enrichment "does not replicate on live
+> evidence," citing p=1.000 at n=35. At n=55 the same paired test gives **10 claims
+> right only with full text to 1 the other way, p=0.012**, stable across six scoring
+> runs (`../verdict/FINDINGS.md` §L.4).
 >
-> The likely reason the closed corpus exaggerated the effect: there, the indexed
-> "snippet" is a short AVeriTeC answer, so enrichment supplies text the condition
-> genuinely lacked. Live snippets are already written to summarise the page. **Do not
-> cite §10 as evidence that depth helps in deployment** — it is evidence that depth
-> helps when the baseline text is artificially thin.
+> **§10 generalises, and generalises more strongly live**: +0.163 accuracy on live
+> evidence against +0.081 here, with abstention cut 21.8% → 7.3%. The n=35 null was
+> an underpowered sample (3:2 discordant) compounded by run-to-run variance in the
+> verdict call, which is not cached and runs at temperature 0.2 — see §L.5. **I
+> reported p=1.000 as evidence of no effect; it was evidence of no power.**
+>
+> Enrichment is now the largest improvement measured anywhere in this project.
 
 Against the §8 oracle (0.750, perfect evidence), full text closes **42–46% of the
 gap** between snippets and ideal evidence — while still sitting 0.059 below the
