@@ -2,7 +2,7 @@
   "split": "dev",
   "condition": "LIVE open-web search via Google CSE",
   "design": "one run per claim at rounds=2; both conditions derived from the same run, so round-1 queries are identical by construction",
-  "accumulation": "Collected incrementally over 2 run(s) against a 100 queries/day free tier. Claims are never re-run: query generation is stochastic, so replaying a finished claim would miss the cache and spend quota for no new data. Summary statistics cover all claims listed here.",
+  "accumulation": "Collected incrementally over 3 run(s) against a 100 queries/day free tier. Claims are never re-run: query generation is stochastic, so replaying a finished claim would miss the cache and spend quota for no new data. Summary statistics cover all claims listed here.",
   "target": 100,
   "not_measured": "verdict accuracy \u2014 measured separately in results/verdict/live_evidence_verdict.py, which replays these recorded queries from cache at zero quota",
   "runs": [
@@ -63,18 +63,52 @@
         "av-00047",
         "av-00048"
       ]
+    },
+    {
+      "date": "2026-10-07",
+      "claims_added": 24,
+      "live_searches": 95,
+      "cache_hits": 2,
+      "budget": 95,
+      "failed": [],
+      "claim_ids": [
+        "av-00049",
+        "av-00050",
+        "av-00051",
+        "av-00052",
+        "av-00054",
+        "av-00056",
+        "av-00058",
+        "av-00060",
+        "av-00062",
+        "av-00065",
+        "av-00066",
+        "av-00067",
+        "av-00068",
+        "av-00069",
+        "av-00070",
+        "av-00071",
+        "av-00072",
+        "av-00073",
+        "av-00074",
+        "av-00075",
+        "av-00076",
+        "av-00077",
+        "av-00078",
+        "av-00079"
+      ]
     }
   ],
   "summary": {
-    "claims": 41,
-    "live_searches": 148,
-    "ran_second_round": 13,
-    "new_domain_rate": 0.9230769230769231,
-    "mean_new_domains": 3.076923076923077,
-    "gold_domain_recall_r1": 0.06910569105691057,
-    "gold_domain_recall_r1r2": 0.08943089430894309,
-    "fact_check_round1": 18,
-    "fact_check_round2": 0
+    "claims": 65,
+    "live_searches": 240,
+    "ran_second_round": 24,
+    "new_domain_rate": 0.9583333333333334,
+    "mean_new_domains": 3.2083333333333335,
+    "gold_domain_recall_r1": 0.06025641025641026,
+    "gold_domain_recall_r1r2": 0.0782051282051282,
+    "fact_check_round1": 29,
+    "fact_check_round2": 1
   },
   "per_claim": [
     {
@@ -1547,6 +1581,942 @@
         "fact_check": 0
       },
       "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 1
+    },
+    {
+      "claim_id": "av-00049",
+      "claim": "The US saw the best carbon emission numbers in 35 years under President Donald Trump's administration.",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "epa.gov",
+        "metmuseum.org",
+        "nytimes.com"
+      ],
+      "searches_spent": 4,
+      "ran_second_round": true,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "abcnews.com",
+          "climateactiontracker.org",
+          "rhg.com",
+          "trumpwhitehouse.archives.gov"
+        ],
+        "queries": [
+          "US carbon emissions 35 year low under Trump administration",
+          "carbon emissions US 1985 to 2020 data",
+          "carbon emissions US Trump administration decline analysis"
+        ],
+        "fact_check": 0
+      },
+      "round2": {
+        "n_urls": 5,
+        "domains": [
+          "epa.gov",
+          "gispub.epa.gov",
+          "tandfonline.com"
+        ],
+        "new_domains": [
+          "epa.gov",
+          "gispub.epa.gov",
+          "tandfonline.com"
+        ],
+        "queries": [
+          "US annual carbon emissions data 1985 to 2020 EPA official report",
+          "US greenhouse gas emissions statistics 1985-2020 US Energy Information Administration"
+        ],
+        "fact_check": 0
+      },
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 1,
+      "n_gold_domains": 3
+    },
+    {
+      "claim_id": "av-00050",
+      "claim": "Twitter now putting warnings on tweets that are just unedited clips of Biden saying he would end fracking",
+      "gold_label": "Conflicting Evidence/Cherrypicking",
+      "gold_domains": [
+        "blog.twitter.com"
+      ],
+      "searches_spent": 5,
+      "ran_second_round": true,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "abc7.com",
+          "eenews.net",
+          "en.wikipedia.org",
+          "houstonpublicmedia.org",
+          "pbs.org"
+        ],
+        "queries": [
+          "Twitter warnings on unedited Biden fracking clips",
+          "Twitter flags unedited Biden fracking tweets",
+          "Biden fracking statement clip warnings on Twitter"
+        ],
+        "fact_check": 0
+      },
+      "round2": {
+        "n_urls": 5,
+        "domains": [
+          "cnn.com",
+          "en.wikipedia.org",
+          "facebook.com",
+          "psandman.com",
+          "rpubs.com"
+        ],
+        "new_domains": [
+          "cnn.com",
+          "facebook.com",
+          "psandman.com",
+          "rpubs.com"
+        ],
+        "queries": [
+          "Twitter official statement on labeling unedited Biden fracking clips 2024",
+          "Examples of Twitter warnings on unedited Biden fracking tweets April 2024"
+        ],
+        "fact_check": 0
+      },
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 1
+    },
+    {
+      "claim_id": "av-00051",
+      "claim": "People who do not vote for the Bharatiya Janata Party (BJP) in the 2020 elections will not get the COVID vaccine free of",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "web-archive-org.translate.goog"
+      ],
+      "searches_spent": 5,
+      "ran_second_round": true,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "bbc.com",
+          "facebook.com",
+          "factcheck.org",
+          "idea.int"
+        ],
+        "queries": [
+          "Bharatiya Janata Party 2020 election COVID vaccine free claim",
+          "BJP 2020 election COVID vaccine free false claim",
+          "COVID vaccine free cost eligibility India 2020"
+        ],
+        "fact_check": 1
+      },
+      "round2": {
+        "n_urls": 5,
+        "domains": [
+          "jamanetwork.com",
+          "pmc.ncbi.nlm.nih.gov",
+          "sciencedirect.com"
+        ],
+        "new_domains": [
+          "jamanetwork.com",
+          "pmc.ncbi.nlm.nih.gov",
+          "sciencedirect.com"
+        ],
+        "queries": [
+          "official government statement on COVID vaccine eligibility and voting behavior India 2020",
+          "government policy on COVID vaccine distribution and political affiliation India 2020"
+        ],
+        "fact_check": 0
+      },
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 1
+    },
+    {
+      "claim_id": "av-00052",
+      "claim": "President Ferdinand Marcos and Dr. Jose Rizal established and founded the WORLD BANK and International Monetary Fund.",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "biography.com",
+        "officialgazette.gov.ph",
+        "worldbank.org"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "en.wikipedia.org",
+          "factcheck.afp.com",
+          "rappler.com",
+          "worldbank.org"
+        ],
+        "queries": [
+          "Ferdinand Marcos and Jose Rizal founding World Bank and IMF",
+          "World Bank and IMF founders history",
+          "Claim Ferdinand Marcos Jose Rizal founded World Bank IMF debunked"
+        ],
+        "fact_check": 1
+      },
+      "round2": null,
+      "gold_hit_r1": 1,
+      "gold_hit_r1r2": 1,
+      "n_gold_domains": 3
+    },
+    {
+      "claim_id": "av-00054",
+      "claim": "India\u2019s imports from China increased by 27% in April-August 2020",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "businesstoday.in",
+        "timesofindia.indiatimes.com"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "en.wikipedia.org",
+          "facebook.com",
+          "opindia.com",
+          "reuters.com",
+          "x.com"
+        ],
+        "queries": [
+          "India imports from China April-August 2020 increase 27%",
+          "India China trade data April to August 2020",
+          "India imports from China April-August 2020 claim false"
+        ],
+        "fact_check": 0
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00056",
+      "claim": "Previous flu vaccines may have made President Donald Trump susceptible to COVID-19",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "cambridge.org",
+        "news-medical.net"
+      ],
+      "searches_spent": 5,
+      "ran_second_round": true,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "apnews.com",
+          "bbc.com",
+          "pmc.ncbi.nlm.nih.gov",
+          "reuters.com"
+        ],
+        "queries": [
+          "Previous flu vaccines impact on COVID-19 susceptibility in Donald Trump",
+          "Did flu vaccines increase Donald Trump's risk of COVID-19 infection?",
+          "Claim that flu vaccines made Donald Trump susceptible to COVID-19 debunked"
+        ],
+        "fact_check": 0
+      },
+      "round2": {
+        "n_urls": 5,
+        "domains": [
+          "mayoclinic.org",
+          "nejm.org",
+          "pmc.ncbi.nlm.nih.gov",
+          "pubmed.ncbi.nlm.nih.gov"
+        ],
+        "new_domains": [
+          "mayoclinic.org",
+          "nejm.org",
+          "pubmed.ncbi.nlm.nih.gov"
+        ],
+        "queries": [
+          "studies on influenza vaccination impact on COVID-19 susceptibility 2019-2021",
+          "expert analysis on flu vaccine and COVID-19 risk correlation"
+        ],
+        "fact_check": 0
+      },
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00058",
+      "claim": "Russia sent medical aid to the US, in the form of medical equipment to help coronavirus patients.",
+      "gold_label": "Conflicting Evidence/Cherrypicking",
+      "gold_domains": [
+        "buzzfeednews.com",
+        "nytimes.com",
+        "state.gov"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "aa.com.tr",
+          "bbc.com",
+          "pmc.ncbi.nlm.nih.gov",
+          "reuters.com"
+        ],
+        "queries": [
+          "Russia medical aid to US coronavirus patients",
+          "Russia sent medical equipment to US COVID-19 relief",
+          "Russia COVID-19 medical aid to United States 2020"
+        ],
+        "fact_check": 0
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 3
+    },
+    {
+      "claim_id": "av-00060",
+      "claim": "UK Employees unable to work in tier 3 areas will get a combination of Job Support Scheme and Universal Credit, which wil",
+      "gold_label": "Conflicting Evidence/Cherrypicking",
+      "gold_domains": [
+        "bbc.co.uk",
+        "bbc.com",
+        "englandandcompany.co.uk"
+      ],
+      "searches_spent": 5,
+      "ran_second_round": true,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "commonslibrary.parliament.uk",
+          "parissmith.co.uk",
+          "personneltoday.com",
+          "publications.parliament.uk",
+          "ssa.gov"
+        ],
+        "queries": [
+          "UK Job Support Scheme tier 3 areas employee wage support",
+          "UK Job Support Scheme and Universal Credit combined payment tier 3",
+          "UK tier 3 restrictions employee compensation 80 percent wages"
+        ],
+        "fact_check": 0
+      },
+      "round2": {
+        "n_urls": 5,
+        "domains": [
+          "autism.org.uk",
+          "beststartinlife.gov.uk",
+          "gov.scot",
+          "gov.uk",
+          "sciencedirect.com"
+        ],
+        "new_domains": [
+          "autism.org.uk",
+          "beststartinlife.gov.uk",
+          "gov.scot",
+          "gov.uk",
+          "sciencedirect.com"
+        ],
+        "queries": [
+          "UK government official guidance Job Support Scheme Universal Credit tier 3 wage replacement",
+          "Job Support Scheme and Universal Credit combined payments calculation tier 3 England"
+        ],
+        "fact_check": 0
+      },
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 3
+    },
+    {
+      "claim_id": "av-00062",
+      "claim": "Scientific American magazine warned that 5G technology is not safe.",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "cityofsacramento.org",
+        "sciencealert.com"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "en.wikipedia.org",
+          "leadstories.com",
+          "pmc.ncbi.nlm.nih.gov",
+          "scientificamerican.com"
+        ],
+        "queries": [
+          "Scientific American magazine 5G technology safety warning",
+          "Scientific American 5G technology health risks article",
+          "Scientific American 5G safety claim debunked"
+        ],
+        "fact_check": 1
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00065",
+      "claim": "Someone who couldn't afford health care under Barack Obama's Affordable Care Act gets penalized $10,000",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "healthforcalifornia.com"
+      ],
+      "searches_spent": 5,
+      "ran_second_round": true,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "cms.gov",
+          "justice.gov",
+          "oag.ca.gov",
+          "oig.hhs.gov",
+          "whistleblowerllc.com"
+        ],
+        "queries": [
+          "Affordable Care Act penalty for not having health insurance $10,000",
+          "Affordable Care Act individual mandate penalty amount 2010-2018",
+          "Affordable Care Act penalty $10,000 claim false debunked"
+        ],
+        "fact_check": 0
+      },
+      "round2": {
+        "n_urls": 5,
+        "domains": [
+          "commonwealthfund.org",
+          "en.wikipedia.org",
+          "irs.gov",
+          "kff.org",
+          "mass.gov"
+        ],
+        "new_domains": [
+          "commonwealthfund.org",
+          "en.wikipedia.org",
+          "irs.gov",
+          "kff.org",
+          "mass.gov"
+        ],
+        "queries": [
+          "Affordable Care Act individual mandate penalty amounts 2010 to 2018 official IRS documentation",
+          "ACA penalty for not having health insurance maximum fine amount by year"
+        ],
+        "fact_check": 0
+      },
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 1
+    },
+    {
+      "claim_id": "av-00066",
+      "claim": "Hunter Biden was chairman of the Nobel Peace Prize winning World Food Program.",
+      "gold_label": "Supported",
+      "gold_domains": [
+        "wfpusa.org"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "en.wikipedia.org",
+          "gettyimages.com",
+          "leadstories.com",
+          "politifact.com",
+          "rev.com"
+        ],
+        "queries": [
+          "Hunter Biden chairman World Food Program Nobel Peace Prize",
+          "Hunter Biden World Food Program leadership role",
+          "Hunter Biden World Food Program Nobel Peace Prize claim false"
+        ],
+        "fact_check": 2
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 1
+    },
+    {
+      "claim_id": "av-00067",
+      "claim": "National Testing Agency (NTA) has made a major blunder in NEET Exam Result 2020. They stated that the all India topper h",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "newsmobile.in"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "bbc.com",
+          "en.wikipedia.org",
+          "facebook.com",
+          "instagram.com",
+          "pmc.ncbi.nlm.nih.gov"
+        ],
+        "queries": [
+          "National Testing Agency NEET Exam Result 2020 all India topper failed",
+          "NTA NEET 2020 result error or blunder",
+          "National Testing Agency NEET 2020 topper result controversy"
+        ],
+        "fact_check": 0
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 1
+    },
+    {
+      "claim_id": "av-00068",
+      "claim": "Joe Biden said 'If Your 8-Year-Old Child Says They Want To Be Transgender, They Have A Right To Transition'.",
+      "gold_label": "Not Enough Evidence",
+      "gold_domains": [
+        "amazon.com"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "apnews.com",
+          "neiliabiden.com",
+          "oregonlive.com",
+          "reuters.com",
+          "usatoday.com"
+        ],
+        "queries": [
+          "Joe Biden \"If your 8-year-old child says they want to be transgender\" quote",
+          "Joe Biden transgender children rights statement 2024",
+          "Joe Biden quote about 8-year-old child transitioning"
+        ],
+        "fact_check": 1
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 1
+    },
+    {
+      "claim_id": "av-00069",
+      "claim": "White House coronavirus adviser Dr. Anthony Fauci wrote a 2008 paper that found most 1918-1919 Spanish Influenza pandemi",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "ncbi.nlm.nih.gov"
+      ],
+      "searches_spent": 5,
+      "ran_second_round": true,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "apnews.com",
+          "cidrap.umn.edu",
+          "pmc.ncbi.nlm.nih.gov",
+          "pubmed.ncbi.nlm.nih.gov",
+          "respiratory-therapy.com"
+        ],
+        "queries": [
+          "Anthony Fauci 2008 paper 1918 Spanish Influenza bacterial pneumonia mask deaths",
+          "Anthony Fauci 2008 paper Spanish Flu pandemic mask effectiveness",
+          "Anthony Fauci 2008 paper bacterial pneumonia cause of 1918 flu deaths"
+        ],
+        "fact_check": 0
+      },
+      "round2": {
+        "n_urls": 2,
+        "domains": [
+          "en.wikipedia.org",
+          "reuters.com"
+        ],
+        "new_domains": [
+          "en.wikipedia.org",
+          "reuters.com"
+        ],
+        "queries": [
+          "Anthony Fauci 2008 paper Spanish Influenza bacterial pneumonia masks",
+          "Anthony Fauci published research 2008 influenza bacterial pneumonia mask impact"
+        ],
+        "fact_check": 0
+      },
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 1
+    },
+    {
+      "claim_id": "av-00070",
+      "claim": "Dr Anthony Fauci wrote a paper regarding the Spanish Flu and stated that the majority of deaths in 1918-1919 was because",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "newscientist.com",
+        "nih.gov"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "apnews.com",
+          "pmc.ncbi.nlm.nih.gov",
+          "reuters.com",
+          "usatoday.com",
+          "voanews.com"
+        ],
+        "queries": [
+          "Dr Anthony Fauci Spanish Flu paper bacterial pneumonia mask deaths 1918-1919",
+          "Dr Anthony Fauci Spanish Flu bacterial pneumonia mask claim false",
+          "Dr Anthony Fauci 1918-1919 Spanish Flu bacterial pneumonia mortality analysis"
+        ],
+        "fact_check": 1
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00071",
+      "claim": "India's imports from China increased by 27% during the period April-August 2020.",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "businesstoday.in",
+        "cppr.in",
+        "drishtiias.com"
+      ],
+      "searches_spent": 2,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "energyandcleanair.org",
+          "facebook.com",
+          "opindia.com",
+          "piie.com",
+          "x.com"
+        ],
+        "queries": [
+          "India imports from China April-August 2020 increase 27%",
+          "India imports China April-August 2020 trade data",
+          "Claim India imports from China increased 27% April-August 2020 false"
+        ],
+        "fact_check": 0
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 3
+    },
+    {
+      "claim_id": "av-00072",
+      "claim": "The daughter of Muahammadu Buhari (the President of Nigeria) is a board member of the Nigerian National Petroleum Corpor",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "en.wikipedia.org",
+        "nnpcgroup.com",
+        "twitter.com",
+        "vanguardngr.com"
+      ],
+      "searches_spent": 5,
+      "ran_second_round": true,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "en.wikipedia.org",
+          "facebook.com",
+          "factcheckhub.com",
+          "icirnigeria.org",
+          "nairaland.com"
+        ],
+        "queries": [
+          "Muahammadu Buhari daughter board member Nigerian National Petroleum Corporation",
+          "Muahammadu Buhari daughter NNPC board membership false",
+          "Nigerian National Petroleum Corporation current board members 2024"
+        ],
+        "fact_check": 0
+      },
+      "round2": {
+        "n_urls": 5,
+        "domains": [
+          "bbc.com",
+          "en.wikipedia.org",
+          "resourcegovernance.org",
+          "reuters.com",
+          "state.gov"
+        ],
+        "new_domains": [
+          "bbc.com",
+          "resourcegovernance.org",
+          "reuters.com",
+          "state.gov"
+        ],
+        "queries": [
+          "Official Nigerian National Petroleum Corporation board members list 2024",
+          "NNPC board members official statement April 2024"
+        ],
+        "fact_check": 0
+      },
+      "gold_hit_r1": 1,
+      "gold_hit_r1r2": 1,
+      "n_gold_domains": 4
+    },
+    {
+      "claim_id": "av-00073",
+      "claim": "Chinese Diplomats Assault Taiwan Counterparts in Fiji",
+      "gold_label": "Conflicting Evidence/Cherrypicking",
+      "gold_domains": [
+        "apnews.com",
+        "theguardian.com"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "arabnews.com",
+          "asiatimes.com",
+          "bbc.com",
+          "en.wikipedia.org",
+          "theguardian.com"
+        ],
+        "queries": [
+          "Chinese diplomats assault Taiwan diplomats Fiji",
+          "Chinese diplomats assault Taiwan diplomats Fiji debunked",
+          "Incident between Chinese and Taiwan diplomats Fiji 2024"
+        ],
+        "fact_check": 0
+      },
+      "round2": null,
+      "gold_hit_r1": 1,
+      "gold_hit_r1r2": 1,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00074",
+      "claim": "The Iowa Farm Bureau, US says that it would no longer be endorsing US Republican Iowa Sen. Joni Ernst for her re-electio",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "caucus.militarytimes.com",
+        "iowafarmbureau.com",
+        "qctimes.com"
+      ],
+      "searches_spent": 5,
+      "ran_second_round": true,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "en.wikipedia.org",
+          "facebook.com",
+          "freebeacon.com",
+          "iowacapitaldispatch.com"
+        ],
+        "queries": [
+          "Iowa Farm Bureau endorsement status for Senator Joni Ernst 2024",
+          "Iowa Farm Bureau no longer endorsing Joni Ernst claim false",
+          "Joni Ernst 2024 re-election endorsements Iowa Farm Bureau"
+        ],
+        "fact_check": 0
+      },
+      "round2": {
+        "n_urls": 3,
+        "domains": [
+          "apnews.com",
+          "ballotpedia.org"
+        ],
+        "new_domains": [
+          "apnews.com",
+          "ballotpedia.org"
+        ],
+        "queries": [
+          "Iowa Farm Bureau official statement endorsement Joni Ernst re-election 2024",
+          "Iowa Farm Bureau press release endorsement status Joni Ernst April 2024"
+        ],
+        "fact_check": 0
+      },
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 3
+    },
+    {
+      "claim_id": "av-00075",
+      "claim": "Joe and Jill Biden's income has increased recently.",
+      "gold_label": "Supported",
+      "gold_domains": [
+        "businessinsider.com",
+        "theguardian.com"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "bbc.com",
+          "budget.house.gov",
+          "en.wikipedia.org",
+          "housingfinance.com",
+          "reuters.com"
+        ],
+        "queries": [
+          "Joe and Jill Biden recent income increase",
+          "Joe and Jill Biden income growth 2024",
+          "Joe and Jill Biden income increase claim debunked"
+        ],
+        "fact_check": 0
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00076",
+      "claim": "Hunter Biden (son of US president Joe Biden)  had 25,000 pics of him torturing and raping children under 10 in China on ",
+      "gold_label": "Not Enough Evidence",
+      "gold_domains": [
+        "foxnews.com",
+        "twitter.com"
+      ],
+      "searches_spent": 5,
+      "ran_second_round": true,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "dpaq.de",
+          "en.wikipedia.org",
+          "factcheck.org",
+          "judiciary.house.gov",
+          "politifact.com"
+        ],
+        "queries": [
+          "Hunter Biden laptop 25,000 pictures child abuse China",
+          "Hunter Biden child abuse China claim debunked",
+          "Hunter Biden Joe Biden son China laptop allegations"
+        ],
+        "fact_check": 2
+      },
+      "round2": {
+        "n_urls": 5,
+        "domains": [
+          "bbc.com",
+          "docs.house.gov",
+          "judiciary.house.gov",
+          "reuters.com"
+        ],
+        "new_domains": [
+          "bbc.com",
+          "docs.house.gov",
+          "reuters.com"
+        ],
+        "queries": [
+          "forensic examination report Hunter Biden laptop contents 2023 site:.gov",
+          "official FBI statement on Hunter Biden laptop child abuse images 2023"
+        ],
+        "fact_check": 0
+      },
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00077",
+      "claim": "A third of excess deaths in the United States between 1 March and  1 August 2020 during the COVID-19 pandemic could not ",
+      "gold_label": "Supported",
+      "gold_domains": [
+        "archive.ph",
+        "samrc.ac.za"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "ajph.aphapublications.org",
+          "cdc.gov",
+          "jamanetwork.com",
+          "journals.plos.org",
+          "pmc.ncbi.nlm.nih.gov"
+        ],
+        "queries": [
+          "third of excess deaths United States March August 2020 COVID-19 pandemic",
+          "excess deaths United States March August 2020 not attributed to coronavirus",
+          "claim third of excess deaths COVID-19 pandemic US March August 2020 false"
+        ],
+        "fact_check": 0
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00078",
+      "claim": "Prominent US Democrat party members including Hillary and Bill Clinton, were running a child sex-trafficking ring in the",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "money.cnn.com",
+        "scotsman.com"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "bbc.com",
+          "courthousenews.com",
+          "en.wikipedia.org",
+          "reuters.com"
+        ],
+        "queries": [
+          "Hillary Clinton Bill Clinton child sex trafficking pizzeria Washington DC",
+          "Clinton pizzeria basement child sex trafficking claim debunked",
+          "Prominent US Democrats child trafficking ring Washington DC false claim"
+        ],
+        "fact_check": 0
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00079",
+      "claim": "Anthony Weiner\u2019s laptop contained proof Hillary Clinton & her associates are involved in child trafficking & paedophilia",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "edition.cnn.com"
+      ],
+      "searches_spent": 5,
+      "ran_second_round": true,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "en.wikipedia.org",
+          "facebook.com",
+          "factcheck.org",
+          "rollingstone.com"
+        ],
+        "queries": [
+          "Anthony Weiner laptop Hillary Clinton child trafficking paedophilia",
+          "Anthony Weiner laptop contents Hillary Clinton associates child trafficking debunked",
+          "Anthony Weiner laptop investigation findings 2016"
+        ],
+        "fact_check": 2
+      },
+      "round2": {
+        "n_urls": 5,
+        "domains": [
+          "en.wikipedia.org",
+          "factcheck.org",
+          "fedscoop.com",
+          "hsgac.senate.gov",
+          "judiciary.senate.gov"
+        ],
+        "new_domains": [
+          "fedscoop.com",
+          "hsgac.senate.gov",
+          "judiciary.senate.gov"
+        ],
+        "queries": [
+          "official FBI forensic report on Anthony Weiner laptop contents 2016",
+          "FBI statement on evidence of child trafficking or pedophilia in Anthony Weiner laptop"
+        ],
+        "fact_check": 1
+      },
       "gold_hit_r1": 0,
       "gold_hit_r1r2": 0,
       "n_gold_domains": 1
