@@ -534,8 +534,8 @@ candidate pool made verdicts *worse* (§8.1). Depth is the lever; breadth is not
 > right only with full text to 1 the other way, p=0.012**, stable across six scoring
 > runs (`../verdict/FINDINGS.md` §L.4).
 >
-> **§10 generalises, and generalises more strongly live**: +0.163 accuracy on live
-> evidence against +0.081 here, with abstention cut 21.8% → 7.3%. The n=35 null was
+> **§10 generalises, and generalises more strongly live**: +0.132 accuracy on live
+> evidence against +0.081 here, with abstention cut 23.7% → 10.5%. The n=35 null was
 > an underpowered sample (3:2 discordant) compounded by run-to-run variance in the
 > verdict call, which is not cached and runs at temperature 0.2 — see §L.5. **I
 > reported p=1.000 as evidence of no effect; it was evidence of no power.**

@@ -124,62 +124,82 @@ Never evaluated.
 The closed corpus could not expose sources a reformulated query would newly reach,
 which is the loop's entire rationale. Measured live on 41 claims
 (`results/evidence_retrieval/RESULTS.md` §11): the loop **does** reach new domains —
-92% of second rounds add at least one, replicated across two batches — and it never
-retrieves fact-checking pages, unlike round 1. **Keep it enabled.**
+**94% of second rounds add at least one, replicated across four batches** (n=89) — and
+it retrieves fact-checking pages far less often than round 1 (3 against 45).
+**Keep it enabled.**
 
 Two consequences, both of which outrank the items above:
 
 ### P5a — Raise the second-round trigger rate *(new top retrieval priority)*
-The loop fires on only **32% of claims** (stable across batches). When it fires it
-reaches better sources 92% of the time. So the binding constraint is not the loop
+The loop fires on only **39% of claims** (31–46% by batch; 33, 31, 46, 46 across the
+four). When it fires it reaches better sources 94% of the time. So the binding constraint is not the loop
 but the **evidence evaluator's sufficiency gate**, which decides whether round 1 was
 enough — and nothing has ever measured that gate. This is the cheapest remaining
 retrieval lever and needs no new benchmark.
 
 ### P5b — Full-text enrichment on live evidence is the biggest measured win
-`results/verdict/FINDINGS.md` §L at n=55, majority-vote over 3 scoring runs:
+`results/verdict/FINDINGS.md` §L at n=76, majority vote over 3 scoring runs:
 
 | condition | accuracy | macro-F1 | abstention |
 |---|---|---|---|
-| live snippets | 0.673 | 0.515 | 21.8% |
-| closed corpus | 0.673 | 0.605 | — |
-| oracle gold evidence | 0.764 / 0.782 | 0.633 / 0.645 | — |
-| majority-class baseline | **0.782** | — | — |
-| **live + full text** | **0.836** | **0.644** | **7.3%** |
+| closed corpus | 0.592 | 0.552 | — |
+| live snippets | 0.684 | 0.552 | 23.7% |
+| majority-class baseline | **0.750** | — | — |
+| oracle gold evidence | 0.763 | **0.649** | — |
+| **live + full text** | **0.816** | 0.607 | **10.5%** |
 
-Enrichment is worth **+0.163 accuracy, +0.129 macro-F1**, paired p=0.012, and it
-survives removing the 37% of claims that retrieve a fact-checker (0.824 vs a 0.794
-baseline). **`FULL_TEXT_TOP_K=3` should stay on.**
+Enrichment is worth **+0.132 accuracy, +0.055 macro-F1** (paired p=0.041), cuts
+abstention by more than half, and **survives the leakage control**. **`FULL_TEXT_TOP_K=3`
+should stay on.**
 
-Two notes on how this priority has moved, because it has moved twice:
+Three results that reframe the project's priorities:
 
-* An n=35 reading of §L concluded the opposite — that enrichment "does not replicate
-  live" (p=1.000) and that Stage 3 beat no baseline at all. **Both were wrong**: 3:2
-  discordant pairs at n=35 was no power, not no effect.
-* **Gold evidence is not the ceiling.** The oracle sits *at* the baseline (0.764 and
-  0.782 on two single runs) and below live full text, though not separably so
-  (p=0.65). §8.3's "not primarily an evidence problem" reading needs qualifying:
-  evidence *volume and form* matter a great deal, but AVeriTeC's terse annotated
-  answers do not supply it.
+* **Live full-text retrieval reaches gold-evidence quality.** 0.816 vs the oracle's
+  0.763, not separable (14:10, p=0.54). The system does not need the benchmark's
+  annotations to reach benchmark-level verdict quality — so retrieval is not the
+  bottleneck it appeared to be on the closed corpus.
+* **The closed corpus understates live quality**, now established across four samples
+  (22:5, p=0.0015). Every closed-corpus-based conclusion in this project is a lower
+  bound, and §L.5 puts **±0.05** on any single-run closed-corpus figure.
+* **Fact-check leakage masks the enrichment effect rather than creating it.** The gain
+  is significant on the 43 claims with *no* fact-checker retrieved (10:2, p=0.039) and
+  absent on the 33 with one (5:3, p=0.73). An n=35 reading of this said the opposite,
+  and it is withdrawn.
 
-### P5c — Stage 3 measurement is not reproducible *(new, methodological)*
-The verdict call runs at **temperature 0.2 and is not cached**, so re-scoring
-identical claims on identical evidence changes 2–4% of labels — enough to move a
-paired p-value across 0.05 (observed: 0.012, 0.006, 0.065 on the same data). **Every
-Stage 3 figure recorded before 2026-10-08 is a single run** and carries an
-unquantified ±0.02–0.04 band.
+For the record, this priority reversed twice as the sample grew: an n=35 reading had
+enrichment "not replicating live" (p=1.000) and Stage 3 beating no baseline at all.
+Both were 3:2-discordant-pair artifacts.
 
-`live_evidence_verdict.py --repeat N` now reports per-run accuracy, the spread and a
-majority-vote label. **Remaining work:** apply the same treatment to the oracle and
-closed-corpus baselines (still single-run, and both sit within noise of the 0.782
-baseline), and re-check any earlier finding whose discordant counts were near-balanced.
-One-sided results such as §S.3 (0/9, 0/13) are robust to this; near-balanced ones are
-not measurements.
+### P5c — Stage 3 measurement is not reproducible *(methodological)*
+The verdict call runs at **temperature 0.2 and is not cached**, so re-scoring identical
+claims changes 2–4% of labels. At n=76, three runs per condition:
 
-**Open:** does the +0.054 margin over baseline survive to n=100? And why does live
-full text (1,547 chars) lead gold answers (~246 chars) by 0.054–0.072 — is the
-mechanism simply volume? Truncating full text to gold length would separate "more
-text" from "better text".
+| condition | spread | unstable labels | variance sources |
+|---|---|---|---|
+| live snippets / full text | 0.000 | 0–1 / 76 | verdict call |
+| oracle gold | 0.013 | 2 / 76 | verdict call |
+| **closed corpus** | **0.053** | **7 / 76** | verdict **+ retrieval** |
+
+**The closed corpus is 4× noisier than the oracle**, because query generation at
+temperature 0.3 means each run retrieves a different document set — a prediction written
+into the harness before the run and confirmed by it. At n=55 this instability moved a
+paired p-value across 0.05 on identical data (0.012, 0.006, 0.065); at n=76 the live
+conditions are perfectly stable, so **larger samples buy reproducibility as well as
+power**.
+
+Both `live_evidence_verdict.py` and `same_claim_baselines.py` now take `--repeat N` and
+report per-run accuracy, spread, unstable-label counts and a majority-vote label.
+
+**Remaining:** re-check pre-2026-10-08 Stage 3 findings with near-balanced discordant
+counts, closed-corpus-based ones first. One-sided results such as §S.3 (0/9, 0/13) are
+robust.
+
+### P5d — Volume or quality? *(the sharpest open question)*
+Live full text beats snippets by +0.132 and matches gold evidence, but it is **9.7×
+longer** *and* differently sourced, so the active ingredient is unidentified. Truncating
+live full text to ~246 characters — the oracle's length — separates the two: if the
+advantage survives, it is better text; if it vanishes, it is simply more text. Costs no
+search quota and reuses the existing harness.
 
 ---
 

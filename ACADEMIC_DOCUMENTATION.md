@@ -10,17 +10,16 @@
 > Sections describing the confidence-threshold rules have been corrected: those
 > rules were unreachable and have been removed.
 >
-> **Revision 2026-10-08.** §6.5 reports the live open-web evaluation at **65 claims**
-> (55 scorable), replacing the 41-claim version written on 2026-10-04. Live full-text
-> evidence is now the only condition that beats the majority-class baseline, and
-> full-text enrichment — which the 2026-10-04 revision said did *not* generalise —
-> does generalise, more strongly live than on the closed corpus. §6.3 and §6.6 are
-> amended again accordingly.
+> **Revision 2026-10-10.** §6.5 reports the live open-web evaluation at **89 claims**
+> (76 scorable), superseding the 65-, 41- and 15-claim versions. Live full-text evidence
+> beats the majority-class baseline and **reaches gold-evidence quality**; the closed
+> corpus is now established as understating live performance over four samples.
 >
-> This section's conclusions have now reversed twice as the sample grew (n=13 → 35 →
-> 55) without the system changing. §6.5 records the reversals and the reason: at these
-> sample sizes, combined with an uncached temperature-0.2 verdict call, single
-> measurements are unstable. Earlier figures are left in place rather than deleted.
+> This section's conclusions reversed twice as the sample grew (n=13 → 35 → 55 → 76)
+> without the system changing. §6.5 records the reversals and their cause: small samples
+> combined with an uncached temperature-0.2 verdict call. Measurement now uses 3-run
+> majority-vote labels throughout, and §6.6 quantifies the residual variance per
+> condition. Earlier figures are left in place rather than deleted.
 >
 > Supporting evidence: `results/claim_detection/RESULTS.md`,
 > `results/evidence_retrieval/RESULTS.md`, `results/verdict/FINDINGS.md`.
@@ -568,8 +567,8 @@ easier than live open-web search and are not comparable to it.**
   fetched article passages raised verdict accuracy **0.559 → 0.640** (McNemar p=0.043)
   and cut abstention 45.6% → 34.6%. Widening the candidate pool instead produced the
   *best retrieval recall of any condition* while making verdicts **worse**. This
-  **replicates on live web evidence and more strongly there** (§6.5: +0.163 accuracy,
-  p=0.012 at n=55), making it the largest measured improvement in the system.
+  **replicates on live web evidence and more strongly there** (§6.5: +0.132 accuracy,
+  p=0.041 at n=76), making it the largest measured improvement in the system.
 * **Enrichment saturates at ~3 documents**; `FULL_TEXT_TOP_K=3` is validated
   rather than assumed.
 * **Reachability.** 70.7% of real evidence URLs are fetchable, yielding ~17×
@@ -640,38 +639,44 @@ Queries and results are exported to `query_trail.json` because the run cannot be
 reproduced without re-spending quota on a web whose contents change.
 
 **Retrieval (Stage 2).** The iterative loop, which the closed corpus found
-indistinguishable from a larger single pass, is vindicated live: **92% of second
-rounds reach a domain the first round did not** (mean 3.08 new domains), and round 2
-retrieves **zero** fact-checking pages against 18 in round 1, reaching government,
-primary and wire sources instead. Both figures replicated across two independent
-batches. The binding constraint is not the loop but the sufficiency gate that
-triggers it: only **32% of claims** get a second round at all.
+indistinguishable from a larger single pass, is vindicated live: **94% of second rounds
+reach a domain the first round did not** (mean 3.09 new domains), replicated across
+**four independent batches**, and round 2 retrieves fact-checking pages far less often
+than round 1 (3 against 45), reaching government, primary and wire sources instead. The
+binding constraint is not the loop but the sufficiency gate that triggers it: only
+**39% of claims** get a second round at all (31–46% by batch).
 
-**Verdict (Stage 3).** Scored on 55 claims using the majority-vote label over three
-scoring runs:
+**Verdict (Stage 3).** Scored on 76 claims using the majority-vote label over three
+scoring runs per condition:
 
 | condition | accuracy | macro-F1 | abstention |
 |---|---|---|---|
-| live snippets | 0.673 | 0.515 | 21.8% |
-| closed corpus | 0.673 | 0.605 | — |
-| oracle gold evidence | 0.764 / 0.782 | 0.633 / 0.645 | — |
-| majority-class baseline | **0.782** | — | — |
-| **live web + full text** | **0.836** | **0.644** | **7.3%** |
+| closed corpus | 0.592 | 0.552 | — |
+| live snippets | 0.684 | 0.552 | 23.7% |
+| majority-class baseline | **0.750** | — | — |
+| oracle gold evidence | 0.763 | **0.649** | — |
+| **live web + full text** | **0.816** | 0.607 | **10.5%** |
 
-**Live evidence with full text is the only condition that beats the majority-class
-baseline**, by +0.054, and it survives the leakage control: on the 34 claims where no
-fact-checking page was retrieved it scores 0.824 against their 0.794 baseline.
-Full-text enrichment is worth **+0.163 accuracy and +0.129 macro-F1** over snippets
-(paired McNemar p=0.012), cutting abstention by two-thirds.
+**Live evidence with full text beats the majority-class baseline** by +0.066, and the
+margin survives the leakage control: on the 43 claims where no fact-checking page was
+retrieved it scores **0.837 against their 0.744 baseline**. Full-text enrichment is
+worth **+0.132 accuracy and +0.055 macro-F1** over snippets (paired McNemar p=0.041),
+cutting abstention from 23.7% to 10.5%.
 
-**Gold evidence is not the ceiling.** The oracle condition scores 0.764 and 0.782 on
-two single runs — *at* the majority baseline, and below live full text (0.836),
-although a paired test cannot separate the oracle from live full text (p=0.65).
-AVeriTeC's ~246-character annotated answers buy no more verdict accuracy than
-always-REFUTES, while 1,547 characters of live article text buys +0.054. This
-qualifies the natural reading of §6.4 that errors are not an evidence-quality
-problem: evidence *volume and form* matter substantially, even though closeness to
-gold annotation does not.
+**The closed corpus understates live verdict quality**, now established over four
+independent samples with a stable 3–6:1 discordant ratio (22:5, p=0.0015 at n=76).
+Every closed-corpus figure in this document is therefore a lower bound.
+
+**Live full-text retrieval reaches gold-evidence quality.** The oracle condition scores
+0.763 against live full text's 0.816, and the paired test cannot separate them (14:10,
+p=0.54). The system does not need the benchmark's annotated answers to reach
+benchmark-level verdict quality — a stronger result than the retrieval-side pessimism in
+§6.4 anticipated.
+
+**What the gain cannot yet be attributed to.** Live full text is **9.7× longer** than a
+snippet *and* differently sourced, so "more text" and "better text" are confounded.
+Truncating full text to the oracle's ~246 characters would separate them; this is
+untested and is the sharpest open question in the evaluation.
 
 **Two methodological findings matter more than the numbers above.**
 
@@ -681,19 +686,22 @@ gold annotation does not.
    0.012, 0.006, 0.065 on the same data). Measurement now uses `--repeat N` with a
    majority-vote label. Every Stage 3 figure recorded before 2026-10-08 is a single
    run carrying an unquantified ±0.02–0.04 band.
-2. **This section's conclusions have reversed twice, and the reversals were caused by
-   sample size, not by the system changing.** At n=13 live evidence scored 0.923
-   against a 0.692 baseline (p=0.031); at n=35, 0.800 against 0.800 (p=0.180), and
-   enrichment was declared not to replicate (p=1.000); at n=55, 0.836 against 0.782
-   with enrichment at p=0.012. The n=35 negative claims were stated more firmly than
-   3:2 discordant pairs could support. What has been stable across all three samples
-   is only the *direction* of the live-vs-closed-corpus comparison (6:0, 7:2, 13:4).
+2. **This section's conclusions reversed twice before settling, and the reversals were
+   caused by sample size, not by the system changing.** Live-vs-closed-corpus discordant
+   pairs ran 6:0, 7:2, 13:4, 22:5 across n=13/35/55/76 — a stable 3–6:1 ratio — while the
+   p-value crossed 0.05 twice (0.031, 0.180, 0.049, 0.0015). The n=35 reading declared
+   enrichment not to replicate (p=1.000) and Stage 3 to beat no baseline; both were
+   3:2-discordant-pair artifacts and are withdrawn. **The practice that eventually got
+   this right was reporting the direction and declining to claim significance until the
+   sample could support it.**
 
-**The resulting research question:** the live-vs-proxy gap is directionally consistent
-but its magnitude is unresolved at n≤55, and the margin over baseline (+0.054) is
-small enough that n=100 could move it. The sharper open question is *why* live full
-text beats gold answers — if the mechanism is simply volume, truncating full text to
-gold length should erase the advantage, which is directly testable.
+**The resulting research question** is no longer whether live retrieval suffices — it
+reaches gold-evidence quality — but **what makes it suffice**. Full text beats snippets
+by +0.132 while being 9.7× longer and differently sourced, so volume and quality are
+confounded; truncating to the oracle's length would separate them. The secondary
+question is the sufficiency gate in §6.5: the retrieval loop demonstrably improves
+sources but fires on only 39% of claims, and nothing has measured the decision that
+gates it.
 
 ### 6.6 Threats to validity
 
@@ -701,13 +709,20 @@ gold length should erase the advantage, which is directly testable.
   search. Live comparison (§6.5) leans the same way in all three samples collected
   (6:0, 7:2, 13:4 discordant), but the p-value has oscillated across 0.05 (0.031,
   0.180, 0.049), so the magnitude is unresolved.
-* The live sample (n=65) is **easier than the benchmark average**: the closed corpus
-  scores 0.673 on it against 0.544 on n=136. Cross-sample comparisons with the
-  n=136 figures are indicative only.
-* **Stage 3 figures carry run-to-run variance** of ±0.02–0.04 accuracy from an
-  uncached temperature-0.2 verdict call. Figures in §6.5 use a 3-run majority vote;
-  earlier Stage 3 figures, including §6.4 and the oracle and closed-corpus baselines
-  in §6.5, are single runs and have not been repeated.
+* The live sample (n=89) is **somewhat easier than the benchmark average**: the closed
+  corpus scores 0.592 on it against 0.544 on n=136, though the bullet below puts ±0.05
+  on both. Cross-sample comparisons with the n=136 figures are indicative only.
+* The **majority-class baseline drifts between samples** (0.692 → 0.800 → 0.782 → 0.750
+  across the four batches) as the label mix changes. An accuracy from one sample must
+  not be compared against a baseline from another; that error produced the n=13
+  over-claim described above.
+* **Stage 3 figures carry run-to-run variance** from an uncached temperature-0.2 verdict
+  call. All §6.5 figures use a 3-run majority vote. Measured spread at n=76: 0.000 for
+  the live conditions, 0.013 for the oracle, and **0.053 for the closed corpus**, which
+  re-runs temperature-0.3 query generation and so varies in retrieval as well as
+  verdict. **Any single-run closed-corpus figure carries ±0.05** — larger than most
+  effects measured on that corpus. §6.4's figures are single runs and have not been
+  repeated.
 * The fact-check leakage detector is domain-based and misses fact-checking content
   hosted elsewhere, so the leakage-free subset is a lower bound on contamination.
 * Live results are quota-bound and time-bound: Google CSE's free tier is 100

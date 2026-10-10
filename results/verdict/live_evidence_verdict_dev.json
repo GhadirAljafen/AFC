@@ -1,106 +1,106 @@
 {
   "split": "dev",
-  "claims_scored": 55,
+  "claims_scored": 76,
   "condition": "LIVE web evidence, replayed from cache using the exact queries recorded in live_loop_dev.json (0 search quota)",
-  "caveat": "n=55. paired tests possible; only large effects detectable.",
+  "caveat": "n=76. adequately powered for moderate paired effects.",
   "reference_baselines": {
     "closed_corpus_retrieved": 0.544,
     "oracle_gold": 0.728
   },
-  "majority_baseline": 0.7818181818181819,
+  "majority_baseline": 0.75,
   "run_to_run_variance": {
     "runs": 3,
     "per_run_accuracy": {
       "snippet": [
-        0.6545,
-        0.6727,
-        0.6909
+        0.6842,
+        0.6842,
+        0.6842
       ],
       "fulltext": [
-        0.8364,
-        0.8364,
-        0.8364
+        0.8158,
+        0.8158,
+        0.8158
       ]
     },
     "spread": {
-      "snippet": 0.0364,
+      "snippet": 0.0,
       "fulltext": 0.0
     },
     "majority_vote_accuracy": {
-      "snippet": 0.6727,
-      "fulltext": 0.8364
+      "snippet": 0.6842,
+      "fulltext": 0.8158
     },
     "unstable_claims": {
-      "snippet": 2,
-      "fulltext": 0
+      "snippet": 0,
+      "fulltext": 1
     }
   },
   "summaries": [
     {
       "condition": "snippet",
-      "n": 55,
-      "accuracy": 0.6727272727272727,
-      "macro_f1": 0.5149572649572649,
-      "abstention": 0.21818181818181817,
-      "mean_chars": 157.32363636363635,
+      "n": 76,
+      "accuracy": 0.6842105263157895,
+      "macro_f1": 0.5524612421458116,
+      "abstention": 0.23684210526315788,
+      "mean_chars": 156.83947368421053,
       "pred_distribution": {
-        "REFUTES": 35,
-        "SUPPORTS": 8,
-        "NOT_ENOUGH_INFO": 12
+        "REFUTES": 45,
+        "SUPPORTS": 13,
+        "NOT_ENOUGH_INFO": 18
       },
       "per_class_recall": {
         "SUPPORTS": {
-          "n": 8,
-          "recall": 0.5
+          "n": 14,
+          "recall": 0.571
         },
         "REFUTES": {
-          "n": 43,
-          "recall": 0.721
+          "n": 57,
+          "recall": 0.719
         },
         "NOT_ENOUGH_INFO": {
-          "n": 4,
-          "recall": 0.5
+          "n": 5,
+          "recall": 0.6
         }
       }
     },
     {
       "condition": "fulltext",
-      "n": 55,
-      "accuracy": 0.8363636363636363,
-      "macro_f1": 0.6441798941798941,
-      "abstention": 0.07272727272727272,
-      "mean_chars": 1546.898181818182,
+      "n": 76,
+      "accuracy": 0.8157894736842105,
+      "macro_f1": 0.6071859175307451,
+      "abstention": 0.10526315789473684,
+      "mean_chars": 1522.507894736842,
       "pred_distribution": {
-        "REFUTES": 41,
-        "SUPPORTS": 10,
-        "NOT_ENOUGH_INFO": 4
+        "REFUTES": 53,
+        "NOT_ENOUGH_INFO": 8,
+        "SUPPORTS": 15
       },
       "per_class_recall": {
         "SUPPORTS": {
-          "n": 8,
-          "recall": 0.875
+          "n": 14,
+          "recall": 0.786
         },
         "REFUTES": {
-          "n": 43,
-          "recall": 0.884
+          "n": 57,
+          "recall": 0.877
         },
         "NOT_ENOUGH_INFO": {
-          "n": 4,
-          "recall": 0.25
+          "n": 5,
+          "recall": 0.2
         }
       }
     }
   ],
   "fact_check_split": {
     "fact-check retrieved": {
-      "n": 21,
-      "snippet_accuracy": 0.7142857142857143,
-      "fulltext_accuracy": 0.8571428571428571
+      "n": 33,
+      "snippet_accuracy": 0.7272727272727273,
+      "fulltext_accuracy": 0.7878787878787878
     },
     "no fact-check": {
-      "n": 34,
-      "snippet_accuracy": 0.6470588235294118,
-      "fulltext_accuracy": 0.8235294117647058
+      "n": 43,
+      "snippet_accuracy": 0.6511627906976745,
+      "fulltext_accuracy": 0.8372093023255814
     }
   },
   "per_claim": [
@@ -189,7 +189,7 @@
         "chars": 152.4
       },
       "fulltext": {
-        "pred": "SUPPORTS",
+        "pred": "NOT_ENOUGH_INFO",
         "chars": 2293.4,
         "enriched": 3
       }
@@ -725,7 +725,7 @@
       "n_evidence": 5,
       "retrieved_fact_check": false,
       "snippet": {
-        "pred": "NOT_ENOUGH_INFO",
+        "pred": "REFUTES",
         "chars": 160.6
       },
       "fulltext": {
@@ -927,6 +927,321 @@
         "pred": "REFUTES",
         "chars": 2458.6,
         "enriched": 3
+      }
+    },
+    {
+      "claim_id": "av-00080",
+      "gold": "REFUTES",
+      "n_evidence": 5,
+      "retrieved_fact_check": false,
+      "snippet": {
+        "pred": "REFUTES",
+        "chars": 163
+      },
+      "fulltext": {
+        "pred": "REFUTES",
+        "chars": 925,
+        "enriched": 1
+      }
+    },
+    {
+      "claim_id": "av-00082",
+      "gold": "NOT_ENOUGH_INFO",
+      "n_evidence": 5,
+      "retrieved_fact_check": true,
+      "snippet": {
+        "pred": "NOT_ENOUGH_INFO",
+        "chars": 163.2
+      },
+      "fulltext": {
+        "pred": "SUPPORTS",
+        "chars": 1694.6,
+        "enriched": 2
+      }
+    },
+    {
+      "claim_id": "av-00084",
+      "gold": "REFUTES",
+      "n_evidence": 5,
+      "retrieved_fact_check": false,
+      "snippet": {
+        "pred": "NOT_ENOUGH_INFO",
+        "chars": 157.4
+      },
+      "fulltext": {
+        "pred": "REFUTES",
+        "chars": 2434.6,
+        "enriched": 3
+      }
+    },
+    {
+      "claim_id": "av-00085",
+      "gold": "REFUTES",
+      "n_evidence": 5,
+      "retrieved_fact_check": true,
+      "snippet": {
+        "pred": "REFUTES",
+        "chars": 134.4
+      },
+      "fulltext": {
+        "pred": "REFUTES",
+        "chars": 984.8,
+        "enriched": 2
+      }
+    },
+    {
+      "claim_id": "av-00086",
+      "gold": "REFUTES",
+      "n_evidence": 5,
+      "retrieved_fact_check": true,
+      "snippet": {
+        "pred": "REFUTES",
+        "chars": 150
+      },
+      "fulltext": {
+        "pred": "REFUTES",
+        "chars": 1876.8,
+        "enriched": 3
+      }
+    },
+    {
+      "claim_id": "av-00087",
+      "gold": "SUPPORTS",
+      "n_evidence": 5,
+      "retrieved_fact_check": false,
+      "snippet": {
+        "pred": "NOT_ENOUGH_INFO",
+        "chars": 155.8
+      },
+      "fulltext": {
+        "pred": "SUPPORTS",
+        "chars": 1318.6,
+        "enriched": 3
+      }
+    },
+    {
+      "claim_id": "av-00089",
+      "gold": "REFUTES",
+      "n_evidence": 5,
+      "retrieved_fact_check": false,
+      "snippet": {
+        "pred": "REFUTES",
+        "chars": 161
+      },
+      "fulltext": {
+        "pred": "REFUTES",
+        "chars": 1537.8,
+        "enriched": 2
+      }
+    },
+    {
+      "claim_id": "av-00090",
+      "gold": "REFUTES",
+      "n_evidence": 5,
+      "retrieved_fact_check": true,
+      "snippet": {
+        "pred": "REFUTES",
+        "chars": 161.8
+      },
+      "fulltext": {
+        "pred": "REFUTES",
+        "chars": 1271.8,
+        "enriched": 3
+      }
+    },
+    {
+      "claim_id": "av-00091",
+      "gold": "REFUTES",
+      "n_evidence": 5,
+      "retrieved_fact_check": true,
+      "snippet": {
+        "pred": "SUPPORTS",
+        "chars": 159.2
+      },
+      "fulltext": {
+        "pred": "REFUTES",
+        "chars": 1539.4,
+        "enriched": 3
+      }
+    },
+    {
+      "claim_id": "av-00092",
+      "gold": "SUPPORTS",
+      "n_evidence": 5,
+      "retrieved_fact_check": true,
+      "snippet": {
+        "pred": "SUPPORTS",
+        "chars": 148.4
+      },
+      "fulltext": {
+        "pred": "SUPPORTS",
+        "chars": 1269.2,
+        "enriched": 2
+      }
+    },
+    {
+      "claim_id": "av-00093",
+      "gold": "SUPPORTS",
+      "n_evidence": 5,
+      "retrieved_fact_check": false,
+      "snippet": {
+        "pred": "SUPPORTS",
+        "chars": 160
+      },
+      "fulltext": {
+        "pred": "SUPPORTS",
+        "chars": 2089,
+        "enriched": 3
+      }
+    },
+    {
+      "claim_id": "av-00094",
+      "gold": "REFUTES",
+      "n_evidence": 5,
+      "retrieved_fact_check": false,
+      "snippet": {
+        "pred": "REFUTES",
+        "chars": 160
+      },
+      "fulltext": {
+        "pred": "REFUTES",
+        "chars": 1627,
+        "enriched": 3
+      }
+    },
+    {
+      "claim_id": "av-00095",
+      "gold": "REFUTES",
+      "n_evidence": 5,
+      "retrieved_fact_check": false,
+      "snippet": {
+        "pred": "NOT_ENOUGH_INFO",
+        "chars": 157.8
+      },
+      "fulltext": {
+        "pred": "REFUTES",
+        "chars": 1587,
+        "enriched": 2
+      }
+    },
+    {
+      "claim_id": "av-00097",
+      "gold": "REFUTES",
+      "n_evidence": 5,
+      "retrieved_fact_check": true,
+      "snippet": {
+        "pred": "NOT_ENOUGH_INFO",
+        "chars": 156.6
+      },
+      "fulltext": {
+        "pred": "NOT_ENOUGH_INFO",
+        "chars": 1688,
+        "enriched": 2
+      }
+    },
+    {
+      "claim_id": "av-00098",
+      "gold": "SUPPORTS",
+      "n_evidence": 5,
+      "retrieved_fact_check": false,
+      "snippet": {
+        "pred": "SUPPORTS",
+        "chars": 141.8
+      },
+      "fulltext": {
+        "pred": "SUPPORTS",
+        "chars": 141.8,
+        "enriched": 0
+      }
+    },
+    {
+      "claim_id": "av-00099",
+      "gold": "REFUTES",
+      "n_evidence": 5,
+      "retrieved_fact_check": true,
+      "snippet": {
+        "pred": "NOT_ENOUGH_INFO",
+        "chars": 155.4
+      },
+      "fulltext": {
+        "pred": "REFUTES",
+        "chars": 2446,
+        "enriched": 3
+      }
+    },
+    {
+      "claim_id": "av-00102",
+      "gold": "REFUTES",
+      "n_evidence": 5,
+      "retrieved_fact_check": true,
+      "snippet": {
+        "pred": "REFUTES",
+        "chars": 159.8
+      },
+      "fulltext": {
+        "pred": "REFUTES",
+        "chars": 1753.6,
+        "enriched": 3
+      }
+    },
+    {
+      "claim_id": "av-00103",
+      "gold": "SUPPORTS",
+      "n_evidence": 5,
+      "retrieved_fact_check": false,
+      "snippet": {
+        "pred": "NOT_ENOUGH_INFO",
+        "chars": 153.2
+      },
+      "fulltext": {
+        "pred": "SUPPORTS",
+        "chars": 1167.8,
+        "enriched": 2
+      }
+    },
+    {
+      "claim_id": "av-00104",
+      "gold": "SUPPORTS",
+      "n_evidence": 5,
+      "retrieved_fact_check": true,
+      "snippet": {
+        "pred": "SUPPORTS",
+        "chars": 154
+      },
+      "fulltext": {
+        "pred": "NOT_ENOUGH_INFO",
+        "chars": 928,
+        "enriched": 3
+      }
+    },
+    {
+      "claim_id": "av-00105",
+      "gold": "REFUTES",
+      "n_evidence": 5,
+      "retrieved_fact_check": true,
+      "snippet": {
+        "pred": "REFUTES",
+        "chars": 157.8
+      },
+      "fulltext": {
+        "pred": "REFUTES",
+        "chars": 2158.8,
+        "enriched": 3
+      }
+    },
+    {
+      "claim_id": "av-00106",
+      "gold": "REFUTES",
+      "n_evidence": 5,
+      "retrieved_fact_check": true,
+      "snippet": {
+        "pred": "REFUTES",
+        "chars": 156.4
+      },
+      "fulltext": {
+        "pred": "NOT_ENOUGH_INFO",
+        "chars": 191.6,
+        "enriched": 2
       }
     }
   ]
