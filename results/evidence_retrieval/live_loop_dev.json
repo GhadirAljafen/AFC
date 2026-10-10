@@ -2,7 +2,7 @@
   "split": "dev",
   "condition": "LIVE open-web search via Google CSE",
   "design": "one run per claim at rounds=2; both conditions derived from the same run, so round-1 queries are identical by construction",
-  "accumulation": "Collected incrementally over 3 run(s) against a 100 queries/day free tier. Claims are never re-run: query generation is stochastic, so replaying a finished claim would miss the cache and spend quota for no new data. Summary statistics cover all claims listed here.",
+  "accumulation": "Collected incrementally over 4 run(s) against a 100 queries/day free tier. Claims are never re-run: query generation is stochastic, so replaying a finished claim would miss the cache and spend quota for no new data. Summary statistics cover all claims listed here.",
   "target": 100,
   "not_measured": "verdict accuracy \u2014 measured separately in results/verdict/live_evidence_verdict.py, which replays these recorded queries from cache at zero quota",
   "runs": [
@@ -97,18 +97,52 @@
         "av-00078",
         "av-00079"
       ]
+    },
+    {
+      "date": "2026-10-10",
+      "claims_added": 24,
+      "live_searches": 95,
+      "cache_hits": 3,
+      "budget": 95,
+      "failed": [],
+      "claim_ids": [
+        "av-00080",
+        "av-00081",
+        "av-00082",
+        "av-00084",
+        "av-00085",
+        "av-00086",
+        "av-00087",
+        "av-00089",
+        "av-00090",
+        "av-00091",
+        "av-00092",
+        "av-00093",
+        "av-00094",
+        "av-00095",
+        "av-00097",
+        "av-00098",
+        "av-00099",
+        "av-00100",
+        "av-00101",
+        "av-00102",
+        "av-00103",
+        "av-00104",
+        "av-00105",
+        "av-00106"
+      ]
     }
   ],
   "summary": {
-    "claims": 65,
-    "live_searches": 240,
-    "ran_second_round": 24,
-    "new_domain_rate": 0.9583333333333334,
-    "mean_new_domains": 3.2083333333333335,
-    "gold_domain_recall_r1": 0.06025641025641026,
-    "gold_domain_recall_r1r2": 0.0782051282051282,
-    "fact_check_round1": 29,
-    "fact_check_round2": 1
+    "claims": 89,
+    "live_searches": 331,
+    "ran_second_round": 35,
+    "new_domain_rate": 0.9428571428571428,
+    "mean_new_domains": 3.085714285714286,
+    "gold_domain_recall_r1": 0.0852059925093633,
+    "gold_domain_recall_r1r2": 0.09831460674157304,
+    "fact_check_round1": 45,
+    "fact_check_round2": 3
   },
   "per_claim": [
     {
@@ -2520,6 +2554,935 @@
       "gold_hit_r1": 0,
       "gold_hit_r1r2": 0,
       "n_gold_domains": 1
+    },
+    {
+      "claim_id": "av-00080",
+      "claim": "\u201cRed-tagging\u201d is a term invented by the Communist Party of the Philippines, the New People's Army, and the National Demo",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "books.google.com.ph",
+        "play.google.com",
+        "web.stanford.edu"
+      ],
+      "searches_spent": 2,
+      "ran_second_round": true,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "acleddata.com",
+          "facebook.com",
+          "hrf.org",
+          "pna.gov.ph",
+          "thediplomat.com"
+        ],
+        "queries": [
+          "origin of the term \"red-tagging\" and its association with CPP-NPA-NDF",
+          "\"red-tagging\" term invented by Communist Party of the Philippines New People's Army National Democratic Front",
+          "\"red-tagging\" false claim invented by CPP-NPA-NDF debunked"
+        ],
+        "fact_check": 0
+      },
+      "round2": {
+        "n_urls": 5,
+        "domains": [
+          "cgfoetestsite.mystagingwebsite.com",
+          "en.wikipedia.org",
+          "globalwitness.org",
+          "hrw.org",
+          "swlaw.edu"
+        ],
+        "new_domains": [
+          "cgfoetestsite.mystagingwebsite.com",
+          "en.wikipedia.org",
+          "globalwitness.org",
+          "hrw.org",
+          "swlaw.edu"
+        ],
+        "queries": [
+          "origin of the term \"red-tagging\" in Philippine political history",
+          "first documented use of \"red-tagging\" in the Philippines with date and source"
+        ],
+        "fact_check": 0
+      },
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 3
+    },
+    {
+      "claim_id": "av-00081",
+      "claim": "NBC News Kristen Welker gave thousands of dollars to Obama, Clinton and Biden, is registered as a Democrat & her family ",
+      "gold_label": "Conflicting Evidence/Cherrypicking",
+      "gold_domains": [
+        "facebook.com",
+        "fec.gov",
+        "obamawhitehouse.archives.gov"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "facebook.com",
+          "factcheck.org",
+          "nypost.com",
+          "poynter.org"
+        ],
+        "queries": [
+          "Kristen Welker political donations to Obama Clinton Biden",
+          "Kristen Welker registered Democrat voter status",
+          "Kristen Welker family Christmas with Obamas White House"
+        ],
+        "fact_check": 2
+      },
+      "round2": null,
+      "gold_hit_r1": 1,
+      "gold_hit_r1r2": 1,
+      "n_gold_domains": 3
+    },
+    {
+      "claim_id": "av-00082",
+      "claim": "In the US lockdowns are partly responsible for excess deaths not directly attributed to COVID-19 which were observed in ",
+      "gold_label": "Not Enough Evidence",
+      "gold_domains": [
+        "cdc.gov",
+        "jamanetwork.com"
+      ],
+      "searches_spent": 5,
+      "ran_second_round": true,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "cdc.gov",
+          "cidrap.umn.edu",
+          "pmc.ncbi.nlm.nih.gov",
+          "reuters.com"
+        ],
+        "queries": [
+          "US lockdowns excess deaths 2020 not attributed to COVID-19",
+          "lockdowns in the US 2020 excess deaths indirect COVID-19 causes",
+          "claim US lockdowns caused non-COVID excess deaths 2020 false"
+        ],
+        "fact_check": 1
+      },
+      "round2": {
+        "n_urls": 5,
+        "domains": [
+          "bbc.com",
+          "pmc.ncbi.nlm.nih.gov",
+          "sciencedirect.com"
+        ],
+        "new_domains": [
+          "bbc.com",
+          "sciencedirect.com"
+        ],
+        "queries": [
+          "studies on impact of COVID-19 lockdowns on excess deaths in the US 2020",
+          "analysis of non-COVID excess mortality and lockdown measures United States 2020"
+        ],
+        "fact_check": 0
+      },
+      "gold_hit_r1": 1,
+      "gold_hit_r1r2": 1,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00084",
+      "claim": "It's unclear how Joe Biden acquired his recent wealth since leaving office in 2017",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "cnn.com",
+        "twitter.com"
+      ],
+      "searches_spent": 5,
+      "ran_second_round": true,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "bbc.com",
+          "capradio.org",
+          "en.wikipedia.org",
+          "oversight.house.gov"
+        ],
+        "queries": [
+          "Joe Biden wealth sources since 2017",
+          "Joe Biden financial disclosures after 2017",
+          "Joe Biden wealth acquisition after leaving office 2017"
+        ],
+        "fact_check": 0
+      },
+      "round2": {
+        "n_urls": 5,
+        "domains": [
+          "abcnews.com",
+          "businessinsider.com",
+          "cbp.gov",
+          "politico.com",
+          "state.gov"
+        ],
+        "new_domains": [
+          "abcnews.com",
+          "businessinsider.com",
+          "cbp.gov",
+          "politico.com",
+          "state.gov"
+        ],
+        "queries": [
+          "Joe Biden income sources and amounts 2017-2024 official financial disclosures",
+          "Joe Biden book deals earnings and dates since 2017"
+        ],
+        "fact_check": 0
+      },
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00085",
+      "claim": "India's Congress party candidate Maskoor Usmani installed Jinnah's portrait at AMU.",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "amu.ac.in",
+        "dailyo.in",
+        "in.linkedin.com",
+        "newindianexpress.com",
+        "telegraphindia.com",
+        "twitter.com"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "altnews.in",
+          "facebook.com",
+          "muslimmirror.com",
+          "timesofindia.indiatimes.com"
+        ],
+        "queries": [
+          "Maskoor Usmani Jinnah portrait AMU Congress party",
+          "Maskoor Usmani Jinnah portrait AMU claim false",
+          "Maskoor Usmani Jinnah portrait Aligarh Muslim University news"
+        ],
+        "fact_check": 2
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 6
+    },
+    {
+      "claim_id": "av-00086",
+      "claim": "Donald Trump Jr. said, \u201cMy father doesn\u2019t need to rape women. It\u2019s more likely a woman would rape him. That\u2019s how popula",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "iheart.com",
+        "polititweet.org"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "19thnews.org",
+          "abcnews.com",
+          "bbc.com",
+          "snopes.com",
+          "themarshallproject.org"
+        ],
+        "queries": [
+          "Donald Trump Jr. quote \"My father doesn\u2019t need to rape women. It\u2019s more likely a woman would rape him\"",
+          "Donald Trump Jr. statement on his father's popularity and rape allegations",
+          "Donald Trump Jr. quote about women raping Donald Trump refuted"
+        ],
+        "fact_check": 1
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00087",
+      "claim": "Hyderabad Metropolitan Water Supply and Sewerage Board (HMWSSB) is delivering 1kg bleaching powder, chlorine tablets to ",
+      "gold_label": "Supported",
+      "gold_domains": [
+        "thehansindia.com",
+        "twitter.com"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "ihs.org.in",
+          "ndma.gov.in",
+          "newsmeter.in",
+          "phedharyana.gov.in",
+          "tenders.infralens.in"
+        ],
+        "queries": [
+          "Hyderabad Metropolitan Water Supply and Sewerage Board bleaching powder chlorine tablets doorstep delivery",
+          "HMWSSB bleaching powder chlorine tablets distribution 1kg door delivery Hyderabad",
+          "Hyderabad water supply board bleaching powder chlorine tablets delivery claim false"
+        ],
+        "fact_check": 0
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00089",
+      "claim": "Most deaths in the 1918 influenza pandemic originated from bacterial pneumonia caused by face masks and that Dr Anthony ",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "ncbi.nlm.nih.gov",
+        "pubmed.ncbi.nlm.nih.gov"
+      ],
+      "searches_spent": 5,
+      "ran_second_round": true,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "apnews.com",
+          "cidrap.umn.edu",
+          "en.wikipedia.org",
+          "pmc.ncbi.nlm.nih.gov",
+          "pubmed.ncbi.nlm.nih.gov"
+        ],
+        "queries": [
+          "1918 influenza pandemic deaths caused by bacterial pneumonia from face masks",
+          "claim that face masks caused bacterial pneumonia deaths in 1918 flu pandemic debunked",
+          "Dr Anthony Fauci knowledge about 1918 flu pandemic bacterial pneumonia and face masks"
+        ],
+        "fact_check": 0
+      },
+      "round2": {
+        "n_urls": 0,
+        "domains": [],
+        "new_domains": [],
+        "queries": [
+          "\"1918 influenza pandemic bacterial pneumonia face masks scientific studies\"",
+          "\"historical medical evidence bacterial pneumonia caused by face masks 1918 flu\""
+        ],
+        "fact_check": 0
+      },
+      "gold_hit_r1": 1,
+      "gold_hit_r1r2": 1,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00090",
+      "claim": "BJP MP Kirron Kher Said \"Rape Is A Part Of Indian Culture And It Can't Be Stopped\"",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "navbharattimes.indiatimes.com",
+        "timesofindia.indiatimes.com",
+        "youtube.com"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "boomlive.in",
+          "facebook.com",
+          "factly.in",
+          "indiatoday.in",
+          "timesofindia.indiatimes.com"
+        ],
+        "queries": [
+          "BJP MP Kirron Kher statement on rape being part of Indian culture",
+          "Kirron Kher rape comment controversy 2023",
+          "Kirron Kher rape is part of Indian culture claim debunked"
+        ],
+        "fact_check": 1
+      },
+      "round2": null,
+      "gold_hit_r1": 1,
+      "gold_hit_r1r2": 1,
+      "n_gold_domains": 3
+    },
+    {
+      "claim_id": "av-00091",
+      "claim": "A message will be sent to your phone claiming to show that the Covid19 curve is flattening in India, But It will contain",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "facebook.com",
+        "thequint.com"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "boomlive.in",
+          "facebook.com",
+          "fullfact.org",
+          "pmc.ncbi.nlm.nih.gov",
+          "telugupost.com"
+        ],
+        "queries": [
+          "Covid19 curve flattening message India malicious file",
+          "Covid19 curve flattening message India malware warning",
+          "Covid19 curve flattening message India false claim debunked"
+        ],
+        "fact_check": 2
+      },
+      "round2": null,
+      "gold_hit_r1": 1,
+      "gold_hit_r1r2": 1,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00092",
+      "claim": "US Sen Kamala Harris failed the bar exam  (qualifying examination for lawyers)on her first attempt",
+      "gold_label": "Supported",
+      "gold_domains": [
+        "davidgarrow.com",
+        "latimes.com"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "facebook.com",
+          "jdadvising.com",
+          "quora.com",
+          "snopes.com"
+        ],
+        "queries": [
+          "Kamala Harris first attempt bar exam results",
+          "Kamala Harris bar exam failure claim debunked",
+          "Kamala Harris bar exam pass date and details"
+        ],
+        "fact_check": 1
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00093",
+      "claim": "US Judge Amy Coney Barrett graduated at the top of her law school class at Notre Dame Law School",
+      "gold_label": "Supported",
+      "gold_domains": [
+        "politico.com",
+        "wicker.senate.gov"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "en.wikipedia.org",
+          "judiciary.senate.gov",
+          "news.nd.edu",
+          "trumpwhitehouse.archives.gov",
+          "womenshistory.org"
+        ],
+        "queries": [
+          "Amy Coney Barrett Notre Dame Law School class rank",
+          "Amy Coney Barrett law school graduation honors Notre Dame",
+          "Amy Coney Barrett graduated top of class Notre Dame Law School"
+        ],
+        "fact_check": 0
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00094",
+      "claim": "Saved by the Bell actor, Dustin Diamond died in a prison riot.",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "imdb.com"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "cityofhope.org",
+          "moffitt.org",
+          "movieweb.com",
+          "news.cuanschutz.edu",
+          "uk.news.yahoo.com"
+        ],
+        "queries": [
+          "Dustin Diamond death cause",
+          "Dustin Diamond died in prison riot false",
+          "Dustin Diamond Saved by the Bell actor death details"
+        ],
+        "fact_check": 0
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 1
+    },
+    {
+      "claim_id": "av-00095",
+      "claim": "Controversial abortion methods are allowed under New Zealand's Abortion Legislation Act (2020).",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "legislation.govt.nz"
+      ],
+      "searches_spent": 5,
+      "ran_second_round": true,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "anzswjournal.nz",
+          "en.wikipedia.org",
+          "health.govt.nz",
+          "legislation.govt.nz"
+        ],
+        "queries": [
+          "New Zealand Abortion Legislation Act 2020 controversial abortion methods allowed",
+          "Controversial abortion methods New Zealand law 2020 debunked",
+          "Abortion Legislation Act 2020 New Zealand abortion methods details"
+        ],
+        "fact_check": 0
+      },
+      "round2": {
+        "n_urls": 5,
+        "domains": [
+          "en.wikipedia.org",
+          "pmc.ncbi.nlm.nih.gov"
+        ],
+        "new_domains": [
+          "pmc.ncbi.nlm.nih.gov"
+        ],
+        "queries": [
+          "New Zealand Abortion Legislation Act 2020 permitted abortion methods detailed",
+          "Definitions of controversial abortion methods in New Zealand abortion law 2020"
+        ],
+        "fact_check": 0
+      },
+      "gold_hit_r1": 1,
+      "gold_hit_r1r2": 1,
+      "n_gold_domains": 1
+    },
+    {
+      "claim_id": "av-00097",
+      "claim": "IMAGE CLAIMS DONALD TRUMP CURRENTLY FACES A COURT CASE FOR ALLEGEDLY SEXUALLY ASSAULTING A 13-YEAR-OLD",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "factba.se",
+        "vox.com"
+      ],
+      "searches_spent": 5,
+      "ran_second_round": true,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "bbc.com",
+          "courthousenews.com",
+          "pbs.org",
+          "politico.com",
+          "theguardian.com"
+        ],
+        "queries": [
+          "Donald Trump court case alleged sexual assault 13-year-old",
+          "Donald Trump sexual assault case 13-year-old current status",
+          "Donald Trump sexual assault allegations 13-year-old false claim"
+        ],
+        "fact_check": 0
+      },
+      "round2": {
+        "n_urls": 5,
+        "domains": [
+          "bbc.com",
+          "courthousenews.com",
+          "en.wikipedia.org",
+          "nysd.uscourts.gov",
+          "reuters.com"
+        ],
+        "new_domains": [
+          "en.wikipedia.org",
+          "nysd.uscourts.gov",
+          "reuters.com"
+        ],
+        "queries": [
+          "Donald Trump ongoing court case sexual assault 13-year-old 2024 official court records",
+          "Recent news reports Donald Trump sexual assault case minor 13 years old 2024"
+        ],
+        "fact_check": 1
+      },
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00098",
+      "claim": "The iPhone 12 won\u2019t come with earphones and a charging adapter.",
+      "gold_label": "Supported",
+      "gold_domains": [
+        "metro.co.uk"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "agroforadapt.eu",
+          "apple.com",
+          "classaction.org",
+          "reddit.com"
+        ],
+        "queries": [
+          "iPhone 12 earphones and charging adapter included",
+          "iPhone 12 no earphones and charger claim false",
+          "Apple iPhone 12 packaging contents 2020"
+        ],
+        "fact_check": 0
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 1
+    },
+    {
+      "claim_id": "av-00099",
+      "claim": "New Zealand's Abortion Legislation Act (2020) does not make it a legal requirement that babies born alive after an abort",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "advocacy.org.nz",
+        "bothlivesmatter.org.nz"
+      ],
+      "searches_spent": 5,
+      "ran_second_round": true,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "en.wikipedia.org",
+          "factcheck.afp.com",
+          "factcheck.org",
+          "righttolife.org.uk",
+          "theguardian.com"
+        ],
+        "queries": [
+          "New Zealand Abortion Legislation Act 2020 requirements for babies born alive after abortion",
+          "Does New Zealand's Abortion Legislation Act 2020 require medical support for babies born alive after abortion?",
+          "New Zealand Abortion Legislation Act 2020 babies born alive medical care false claim"
+        ],
+        "fact_check": 2
+      },
+      "round2": {
+        "n_urls": 5,
+        "domains": [
+          "en.wikipedia.org",
+          "legislation.govt.nz",
+          "obgyn.onlinelibrary.wiley.com",
+          "tandfonline.com",
+          "who.int"
+        ],
+        "new_domains": [
+          "legislation.govt.nz",
+          "obgyn.onlinelibrary.wiley.com",
+          "tandfonline.com",
+          "who.int"
+        ],
+        "queries": [
+          "Abortion Legislation Act 2020 New Zealand full text medical support for babies born alive after abortion",
+          "Section of New Zealand Abortion Legislation Act 2020 addressing care for infants born alive post-abortion"
+        ],
+        "fact_check": 0
+      },
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00100",
+      "claim": "US president Joe Biden (candidate at the time of claim) supports the new green deal (The Green New Deal is a nonbinding ",
+      "gold_label": "Conflicting Evidence/Cherrypicking",
+      "gold_domains": [
+        "investopedia.com",
+        "theguardian.com"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "budget.house.gov",
+          "cbsnews.com",
+          "en.wikipedia.org",
+          "pbs.org",
+          "presidency.ucsb.edu"
+        ],
+        "queries": [
+          "Joe Biden support for the Green New Deal",
+          "Joe Biden Green New Deal stance 2020",
+          "Joe Biden Green New Deal claim debunked"
+        ],
+        "fact_check": 0
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00101",
+      "claim": "The Tanishq jewellery store in Gandhidham,  Gujarat, India was attacked following a negative reaction to an advertisemen",
+      "gold_label": "Conflicting Evidence/Cherrypicking",
+      "gold_domains": [
+        "ndtv.com",
+        "twitter.com"
+      ],
+      "searches_spent": 5,
+      "ran_second_round": true,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "indiatvnews.com",
+          "reuters.com",
+          "thenewsminute.com",
+          "theprint.in",
+          "timesofindia.indiatimes.com"
+        ],
+        "queries": [
+          "Tanishq jewellery store Gandhidham Gujarat attacked after advertisement",
+          "Tanishq Gandhidham store attack advertisement controversy Gujarat",
+          "Tanishq advertisement backlash Gandhidham store incident Gujarat"
+        ],
+        "fact_check": 0
+      },
+      "round2": {
+        "n_urls": 5,
+        "domains": [
+          "opindia.com",
+          "thesis.eur.nl",
+          "worldscientific.com"
+        ],
+        "new_domains": [
+          "opindia.com",
+          "thesis.eur.nl",
+          "worldscientific.com"
+        ],
+        "queries": [
+          "Gandhidham police statement on Tanishq store incident April 2023",
+          "Tanishq official response to Gandhidham store attack April 2023"
+        ],
+        "fact_check": 0
+      },
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00102",
+      "claim": "Kanye West was ahead of Biden and Trump in the Kentucky polls in October 2020",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "nme.com",
+        "twitter.com"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "billboard.com",
+          "businessinsider.com",
+          "en.wikipedia.org",
+          "fox40.com",
+          "poynter.org"
+        ],
+        "queries": [
+          "Kanye West Kentucky polls October 2020",
+          "Kanye West ahead of Biden and Trump Kentucky October 2020 polls",
+          "Kanye West Kentucky 2020 election poll results"
+        ],
+        "fact_check": 1
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00103",
+      "claim": "Former President Donald Trump who lost the popular vote by 3 million has nominated a full third of The United Supreme Co",
+      "gold_label": "Supported",
+      "gold_domains": [
+        "theguardian.com",
+        "time.com"
+      ],
+      "searches_spent": 5,
+      "ran_second_round": true,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "bbc.com",
+          "en.wikipedia.org",
+          "houstonpublicmedia.org",
+          "justice.gov",
+          "supremecourt.gov"
+        ],
+        "queries": [
+          "Donald Trump Supreme Court nominations as of October 13 2020",
+          "Donald Trump Supreme Court nominations one third of court claim false",
+          "Number of Supreme Court justices nominated by Donald Trump by October 2020"
+        ],
+        "fact_check": 0
+      },
+      "round2": {
+        "n_urls": 5,
+        "domains": [
+          "ballotpedia.org",
+          "en.wikipedia.org",
+          "judiciary.senate.gov",
+          "supremecourt.gov"
+        ],
+        "new_domains": [
+          "ballotpedia.org",
+          "judiciary.senate.gov"
+        ],
+        "queries": [
+          "Number of Supreme Court justices in the United States as of October 2020",
+          "List of Supreme Court justices confirmed by Donald Trump by October 13, 2020"
+        ],
+        "fact_check": 0
+      },
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00104",
+      "claim": "Amy Coney Barrett's nomination to the Supreme Court would be confirmed in October 2020, by a Senate majority that repres",
+      "gold_label": "Supported",
+      "gold_domains": [
+        "en.wikipedia.org",
+        "vox.com"
+      ],
+      "searches_spent": 5,
+      "ran_second_round": true,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "brennancenter.org",
+          "congress.gov",
+          "judiciary.senate.gov",
+          "scotusblog.com",
+          "usatoday.com"
+        ],
+        "queries": [
+          "Amy Coney Barrett Supreme Court nomination October 2020 Senate confirmation population representation",
+          "Amy Coney Barrett nomination Senate majority represents fewer people than minority party",
+          "Amy Coney Barrett Supreme Court confirmation claim debunked October 2020"
+        ],
+        "fact_check": 1
+      },
+      "round2": {
+        "n_urls": 5,
+        "domains": [
+          "americanprogress.org",
+          "brennancenter.org",
+          "fec.gov",
+          "senate.gov"
+        ],
+        "new_domains": [
+          "americanprogress.org",
+          "fec.gov",
+          "senate.gov"
+        ],
+        "queries": [
+          "2020 U.S. Senate party representation population comparison data",
+          "Population represented by Republican vs Democratic senators October 2020"
+        ],
+        "fact_check": 0
+      },
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 2
+    },
+    {
+      "claim_id": "av-00105",
+      "claim": "President Trump said Anthony Fauci said, \u201cThis is not a threat. This is not a problem. Don\u2019t worry about it.\u201d when talki",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "factcheck.org"
+      ],
+      "searches_spent": 3,
+      "ran_second_round": false,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "axios.com",
+          "cbsnews.com",
+          "nbcmiami.com",
+          "politifact.com",
+          "washingtonpost.com"
+        ],
+        "queries": [
+          "President Trump Anthony Fauci \"This is not a threat. This is not a problem. Don\u2019t worry about it.\" pandemic statement",
+          "Did Anthony Fauci say \"This is not a threat. This is not a problem. Don\u2019t worry about it.\" about the pandemic?",
+          "Fact check President Trump claim Fauci \"This is not a threat\" pandemic"
+        ],
+        "fact_check": 1
+      },
+      "round2": null,
+      "gold_hit_r1": 0,
+      "gold_hit_r1r2": 0,
+      "n_gold_domains": 1
+    },
+    {
+      "claim_id": "av-00106",
+      "claim": "Amy Coney Barrett, associate justice of the Supreme Court of the United States,  said during her Supreme Court confirmat",
+      "gold_label": "Refuted",
+      "gold_domains": [
+        "msnbc.com",
+        "usatoday.com"
+      ],
+      "searches_spent": 5,
+      "ran_second_round": true,
+      "round1": {
+        "n_urls": 5,
+        "domains": [
+          "reuters.com",
+          "rev.com",
+          "usatoday.com"
+        ],
+        "queries": [
+          "Amy Coney Barrett Supreme Court confirmation hearing notes seven kids quote",
+          "Amy Coney Barrett confirmation hearing notes claim false",
+          "Amy Coney Barrett Supreme Court hearing transcript notes seven children"
+        ],
+        "fact_check": 1
+      },
+      "round2": {
+        "n_urls": 5,
+        "domains": [
+          "congress.gov",
+          "ir.library.louisville.edu",
+          "judiciary.senate.gov",
+          "rev.com",
+          "usatoday.com"
+        ],
+        "new_domains": [
+          "congress.gov",
+          "ir.library.louisville.edu",
+          "judiciary.senate.gov"
+        ],
+        "queries": [
+          "Amy Coney Barrett Supreme Court confirmation hearing transcript notes seven kids",
+          "Amy Coney Barrett confirmation hearing official transcript \"stupid questions\""
+        ],
+        "fact_check": 1
+      },
+      "gold_hit_r1": 1,
+      "gold_hit_r1r2": 1,
+      "n_gold_domains": 2
     }
   ]
 }

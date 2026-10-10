@@ -599,45 +599,44 @@ identical by construction rather than merely matched. Domain-level matching, per
 **Sample, collected incrementally.** The Google CSE free tier is 100 queries/day,
 so the sample is accumulated in daily batches by `live_loop.py`, which skips
 claims already done and merges new ones into `live_loop_dev.json` (a `runs` list in
-that file records each batch). **65 claims, 240 live searches, 3 batches** as of
-2026-10-07; target 100.
+that file records each batch). **89 claims, 331 live searches, 4 batches** as of
+2026-10-10; target 100 — 11 claims short, ~41 searches.
 
 Claims are never re-run: query generation is stochastic (temperature 0.3), so
 replaying a finished claim would emit different queries, miss the cache and spend
 quota for no new data.
 
-### 11.1 Round 2 does reach sources round 1 could not — replicated twice
+### 11.1 Round 2 does reach sources round 1 could not — replicated three times
 
 Each batch is an independent sample of fresh claims, not a pooled re-estimate:
 
-| | batch 1 (n=15) | batch 2 (n=26) | batch 3 (n=24) | **all (n=65)** |
-|---|---|---|---|---|
-| claims that triggered a second round | 5 (33%) | 8 (31%) | 11 (**46%**) | **24 (37%)** |
-| second rounds that added a **new domain** | 4 / 5 (80%) | 8 / 8 (100%) | 11 / 11 (100%) | **23 / 24 (96%)** |
-| new domains per second round | mean 3.60 | mean 2.75 | mean 3.36 | **mean 3.21**, max 5 |
-| round-1 domains per claim | 4.53 | 4.38 | 4.25 | **4.38** |
-| fact-check results retrieved in round 2 | 0 | 0 | **1** | **1** |
+| | batch 1 (n=15) | batch 2 (n=26) | batch 3 (n=24) | batch 4 (n=24) | **all (n=89)** |
+|---|---|---|---|---|---|
+| claims that triggered a second round | 5 (33%) | 8 (31%) | 11 (46%) | 11 (46%) | **35 (39%)** |
+| second rounds that added a **new domain** | 4 / 5 (80%) | 8 / 8 (100%) | 11 / 11 (100%) | 10 / 11 (91%) | **33 / 35 (94%)** |
+| new domains per second round | mean 3.60 | mean 2.75 | mean 3.36 | mean 2.82 | **mean 3.09**, max 5 |
+| round-1 domains per claim | 4.53 | 4.38 | 4.25 | 4.54 | **4.43** |
+| fact-check results retrieved in round 2 | 0 | 0 | 1 | 2 | **3** |
 
 So a gap-driven second round adds roughly three-quarters as many distinct domains
 again as the first round found. **This directly contradicts the closed-corpus
 result**, and the contradiction is explained by the setting rather than by either
 measurement being wrong: reformulation needs somewhere new to reach.
 
-**The new-domain rate is the solid finding** — 96% across 24 second rounds, and at
-or above 80% in every batch. It is now measured on enough second rounds to be worth
-quoting.
+**The new-domain rate is the solid finding** — **94% across 35 second rounds**, at or
+above 80% in all four batches. This is the most replicated result in the project.
 
-Two claims made at n=41 need correcting, both marked in the table above:
+Two claims made at n=41 were corrected at n=65 and the corrections hold at n=89:
 
-* ~~The trigger rate is "stable across batches."~~ **It is not.** Batches run 33%,
-  31%, **46%** — a 15-point spread on 24 claims. Two matching batches were not
-  enough to call it stable, and the pooled 37% should be read with that spread in
-  mind rather than as a settled rate.
-* ~~Round 2 retrieves "zero" fact-checking pages, "a clean zero on both batches
-  independently."~~ **Batch 3 retrieved one.** The ratio is still lopsided — **1 in
-  round 2 against 29 in round 1** across 65 claims — so the mechanism holds, but it
-  is a strong tendency, not an absolute, and the word "zero" was over-claimed on 13
-  second rounds.
+* ~~The trigger rate is "stable across batches."~~ **It is not, but it has structure.**
+  Batches run 33%, 31%, 46%, 46% — the two later batches agree with each other as
+  closely as the two earlier ones do, around a pooled 39%. Two matching batches were
+  never enough to call it settled; four suggest something closer to a drift between
+  claim slices than pure noise, and nothing has characterised it.
+* ~~Round 2 retrieves "zero" fact-checking pages.~~ **Rising slowly: 0, 0, 1, 2.** The
+  asymmetry remains large — **3 in round 2 against 45 in round 1** across 89 claims,
+  a 15:1 ratio — but "zero" was over-claimed on 13 second rounds, and the gap is
+  narrowing as n grows (29:1 at n=65).
 
 ### 11.2 The new sources are qualitatively better, and the gap queries are sensible
 
@@ -650,64 +649,68 @@ The second-round queries are doing what they were designed to do:
 | COVID preventable deaths | *"study estimating preventable COVID-19 deaths"* | `pmc.ncbi.nlm.nih.gov`, `jec.senate.gov`, `aamc.org` |
 
 Round 2 systematically reaches **government, primary and wire sources**. Across all
-24 second rounds it retrieved **1 fact-checking result, against 29 in round 1** — a
-29:1 asymmetry that held in direction across all three batches, though not as the
-absolute zero claimed at n=41.
+35 second rounds it retrieved **3 fact-checking results, against 45 in round 1** — a
+15:1 asymmetry that held in direction across all four batches, though not as the
+absolute zero claimed at n=41, and the ratio has narrowed with n (29:1 at n=65).
 
 ### 11.3 A round-1 query-quality problem this exposed
 
-Round-1 domains across the 65 claims (152 distinct domains; top 10):
+Round-1 domains across the 89 claims (top 10 of the full trail, 345 queries / 1,695
+results):
 
 | n | domain | |
 |---|---|---|
-| 25 | `en.wikipedia.org` | |
-| 24 | `bbc.com` | |
-| 19 | `reuters.com` | |
-| 17 | `pmc.ncbi.nlm.nih.gov` | |
-| 10 | `facebook.com` | |
-| 9 | `factcheck.org` | ← fact-checker |
-| 5 | `aclanthology.org` | ← research venue |
-| 5 | `apnews.com` | |
-| 4 | `cdc.gov` | |
-| 4 | `altnews.in` | |
+| 186 | `en.wikipedia.org` | |
+| 127 | `bbc.com` | |
+| 123 | `pmc.ncbi.nlm.nih.gov` | |
+| 91 | `reuters.com` | 7/91 are fact-check pages |
+| 61 | `facebook.com` | |
+| 34 | `apnews.com` | |
+| 32 | `factcheck.org` | ← fact-checker, 32/32 |
+| 22 | `cdc.gov` | |
+| 19 | `pubmed.ncbi.nlm.nih.gov` | |
+| 17 | `pbs.org` | |
 
 Round 1's top sources are reference, broadcast, wire and biomedical — reasonable
 evidence sources. Two problems sit in the tail, both traceable to the
 refutation-style queries:
 
-1. **Fact-check leakage** — 4.6% of all retrieved results; **24 of 65 claims (37%)**
+1. **Fact-check leakage** — 5.7% of all retrieved results; **36 of 89 claims (40%)**
    retrieve at least one. The known risk from §8.1 of `IMPROVEMENT_PLAN`, now
    observed live, and the reason the Stage 3 results in `FINDINGS.md` §L are split
-   on this variable. This rate has been stable across all three batches.
+   on this variable. The rate has crept up across batches (4.3 → 4.2 → 4.6 → 5.7%)
+   rather than being flat as reported at n=65.
 2. **Benchmark-methodology leakage** — queries like *"{claim} debunked"* surface
    academic work *about fact-checking* rather than evidence about the claim. A
    different failure from citing a fact-checker's verdict: the system retrieves
    papers about the task. But see the correction below — it is far smaller and far
    more localised than first reported.
 
-> **Correction, twice revised: 10% (n=15) → 4.2% (n=41) → 2.6% (n=65).**
+> **Correction, now settled: 10% (n=15) → 4.2% (n=41) → 2.6% (n=65) → 1.9% (n=89).**
 >
-> This section originally reported **10% of round-1 results** as research venues,
-> from a 60-query trail. On the full 250-query, 1,237-result trail the figure is
-> **2.6%**, and the absolute count has not moved at all: **32 research-venue results
-> at n=41 and still exactly 32 at n=65.** Batch 3's 95 queries added **zero**.
+> This section originally reported **10% of round-1 results** as research venues, from
+> a 60-query trail. On the full 345-query, 1,695-result trail the figure is **1.9%**,
+> and the absolute count is essentially frozen: **32 research-venue results at n=41,
+> 32 at n=65, 33 at n=89.** Batches 3 and 4 — 190 queries between them — added
+> **one** between them.
 >
 > Per batch, claims retrieving at least one research venue in round 1:
 >
-> | batch 1 (n=15) | batch 2 (n=26) | batch 3 (n=24) | all (n=65) |
-> |---|---|---|---|
-> | **5 (33%)** | 2 (8%) | **0 (0%)** | 7 (11%) |
+> | batch 1 (n=15) | batch 2 (n=26) | batch 3 (n=24) | batch 4 (n=24) | all (n=89) |
+> |---|---|---|---|---|
+> | **5 (33%)** | 2 (8%) | **0** | **0** | 7 (8%) |
 >
-> **The phenomenon is confined to the claims I happened to start with.** Claims are
-> processed in dataset order, so batch 1 is the first 15 evaluable AVeriTeC dev
-> claims — and essentially all of the contamination lives there. This is a property
-> of that slice, not of the system: `fever.ai`, cited originally as evidence that
-> the benchmark's own shared-task site was being retrieved, never recurs.
+> **The phenomenon is confined to the claims the sample happened to start with.**
+> Claims are processed in dataset order, so batch 1 is the first 15 evaluable AVeriTeC
+> dev claims — and essentially all of the contamination lives there. This is a
+> property of that slice, not of the system: `fever.ai`, cited originally as evidence
+> that the benchmark's own shared-task site was being retrieved, never recurs in 285
+> subsequent queries.
 >
-> **The original finding was a sampling artifact of where the sample began.** It was
-> reported as a system-wide retrieval defect on the strength of 60 queries. The
-> §11.5 recommendation that called it "the more promising target" is withdrawn — see
-> the revision there.
+> **The original finding was a sampling artifact of where the sample began**, reported
+> as a system-wide retrieval defect on the strength of 60 queries. Three further
+> batches have now failed to reproduce it. The §11.5 recommendation that called it
+> "the more promising target" is withdrawn — see the revision there.
 
 Round 2 exhibits neither problem. The mechanism is consistent: round 1's
 refutation-biased queries pull in meta-content about fact-checking; round 2's
@@ -717,12 +720,13 @@ gap-driven queries ask for specific missing facts and reach primary evidence.
 
 | | round 1 | rounds 1+2 |
 |---|---|---|
-| gold-domain recall (n=65) | 0.060 | 0.078 |
-| claims finding ≥1 gold domain | 8 / 65 | 11 / 65 |
+| gold-domain recall (n=89) | 0.085 | 0.098 |
+| claims finding ≥1 gold domain | 15 / 89 | 18 / 89 |
 | *at n=15* | *0.033* | *0.067* |
 | *at n=41* | *0.069* | *0.089* |
+| *at n=65* | *0.060* | *0.078* |
 
-Quadrupling the sample left recall between 6% and 9%, drifting without trend. At this
+Six-fold growth in the sample left recall between 6% and 10%, drifting without trend. At this
 level the metric carries no signal: live search returns equally-good alternative
 sources, and AVeriTeC's gold URLs suffer link rot (§9 measured 29% unreachable).
 **Benchmark-gold matching is not a usable metric for live retrieval**, which is why
@@ -744,36 +748,40 @@ measured, in `../verdict/FINDINGS.md` §L, which replays these recorded queries 
 cache at zero quota.
 
 **Caveats:**
-* n=65 claims, 24 second rounds. The §11.1 new-domain rate has replicated across
-  three independent batches; the trigger rate has not settled (33/31/46%), and the
+* n=89 claims, 35 second rounds. The §11.1 new-domain rate has replicated across
+  four independent batches; the trigger rate has not settled (33/31/46/46%), and the
   §11.4 recall figures remain uninformative at any n tried.
-* Only **about 1 claim in 3 triggers a second round** (37% pooled, 31–46% by batch)
+* Only **about 2 claims in 5 trigger a second round** (39% pooled, 31–46% by batch)
   — the evidence evaluator judges round 1 sufficient most of the time, so the loop's
   reach is limited by that gate regardless of how well it performs when it fires.
   **This gate, not the loop's effectiveness, is the binding constraint**, and it is
   the one quantity here that nothing has yet tried to improve or even measure
-  directly. The batch-to-batch spread suggests it is also claim-dependent in ways
-  nothing has characterised.
-* The accumulated sample's label mix is **43 Refuted / 8 Supported / 4 Not Enough
-  Evidence** (plus 10 Conflicting, excluded from scoring). The majority-class
-  baseline on the 55 scorable claims is **0.782** — harsher than the 0.692 that
-  applied to the first batch. Any Stage 3 accuracy on this sample must be read
-  against 0.782.
-* Quota-bound: 240 searches for 65 claims (~3.7/claim), and the API sunsets
-  2027-01-01 — **~86 days' notice as of 2026-10-07**.
+  directly. The batch pattern (33, 31, 46, 46) looks less like noise than like a
+  difference between claim slices, which nothing has characterised.
+* The accumulated sample's label mix is **57 Refuted / 14 Supported / 5 Not Enough
+  Evidence** (plus 13 Conflicting, excluded from scoring). The majority-class
+  baseline on the 76 scorable claims is **0.750** — it has drifted down as more
+  `Supported` claims entered (0.692 → 0.800 → 0.782 → 0.750), so **any Stage 3
+  accuracy must be read against the baseline for its own sample**, not a remembered
+  one.
+* Quota-bound: 331 searches for 89 claims (~3.7/claim), and the API sunsets
+  2027-01-01 — **~83 days' notice as of 2026-10-10**.
 
 **Recommendation:** keep the loop enabled. Its measured benefit is better source
 quality on the open web, which the closed corpus could not see, and that is now
-measured on 24 second rounds rather than 5.
+measured on 35 second rounds rather than 5.
 
 ~~The round-1 query-quality problem in §11.3 is now the more promising target.~~
-**Withdrawn.** Research-venue contamination is 2.6% and did not grow at all between
-n=41 and n=65 — it is confined to the first 15 claims in dataset order, so it was
-never the system-wide defect this section claimed. **The ~65% of claims that never
-trigger a second round is the larger lever**, since §11.1 shows the loop reaches
-materially better sources 96% of the time it fires. Fact-check leakage, steady at
-37% of claims, remains worth fixing for *validity* reasons rather than accuracy
-ones: it contaminates measurement, which is why §L splits on it.
+**Withdrawn.** Research-venue contamination is 1.9% and its absolute count barely
+moved across 285 further queries — it is confined to the first 15 claims in dataset
+order, so it was never the system-wide defect this section claimed. **The ~61% of
+claims that never trigger a second round is the larger lever**, since §11.1 shows the
+loop reaches materially better sources 94% of the time it fires.
+
+Fact-check leakage is the one round-1 problem that has grown rather than shrunk with
+n — 40% of claims, 5.7% of results, up from 4.3% at n=41. It matters for *validity*
+more than accuracy: it contaminates measurement, which is why §L splits on it, and
+`FINDINGS.md` §L.3 shows the Stage 3 result survives the split.
 
 ---
 
@@ -792,11 +800,12 @@ ones: it contaminates measurement, which is why §L splits on it.
    conclusion.
 6. **Try a dense retriever** before concluding reformulation adds nothing.
 7. **Raise the second-round trigger rate.** §11.5 identifies this as the binding
-   constraint: the loop reaches better sources 96% of the time it fires, but it
-   fires on only 37% of claims, and that rate swings 31–46% between batches for
+   constraint: the loop reaches better sources 94% of the time it fires, but it
+   fires on only 39% of claims, and that rate swings 31–46% between batches for
    reasons nothing has characterised. Nothing has yet measured the evidence
    evaluator's sufficiency gate, which makes that decision.
-8. **Continue the live sample toward n=100** — 65 collected, ~1.4 more daily batches.
+8. **Continue the live sample toward n=100** — 89 collected, **11 to go (~41
+   searches, well inside one day's free tier)**.
    Re-run `live_loop.py --target 100`, then `export_query_trail.py`,
    `../verdict/live_evidence_verdict.py` and `../verdict/same_claim_baselines.py`
    after each batch, in that order (the baselines script reads the verdict output).
